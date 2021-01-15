@@ -1,28 +1,29 @@
-#ifndef	_USART_H_
-#define	_USART_H_
+#ifndef _USART_H_
+#define _USART_H_
 
 #include "system_core.h"
 
-#define	USART_BOUND		115200
+#define BaudRate		115200
 
-static uint8_t Usart_Tx_Flag[3] = { 0, 0, 0};			//DMAÔÚÃ¦±êÖ¾Î»
-static uint8_t Usart_Sbuffer[3][64] = {{0},{0},{0}};		//Usart½ÓÊÕ»º´æ  Ã¿ĞĞµÚÒ»Î»±íÊ¾½ÓÊÕµ½µÄÊı¾İ³¤¶È
+#define Usart_Port 		GPIOA
+#define Usart_Tx_Pin		GPIO_Pin_9 | GPIO_Pin_2
+#define Usart_Rx_Pin		GPIO_Pin_10 | GPIO_Pin_3
 
-/*****************Íâ²¿½Ó¿Ú***********************/
-uint8_t Usart1_Send(uint8_t*data,uint8_t len);				//ÀûÓÃDMAÏòUsartx·¢ËÍÊı¾İ
-uint8_t Usart2_Send(uint8_t*data,uint8_t len);
-uint8_t Usart3_Send(uint8_t*data,uint8_t len);
-void Usart_TxFlag_Clear(uint8_t USARTx);				//DMAÔÚÃ¦±êÖ¾Çå³ı
-void Usart_Sbuffer_Clear(uint8_t USARTx);				//´®¿Ú½ÓÊÕ»º³åÇøÇå³ı
-uint8_t* Read_Usart_Sbuffer(uint8_t USARTx);			//¶ÁÈ¡´®¿Ú½ÓÊÕ»º³åÇøÊı¾İ
-uint8_t Usart_Sbuffer_Push(uint8_t USARTx,uint8_t len);	//´®¿Ú»º³åÇøÊı¾İÇ°ÒÆ
-/****************³õÊ¼»¯**************************/
+//DMAå‘é€ç¼“å­˜
+static uint8_t	Usart1_Tx_Sbuffer[48];
+static uint8_t	Usart2_Tx_Sbuffer[48];
+//DMAåœ¨å¿™æ ‡å¿—
+static uint8_t DMA_Flag[2] = {0,0};
+//Usartæ¥æ”¶ç¼“å­˜
+static uint8_t Usart_Rx_Sbuffer[2][64];
+
 void Usart_Config(void);
+void UsartGPIO_Config(void);
 void Usart_DMA_Config(void);
-/****************ÖĞ¶Ï****************************/
-void USART1_IRQHandler(void);
-void USART2_IRQHandler(void);
-void USART3_IRQHandler(void);
+uint8_t Usart1_Send(uint8_t*dat,uint8_t len);
+uint8_t Usart2_Send(uint8_t*dat,uint8_t len);
+uint8_t*Read_Usart(uint8_t USARTx);
+uint8_t Usart_Rx_Sbuffer_Push(uint8_t USARTx,uint8_t len);
+void Usart_Rx_Sbuffer_Clear(uint8_t USARTx);
 
 #endif
-

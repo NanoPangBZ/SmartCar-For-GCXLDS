@@ -9,5 +9,6 @@ OpenMV与主控芯片通过串口连接
 3.OLED缓存式更新屏幕方法(占用时序过多,可能会改)
 4.OLED字库还未完成
 5.OLED驱动在 /TestC8T6/USER/HARDWARE中,测试平台stm32f103c8t6
+6.oled.h oled.c iic.h iic.c文件已经装载到主控芯片Driver目录下
 			2021/1/15
 

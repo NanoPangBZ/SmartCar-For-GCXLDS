@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+".\objects\stm32f10x_it.o"
+".\objects\main.o"
+".\objects\core_cm3.o"
+".\objects\system_stm32f10x.o"
+".\objects\misc.o"
+".\objects\stm32f10x_dma.o"
+".\objects\stm32f10x_exti.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_tim.o"
+".\objects\stm32f10x_usart.o"
+".\objects\startup_stm32f10x_hd.o"
+".\objects\gyroscope.o"
+".\objects\motor_driver.o"
+".\objects\motor_init.o"
+".\objects\usart.o"
+".\objects\system_beat.o"
+".\objects\cmd_lib.o"
+".\objects\datascope_dp.o"
+".\objects\speed_pid.o"
+".\objects\debug_port.o"
+--library_type=microlib --strict --scatter ".\Objects\SmartCar.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\SmartCar.map" -o .\Objects\SmartCar.axf

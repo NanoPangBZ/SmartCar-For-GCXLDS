@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CMSIS;..\CMSIS\STARTCODE;..\FWLIB\inc;..\FWLIB\src;..\HARDWARE;..\USER</IncludePath>
+              <IncludePath>..\CMSIS;..\CMSIS\STARTCODE;..\FWLIB\inc;..\FWLIB\src;..\USER;.\HARDWARE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -467,17 +467,17 @@
             <File>
               <FileName>iic.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\iic.c</FilePath>
+              <FilePath>.\HARDWARE\iic.c</FilePath>
             </File>
             <File>
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\oled.c</FilePath>
+              <FilePath>.\HARDWARE\oled.c</FilePath>
             </File>
             <File>
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\usart.c</FilePath>
+              <FilePath>.\HARDWARE\usart.c</FilePath>
             </File>
           </Files>
         </Group>

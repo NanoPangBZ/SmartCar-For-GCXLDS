@@ -30,3 +30,24 @@ void IIC_SendByte(uint8_t dat)
 		dat<<=1;
 	}
 }
+
+void IIC_Start(void)
+{          
+	IIC_SDA_SET();
+	IIC_SCL_SET();
+	IIC_SDA_RESET();
+	IIC_SCL_RESET();
+}
+
+void IIC_Stop(void)
+{
+	IIC_SDA_SET();
+	IIC_SCL_RESET();
+	IIC_SCL_SET();
+}
+
+void IIC_WaitACK(void)
+{
+	IIC_SCL_SET();
+	IIC_SCL_RESET();
+}

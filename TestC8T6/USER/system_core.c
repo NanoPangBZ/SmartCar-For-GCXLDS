@@ -5,6 +5,7 @@ void PCB_System_Init(void)
         NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
         Usart_Config();
         IIC_Init();
+	OLED_Init();
         SysTick_Config(5*72000);			//系统主心跳
 }
 

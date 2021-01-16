@@ -35,3 +35,4 @@
 ..\output\oled.o: .\HARDWARE\iic.h
 ..\output\oled.o: ..\USER\system_core.h
 ..\output\oled.o: .\HARDWARE\usart.h
+..\output\oled.o: HARDWARE\oled_font.h

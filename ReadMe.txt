@@ -11,4 +11,7 @@ OpenMV与主控芯片通过串口连接
 5.OLED驱动在 /TestC8T6/USER/HARDWARE中,测试平台stm32f103c8t6
 6.oled.h oled.c iic.h iic.c文件已经装载到主控芯片Driver目录下
 			2021/1/15
+1.完成0806，1208单个字符的显示,以page为y方向的度量单位
+2.抛弃的缓存式的OLED驱动方式
+			2021/1/16
 

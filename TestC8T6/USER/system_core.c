@@ -6,6 +6,7 @@ void PCB_System_Init(void)
         Usart_Config();
         IIC_Init();
 	OLED_Init();
+	OLED_ShowChar('F',0,0,2);
         SysTick_Config(5*72000);			//系统主心跳
 }
 
@@ -16,4 +17,5 @@ void PCB_System_Init(void)
   */
 void SysTick_Handler(void)
 {
+	System_Time++;
 }

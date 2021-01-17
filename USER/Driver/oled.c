@@ -1,4 +1,5 @@
 #include "oled.h"
+#include "oled_font.h"
 
 void OLED_Init(void)
 {
@@ -33,46 +34,6 @@ void OLED_Init(void)
 	OLED_Clear();
 }
 
-void OLED_Refresh(void)
-{
-	uint8_t page,col;
-	for(page=0;page<8;page++)
-	{
-		OLED_SendByte(0xb0+page,OLED_CMD);		//page设置
-		OLED_SendByte(0x00,OLED_CMD);			//列地址低四位设置
-		OLED_SendByte(0x10,OLED_CMD);			//列地址高四位设置
-		for(col=0;col<128;col++)
-			OLED_SendByte(0x00,OLED_DATA);
-	}
-}
-
-void OLED_Clear(void)
-{
-	uint8_t page , col;
-	for(page=0;page<8;page++)
-		for(col=0;col<128;col++)
-			OLED_Sbuffer[col][page] = 0x00;
-	OLED_Refresh();
-}
-
-void OLED_DrawPoint(uint8_t x,uint8_t y)
-{
-	uint8_t page ,line;
-	page = y / 8;
-	line = y % 8;
-	OLED_Sbuffer[x][page] |= (0x01<<line);
-}
-
-void OLED_ClearPoint(uint8_t x,uint8_t y)
-{
-	uint8_t page ,line;
-	page = y / 8;
-	line = y % 8;
-	OLED_Sbuffer[x][page] = ~OLED_Sbuffer[x][page];
-	OLED_Sbuffer[x][page] |= (0x01<<line);
-	OLED_Sbuffer[x][page] = ~OLED_Sbuffer[x][page];
-}
-
 void OLED_DisPlay_On(void)
 {
 	OLED_SendByte(0x8D,OLED_CMD);
@@ -85,6 +46,91 @@ void OLED_DisPlay_Off(void)
 	OLED_SendByte(0x8D,OLED_CMD);
 	OLED_SendByte(0x10,OLED_CMD);
 	OLED_SendByte(0xAF,OLED_CMD);
+}
+
+void OLED_PosSet(uint8_t page,uint8_t col)
+{
+	if(page>7 || col > 127)
+		return;
+	OLED_SendByte(0xb0+page,OLED_CMD);
+	OLED_SendByte(0x00+(col&0x0f),OLED_CMD);
+	OLED_SendByte(0x10+((col&0xf0)>>4),OLED_CMD);
+}
+
+void OLED_ShowString(uint8_t*str,uint8_t page,uint8_t col,uint8_t size)
+{
+	uint8_t len;
+	uint8_t Ncol;
+	switch(size)
+	{
+		case 1:len=7;break;
+		case 2:len=9;break;
+		default:break;
+	}
+	for(Ncol=col;Ncol<127;Ncol+=len)
+	{
+		OLED_ShowChar(*str,page,Ncol,size);
+		str++;
+		if(*str=='\0')
+			break;
+	}
+}
+
+void OLED_ShowNum(uint16_t num,uint8_t page,uint8_t col,uint8_t size)
+{
+	uint16_t NumLen,temp;
+	uint8_t Ncol,len,chr;
+	switch(size)
+	{
+		case 1:len=7;break;
+		case 2:len=9;break;
+		default:break;
+	}
+	temp = num;
+	for(NumLen=10;temp!=0;NumLen*=10)
+		temp/=10;
+	NumLen/=100;
+	for(Ncol=col;Ncol<127;Ncol+=len)
+	{
+		chr = (num/NumLen)%10;
+		OLED_ShowChar(chr+0x30,page,Ncol,size);
+		NumLen/=10;
+		if(NumLen==0)
+			break;
+	}
+}
+
+void OLED_ShowChar(uint8_t chr,uint8_t page,uint8_t col,uint8_t size)
+{
+	uint8_t temp;
+	OLED_PosSet(page,col);
+	if((chr>=' ')&&(chr<='z'))
+	switch(size)
+	{
+		case 1:
+			for(temp=0;temp<6;temp++)
+				OLED_SendByte(asc2_0806[chr-32][temp],OLED_DATA);
+			break;
+		case 2:
+			for(temp=0;temp<8;temp++)
+				OLED_SendByte(asc2_1608[chr-32][temp],OLED_DATA);
+			OLED_PosSet(page+1,col);
+			for(temp=0;temp<8;temp++)
+				OLED_SendByte(asc2_1608[chr-32][temp+8],OLED_DATA);
+			break;
+		default:break;
+	}
+}
+
+void OLED_Clear(void)
+{
+	uint8_t page,col;
+	for(page=0;page<8;page++)
+	{
+		OLED_PosSet(page,0);
+		for(col=0;col<128;col++)
+			OLED_SendByte(0x00,OLED_DATA);
+	}
 }
 
 void OLED_SendByte(uint8_t dat,uint8_t Mode)

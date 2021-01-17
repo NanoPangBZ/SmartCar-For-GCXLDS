@@ -6,7 +6,10 @@ void PCB_System_Init(void)
         Usart_Config();
         IIC_Init();
 	OLED_Init();
-	OLED_ShowChar('F',0,0,2);
+	OLED_ShowNum(111,0,0,2);
+	OLED_ShowNum(232,2,0,1);
+	OLED_ShowNum(100,3,0,2);
+	OLED_ShowNum(123,0,12,1);
         SysTick_Config(5*72000);			//系统主心跳
 }
 

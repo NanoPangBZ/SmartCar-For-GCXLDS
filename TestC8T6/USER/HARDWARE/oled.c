@@ -57,10 +57,54 @@ void OLED_PosSet(uint8_t page,uint8_t col)
 	OLED_SendByte(0x10+((col&0xf0)>>4),OLED_CMD);
 }
 
+void OLED_ShowString(uint8_t*str,uint8_t page,uint8_t col,uint8_t size)
+{
+	uint8_t len;
+	uint8_t Ncol;
+	switch(size)
+	{
+		case 1:len=7;break;
+		case 2:len=9;break;
+		default:break;
+	}
+	for(Ncol=col;Ncol<127;Ncol+=len)
+	{
+		OLED_ShowChar(*str,page,Ncol,size);
+		str++;
+		if(*str=='\0')
+			break;
+	}
+}
+
+void OLED_ShowNum(uint16_t num,uint8_t page,uint8_t col,uint8_t size)
+{
+	uint16_t NumLen,temp;
+	uint8_t Ncol,len,chr;
+	switch(size)
+	{
+		case 1:len=7;break;
+		case 2:len=9;break;
+		default:break;
+	}
+	temp = num;
+	for(NumLen=10;temp!=0;NumLen*=10)
+		temp/=10;
+	NumLen/=100;
+	for(Ncol=col;Ncol<127;Ncol+=len)
+	{
+		chr = (num/NumLen)%10;
+		OLED_ShowChar(chr+0x30,page,Ncol,size);
+		NumLen/=10;
+		if(NumLen==0)
+			break;
+	}
+}
+
 void OLED_ShowChar(uint8_t chr,uint8_t page,uint8_t col,uint8_t size)
 {
 	uint8_t temp;
 	OLED_PosSet(page,col);
+	if((chr>=' ')&&(chr<='z'))
 	switch(size)
 	{
 		case 1:

@@ -40,6 +40,5 @@
 ..\output\main.o: .\System\position_clr.h
 ..\output\main.o: .\Driver\gyroscope.h
 ..\output\main.o: .\Driver\oled.h
-..\output\main.o: .\System\infra_mcu_clr.h
 ..\output\main.o: .\System\DataScope_DP.h
 ..\output\main.o: .\System\debug_port.h

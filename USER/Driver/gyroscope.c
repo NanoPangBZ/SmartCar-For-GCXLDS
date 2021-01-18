@@ -21,7 +21,7 @@ void Wait_Gyroscope(void)
 	while(num != 100)
 	{
 		//5ms读取间隔
-		if(Read_SysSubTime() - last_time > 100)
+		if(Read_SysSubTime() - last_time > 500)
 		{
 			last_time = Read_SysSubTime();
 			if(last_Yaw != Yaw)

@@ -5,7 +5,6 @@ void StreetMotor_Init(void)
 	StreetMotor_GPIO_Config();
 	StreetMotor_TIM_Config();
 	MechanicalArm_Reset(1);
-	printf("%d: r\n",Read_SysSubTime());
 }
 
 void StreetMotor_GPIO_Config(void)

@@ -1,16 +1,23 @@
 #include "system_core.h"
 
-/********************系统初始化***********************/
+/*********系统初始化&系统任务*****************/
 void PCB_System_Init(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	//驱动初始化
 	SysSecBeat_Config(10,72);		//系统初始化辅助心跳
 	Usart_Config();
 	Usart_DMA_Config();
 	StreetMotor_Init();
 	Motor_Init();
 	Gyroscope_Init();
+	IIC_Init();
+	OLED_Init();
+	//系统进入待机
+	SystemState_Set(8);
 	SysTick_Config(5*72000);			//系统主心跳
+	while(1)
+	System_Task();
 }
 
 void SysSecBeat_Config(uint16_t A,uint16_t Pre)
@@ -36,6 +43,29 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	
 	NVIC_Init(&NVIC_InitStruct);
 	TIM_Cmd(TIM7,ENABLE);
+}
+
+void System_Task(void)
+{
+	FeedBack_Task();
+	StateUpdata_Task();
+}
+
+void FeedBack_Task(void)
+{
+	OLED_ShowString("SysState:",0,0,1);
+	OLED_ShowNum(SystemState,0,64,1);
+}
+
+void StateUpdata_Task(void)
+{
+	uint8_t*Cmd;
+	Read_Usart_Sbuffer(1);
+	if(*Cmd!=0)
+	{
+		printf("%d",*Cmd);
+		Usart_Sbuffer_Clear(1);
+	}
 }
 
 /************系统对外接口*****************/
@@ -65,6 +95,14 @@ uint32_t Read_SysSubTime(void)
 void SysTick_Handler(void)
 {
 	SysTime++;
+	SysSubTime = 0;
+	switch(SystemState)
+	{
+		case 1:break;
+		case 2:break;
+		case 3:break;
+		default:SystemState_Set(1);break;
+	}
 }
 
 void TIM7_IRQHandler(void)

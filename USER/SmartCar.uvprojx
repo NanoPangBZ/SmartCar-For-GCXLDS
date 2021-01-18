@@ -500,6 +500,11 @@
           <GroupName>System</GroupName>
           <Files>
             <File>
+              <FileName>MechanicalArm_Clr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\MechanicalArm_Clr.c</FilePath>
+            </File>
+            <File>
               <FileName>DataScope_DP.C</FileName>
               <FileType>1</FileType>
               <FilePath>.\System\DataScope_DP.C</FilePath>
@@ -510,34 +515,9 @@
               <FilePath>.\System\position_clr.c</FilePath>
             </File>
             <File>
-              <FileName>MechanicalArm_Clr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\System\MechanicalArm_Clr.c</FilePath>
-            </File>
-            <File>
-              <FileName>infra_mcu_clr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\System\infra_mcu_clr.c</FilePath>
-            </File>
-            <File>
               <FileName>system_core.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\System\system_core.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>app</GroupName>
-          <Files>
-            <File>
-              <FileName>debug_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\debug_app.c</FilePath>
-            </File>
-            <File>
-              <FileName>main_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\main_app.c</FilePath>
             </File>
           </Files>
         </Group>

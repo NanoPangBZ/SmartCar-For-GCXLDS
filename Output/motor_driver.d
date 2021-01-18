@@ -41,6 +41,5 @@
 ..\output\motor_driver.o: .\System\position_clr.h
 ..\output\motor_driver.o: .\Driver\gyroscope.h
 ..\output\motor_driver.o: .\Driver\oled.h
-..\output\motor_driver.o: .\System\infra_mcu_clr.h
 ..\output\motor_driver.o: .\System\DataScope_DP.h
 ..\output\motor_driver.o: .\System\debug_port.h

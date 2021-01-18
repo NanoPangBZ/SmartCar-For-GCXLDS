@@ -12,20 +12,20 @@
 #include "position_clr.h"
 #include "gyroscope.h"
 #include "oled.h"
-#include "infra_mcu_clr.h"
 #include "DataScope_DP.h"
 #include "debug_port.h"
 
 /***************系统时间***************/
 static uint32_t SysTime = 0;
 static uint32_t SysSubTime = 0;
-
 /***************系统状态***************/
 static uint8_t SystemState = 0;		//0:初始化  1:待机  2:运行  3:串口调试
-
-/*********系统初始化*****************/
+/*********系统初始化&系统任务*****************/
 void PCB_System_Init(void);
 void SysSecBeat_Config(uint16_t A,uint16_t Pre);
+void System_Task(void);
+void FeedBack_Task(void);
+void StateUpdata_Task(void);
 /************系统对外接口*****************/
 uint32_t Read_SysTime(void);
 uint32_t Read_SysSubTime(void);

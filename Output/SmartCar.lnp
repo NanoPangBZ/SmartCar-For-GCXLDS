@@ -18,10 +18,9 @@
 "..\output\street_motor.o"
 "..\output\iic.o"
 "..\output\oled.o"
+"..\output\mechanicalarm_clr.o"
 "..\output\datascope_dp.o"
 "..\output\position_clr.o"
-"..\output\mechanicalarm_clr.o"
-"..\output\infra_mcu_clr.o"
 "..\output\system_core.o"
 --library_type=microlib --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols

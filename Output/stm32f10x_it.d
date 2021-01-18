@@ -41,6 +41,5 @@
 ..\output\stm32f10x_it.o: .\System\position_clr.h
 ..\output\stm32f10x_it.o: .\Driver\gyroscope.h
 ..\output\stm32f10x_it.o: .\Driver\oled.h
-..\output\stm32f10x_it.o: .\System\infra_mcu_clr.h
 ..\output\stm32f10x_it.o: .\System\DataScope_DP.h
 ..\output\stm32f10x_it.o: .\System\debug_port.h

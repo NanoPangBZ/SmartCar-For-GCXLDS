@@ -3,8 +3,11 @@
 
 #include "system_core.h"
 
-#define IIC_SDA	GPIO_Pin_7
-#define IIC_SCL	GPIO_Pin_5
+#define N2	GPIO_Pin_12
+#define N1	GPIO_Pin_11
+
+#define IIC_SDA	N2
+#define IIC_SCL	N1
 
 #define IIC_SDA_SET()		GPIO_SetBits(GPIOA,IIC_SDA)
 #define IIC_SDA_RESET()		GPIO_ResetBits(GPIOA,IIC_SDA)

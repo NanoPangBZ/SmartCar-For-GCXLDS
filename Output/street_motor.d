@@ -41,6 +41,5 @@
 ..\output\street_motor.o: .\System\position_clr.h
 ..\output\street_motor.o: .\Driver\gyroscope.h
 ..\output\street_motor.o: .\Driver\oled.h
-..\output\street_motor.o: .\System\infra_mcu_clr.h
 ..\output\street_motor.o: .\System\DataScope_DP.h
 ..\output\street_motor.o: .\System\debug_port.h

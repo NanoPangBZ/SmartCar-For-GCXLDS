@@ -26,12 +26,11 @@ static uint8_t SystemState = 0;		//0:初始化  1:待机  2:运行  3:串口调�
 /*********系统初始化*****************/
 void PCB_System_Init(void);
 void SysSecBeat_Config(uint16_t A,uint16_t Pre);
-/************系统时间读取*****************/
+/************系统对外接口*****************/
 uint32_t Read_SysTime(void);
 uint32_t Read_SysSubTime(void);
-/**************读取状态****************/
 uint8_t Read_SystemState(void);
-void SystemState_Updata(void);
+uint8_t SystemState_Set(uint8_t state);
 /****************中断*****************/
 void SysTick_Handler(void);
 void TIM7_IRQHandler(void);

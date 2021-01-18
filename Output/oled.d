@@ -44,3 +44,4 @@
 ..\output\oled.o: .\System\infra_mcu_clr.h
 ..\output\oled.o: .\System\DataScope_DP.h
 ..\output\oled.o: .\System\debug_port.h
+..\output\oled.o: Driver\oled_font.h

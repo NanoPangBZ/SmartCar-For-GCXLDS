@@ -4,13 +4,12 @@
 void PCB_System_Init(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	SysSecBeat_Config(50,72);		//系统初始化辅助心跳
+	SysSecBeat_Config(10,72);		//系统初始化辅助心跳
 	Usart_Config();
 	Usart_DMA_Config();
 	StreetMotor_Init();
 	Motor_Init();
 	Gyroscope_Init();
-	SystemState = 2;
 	SysTick_Config(5*72000);			//系统主心跳
 }
 
@@ -39,6 +38,14 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	TIM_Cmd(TIM7,ENABLE);
 }
 
+/************系统对外接口*****************/
+uint8_t SystemState_Set(uint8_t state)
+{
+	if(state<5)
+		SystemState = state;
+	return SystemState;
+}
+
 uint8_t Read_SystemState(void)
 {
 	return SystemState;
@@ -58,14 +65,6 @@ uint32_t Read_SysSubTime(void)
 void SysTick_Handler(void)
 {
 	SysTime++;
-	switch(SystemState)
-	{
-		case 0:break;
-		case 1:break;
-		case 2:break;
-		case 3:break;
-		default:break;
-	}
 }
 
 void TIM7_IRQHandler(void)

@@ -1,29 +1,29 @@
-#ifndef _USART_H_
-#define _USART_H_
+#ifndef	_USART_H_
+#define	_USART_H_
 
 #include "system_core.h"
+#include <stdio.h>
 
-#define BaudRate		115200
+#define	USART_BOUND		115200
 
-#define Usart_Port 		GPIOA
-#define Usart_Tx_Pin		GPIO_Pin_9 | GPIO_Pin_2
-#define Usart_Rx_Pin		GPIO_Pin_10 | GPIO_Pin_3
+static uint8_t Usart_Tx_Flag[3] = { 0, 0, 0};			//DMA在忙标志
+static uint8_t Usart_Sbuffer[3][64] = {{0},{0},{0}};		//Usart接收缓存  每行第一位表示已经接收到的数据
 
-//DMA发送缓存
-static uint8_t	Usart1_Tx_Sbuffer[48];
-static uint8_t	Usart2_Tx_Sbuffer[48];
-//DMA在忙标志
-static uint8_t DMA_Flag[2] = {0,0};
-//Usart接收缓存
-static uint8_t Usart_Rx_Sbuffer[2][64];
-
+/*****************对外接口**********************/
+uint8_t Usart1_Send(uint8_t*data,uint8_t len);				//通过DMA使USARTx向外发送数据
+uint8_t Usart2_Send(uint8_t*data,uint8_t len);
+uint8_t Usart3_Send(uint8_t*data,uint8_t len);
+void Usart_TxFlag_Clear(uint8_t USARTx);				//DMA在忙标志位清除
+void Usart_Sbuffer_Clear(uint8_t USARTx);				//Usart接收缓存清除
+uint8_t* Read_Usart_Sbuffer(uint8_t USARTx);			//读取串口接收缓存
+uint8_t Usart_Sbuffer_Push(uint8_t USARTx,uint8_t len);	//串口接收缓存数据段前移len个字节
+/****************初始化*************************/
 void Usart_Config(void);
-void UsartGPIO_Config(void);
 void Usart_DMA_Config(void);
-uint8_t Usart1_Send(uint8_t*dat,uint8_t len);
-uint8_t Usart2_Send(uint8_t*dat,uint8_t len);
-uint8_t*Read_Usart(uint8_t USARTx);
-uint8_t Usart_Rx_Sbuffer_Push(uint8_t USARTx,uint8_t len);
-void Usart_Rx_Sbuffer_Clear(uint8_t USARTx);
+/****************中断****************************/
+void USART1_IRQHandler(void);
+void USART2_IRQHandler(void);
+void USART3_IRQHandler(void);
 
 #endif
+

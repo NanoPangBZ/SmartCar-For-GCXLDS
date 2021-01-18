@@ -23,8 +23,6 @@
 "..\output\mechanicalarm_clr.o"
 "..\output\infra_mcu_clr.o"
 "..\output\system_core.o"
-"..\output\debug_app.o"
-"..\output\main_app.o"
 --library_type=microlib --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -14,7 +14,7 @@ void PCB_System_Init(void)
 	IIC_Init();
 	OLED_Init();
 	//系统进入待机
-	SystemState_Set(8);
+	SystemState_Set(1);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	System_Task();
@@ -53,19 +53,23 @@ void System_Task(void)
 
 void FeedBack_Task(void)
 {
-	OLED_ShowString("SysState:",0,0,1);
+	static uint8_t ShowStrFlag = 0;
+	if(ShowStrFlag!=1)
+	{
+		OLED_ShowString("SysState:",0,0,1);
+		OLED_ShowString("SysTime:",1,0,1);
+		ShowStrFlag = 1;
+	}
 	OLED_ShowNum(SystemState,0,64,1);
+	OLED_ShowNum((uint16_t)(SysTime/200),1,57,1);
 }
 
 void StateUpdata_Task(void)
 {
 	uint8_t*Cmd;
-	Read_Usart_Sbuffer(1);
+	Cmd=Read_Usart_Sbuffer(1);
 	if(*Cmd!=0)
-	{
-		printf("%d",*Cmd);
-		Usart_Sbuffer_Clear(1);
-	}
+		SystemState = 3;
 }
 
 /************系统对外接口*****************/

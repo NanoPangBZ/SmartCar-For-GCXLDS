@@ -43,3 +43,4 @@
 ..\output\mechanicalarm_clr.o: .\Driver\oled.h
 ..\output\mechanicalarm_clr.o: System\DataScope_DP.h
 ..\output\mechanicalarm_clr.o: System\debug_port.h
+..\output\mechanicalarm_clr.o: .\app\main_app.h

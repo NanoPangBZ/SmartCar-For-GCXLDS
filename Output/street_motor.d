@@ -43,3 +43,4 @@
 ..\output\street_motor.o: .\Driver\oled.h
 ..\output\street_motor.o: .\System\DataScope_DP.h
 ..\output\street_motor.o: .\System\debug_port.h
+..\output\street_motor.o: .\app\main_app.h

@@ -14,6 +14,7 @@
 #include "oled.h"
 #include "DataScope_DP.h"
 #include "debug_port.h"
+#include "main_app.h"
 
 /***************系统时间***************/
 static uint32_t SysTime = 0;

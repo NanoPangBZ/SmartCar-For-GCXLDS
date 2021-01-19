@@ -44,18 +44,112 @@ void Inc_PID_Realiz(void)
 void PositionClr_Port(void)
 {
 	PositionState_Updata();
+	//根据模式配置基准速度
+	if(Position_Mode)
+	{
+		Speed_Cng[Speed_Base] = 300;
+		Speed_Cng[Speed_Max] = 360;
+		Speed_Cng[Speed_Min] = 80;
+		Speed_Cng[Speed_Cha] = 2;
+	}else
+	{
+		Speed_Cng[Speed_Base] = 80;
+		Speed_Cng[Speed_Max] = 100;
+		Speed_Cng[Speed_Min] = 50;
+		Speed_Cng[Speed_Cha] = 2;
+	}
+	//制动
 	switch(Position_State)
 	{
-		case 0:break;
-		case 1:break;
+		case 0:
+			Position_Clr(X);
+			break;
+		default:break;
+	}
+	
+}
+
+void PositionState_Updata(void)
+{
+	Real_Position_Update();
+	Err_position[X] = Target_position[X] - Real_position[X] ;
+	Err_position[Y] = Target_position[Y] - Real_position[Y];
+	Err_Yaw = Gyroscope_ReadYaw();
+	switch(Position_State)
+	{
+		case 0:
+			if(Err_position[X]/10 == 0)
+			{
+				StopRun();
+				Position_Speed = 0;
+				Position_State++;
+			}
+			break;
+		case 1:
+			if(Err_Yaw/10 == 0)
+			{
+				StopRun();
+				Yaw_Speed = 0;
+				Position_State ++;
+			}
+			break;
+		case 2:
+			if(Err_position[X]/10 == 0)
+			{
+				StopRun();
+				Position_Speed = 0;
+				Position_State++;
+			}
+			break;
+		case 3:
+			if(Err_Yaw/10 == 0)
+			{
+				StopRun();
+				Yaw_Speed = 0;
+				Position_State ++;
+			}
+			break;
+		case 4:break;
 		default:break;
 	}
 }
 
-void Target_RelPosition_Set(long int x,long int y)
+void Position_Clr(uint8_t Dir)
+{
+	uint16_t AbsPosition_Speed;
+	uint16_t Yaw_CorSpeed;
+	if(Position_Speed<0)
+		AbsPosition_Speed = Position_Speed;
+	else
+		AbsPosition_Speed = -Position_Speed;
+	//渐进式加速过程
+	AbsPosition_Speed += Speed_Cng[Speed_Cha];
+	if(AbsPosition_Speed > Speed_Cng[Speed_Base])
+		AbsPosition_Speed = Speed_Cng[Speed_Base];
+	if(Err_position[Dir] > 0)
+		Position_Speed = AbsPosition_Speed;
+	else
+		Position_Speed = -AbsPosition_Speed;
+	//动态航向角修正
+	
+}
+
+void Yaw_StaticClr(void)
+{
+	
+}
+
+void Position_Reset(long int x,long int y)
+{
+	Real_position[X] = x;
+	Real_position[Y] = y;
+}
+
+void Target_RelPosition_Set(long int x,long int y,uint8_t Mode)
 {
 	Target_position[0] += x;
 	Target_position[1] += y;
+	Position_Mode = Mode;
 }
 
 void PositionClr_Stop(void)
@@ -67,104 +161,6 @@ void PositionClr_Stop(void)
 	PositionState_Reset();
 }
 
-void PositionState_Updata(void)
-{
-	
-	Real_Position_Update();
-	Err_position[X] = Target_position[X] - Real_position[X] ;
-	Err_position[Y] = Target_position[Y] - Real_position[Y];
-	Err_Yaw = Gyroscope_ReadYaw();
-}
-
-void Position_Clr(uint8_t Dir)
-{
-	int UnSpeed,UnYawSpeed;
-	if(Err_position[Dir] > 0xffffffff)
-		UnSpeed = 0xffffffff;
-	else
-		UnSpeed = Err_position[Dir];
-	if(UnSpeed < 0)
-		UnSpeed = -UnSpeed;
-	if(UnSpeed > Speed_Max)
-		UnSpeed = Speed_Max;
-	if(Position_Speed < UnSpeed)
-	{
-		Position_Speed++;
-	}
-	else
-	{
-		if(UnSpeed < Speed_Stop)
-			Position_Speed = Speed_Stop;
-		else
-			Position_Speed=UnSpeed ;
-	}
-	if(Dir == X)
-	{
-		if(Err_position[Dir] > 0)
-			Target_Speed[0] = Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = Position_Speed;
-		else
-			Target_Speed[0] = Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = -Position_Speed;
-	}else
-	{
-		if(Err_position[Dir] > 0)
-		{
-			Target_Speed[0] = Target_Speed[3] = Position_Speed;
-			Target_Speed[1] = Target_Speed[2] = -Position_Speed;
-		}else
-		{
-			Target_Speed[0] = Target_Speed[3] = -Position_Speed;
-			Target_Speed[1] = Target_Speed[2] = Position_Speed;
-		}
-	}
-	UnYawSpeed = (Err_Yaw/5)*15;
-	if(UnSpeed > YawSpeed_Max)
-		UnSpeed = YawSpeed_Max;
-	if(UnSpeed < -YawSpeed_Max)
-		UnSpeed = -YawSpeed_Max;
-	if(UnYawSpeed > 0)
-	{
-		if(Yaw_Speed < UnYawSpeed)
-			Yaw_Speed++;
-		else
-			Yaw_Speed = UnYawSpeed;
-	}else
-	{
-		if(Yaw_Speed > UnYawSpeed)
-			Yaw_Speed--;
-		else
-			Yaw_Speed = UnYawSpeed;
-	}
-	Target_Speed[0] += Yaw_Speed;
-	Target_Speed[1] -= Yaw_Speed;
-	Target_Speed[2] += Yaw_Speed;
-	Target_Speed[3] -= Yaw_Speed;
-	Inc_PID_Set(Target_Speed);
-}
-
-void Yaw_StaticClr(void)
-{
-	int StaticYaw;
-	StaticYaw = Gyroscope_ReadYaw();
-	if(StaticYaw/10 != 0)
-		StaticYaw /= 2;
-	else
-		StaticYaw = 0;
-	if(StaticYaw != 0)
-	{
-		if(StaticYaw > 0)
-			StaticYaw += 50;
-		else
-			StaticYaw -= 50;
-	}
-	if(StaticYaw > 320)
-		StaticYaw = 320;
-	if(Yaw_Speed<-320)
-		StaticYaw = -320;
-	Target_Speed[0] = Target_Speed[2] = StaticYaw;
-	Target_Speed[1] = Target_Speed[3] = -StaticYaw;
-	Inc_PID_Set(Target_Speed);
-}
-
 void StopRun(void)
 {
 	Target_Speed[0] = Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = 0;
@@ -174,6 +170,7 @@ void StopRun(void)
 void PositionState_Reset(void)
 {
 	Position_State = 0;
+	Position_Mode = QckMode;
 }
 
 uint8_t Read_Position_State(void)
@@ -181,10 +178,11 @@ uint8_t Read_Position_State(void)
 	return Position_State;
 }
 
-void Target_Position_Set(long int x,long int y)
+void Target_Position_Set(long int x,long int y,uint8_t Mode)
 {
 	Target_position[X] = x;
 	Target_position[Y] = y;
+	Position_Mode = QckMode;
 }
 
 void Real_Position_Update(void)

@@ -43,4 +43,5 @@
 ..\output\oled.o: .\Driver\oled.h
 ..\output\oled.o: .\System\DataScope_DP.h
 ..\output\oled.o: .\System\debug_port.h
+..\output\oled.o: .\app\main_app.h
 ..\output\oled.o: Driver\oled_font.h

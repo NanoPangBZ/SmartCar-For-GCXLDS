@@ -3,7 +3,7 @@
 
 #include "system_core.h"
 
-
+void main_app_Task(void);
 
 #endif
 

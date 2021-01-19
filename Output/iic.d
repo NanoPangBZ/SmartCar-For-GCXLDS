@@ -43,3 +43,4 @@
 ..\output\iic.o: .\Driver\oled.h
 ..\output\iic.o: .\System\DataScope_DP.h
 ..\output\iic.o: .\System\debug_port.h
+..\output\iic.o: .\app\main_app.h

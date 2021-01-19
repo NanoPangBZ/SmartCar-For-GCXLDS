@@ -43,3 +43,4 @@
 ..\output\datascope_dp.o: .\Driver\oled.h
 ..\output\datascope_dp.o: System\DataScope_DP.h
 ..\output\datascope_dp.o: System\debug_port.h
+..\output\datascope_dp.o: .\app\main_app.h

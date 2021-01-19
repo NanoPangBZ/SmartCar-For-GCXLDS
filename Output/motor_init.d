@@ -43,3 +43,4 @@
 ..\output\motor_init.o: .\Driver\oled.h
 ..\output\motor_init.o: .\System\DataScope_DP.h
 ..\output\motor_init.o: .\System\debug_port.h
+..\output\motor_init.o: .\app\main_app.h

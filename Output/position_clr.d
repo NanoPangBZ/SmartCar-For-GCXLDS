@@ -43,3 +43,4 @@
 ..\output\position_clr.o: .\Driver\oled.h
 ..\output\position_clr.o: System\DataScope_DP.h
 ..\output\position_clr.o: System\debug_port.h
+..\output\position_clr.o: .\app\main_app.h

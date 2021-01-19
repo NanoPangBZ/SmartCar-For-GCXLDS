@@ -29,7 +29,7 @@ I (..\FWLIB\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (.\Driver\usart.h)(0x60054164)
 I (.\Driver\iic.h)(0x60055228)
@@ -37,13 +37,14 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\main.c)(0x5FF98462)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\main.o --omf_browse ..\output\main.crf --depend ..\output\main.d)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -79,11 +80,12 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (..\CMSIS\core_cm3.c)(0x4C0C587E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\core_cm3.o --omf_browse ..\output\core_cm3.crf --depend ..\output\core_cm3.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
 F (..\CMSIS\system_stm32f10x.c)(0x4D783CB0)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\system_stm32f10x.o --omf_browse ..\output\system_stm32f10x.crf --depend ..\output\system_stm32f10x.d)
@@ -321,7 +323,7 @@ I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 F (..\CMSIS\startup_stm32f10x_hd.s)(0x4D783CDE)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 521" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o ..\output\startup_stm32f10x_hd.o --depend ..\output\startup_stm32f10x_hd.d)
 F (.\Driver\gyroscope.c)(0x600550B7)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\gyroscope.o --omf_browse ..\output\gyroscope.crf --depend ..\output\gyroscope.d)
 I (Driver\gyroscope.h)(0x5FF9842E)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -357,14 +359,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\motor_driver.c)(0x5FE8AC59)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\motor_driver.o --omf_browse ..\output\motor_driver.crf --depend ..\output\motor_driver.d)
 I (Driver\motor_driver.h)(0x5FF98462)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -400,14 +403,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\motor_init.c)(0x5FF61BA2)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\motor_init.o --omf_browse ..\output\motor_init.crf --depend ..\output\motor_init.d)
 I (Driver\motor_init.h)(0x5FF98462)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -443,14 +447,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\usart.c)(0x5FE8C105)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\usart.o --omf_browse ..\output\usart.crf --depend ..\output\usart.d)
 I (Driver\usart.h)(0x60054164)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -486,14 +491,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\street_motor.c)(0x60054333)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\street_motor.o --omf_browse ..\output\street_motor.crf --depend ..\output\street_motor.d)
 I (Driver\street_motor.h)(0x5FF98462)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -529,14 +535,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\iic.c)(0x6001750C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\iic.o --omf_browse ..\output\iic.crf --depend ..\output\iic.d)
 I (Driver\iic.h)(0x60055228)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -572,14 +579,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\Driver\oled.c)(0x6003CC2E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\oled.o --omf_browse ..\output\oled.crf --depend ..\output\oled.d)
 I (Driver\oled.h)(0x60055228)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -615,14 +623,15 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (.\System\position_clr.h)(0x60068F1A)
+I (.\System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\System\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 I (Driver\oled_font.h)(0x6003B3D4)
-F (.\System\system_core.c)(0x60068F1A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\system_core.o --omf_browse ..\output\system_core.crf --depend ..\output\system_core.d)
-I (System\system_core.h)(0x60055033)
+F (.\System\system_core.c)(0x60069B6C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\system_core.o --omf_browse ..\output\system_core.crf --depend ..\output\system_core.d)
+I (System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -653,20 +662,21 @@ I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (.\Driver\usart.h)(0x60054164)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (.\Driver\iic.h)(0x60055228)
 I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (System\position_clr.h)(0x60068F1A)
+I (System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (System\DataScope_DP.h)(0x5FFED69A)
 I (System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\System\MechanicalArm_Clr.c)(0x60059FF1)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\mechanicalarm_clr.o --omf_browse ..\output\mechanicalarm_clr.crf --depend ..\output\mechanicalarm_clr.d)
 I (System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (System\system_core.h)(0x60055033)
+I (System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -697,19 +707,20 @@ I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (.\Driver\usart.h)(0x60054164)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (.\Driver\iic.h)(0x60055228)
 I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
-I (System\position_clr.h)(0x60068F1A)
+I (System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (System\DataScope_DP.h)(0x5FFED69A)
 I (System\debug_port.h)(0x5FF6552B)
-F (.\System\position_clr.c)(0x60068F1A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\position_clr.o --omf_browse ..\output\position_clr.crf --depend ..\output\position_clr.d)
-I (System\position_clr.h)(0x60068F1A)
-I (System\system_core.h)(0x60055033)
+I (.\app\main_app.h)(0x600698CE)
+F (.\System\position_clr.c)(0x60069B6C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\position_clr.o --omf_browse ..\output\position_clr.crf --depend ..\output\position_clr.d)
+I (System\position_clr.h)(0x600698CE)
+I (System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -740,7 +751,7 @@ I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (.\Driver\usart.h)(0x60054164)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (.\Driver\iic.h)(0x60055228)
 I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
@@ -750,9 +761,10 @@ I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (System\DataScope_DP.h)(0x5FFED69A)
 I (System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
 F (.\System\DataScope_DP.C)(0x5FB261B7)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\datascope_dp.o --omf_browse ..\output\datascope_dp.crf --depend ..\output\datascope_dp.d)
 I (System\DataScope_DP.h)(0x5FFED69A)
-I (System\system_core.h)(0x60055033)
+I (System\system_core.h)(0x600698CE)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -783,13 +795,58 @@ I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (.\Driver\usart.h)(0x60054164)
-I (.\System\system_core.h)(0x60055033)
+I (.\System\system_core.h)(0x600698CE)
 I (.\Driver\iic.h)(0x60055228)
 I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (System\MechanicalArm_Clr.h)(0x5FF9848A)
-I (System\position_clr.h)(0x60068F1A)
+I (System\position_clr.h)(0x600698CE)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)
+F (.\app\main_app.c)(0x600698CE)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\main_app.o --omf_browse ..\output\main_app.crf --depend ..\output\main_app.d)
+I (app\main_app.h)(0x600698CE)
+I (.\System\system_core.h)(0x600698CE)
+I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
+I (..\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x4D99A59E)
+I (..\FWLIB\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\FWLIB\inc\misc.h)(0x4D783BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
+I (.\Driver\usart.h)(0x60054164)
+I (.\Driver\iic.h)(0x60055228)
+I (.\Driver\motor_init.h)(0x5FF98462)
+I (.\Driver\motor_driver.h)(0x5FF98462)
+I (.\Driver\street_motor.h)(0x5FF98462)
+I (.\System\MechanicalArm_Clr.h)(0x5FF9848A)
+I (.\System\position_clr.h)(0x600698CE)
+I (.\Driver\gyroscope.h)(0x5FF9842E)
+I (.\Driver\oled.h)(0x60055228)
+I (.\System\DataScope_DP.h)(0x5FFED69A)
+I (.\System\debug_port.h)(0x5FF6552B)
+I (.\app\main_app.h)(0x600698CE)

@@ -526,6 +526,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>app</GroupName>
+          <Files>
+            <File>
+              <FileName>main_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\main_app.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

@@ -43,3 +43,4 @@
 ..\output\gyroscope.o: .\Driver\oled.h
 ..\output\gyroscope.o: .\System\DataScope_DP.h
 ..\output\gyroscope.o: .\System\debug_port.h
+..\output\gyroscope.o: .\app\main_app.h

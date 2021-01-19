@@ -500,14 +500,19 @@
           <GroupName>System</GroupName>
           <Files>
             <File>
+              <FileName>system_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\system_core.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Service</GroupName>
+          <Files>
+            <File>
               <FileName>MechanicalArm_Clr.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\System\MechanicalArm_Clr.c</FilePath>
-            </File>
-            <File>
-              <FileName>DataScope_DP.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\System\DataScope_DP.C</FilePath>
             </File>
             <File>
               <FileName>position_clr.c</FileName>
@@ -515,9 +520,9 @@
               <FilePath>.\System\position_clr.c</FilePath>
             </File>
             <File>
-              <FileName>system_core.c</FileName>
+              <FileName>DataScope_DP.C</FileName>
               <FileType>1</FileType>
-              <FilePath>.\System\system_core.c</FilePath>
+              <FilePath>.\System\DataScope_DP.C</FilePath>
             </File>
           </Files>
         </Group>

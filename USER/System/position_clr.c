@@ -12,14 +12,9 @@ float Inc_PID(float Input , PID_TypeDef* PID)
 
 void Inc_PID_Set(int*PointSet)
 {
-//		int*Speed;
 		uint8_t n;
-//		Speed  = Read_Speed();
 		for(n=0;n<4;n++)
-		{
-//			PID_Struct[n].Err = PID_Struct[n].Err1 = PID_Struct[n].Err2 = (float)(*(Speed + n) - *(PointSet + n));
 			PID_Struct[n].pointSet = *(PointSet + n);
-		}
 		Inc_PID_Realiz();
 }
 
@@ -31,7 +26,6 @@ void Inc_PID_Realiz(void)
 		Speed = Read_Speed();
 		for(n=0;n<4;n++)
 		{
-			DataScope_Get_Channel_Data((float)*(Speed+n),n+1);
 			if(PID_Struct[n].pointSet != 0)
 			{
 				PWM[n] += (int)Inc_PID((float)*(Speed+n),&PID_Struct[n]);
@@ -45,27 +39,32 @@ void Inc_PID_Realiz(void)
 			}
 		}
 		PWM_Out(PWM);
-//	Usart1_Send(DataScope_OutPut_Buffer,DataScope_Data_Generate(4));
 }
 
-void Clr_Port(void)
+void PositionClr_Port(void)
 {
 	PositionState_Updata();
 	switch(Position_State)
 	{
-		case 0:
-			Position_Clr(X);
-			break;
-		case 1:
-			Yaw_StaticClr();
-			break;
-		case 2:
-			Position_Clr(Y);
-			break;
-		case 3:
-			Yaw_StaticClr();
-			break;
+		case 0:break;
+		case 1:break;
+		default:break;
 	}
+}
+
+void Target_RelPosition_Set(long int x,long int y)
+{
+	Target_position[0] += x;
+	Target_position[1] += y;
+}
+
+void PositionClr_Stop(void)
+{
+	uint8_t temp;
+	StopRun();
+	for(temp=0;temp<4;temp++)
+		Target_position[temp] = Real_position[temp];
+	PositionState_Reset();
 }
 
 void PositionState_Updata(void)
@@ -75,41 +74,6 @@ void PositionState_Updata(void)
 	Err_position[X] = Target_position[X] - Real_position[X] ;
 	Err_position[Y] = Target_position[Y] - Real_position[Y];
 	Err_Yaw = Gyroscope_ReadYaw();
-	switch(Position_State)
-	{
-		case 0:
-			if(Err_position[X]/10 == 0)
-			{
-				StopRun();
-				Position_Speed = 0;
-				Position_State++;
-			}
-			break;
-		case 1:
-			if(Err_Yaw/10 == 0)
-			{
-				StopRun();
-				Yaw_Speed = 0;
-				Position_State++;
-			}
-			break;
-		case 2:
-			if(Err_position[Y]/10 == 0)
-			{
-				StopRun();
-				Position_Speed = 0;
-				Position_State++;
-			}
-			break;
-		case 3:
-			if(Err_Yaw/10 == 0)
-			{
-				StopRun();
-				Yaw_Speed = 0;
-				Position_State++;
-			}
-			break;
-	}
 }
 
 void Position_Clr(uint8_t Dir)

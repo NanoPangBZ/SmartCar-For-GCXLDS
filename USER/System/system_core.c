@@ -103,7 +103,7 @@ void SysTick_Handler(void)
 	switch(SystemState)
 	{
 		case 1:break;
-		case 2:break;
+		case 2:PositionClr_Port();break;
 		case 3:break;
 		default:SystemState_Set(1);break;
 	}

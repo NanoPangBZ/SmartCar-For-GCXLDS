@@ -1,6 +1,6 @@
-..\output\datascope_dp.o: System\DataScope_DP.C
-..\output\datascope_dp.o: System\DataScope_DP.h
-..\output\datascope_dp.o: System\system_core.h
+..\output\datascope_dp.o: Service\DataScope_DP.C
+..\output\datascope_dp.o: Service\DataScope_DP.h
+..\output\datascope_dp.o: .\System\system_core.h
 ..\output\datascope_dp.o: ..\CMSIS\stm32f10x.h
 ..\output\datascope_dp.o: ..\CMSIS\core_cm3.h
 ..\output\datascope_dp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -37,10 +37,10 @@
 ..\output\datascope_dp.o: .\Driver\motor_init.h
 ..\output\datascope_dp.o: .\Driver\motor_driver.h
 ..\output\datascope_dp.o: .\Driver\street_motor.h
-..\output\datascope_dp.o: System\MechanicalArm_Clr.h
-..\output\datascope_dp.o: System\position_clr.h
+..\output\datascope_dp.o: .\Service\MechanicalArm_Clr.h
+..\output\datascope_dp.o: .\Service\position_clr.h
 ..\output\datascope_dp.o: .\Driver\gyroscope.h
 ..\output\datascope_dp.o: .\Driver\oled.h
-..\output\datascope_dp.o: System\DataScope_DP.h
-..\output\datascope_dp.o: System\debug_port.h
+..\output\datascope_dp.o: .\Service\DataScope_DP.h
+..\output\datascope_dp.o: .\System\debug_port.h
 ..\output\datascope_dp.o: .\app\main_app.h

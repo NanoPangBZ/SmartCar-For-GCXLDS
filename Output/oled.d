@@ -37,11 +37,11 @@
 ..\output\oled.o: .\Driver\motor_init.h
 ..\output\oled.o: .\Driver\motor_driver.h
 ..\output\oled.o: .\Driver\street_motor.h
-..\output\oled.o: .\System\MechanicalArm_Clr.h
-..\output\oled.o: .\System\position_clr.h
+..\output\oled.o: .\Service\MechanicalArm_Clr.h
+..\output\oled.o: .\Service\position_clr.h
 ..\output\oled.o: .\Driver\gyroscope.h
 ..\output\oled.o: .\Driver\oled.h
-..\output\oled.o: .\System\DataScope_DP.h
+..\output\oled.o: .\Service\DataScope_DP.h
 ..\output\oled.o: .\System\debug_port.h
 ..\output\oled.o: .\app\main_app.h
 ..\output\oled.o: Driver\oled_font.h

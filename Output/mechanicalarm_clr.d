@@ -1,6 +1,6 @@
-..\output\mechanicalarm_clr.o: System\MechanicalArm_Clr.c
-..\output\mechanicalarm_clr.o: System\MechanicalArm_Clr.h
-..\output\mechanicalarm_clr.o: System\system_core.h
+..\output\mechanicalarm_clr.o: Service\MechanicalArm_Clr.c
+..\output\mechanicalarm_clr.o: Service\MechanicalArm_Clr.h
+..\output\mechanicalarm_clr.o: .\System\system_core.h
 ..\output\mechanicalarm_clr.o: ..\CMSIS\stm32f10x.h
 ..\output\mechanicalarm_clr.o: ..\CMSIS\core_cm3.h
 ..\output\mechanicalarm_clr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -37,10 +37,10 @@
 ..\output\mechanicalarm_clr.o: .\Driver\motor_init.h
 ..\output\mechanicalarm_clr.o: .\Driver\motor_driver.h
 ..\output\mechanicalarm_clr.o: .\Driver\street_motor.h
-..\output\mechanicalarm_clr.o: System\MechanicalArm_Clr.h
-..\output\mechanicalarm_clr.o: System\position_clr.h
+..\output\mechanicalarm_clr.o: .\Service\MechanicalArm_Clr.h
+..\output\mechanicalarm_clr.o: .\Service\position_clr.h
 ..\output\mechanicalarm_clr.o: .\Driver\gyroscope.h
 ..\output\mechanicalarm_clr.o: .\Driver\oled.h
-..\output\mechanicalarm_clr.o: System\DataScope_DP.h
-..\output\mechanicalarm_clr.o: System\debug_port.h
+..\output\mechanicalarm_clr.o: .\Service\DataScope_DP.h
+..\output\mechanicalarm_clr.o: .\System\debug_port.h
 ..\output\mechanicalarm_clr.o: .\app\main_app.h

@@ -460,7 +460,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\System\MechanicalArm_Clr.c</PathWithFileName>
+      <PathWithFileName>.\Service\MechanicalArm_Clr.c</PathWithFileName>
       <FilenameWithoutPath>MechanicalArm_Clr.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -472,7 +472,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\System\position_clr.c</PathWithFileName>
+      <PathWithFileName>.\Service\position_clr.c</PathWithFileName>
       <FilenameWithoutPath>position_clr.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -484,7 +484,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\System\DataScope_DP.C</PathWithFileName>
+      <PathWithFileName>.\Service\DataScope_DP.C</PathWithFileName>
       <FilenameWithoutPath>DataScope_DP.C</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

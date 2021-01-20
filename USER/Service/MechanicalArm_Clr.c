@@ -39,7 +39,7 @@ void Cash(void)
 
 void Put(void)
 {
-	Width_Target[4] = 300;
+	Width_Target[4] = 500;
 }
 
 void Target_WidthSet(uint16_t*Width)

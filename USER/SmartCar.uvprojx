@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CMSIS;..\FWLIB\inc;..\FWLIB\src;..\USER;.\Driver;.\System;.\app</IncludePath>
+              <IncludePath>..\CMSIS;..\FWLIB\inc;..\FWLIB\src;..\USER;.\Driver;.\System;.\app;.\Service</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -512,17 +512,17 @@
             <File>
               <FileName>MechanicalArm_Clr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\System\MechanicalArm_Clr.c</FilePath>
+              <FilePath>.\Service\MechanicalArm_Clr.c</FilePath>
             </File>
             <File>
               <FileName>position_clr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\System\position_clr.c</FilePath>
+              <FilePath>.\Service\position_clr.c</FilePath>
             </File>
             <File>
               <FileName>DataScope_DP.C</FileName>
               <FileType>1</FileType>
-              <FilePath>.\System\DataScope_DP.C</FilePath>
+              <FilePath>.\Service\DataScope_DP.C</FilePath>
             </File>
           </Files>
         </Group>

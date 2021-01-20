@@ -35,7 +35,7 @@ static uint16_t* street_width[6] = {(uint16_t*)&TIM3->CCR1 , (uint16_t*)&TIM3->C
 							
 static uint8_t ArmLen[3] = {150,90,90};						//机械臂各部分长度(从下往上)	mm
 static uint16_t ArmLen2[3] = {22500,8100,8100};				//机械长平方,方便余弦定理计算
-static uint16_t Reset_Value[5] ={2535,925,400,2490,300};		//机械臂归位脉宽
+static uint16_t Reset_Value[5] ={2535,925,400,2490,500};		//机械臂归位脉宽
 static uint16_t Width_Target[5] = {2535,925,400,2490,300};		//目标脉宽
 static uint16_t WidthInc[5] = {3,3,3,3,6};						//5ms脉宽增量
 

@@ -1,6 +1,6 @@
-..\output\position_clr.o: System\position_clr.c
-..\output\position_clr.o: System\position_clr.h
-..\output\position_clr.o: System\system_core.h
+..\output\position_clr.o: Service\position_clr.c
+..\output\position_clr.o: Service\position_clr.h
+..\output\position_clr.o: .\System\system_core.h
 ..\output\position_clr.o: ..\CMSIS\stm32f10x.h
 ..\output\position_clr.o: ..\CMSIS\core_cm3.h
 ..\output\position_clr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -37,10 +37,10 @@
 ..\output\position_clr.o: .\Driver\motor_init.h
 ..\output\position_clr.o: .\Driver\motor_driver.h
 ..\output\position_clr.o: .\Driver\street_motor.h
-..\output\position_clr.o: System\MechanicalArm_Clr.h
-..\output\position_clr.o: System\position_clr.h
+..\output\position_clr.o: .\Service\MechanicalArm_Clr.h
+..\output\position_clr.o: .\Service\position_clr.h
 ..\output\position_clr.o: .\Driver\gyroscope.h
 ..\output\position_clr.o: .\Driver\oled.h
-..\output\position_clr.o: System\DataScope_DP.h
-..\output\position_clr.o: System\debug_port.h
+..\output\position_clr.o: .\Service\DataScope_DP.h
+..\output\position_clr.o: .\System\debug_port.h
 ..\output\position_clr.o: .\app\main_app.h

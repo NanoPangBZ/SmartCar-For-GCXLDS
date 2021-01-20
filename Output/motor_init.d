@@ -37,10 +37,10 @@
 ..\output\motor_init.o: .\Driver\motor_init.h
 ..\output\motor_init.o: .\Driver\motor_driver.h
 ..\output\motor_init.o: .\Driver\street_motor.h
-..\output\motor_init.o: .\System\MechanicalArm_Clr.h
-..\output\motor_init.o: .\System\position_clr.h
+..\output\motor_init.o: .\Service\MechanicalArm_Clr.h
+..\output\motor_init.o: .\Service\position_clr.h
 ..\output\motor_init.o: .\Driver\gyroscope.h
 ..\output\motor_init.o: .\Driver\oled.h
-..\output\motor_init.o: .\System\DataScope_DP.h
+..\output\motor_init.o: .\Service\DataScope_DP.h
 ..\output\motor_init.o: .\System\debug_port.h
 ..\output\motor_init.o: .\app\main_app.h

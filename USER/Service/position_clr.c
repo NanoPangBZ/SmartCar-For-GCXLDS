@@ -15,35 +15,13 @@ void PositionState_Updata(void)
 	switch(Position_State)
 	{
 		case 0:
-			if(Err_position[X]/10 == 0)
-			{
-				StopRun();
-				Position_State++;
-			}
 			break;
 		case 1:
-			if(Err_Yaw/10 == 0)
-			{
-				StopRun();
-				Position_State ++;
-			}
 			break;
 		case 2:
-			if(Err_position[X]/10 == 0)
-			{
-				StopRun();
-				Position_State++;
-			}
 			break;
 		case 3:
-			if(Err_Yaw/10 == 0)
-			{
-				StopRun();
-				Position_State ++;
-			}
 			break;
-		case 4:break;
-		default:break;
 	}
 }
 
@@ -57,9 +35,9 @@ void Position_Clr(uint8_t Dir)
 	else
 		AbsPosition_Speed = -Position_Speed;
 	//根据距离配置最终目标速度
-	if(Err_position[Dir]>Speed_Cng[Speed_Base] || Err_position[Dir]<-Speed_Cng[Dir])
+	if(Err_position[Dir]>Speed_Cng[Speed_Position_Base] || Err_position[Dir]<-Speed_Cng[Dir])
 	{
-		UnPosition_Speed = Speed_Cng[Speed_Base];
+		UnPosition_Speed = Speed_Cng[Speed_Position_Base];
 	}else
 	{
 		if(Err_position[Dir]>0)
@@ -68,10 +46,9 @@ void Position_Clr(uint8_t Dir)
 			UnPosition_Speed = -Err_position[Dir];
 	}
 	//向最终速度叠加
-	if(AbsPosition_Speed + Speed_Cng[Speed_Cha]> UnPosition_Speed || AbsPosition_Speed > UnPosition_Speed)
+	AbsPosition_Speed+=Speed_Cng[Speed_Position_Cha];
+	if(AbsPosition_Speed > UnPosition_Speed)
 		AbsPosition_Speed = UnPosition_Speed;
-	else
-		AbsPosition_Speed+=Speed_Cng[Speed_Cha];
 	if(Err_position[Dir]>0)
 		Position_Speed = AbsPosition_Speed;
 	else
@@ -90,10 +67,9 @@ void Yaw_Clr(void)
 		UnYaw_Speed = Err_Yaw;
 	else
 		UnYaw_Speed = -Err_Yaw;
-	if(AbsYaw_Speed + Speed_Cng[Speed_Cha] > UnYaw_Speed || AbsYaw_Speed > UnYaw_Speed)
+	AbsYaw_Speed+=Speed_Cng[Speed_DyYaw_Cha];
+	if(AbsYaw_Speed>UnYaw_Speed)
 		AbsYaw_Speed = UnYaw_Speed;
-	else
-		AbsYaw_Speed+=Speed_Cng[Speed_Cha];
 	if(Err_Yaw>0)
 		Yaw_Speed = UnYaw_Speed;
 	else
@@ -102,12 +78,31 @@ void Yaw_Clr(void)
 
 void Yaw_StaticClr(void)
 {
-	
+	Yaw_Speed = Err_Yaw;
 }
 
 void PositionMode_Set(uint8_t Mode)
 {
-	
+	if(Mode)
+	{
+		Speed_Cng[Speed_Position_Base] = 300;
+		Speed_Cng[Speed_Position_Cha] = 3;
+		Speed_Cng[Speed_DyYaw_Cha] = 1;
+		Speed_Cng[Speed_Max] = 360;
+		Speed_Cng[Speed_Min] = 240;
+	}else
+	{
+		Speed_Cng[Speed_Position_Base] = 80;
+		Speed_Cng[Speed_Position_Cha] = 10;
+		Speed_Cng[Speed_DyYaw_Cha] = 10;
+		Speed_Cng[Speed_Max] = 100;
+		Speed_Cng[Speed_Min] = 60;
+	}
+}
+
+long int*Read_Real_Position(void)
+{
+	return Real_position;
 }
 
 void Real_Position_Set(long int x,long int y)

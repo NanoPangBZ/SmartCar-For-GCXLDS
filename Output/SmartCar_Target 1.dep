@@ -37,7 +37,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -80,7 +80,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -359,7 +359,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -403,7 +403,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -447,7 +447,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -491,7 +491,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -535,7 +535,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -579,7 +579,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -623,14 +623,14 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
 I (.\app\main_app.h)(0x600698CE)
 I (Driver\oled_font.h)(0x6003B3D4)
-F (.\System\system_core.c)(0x60069B6C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app -I .\Service-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\system_core.o --omf_browse ..\output\system_core.crf --depend ..\output\system_core.d)
+F (.\System\system_core.c)(0x6009639F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app -I .\Service-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\system_core.o --omf_browse ..\output\system_core.crf --depend ..\output\system_core.d)
 I (System\system_core.h)(0x6007070C)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
@@ -668,7 +668,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -712,14 +712,14 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
 I (.\System\debug_port.h)(0x5FF6552B)
 I (.\app\main_app.h)(0x600698CE)
-F (.\Service\position_clr.c)(0x600830E4)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app -I .\Service-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\position_clr.o --omf_browse ..\output\position_clr.crf --depend ..\output\position_clr.d)
-I (Service\position_clr.h)(0x600830E4)
+F (.\Service\position_clr.c)(0x6009639F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app -I .\Service-IC:\Users\30964\Desktop\Code\USER\RTE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\position_clr.o --omf_browse ..\output\position_clr.crf --depend ..\output\position_clr.d)
+I (Service\position_clr.h)(0x6009639F)
 I (.\System\system_core.h)(0x6007070C)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
@@ -756,7 +756,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -800,7 +800,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)
@@ -844,7 +844,7 @@ I (.\Driver\motor_init.h)(0x5FF98462)
 I (.\Driver\motor_driver.h)(0x5FF98462)
 I (.\Driver\street_motor.h)(0x5FF98462)
 I (.\Service\MechanicalArm_Clr.h)(0x6006BC79)
-I (.\Service\position_clr.h)(0x600830E4)
+I (.\Service\position_clr.h)(0x6009639F)
 I (.\Driver\gyroscope.h)(0x5FF9842E)
 I (.\Driver\oled.h)(0x60055228)
 I (.\Service\DataScope_DP.h)(0x5FFED69A)

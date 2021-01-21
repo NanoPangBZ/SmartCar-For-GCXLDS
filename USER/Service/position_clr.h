@@ -12,14 +12,14 @@
 #define X 0
 #define Y 1
 
-#define MidMode		2	//正常运动模式
 #define AccMode		1	//精确运动模式
 #define QckMode		0	//快速运动模式
 
-#define Speed_Min	0
-#define Speed_Base	1
-#define Speed_Max	2
-#define Speed_Cha	3
+#define Speed_Position_Base		0
+#define Speed_Position_Cha		1
+#define Speed_DyYaw_Cha		2
+#define Speed_Max				3
+#define Speed_Min				4
 
 typedef struct
 {
@@ -36,18 +36,16 @@ static long int Real_position[2] = {0 , 0};			//当前坐标
 static long int Target_position[2] = {0 , 0};			//目标坐标
 static long int Err_position[2] = { 0 , 0 };			//坐标差值
 static int Err_Yaw = 0;							//航向角偏差
-
-static uint8_t Position_State = 0;				// 位置控制状态
-static uint8_t Position_Mode = 0;				//运行模式
-
+//控制状态类值
+static uint8_t Position_State = 0;				// 位置控制状态   0:任务已经更新   1:x修正  2:y修正 3:静态Yaw修正  4:任务完成
 static int Target_Speed[4] = {0,0,0,0};			//当前要实现的目标速度 当前制动周期要传入PID的速度
 static int Yaw_Speed = 0;						//航线角修正速度
-static int Position_Speed = 0;					//位置移动速度	
-
-static uint16_t Speed_Cng[4] = {0,0,0,0};			//Min  Base  Max  Cha
+static int Position_Speed = 0;					//位置移动速度
+static uint16_t Speed_Cng[5] = {0,0,0,0,0};		//运动控制相关参数
 
 /*********************外部控制接口*****************************/
 uint8_t Read_Position_State(void);								//获取位置状态
+long int*Read_Real_Position(void);								//读取当前坐标
 void Target_Position_Set(long int x,long int y,uint8_t Mode);			//目标位置设定
 void Target_RelPosition_Set(long int x,long int y,uint8_t Mode);		//目标位置(相对)设定
 void Real_Position_Set(long int x,long int y);						//外部更改坐标

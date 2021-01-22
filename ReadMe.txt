@@ -24,3 +24,8 @@ OpenMV与主控芯片通过串口连接
 4.控制流程更改为  控制排序表->控制状态设定->控制结束判断和控制排序表前移->控制排序表
 5.根据控制接口的参数配置控制排序表(未完成)
 			2021/1/21
+1.position_clr除IncPID以为的部分全部重构
+2.等待完成 PositionCmd_Move()  PositionCmd_TargetMove()  PositionCmd_ClrCng()
+  Speed_Config() 变量的赋值方式....
+3.任重道远
+			2021/1/22

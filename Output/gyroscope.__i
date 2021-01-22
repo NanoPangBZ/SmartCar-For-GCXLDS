@@ -3,4 +3,4 @@
 -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD
--o ..\output\position_clr.o --omf_browse ..\output\position_clr.crf --depend ..\output\position_clr.d "Service\position_clr.c"
+-o ..\output\gyroscope.o --omf_browse ..\output\gyroscope.crf --depend ..\output\gyroscope.d "Driver\gyroscope.c"

@@ -1,146 +1,20 @@
 #include "position_clr.h"
 
-void PositionClr_Port(void)
+void PositionClr_Service(void)
 {
-	PositionState_Updata();
+	Position_Update();
+	Speed_Config();
+	Inc_PID_Realiz();
+}
+
+void Speed_Config(void)
+{
 	
 }
 
-void PositionState_Updata(void)
+long int*Read_Position(void)
 {
-	Real_Position_Update();
-	Err_position[X] = Target_position[X] - Real_position[X] ;
-	Err_position[Y] = Target_position[Y] - Real_position[Y];
-	Err_Yaw = Gyroscope_ReadYaw();
-	switch(Position_State)
-	{
-		case 0:
-			break;
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-	}
-}
-
-void Position_Clr(uint8_t Dir)
-{
-	uint16_t AbsPosition_Speed;		//上一次目标速度绝对值
-	uint16_t UnPosition_Speed;		//最终目标速度绝对值
-	//AbsPosition_Speed绝对值赋值
-	if(Position_Speed>0)
-		AbsPosition_Speed = Position_Speed;
-	else
-		AbsPosition_Speed = -Position_Speed;
-	//根据距离配置最终目标速度
-	if(Err_position[Dir]>Speed_Cng[Speed_Position_Base] || Err_position[Dir]<-Speed_Cng[Dir])
-	{
-		UnPosition_Speed = Speed_Cng[Speed_Position_Base];
-	}else
-	{
-		if(Err_position[Dir]>0)
-			UnPosition_Speed = Err_position[Dir];
-		else
-			UnPosition_Speed = -Err_position[Dir];
-	}
-	//向最终速度叠加
-	AbsPosition_Speed+=Speed_Cng[Speed_Position_Cha];
-	if(AbsPosition_Speed > UnPosition_Speed)
-		AbsPosition_Speed = UnPosition_Speed;
-	if(Err_position[Dir]>0)
-		Position_Speed = AbsPosition_Speed;
-	else
-		Position_Speed = -AbsPosition_Speed;
-}
-
-void Yaw_Clr(void)
-{
-	uint16_t AbsYaw_Speed;
-	uint16_t UnYaw_Speed;
-	if(Yaw_Speed>0)
-		AbsYaw_Speed = Yaw_Speed;
-	else
-		AbsYaw_Speed = -UnYaw_Speed;
-	if(Err_Yaw>0)
-		UnYaw_Speed = Err_Yaw;
-	else
-		UnYaw_Speed = -Err_Yaw;
-	AbsYaw_Speed+=Speed_Cng[Speed_DyYaw_Cha];
-	if(AbsYaw_Speed>UnYaw_Speed)
-		AbsYaw_Speed = UnYaw_Speed;
-	if(Err_Yaw>0)
-		Yaw_Speed = UnYaw_Speed;
-	else
-		Yaw_Speed = -UnYaw_Speed;
-}
-
-void Yaw_StaticClr(void)
-{
-	Yaw_Speed = Err_Yaw;
-}
-
-void PositionMode_Set(uint8_t Mode)
-{
-	if(Mode)
-	{
-		Speed_Cng[Speed_Position_Base] = 300;
-		Speed_Cng[Speed_Position_Cha] = 3;
-		Speed_Cng[Speed_DyYaw_Cha] = 1;
-		Speed_Cng[Speed_Max] = 360;
-		Speed_Cng[Speed_Min] = 240;
-	}else
-	{
-		Speed_Cng[Speed_Position_Base] = 80;
-		Speed_Cng[Speed_Position_Cha] = 10;
-		Speed_Cng[Speed_DyYaw_Cha] = 10;
-		Speed_Cng[Speed_Max] = 100;
-		Speed_Cng[Speed_Min] = 60;
-	}
-}
-
-long int*Read_Real_Position(void)
-{
-	return Real_position;
-}
-
-void Real_Position_Set(long int x,long int y)
-{
-	StopRun();
-	Real_position[X] = x;
-	Real_position[Y] = y;
-	Position_State = 0;
-}
-
-void PositionClr_Stop(void)
-{
-	uint8_t temp;
-	StopRun();
-	for(temp=0;temp<4;temp++)
-		Target_position[temp] = Real_position[temp];
-	Position_State = 3;
-}
-
-void Target_Position_Set(long int x,long int y,uint8_t Mode)
-{
-	Target_position[X] = x;
-	Target_position[Y] = y;
-	PositionMode_Set(Mode);
-	Position_State = 0;
-}
-
-void Target_RelPosition_Set(long int x,long int y,uint8_t Mode)
-{
-	Target_position[0] += x;
-	Target_position[1] += y;
-	PositionMode_Set(Mode);
-	Position_State = 0;
-}
-
-uint8_t Read_Position_State(void)
-{
-	return Position_State;
+	return position;
 }
 
 float Inc_PID(float Input , PID_TypeDef* PID)
@@ -155,7 +29,6 @@ float Inc_PID(float Input , PID_TypeDef* PID)
 
 void Inc_PID_Realiz(void)
 {
-		static int PWM[4];
 		uint8_t n;
 		int*Speed;
 		Speed = Read_Speed();
@@ -176,7 +49,7 @@ void Inc_PID_Realiz(void)
 		PWM_Out(PWM);
 }
 
-void Inc_PID_Set(int*PointSet)
+void Speed_Set(int*PointSet)
 {
 		uint8_t n;
 		for(n=0;n<4;n++)
@@ -184,20 +57,13 @@ void Inc_PID_Set(int*PointSet)
 		Inc_PID_Realiz();
 }
 
-void StopRun(void)
-{
-	Position_Speed = 0;
-	Yaw_Speed = 0;
-	Target_Speed[0] = Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = 0;
-	Inc_PID_Set(Target_Speed);
-}
-
-void Real_Position_Update(void)
+void Position_Update(void)
 {
 	long int*distance;
+	Err_Yaw = Gyroscope_ReadYaw();
 	distance = Read_Distance();
-	Real_position[0] += (*distance + *(distance + 1)  + *(distance +2 ) + *(distance + 3)) /4;
-	Real_position[1] += (*distance - *(distance + 1 ) - *(distance + 2) + *(distance + 3))/4;
+	position[0] += (*distance + *(distance + 1)  + *(distance +2 ) + *(distance + 3)) /4;
+	position[1] += (*distance - *(distance + 1 ) - *(distance + 2) + *(distance + 3))/4;
 	Disitance_clear();
 }
 

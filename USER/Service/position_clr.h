@@ -12,15 +12,6 @@
 #define X 0
 #define Y 1
 
-#define AccMode		1	//精确运动模式
-#define QckMode		0	//快速运动模式
-
-#define Speed_Position_Base		0
-#define Speed_Position_Cha		1
-#define Speed_DyYaw_Cha		2
-#define Speed_Max				3
-#define Speed_Min				4
-
 typedef struct
 {
 	float pointSet;
@@ -30,38 +21,26 @@ typedef struct
 }PID_TypeDef;
 
 static PID_TypeDef	PID_Struct[4];			//速度PID结构体
+static int PWM[4] = {0,0,0,0};					//当前占空比
 
-//下面值由PositionState_Updata()更新
-static long int Real_position[2] = {0 , 0};			//当前坐标
-static long int Target_position[2] = {0 , 0};			//目标坐标
-static long int Err_position[2] = { 0 , 0 };			//坐标差值
-static int Err_Yaw = 0;							//航向角偏差
-//控制状态类值
-static uint8_t Position_State = 0;				// 位置控制状态   0:任务已经更新   1:x修正  2:y修正 3:静态Yaw修正  4:任务完成
-static int Target_Speed[4] = {0,0,0,0};			//当前要实现的目标速度 当前制动周期要传入PID的速度
-static int Yaw_Speed = 0;						//航线角修正速度
-static int Position_Speed = 0;					//位置移动速度
-static uint16_t Speed_Cng[5] = {0,0,0,0,0};		//运动控制相关参数
+static long int position[2] = {0 , 0};			//当前坐标
+static int Err_Yaw = 0;						//当前航向角
 
 /*********************外部控制接口*****************************/
-uint8_t Read_Position_State(void);								//获取位置状态
-long int*Read_Real_Position(void);								//读取当前坐标
-void Target_Position_Set(long int x,long int y,uint8_t Mode);			//目标位置设定
-void Target_RelPosition_Set(long int x,long int y,uint8_t Mode);		//目标位置(相对)设定
-void Real_Position_Set(long int x,long int y);						//外部更改坐标
-void PositionClr_Stop(void);									//终止当前位移任务
-void PositionClr_Port(void);									//控制接口
-void Inc_PID_Realiz(void);										//Inc_PID实现
+long int*Read_Position(void);									//坐标读取
+uint8_t Read_PositionState(void);								//获取运动控制状态
+void PositionClr_Service(void);									//实现接口
+void PositionCmd_Move(uint8_t Dir,int Speed,uint8_t YawEn);		//直接位移
+void PositionCmd_TargetMove(long int x,long int y,uint8_t PMode);	//指定位置位移,
+void PositionCmd_ClrCng(uint8_t num,uint16_t vale);				//控制参量配置
 /***********************内部函数*****************************/
 float Inc_PID(float Input , PID_TypeDef*  PID);		//增量式PID运算
-void Inc_PID_Set(int*PointSet);					//PID目标值设定
-void PositionMode_Set(uint8_t Mode);			//运动模式设置
-void Real_Position_Update(void);				//真实坐标更新
-void Position_Clr(uint8_t Dir);					//位置控制 (只配置速度,不载入Target_Speed)
-void Yaw_Clr(void);							//航向角动态修正 (只配置速度,不载入Target_Speed)
-void Yaw_StaticClr(void);						//航向角静态修正
-void PositionState_Updata(void);				//位置状态更新
-void StopRun(void);							//立刻锁死
+void Speed_Set(int*PointSet);					//PID目标值设定
+void Position_Update(void);					//真实坐标更新
+void Speed_Config(void);						//合成速度
+void Inc_PID_Realiz(void);						//Inc_PID实现
 
 #endif
+
+
 

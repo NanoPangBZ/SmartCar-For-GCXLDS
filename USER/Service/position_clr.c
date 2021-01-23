@@ -3,13 +3,46 @@
 void PositionClr_Service(void)
 {
 	Position_Update();
-	Speed_Config();
-	Inc_PID_Realiz();
+	if(Position_Mode)
+	{
+		
+	}else
+	{
+		
+	}
 }
 
-void Speed_Config(void)
+void TargetMove_Set(long int x,long int y, uint8_t PosMode)
 {
-	
+	Target_Position[0] = x;
+	Target_Position[1] = y;
+	if(PosMode)
+	{
+		Target_Position[0] += position[0];
+		Target_Position[1] += position[1];
+	}
+	Position_State= 1;
+}
+
+void Move_Set(uint8_t Dir,int Speed)
+{
+	if(Dir)
+	{
+		Position_Speed[0] = Position_Speed[3] = Speed;
+		Position_Speed[1] = Position_Speed[2] = -Speed;
+	}else
+	{
+		Position_Speed[0] = Speed;
+		Position_Speed[1] = Speed;
+		Position_Speed[2] = Speed;
+		Position_Speed[3] = Speed;
+	}
+	Position_State = 4;
+}
+
+uint8_t Read_PositionState(void)
+{
+	return Position_State;
 }
 
 long int*Read_Position(void)
@@ -54,7 +87,6 @@ void Speed_Set(int*PointSet)
 		uint8_t n;
 		for(n=0;n<4;n++)
 			PID_Struct[n].pointSet = *(PointSet + n);
-		Inc_PID_Realiz();
 }
 
 void Position_Update(void)
@@ -64,6 +96,8 @@ void Position_Update(void)
 	distance = Read_Distance();
 	position[0] += (*distance + *(distance + 1)  + *(distance +2 ) + *(distance + 3)) /4;
 	position[1] += (*distance - *(distance + 1 ) - *(distance + 2) + *(distance + 3))/4;
+	Err_Position[0] = Target_Position[0] - position[0];
+	Err_Position[1] = Target_Position[1] - position[1];
 	Disitance_clear();
 }
 

@@ -65,7 +65,7 @@ void Speed_Syn(void)
 			else
 				Target_Speed[temp] = -Speed_Max;
 		}
-		if(AbsTemp < Speed_Min)
+		if(AbsTemp < Speed_Min && AbsTemp!=0)
 		{
 			if(Target_Speed[temp]>0)
 				Target_Speed[temp] = Speed_Min;

@@ -244,7 +244,6 @@ void USART3_IRQHandler(void)
 	{
 		temp = Usart_Sbuffer[2][0]++;
 		Usart_Sbuffer[2][temp +1] = USART_ReceiveData(USART3);
-		
 		if(Usart_Sbuffer[2][0] == 11)
 		{
 			Usart_Sbuffer[2][0] = 0;

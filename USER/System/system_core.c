@@ -15,7 +15,7 @@ void PCB_System_Init(void)
 	OLED_Init();
 	//系统进入待机
 	SystemState_Set(1);
-	Move_Set(0,100);
+	TargetMove_Set(1000,2000,1);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	System_Task();
@@ -101,14 +101,8 @@ void SysTick_Handler(void)
 {
 	SysTime++;
 	SysSubTime = 0;
-//	switch(SystemState)
-//	{
-//		case 1:break;
-//		case 2:main_app_Task();break;
-//		case 3:break;
-//		default:SystemState_Set(1);break;
-//	}
 	PositionClr_Service();
+	Gyroscope_RequestUpdata();
 }
 
 void TIM7_IRQHandler(void)

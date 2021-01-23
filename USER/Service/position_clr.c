@@ -2,13 +2,135 @@
 
 void PositionClr_Service(void)
 {
-	Position_Update();
+	Position_Update();				//位置,航向角更新
 	if(Position_Mode)
 	{
-		
+		PositionState_Updata();		//自动控制下的进度更新
+		if(Position_State == 1 || Position_State == 3)
+			PostionSpeed_Config(Position_State/2);
+	}
+	YawSpeed_Config();			//旋转速度配置
+	Speed_Syn();					//合成位移和旋转的速度
+	Speed_Set(Target_Speed);		//将合成的速度载入PID结构体
+	Inc_PID_Realiz();				//PID实现;
+}
+
+void PostionSpeed_Config(uint8_t Dir)
+{
+	int Abs_Speed = Target_Speed[0];
+	int Un_Speed;
+	//取上一次速度绝对值
+	if(Abs_Speed < 0)
+		Abs_Speed = -Abs_Speed;
+	//根据距离配置速度
+	if(Err_Position[Dir] > Speed_Base || Err_Position[Dir] < -Speed_Base)
+		Un_Speed = Speed_Base;
+	else
+		Un_Speed = Err_Position[Dir];
+	if(Un_Speed<0)
+		Un_Speed = -Un_Speed;
+	//变速过程
+	Abs_Speed+=Speed_Cha;
+	if(Abs_Speed > Un_Speed)
+		Abs_Speed = Un_Speed;
+	//配置轮子速度
+	if(Err_Position[Dir] >0)
+		Target_Speed[0] = Abs_Speed;
+	else
+		Target_Speed[0] = -Abs_Speed;
+	if(Dir)
+	{
+		Target_Speed[3] = Target_Speed[0];
+		Target_Speed[1] = Target_Speed[2] = -Target_Speed[0] ; 
 	}else
 	{
-		
+		Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = Target_Speed[0];
+	}
+}
+
+void Speed_Syn(void)
+{
+	uint8_t temp;
+	int AbsTemp;
+	if(Position_State != 5)
+	for(temp=0;temp<4;temp++)
+	{
+		Target_Speed[temp]  = AbsTemp = Position_Speed[temp] + Yaw_Speed[temp];
+		if(AbsTemp<0)
+			AbsTemp = -AbsTemp;
+		if(AbsTemp > Speed_Max)
+		{
+			if(Target_Speed[temp]>0)
+				Target_Speed[temp] = Speed_Max;
+			else
+				Target_Speed[temp] = -Speed_Max;
+		}
+		if(AbsTemp < Speed_Min)
+		{
+			if(Target_Speed[temp]>0)
+				Target_Speed[temp] = Speed_Min;
+			else
+				Target_Speed[temp] = -Speed_Min;
+		}
+	}
+}
+
+void YawSpeed_Config(void)
+{
+	Yaw_Speed[0] = Err_Yaw;
+	Yaw_Speed[1] = -Err_Yaw;
+	Yaw_Speed[2] = Err_Yaw;
+	Yaw_Speed[3] = -Err_Yaw;
+}
+
+void PositionState_Updata(void)
+{
+	switch(Position_State)
+	{
+		case 0:
+			if(Err_Yaw/10==0)
+				PositionState_Inc();
+			break;
+		case 1:
+			if(Err_Position[X]/10==0)
+				PositionState_Inc();
+			break;
+		case 2:
+			if(Err_Yaw/10==0)
+				PositionState_Inc();
+			break;
+		case 3:
+			if(Err_Position[Y]/10==0)
+				PositionState_Inc();
+			break;
+		case 4:
+			if(Err_Yaw/10==0)
+				PositionState_Inc();
+			break;
+	}
+}
+
+void PositionState_Inc(void)
+{
+	Position_Stop();
+	Position_State++;
+}
+
+void PositionService_Stop(void)
+{
+	Position_Stop();
+	Position_State = 5;
+	Position_Mode = 0;
+}
+
+void Position_Stop(void)
+{
+	uint8_t temp;
+	for(temp=0;temp<4;temp++)
+	{
+		Target_Speed[temp] = 0;
+		Yaw_Speed[temp] = 0;
+		Position_Speed[temp]=0;
 	}
 }
 
@@ -21,7 +143,8 @@ void TargetMove_Set(long int x,long int y, uint8_t PosMode)
 		Target_Position[0] += position[0];
 		Target_Position[1] += position[1];
 	}
-	Position_State= 1;
+	Position_State= 0;
+	Position_Mode = 1;
 }
 
 void Move_Set(uint8_t Dir,int Speed)
@@ -37,7 +160,8 @@ void Move_Set(uint8_t Dir,int Speed)
 		Position_Speed[2] = Speed;
 		Position_Speed[3] = Speed;
 	}
-	Position_State = 4;
+	Position_State = 6;
+	Position_Mode = 0;
 }
 
 uint8_t Read_PositionState(void)

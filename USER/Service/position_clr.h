@@ -15,7 +15,7 @@
 #define Speed_Base  320
 #define Speed_Max    380
 #define Speed_Min	50
-#define Speed_Cha	3
+#define Speed_Cha	1
 
 typedef struct
 {

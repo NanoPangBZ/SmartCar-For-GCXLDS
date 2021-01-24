@@ -15,7 +15,7 @@ void PCB_System_Init(void)
 	OLED_Init();
 	//系统进入待机
 	SystemState_Set(1);
-	TargetMove_Set(0,-4000,0);
+//	TargetMove_Set(0,-4000,0);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	System_Task();
@@ -67,10 +67,10 @@ void FeedBack_Task(void)
 
 void StateUpdata_Task(void)
 {
-	uint8_t*Cmd;
-	Cmd=Read_Usart_Sbuffer(1);
-	if(*Cmd!=0)
-		SystemState = 3;
+//	uint8_t*Cmd;
+//	Cmd=Read_Usart_Sbuffer(1);
+//	if(*Cmd!=0)
+//		SystemState = 3;
 }
 
 /************系统对外接口*****************/
@@ -103,6 +103,7 @@ void SysTick_Handler(void)
 	SysSubTime = 0;
 	PositionClr_Service();
 	Gyroscope_RequestUpdata();
+	Usart1_Send(DataScope_OutPut_Buffer,DataScope_Data_Generate(6));
 }
 
 void TIM7_IRQHandler(void)

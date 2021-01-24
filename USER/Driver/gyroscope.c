@@ -31,7 +31,9 @@ void Wait_Gyroscope(void)
 			last_Yaw = Yaw;
 			Gyroscope_RequestUpdata();
 		}
+		printf("**\r\n");
 	}
+	printf("Gyroscope_Ready\r\n");
 	Yaw_Err = Yaw;
 }
 

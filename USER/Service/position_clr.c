@@ -17,7 +17,7 @@ void PositionClr_Service(void)
 
 void PositionSpeed_Config(uint8_t Dir)
 {
-	int Abs_Speed = Target_Speed[0];
+	int Abs_Speed = Position_Speed[0];
 	int Un_Speed;
 	//取上一次速度绝对值
 	if(Abs_Speed < 0)
@@ -27,7 +27,7 @@ void PositionSpeed_Config(uint8_t Dir)
 		Un_Speed = Speed_Base;
 	else
 		Un_Speed = Err_Position[Dir];
-	if(Un_Speed<0)
+	if(Un_Speed<0)                     
 		Un_Speed = -Un_Speed;
 	//变速过程
 	Abs_Speed+=Speed_Cha;
@@ -206,6 +206,7 @@ void Inc_PID_Realiz(void)
 		{
 			if(PID_Struct[n].pointSet != 0)
 			{
+				DataScope_Get_Channel_Data((float)*(Speed+n),n+1);
 				PWM[n] += (int)Inc_PID((float)*(Speed+n),&PID_Struct[n]);
 				if(PWM[n] >7000)
 					PWM[n] = 7000;
@@ -221,9 +222,9 @@ void Inc_PID_Realiz(void)
 
 void Speed_Set(int*PointSet)
 {
-		uint8_t n;
-		for(n=0;n<4;n++)
-			PID_Struct[n].pointSet = *(PointSet + n);
+	uint8_t n;
+	for(n=0;n<4;n++)
+		PID_Struct[n].pointSet = *(PointSet + n);
 }
 
 void Position_Update(void)

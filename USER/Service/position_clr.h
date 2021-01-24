@@ -14,7 +14,7 @@
 
 #define Speed_Base  320
 #define Speed_Max    380
-#define Speed_Min	80
+#define Speed_Min	50
 #define Speed_Cha	3
 
 typedef struct
@@ -32,7 +32,7 @@ static long int position[2] = {0 , 0};			//当前坐标
 static int Err_Yaw = 0;						//当前航向角
 static long int Target_Position[2] = {0,0};		//自动模式下目标
 static long int Err_Position[2] = {0,0};			//距离目标位置
-static uint8_t Position_State = 5;			//自动模式的控制进度 0:Yaw 1:x 2:Yaw 3:y 4:Yaw 5:空闲 6:被动模式
+static uint8_t Position_State = 5;			//自动模式的控制进度 0:Yaw 1:x 2:Yaw 3:y 4:Yaw 5:空闲
 static uint8_t Position_Mode = 0;			//控制模式  0:位移模式  1:自动控制模式
 
 static int Target_Speed[4] = {0,0,0,0};		//合成速度
@@ -51,7 +51,7 @@ void Inc_PID_Realiz(void);						//Inc_PID实现
 void Speed_Set(int*PointSet);					//PID目标值设定
 void Position_Update(void);					//坐标更新
 void PositionState_Updata(void);				//自动模式下的进度更新
-void PostionSpeed_Config(uint8_t Dir);			//移动速度配置
+void PositionSpeed_Config(uint8_t Dir);			//移动速度配置
 void YawSpeed_Config(void);					//通用航向角修正
 void Position_Stop(void);						//电机锁死
 void PositionService_Stop(void);				//结束当前任务

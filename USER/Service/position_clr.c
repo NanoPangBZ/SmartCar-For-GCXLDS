@@ -7,7 +7,7 @@ void PositionClr_Service(void)
 	{
 		PositionState_Updata();		//自动控制下的进度更新
 		if(Position_State == 1 || Position_State == 3)
-			PostionSpeed_Config(Position_State/2);
+			PositionSpeed_Config(Position_State/2);
 	}
 	YawSpeed_Config();			//旋转速度配置
 	Speed_Syn();					//合成位移和旋转的速度
@@ -15,7 +15,7 @@ void PositionClr_Service(void)
 	Inc_PID_Realiz();				//PID实现;
 }
 
-void PostionSpeed_Config(uint8_t Dir)
+void PositionSpeed_Config(uint8_t Dir)
 {
 	int Abs_Speed = Target_Speed[0];
 	int Un_Speed;
@@ -34,17 +34,15 @@ void PostionSpeed_Config(uint8_t Dir)
 	if(Abs_Speed > Un_Speed)
 		Abs_Speed = Un_Speed;
 	//配置轮子速度
-	if(Err_Position[Dir] >0)
-		Target_Speed[0] = Abs_Speed;
-	else
-		Target_Speed[0] = -Abs_Speed;
+	if(Err_Position[Dir] <0)
+		Abs_Speed = -Abs_Speed;
 	if(Dir)
 	{
-		Target_Speed[3] = Target_Speed[0];
-		Target_Speed[1] = Target_Speed[2] = -Target_Speed[0] ; 
+		Position_Speed[3] = Position_Speed[0] = Abs_Speed;
+		Position_Speed[1] = Position_Speed[2] = -Abs_Speed;
 	}else
 	{
-		Target_Speed[1] = Target_Speed[2] = Target_Speed[3] = Target_Speed[0];
+		Position_Speed[1] = Position_Speed[2] = Position_Speed[3] = Position_Speed[0] = Abs_Speed;
 	}
 }
 
@@ -52,7 +50,6 @@ void Speed_Syn(void)
 {
 	uint8_t temp;
 	int AbsTemp;
-	if(Position_State != 5)
 	for(temp=0;temp<4;temp++)
 	{
 		Target_Speed[temp]  = AbsTemp = Position_Speed[temp] + Yaw_Speed[temp];
@@ -77,10 +74,26 @@ void Speed_Syn(void)
 
 void YawSpeed_Config(void)
 {
-	Yaw_Speed[0] = Err_Yaw;
-	Yaw_Speed[1] = -Err_Yaw;
-	Yaw_Speed[2] = Err_Yaw;
-	Yaw_Speed[3] = -Err_Yaw;
+	int temp = Err_Yaw;
+	if(Position_State == 1 || Position_State == 3)
+	{
+		Yaw_Speed[0] = temp;
+		Yaw_Speed[1] = -temp;
+		Yaw_Speed[2] = temp;
+		Yaw_Speed[3] = -temp;
+	}else
+	{
+		if(Err_Yaw/10!=0)
+		{
+			Yaw_Speed[0] = temp;
+			Yaw_Speed[1] = -temp;
+			Yaw_Speed[2] = temp;
+			Yaw_Speed[3] = -temp;
+		}else
+		{
+			Position_Stop();
+		}
+	}
 }
 
 void PositionState_Updata(void)

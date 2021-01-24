@@ -15,7 +15,7 @@ void PCB_System_Init(void)
 	OLED_Init();
 	//系统进入待机
 	SystemState_Set(1);
-	TargetMove_Set(1000,2000,1);
+	TargetMove_Set(0,-4000,0);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	System_Task();

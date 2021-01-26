@@ -515,14 +515,14 @@
               <FilePath>.\Service\MechanicalArm_Clr.c</FilePath>
             </File>
             <File>
-              <FileName>position_clr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Service\position_clr.c</FilePath>
-            </File>
-            <File>
               <FileName>DataScope_DP.C</FileName>
               <FileType>1</FileType>
               <FilePath>.\Service\DataScope_DP.C</FilePath>
+            </File>
+            <File>
+              <FileName>position_service.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Service\position_service.c</FilePath>
             </File>
           </Files>
         </Group>

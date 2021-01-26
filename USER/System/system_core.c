@@ -15,7 +15,6 @@ void PCB_System_Init(void)
 	OLED_Init();
 	//系统进入待机
 	SystemState_Set(1);
-//	TargetMove_Set(0,-4000,0);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	System_Task();
@@ -99,9 +98,23 @@ uint32_t Read_SysSubTime(void)
 /*********************中断****************************/
 void SysTick_Handler(void)
 {
+	static uint8_t flag = 0;
 	SysTime++;
 	SysSubTime = 0;
+	if(Read_PositionState() == 5)
+	{
+		if(flag)
+		{
+			flag = 0;
+			TargetMove_Set(500,-500,0);
+		}else
+		{
+			flag = 1;
+			TargetMove_Set(0,0,0);
+		}
+	}
 	PositionClr_Service();
+	MechanicalArm_Service();
 	Gyroscope_RequestUpdata();
 	Usart1_Send(DataScope_OutPut_Buffer,DataScope_Data_Generate(6));
 }

@@ -38,7 +38,7 @@
 ..\output\street_motor.o: .\Driver\motor_driver.h
 ..\output\street_motor.o: .\Driver\street_motor.h
 ..\output\street_motor.o: .\Service\MechanicalArm_Clr.h
-..\output\street_motor.o: .\Service\position_clr.h
+..\output\street_motor.o: .\Service\position_service.h
 ..\output\street_motor.o: .\Driver\gyroscope.h
 ..\output\street_motor.o: .\Driver\oled.h
 ..\output\street_motor.o: .\Service\DataScope_DP.h

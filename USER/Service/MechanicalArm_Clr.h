@@ -1,51 +1,25 @@
 #ifndef _MechanicalArm_Clr_H_
 #define _MechanicalArm_Clr_H_
-//»úĞµ±Û¿ØÖÆ
 
 #include "system_core.h"
 
-#define	Pi	acos(-1)					//Ô²ÖÜÂÊ
-#define	StartValue		1480		//»úĞµ±ÛÖĞÎ»Âö¿í
-#define	WidthInc_Max	7
-
-/*************************************
-³õÊ¼»¯
-2535
-925
-400
-2490
-300
-¼ĞÉÏ²ã
-2591
-1561
-374
-1780
-1348
-·ÅÉÏ²ã
-1559
-819
-2388
-786
-300
-*************************************/
+#define	Pi	acos(-1)					//åœ†å‘¨ç‡
 
 static uint16_t* street_width[6] = {(uint16_t*)&TIM3->CCR1 , (uint16_t*)&TIM3->CCR2,
 							(uint16_t*)&TIM3->CCR3 , (uint16_t*)&TIM3->CCR4,
 							(uint16_t*)&TIM2->CCR1 , (uint16_t*)&TIM2->CCR2 };
 							
-static uint8_t ArmLen[3] = {150,90,90};						//»úĞµ±Û¸÷²¿·Ö³¤¶È(´ÓÏÂÍùÉÏ)	mm
-static uint16_t ArmLen2[3] = {22500,8100,8100};				//»úĞµ³¤Æ½·½,·½±ãÓàÏÒ¶¨Àí¼ÆËã
-static uint16_t Reset_Value[5] ={2535,925,400,2490,500};		//»úĞµ±Û¹éÎ»Âö¿í
-static uint16_t Width_Target[5] = {2535,925,400,2490,300};		//Ä¿±êÂö¿í
-static uint16_t WidthInc[5] = {3,3,3,3,6};						//5msÂö¿íÔöÁ¿
+static uint8_t ArmLen[3] = {150,90,90};						//æœºæ¢°è‡‚é•¿åº¦
+static uint16_t ArmLen2[3] = {22500,8100,8100};				//é•¿åº¦å¹³æ–¹,æ–¹ä¾¿ä½™å¼¦å®šç†çš„è®¡ç®—
+static uint16_t Reset_Value[5] ={2535,925,400,2490,500};		//å¤ä½è„‰å®½
+static uint16_t Width_Target[5] = {2535,925,400,2490,300};		//ç›®æ ‡è„‰å®½
+static uint16_t WidthInc[5] = {3,3,3,3,6};						//5msè„‰å®½å¢é‡
 
-void Angle_Realize(void);								//Çı¶¯»úĞµ±Û
-//uint16_t Angle_Transf(uint8_t num,int angle);				//½Ç¶È×ªÂö¿í
-//void Angle_Config(int Yaw,int len,int hight);		//¸ù¾İÄ¿±êÎ»ÖÃÉè¶¨¸÷¸ö¶æ»ú½Ç¶È  ÓàÏÒ¶¨Àí	mm
-void MechanicalArm_Reset(uint8_t mode);				//»úĞµ±Û¹éÎ»	0:Ö±½Ó¹éÎ»  1:½¥½¥¹éÎ»
-uint8_t Street_Check(void);
-void Target_WidthSet(uint16_t*Width);
-void Cash(void);
+void MechanicalArm_Service(void);						//æœºæ¢°è‡‚æ§åˆ¶æœåŠ¡
+void MechanicalArm_Reset(uint8_t mode);				//æœºæ¢°è‡‚å¤ä½
+uint8_t Street_Check(void);								//æœºæ¢°è‡‚çŠ¶æ€æ£€æŸ¥
+void Target_WidthSet(uint16_t*Width);					//è®¾ç½®ç›®æ ‡è„‰å®½
+void Cash(void);										
 void Put(void);
 
 #endif

@@ -1,6 +1,6 @@
 #include "MechanicalArm_Clr.h"
 
-void Angle_Realize(void)
+void MechanicalArm_Service(void)
 {
 	uint8_t temp;
 	for(temp=0;temp<5;temp++)
@@ -39,7 +39,7 @@ void Cash(void)
 
 void Put(void)
 {
-	Width_Target[4] = 500;
+	Width_Target[4] = 700;
 }
 
 void Target_WidthSet(uint16_t*Width)
@@ -62,10 +62,7 @@ void MechanicalArm_Reset(uint8_t mode)
 	}else
 	{
 		for(temp = 0;temp<5;temp++)
-		{
-			WidthInc[temp] = WidthInc_Max;
 			Width_Target[temp] = Reset_Value[temp];
-		}
 	}
 }
 

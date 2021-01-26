@@ -1,5 +1,5 @@
-#ifndef _POSITION_CLR_H_
-#define _POSITION_CLR_H_
+#ifndef _POSITION_SERVICE_H_
+#define _POSITION_SERVICE_H_
 
 #include "system_core.h"
 

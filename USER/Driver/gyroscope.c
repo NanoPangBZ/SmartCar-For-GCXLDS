@@ -31,9 +31,7 @@ void Wait_Gyroscope(void)
 			last_Yaw = Yaw;
 			Gyroscope_RequestUpdata();
 		}
-		printf("**\r\n");
 	}
-	printf("Gyroscope_Ready\r\n");
 	Yaw_Err = Yaw;
 }
 
@@ -47,7 +45,7 @@ void Gyroscope_Init(void)
 
 int Gyroscope_ReadYaw(void)
 {
-	return Yaw;
+	return Yaw/10;
 }
 
 int Gyroscope_YawUpdata(uint8_t*dat)
@@ -57,6 +55,6 @@ int Gyroscope_YawUpdata(uint8_t*dat)
 	if(temp > 18000)
 		temp = -(0xffff - temp) ;
 	temp -= Yaw_Err;
-	Yaw = temp / 10;
+	Yaw = temp ;
 	return Yaw;
 }

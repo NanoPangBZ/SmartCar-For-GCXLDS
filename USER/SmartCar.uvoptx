@@ -472,8 +472,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Service\position_clr.c</PathWithFileName>
-      <FilenameWithoutPath>position_clr.c</FilenameWithoutPath>
+      <PathWithFileName>.\Service\DataScope_DP.C</PathWithFileName>
+      <FilenameWithoutPath>DataScope_DP.C</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -484,8 +484,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Service\DataScope_DP.C</PathWithFileName>
-      <FilenameWithoutPath>DataScope_DP.C</FilenameWithoutPath>
+      <PathWithFileName>.\Service\position_service.c</PathWithFileName>
+      <FilenameWithoutPath>position_service.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

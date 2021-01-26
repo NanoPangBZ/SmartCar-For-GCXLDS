@@ -20,8 +20,8 @@
 "..\output\oled.o"
 "..\output\system_core.o"
 "..\output\mechanicalarm_clr.o"
-"..\output\position_clr.o"
 "..\output\datascope_dp.o"
+"..\output\position_service.o"
 "..\output\main_app.o"
 --library_type=microlib --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols

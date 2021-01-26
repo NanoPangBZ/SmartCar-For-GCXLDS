@@ -37,7 +37,7 @@
 ..\output\system_core.o: .\Driver\motor_driver.h
 ..\output\system_core.o: .\Driver\street_motor.h
 ..\output\system_core.o: .\Service\MechanicalArm_Clr.h
-..\output\system_core.o: .\Service\position_clr.h
+..\output\system_core.o: .\Service\position_service.h
 ..\output\system_core.o: .\Driver\gyroscope.h
 ..\output\system_core.o: .\Driver\oled.h
 ..\output\system_core.o: .\Service\DataScope_DP.h

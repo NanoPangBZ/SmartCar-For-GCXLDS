@@ -38,7 +38,7 @@
 ..\output\mechanicalarm_clr.o: .\Driver\motor_driver.h
 ..\output\mechanicalarm_clr.o: .\Driver\street_motor.h
 ..\output\mechanicalarm_clr.o: .\Service\MechanicalArm_Clr.h
-..\output\mechanicalarm_clr.o: .\Service\position_clr.h
+..\output\mechanicalarm_clr.o: .\Service\position_service.h
 ..\output\mechanicalarm_clr.o: .\Driver\gyroscope.h
 ..\output\mechanicalarm_clr.o: .\Driver\oled.h
 ..\output\mechanicalarm_clr.o: .\Service\DataScope_DP.h

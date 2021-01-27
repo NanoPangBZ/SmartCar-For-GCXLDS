@@ -35,3 +35,8 @@ OpenMV与主控芯片通过串口连接
 4.position_service()时序测试   11us左右(测试CPU主频:72MHz)
 5.准备添加机械臂的相关服务函数
 			2021/1/26		版本号: SmartCar _V0.10
+1.引入了TCB(任务控制块)
+2.解决了position_service中YawSpeed_Config()会使位移模式速度归0的bug
+3.将Gyroscope刷新合并到了position_service当中
+4.TCB中包含任务函数的指针,使能,运行时间段以及任务时序测量等成员
+			2021/1/26		版本号: SmartCar _V0.11   TCB_Input

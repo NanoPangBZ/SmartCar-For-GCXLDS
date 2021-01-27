@@ -13,11 +13,24 @@ void PCB_System_Init(void)
 	Gyroscope_Init();
 	IIC_Init();
 	OLED_Init();
+	//将任务函数的指针载入任务列表
+	TaskList_Config(0,1,1,PositionClr_Service);
+	TaskList_Config(1,1,1,MechanicalArm_Service);
+	TaskList_Config(2,1,0,FeedBack_Task);
+	TaskList_Config(3,1,0,System_Task);
 	//系统进入待机
 	SystemState_Set(1);
+	Move_Set(Y,-300);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
-	System_Task();
+	{
+		uint8_t temp;
+		for(temp = 0;TaskList[temp].Task_Addr!=NULL;temp++)
+		{
+			if(TaskList[temp].Enable!=0 && TaskList[temp].RunType ==0)
+				TaskList[temp].Task_Addr();
+		}
+	}
 }
 
 void SysSecBeat_Config(uint16_t A,uint16_t Pre)
@@ -45,10 +58,13 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	TIM_Cmd(TIM7,ENABLE);
 }
 
-void System_Task(void)
+void TaskList_Config(uint8_t num,uint8_t Enable,uint8_t RunType,void (*Task)(void))
 {
-	FeedBack_Task();
-	StateUpdata_Task();
+	if(num>31)
+		return;
+	TaskList[num].Enable = Enable;
+	TaskList[num].RunType = RunType;
+	TaskList[num].Task_Addr = Task;
 }
 
 void FeedBack_Task(void)
@@ -64,7 +80,7 @@ void FeedBack_Task(void)
 	OLED_ShowNum((uint16_t)(SysTime/200),1,57,1);
 }
 
-void StateUpdata_Task(void)
+void System_Task(void)
 {
 //	uint8_t*Cmd;
 //	Cmd=Read_Usart_Sbuffer(1);
@@ -98,25 +114,13 @@ uint32_t Read_SysSubTime(void)
 /*********************中断****************************/
 void SysTick_Handler(void)
 {
-	static uint8_t flag = 0;
+	uint8_t temp;
 	SysTime++;
-	SysSubTime = 0;
-	if(Read_PositionState() == 5)
+	for(temp=0;TaskList[temp].Task_Addr!=NULL;temp++)
 	{
-		if(flag)
-		{
-			flag = 0;
-			TargetMove_Set(500,-500,0);
-		}else
-		{
-			flag = 1;
-			TargetMove_Set(0,0,0);
-		}
+		if(TaskList[temp].Enable!=0 && TaskList[temp].RunType ==1)
+			TaskList[temp].Task_Addr();
 	}
-	PositionClr_Service();
-	MechanicalArm_Service();
-	Gyroscope_RequestUpdata();
-	Usart1_Send(DataScope_OutPut_Buffer,DataScope_Data_Generate(6));
 }
 
 void TIM7_IRQHandler(void)

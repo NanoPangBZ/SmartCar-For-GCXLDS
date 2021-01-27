@@ -45,6 +45,7 @@ uint8_t Read_PositionState(void);								//获取运动控制状态
 void PositionClr_Service(void);									//实现接口
 void TargetMove_Set(long int x,long int y,uint8_t PosMode);			//自动目标模式设定
 void Move_Set(uint8_t Dir,int Speed);							//位移模式
+void PositionService_Stop(void);				//结束当前任务
 /***********************内部函数*****************************/
 float Inc_PID(float Input , PID_TypeDef*  PID);		//增量式PID运算
 void Inc_PID_Realiz(void);						//Inc_PID实现
@@ -54,7 +55,6 @@ void PositionState_Updata(void);				//自动模式下的进度更新
 void PositionSpeed_Config(uint8_t Dir);			//移动速度配置
 void YawSpeed_Config(void);					//通用航向角修正
 void Position_Stop(void);						//电机锁死
-void PositionService_Stop(void);				//结束当前任务
 void PositionState_Inc(void);					//进度递增
 void Speed_Syn(void);						//速度合成
 

@@ -13,6 +13,7 @@ void PositionClr_Service(void)
 	Speed_Syn();					//合成位移和旋转的速度
 	Speed_Set(Target_Speed);		//将合成的速度载入PID结构体
 	Inc_PID_Realiz();				//PID实现;
+	Gyroscope_RequestUpdata();		//向陀螺仪发送航向角刷新请求
 }
 
 void PositionSpeed_Config(uint8_t Dir)
@@ -75,7 +76,7 @@ void Speed_Syn(void)
 void YawSpeed_Config(void)
 {
 	int temp = Err_Yaw;
-	if(Position_State == 1 || Position_State == 3)
+	if(Position_State == 1 || Position_State == 3 || Position_State ==6)
 	{
 		Yaw_Speed[0] = temp;
 		Yaw_Speed[1] = -temp;

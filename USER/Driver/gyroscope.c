@@ -2,6 +2,7 @@
 
 uint8_t Gyroscope_RequestUpdata(void)
 {
+	Usart_Sbuffer_Clear(3);	//数据对齐
 	return Usart3_Send(Visit_Code,4);
 }
 

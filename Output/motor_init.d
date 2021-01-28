@@ -42,5 +42,5 @@
 ..\output\motor_init.o: .\Driver\gyroscope.h
 ..\output\motor_init.o: .\Driver\oled.h
 ..\output\motor_init.o: .\Service\DataScope_DP.h
-..\output\motor_init.o: .\System\debug_port.h
 ..\output\motor_init.o: .\app\main_app.h
+..\output\motor_init.o: .\app\debug_app.h

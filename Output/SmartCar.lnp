@@ -23,6 +23,7 @@
 "..\output\datascope_dp.o"
 "..\output\position_service.o"
 "..\output\main_app.o"
+"..\output\debug_app.o"
 --library_type=microlib --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

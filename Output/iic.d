@@ -42,5 +42,5 @@
 ..\output\iic.o: .\Driver\gyroscope.h
 ..\output\iic.o: .\Driver\oled.h
 ..\output\iic.o: .\Service\DataScope_DP.h
-..\output\iic.o: .\System\debug_port.h
 ..\output\iic.o: .\app\main_app.h
+..\output\iic.o: .\app\debug_app.h

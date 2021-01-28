@@ -3,5 +3,6 @@
 
 #include "system_core.h"
 
-#endif
+void debug_app_Task(void);
 
+#endif

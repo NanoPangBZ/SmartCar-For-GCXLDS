@@ -534,6 +534,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\main_app.c</FilePath>
             </File>
+            <File>
+              <FileName>debug_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\debug_app.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

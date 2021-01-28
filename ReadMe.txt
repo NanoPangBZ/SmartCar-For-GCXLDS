@@ -40,3 +40,8 @@ OpenMV与主控芯片通过串口连接
 3.将Gyroscope刷新合并到了position_service当中
 4.TCB中包含任务函数的指针,使能,运行时间段以及任务时序测量等成员
 			2021/1/26		版本号: SmartCar _V0.11   TCB_Input
+1.任务列表细化  ->  系统心跳任务  连续任务
+2.任务列表配置函数   ->    Task_Load() -> TCB TaskList[] -> void(*SysBeatTask[])(void) && void(*ContinueTask[])(void);
+3.Task_Load()本身作为初始化函数,Task_Reload()作为系统心跳任务的首个任务
+4.SmartCar _V0.11 硬件平台测试通过
+			2021/1/28		版本号: SmartCar _V0.12    Task_Reload

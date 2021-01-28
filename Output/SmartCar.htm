@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\SmartCar.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\SmartCar.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Wed Jan 27 22:51:41 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Thu Jan 28 16:25:00 2021
 <BR><P>
 <H3>Maximum Stack Usage =        192 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -775,13 +775,13 @@ Global Symbols
 <P><STRONG><a name="[89]"></a>Inc_PID_Realiz</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, position_service.o(i.Inc_PID_Realiz))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = Inc_PID_Realiz &rArr; Inc_PID &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DataScope_Get_Channel_Data
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Speed
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Speed
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM_Out
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Inc_PID
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DataScope_Get_Channel_Data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PositionClr_Service
 </UL>
@@ -1258,8 +1258,8 @@ Global Symbols
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hall_TIM_Config
 </UL>
 
-<P><STRONG><a name="[a5]"></a>TaskList_Config</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, system_core.o(i.TaskList_Config))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TaskList_Config
+<P><STRONG><a name="[a5]"></a>TaskList_Config</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, system_core.o(i.TaskList_Config))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TaskList_Config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCB_System_Init
 </UL>

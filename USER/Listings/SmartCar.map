@@ -277,6 +277,7 @@ Section Cross References
     system_core.o(i.TIM7_IRQHandler) refers to stm32f10x_tim.o(i.TIM_ClearITPendingBit) for TIM_ClearITPendingBit
     system_core.o(i.TIM7_IRQHandler) refers to system_core.o(.data) for SysSubTime
     system_core.o(i.TaskList_Config) refers to system_core.o(.bss) for TaskList
+    system_core.o(i.TaskList_Config) refers to system_core.o(.data) for TaskNum
     mechanicalarm_clr.o(i.Cash) refers to mechanicalarm_clr.o(.data) for Width_Target
     mechanicalarm_clr.o(i.MechanicalArm_Reset) refers to mechanicalarm_clr.o(.data) for Reset_Value
     mechanicalarm_clr.o(i.MechanicalArm_Service) refers to mechanicalarm_clr.o(.data) for street_width
@@ -376,10 +377,10 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing stm32f10x_it.o(.bss), (592 bytes).
-    Removing stm32f10x_it.o(.data), (177 bytes).
-    Removing main.o(.bss), (592 bytes).
-    Removing main.o(.data), (177 bytes).
+    Removing stm32f10x_it.o(.bss), (720 bytes).
+    Removing stm32f10x_it.o(.data), (178 bytes).
+    Removing main.o(.bss), (720 bytes).
+    Removing main.o(.data), (178 bytes).
     Removing core_cm3.o(.emb_text), (32 bytes).
     Removing system_stm32f10x.o(i.SystemCoreClockUpdate), (164 bytes).
     Removing system_stm32f10x.o(.data), (20 bytes).
@@ -533,40 +534,44 @@ Removing Unused input sections from the image.
     Removing stm32f10x_usart.o(i.USART_WakeUpConfig), (18 bytes).
     Removing startup_stm32f10x_hd.o(HEAP), (512 bytes).
     Removing gyroscope.o(i.Gyroscope_Reset), (16 bytes).
-    Removing gyroscope.o(.bss), (592 bytes).
-    Removing motor_init.o(.bss), (592 bytes).
-    Removing motor_init.o(.data), (177 bytes).
+    Removing gyroscope.o(.bss), (720 bytes).
+    Removing motor_init.o(.bss), (720 bytes).
+    Removing motor_init.o(.data), (178 bytes).
     Removing usart.o(i.Read_Usart_Sbuffer), (16 bytes).
     Removing usart.o(i.Usart1_Send), (76 bytes).
     Removing usart.o(i.Usart2_Send), (76 bytes).
     Removing usart.o(i.Usart_Sbuffer_Push), (100 bytes).
     Removing usart.o(i.fputc), (36 bytes).
-    Removing street_motor.o(.bss), (592 bytes).
-    Removing street_motor.o(.data), (177 bytes).
-    Removing iic.o(.bss), (592 bytes).
-    Removing iic.o(.data), (177 bytes).
+    Removing street_motor.o(.bss), (720 bytes).
+    Removing street_motor.o(.data), (178 bytes).
+    Removing iic.o(.bss), (720 bytes).
+    Removing iic.o(.data), (178 bytes).
     Removing oled.o(i.OLED_DisPlay_Off), (28 bytes).
     Removing oled.o(i.OLED_DisPlay_On), (28 bytes).
-    Removing oled.o(.bss), (592 bytes).
-    Removing oled.o(.data), (177 bytes).
+    Removing oled.o(.bss), (720 bytes).
+    Removing oled.o(.data), (178 bytes).
     Removing system_core.o(i.Read_SysTime), (12 bytes).
     Removing system_core.o(i.Read_SystemState), (12 bytes).
+    Removing system_core.o(i.TaskList_Load), (2 bytes).
     Removing mechanicalarm_clr.o(i.Cash), (16 bytes).
     Removing mechanicalarm_clr.o(i.Put), (16 bytes).
     Removing mechanicalarm_clr.o(i.Street_Check), (48 bytes).
     Removing mechanicalarm_clr.o(i.Target_WidthSet), (32 bytes).
-    Removing mechanicalarm_clr.o(.bss), (592 bytes).
+    Removing mechanicalarm_clr.o(.bss), (720 bytes).
     Removing datascope_dp.o(i.DataScope_Data_Generate), (152 bytes).
-    Removing datascope_dp.o(.data), (177 bytes).
+    Removing datascope_dp.o(.data), (178 bytes).
     Removing position_service.o(i.PositionService_Stop), (28 bytes).
     Removing position_service.o(i.Read_Position), (8 bytes).
     Removing position_service.o(i.Read_PositionState), (12 bytes).
     Removing position_service.o(i.TargetMove_Set), (68 bytes).
     Removing main_app.o(i.main_app_Task), (2 bytes).
-    Removing main_app.o(.bss), (592 bytes).
-    Removing main_app.o(.data), (177 bytes).
+    Removing main_app.o(.bss), (720 bytes).
+    Removing main_app.o(.data), (178 bytes).
+    Removing debug_app.o(i.debug_app_Task), (2 bytes).
+    Removing debug_app.o(.bss), (720 bytes).
+    Removing debug_app.o(.data), (178 bytes).
 
-189 unused section(s) (total 13232 bytes) removed from the image.
+193 unused section(s) (total 15294 bytes) removed from the image.
 
 ==============================================================================
 
@@ -579,29 +584,29 @@ Image Symbol Table
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  ldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/f2d.c                  0x00000000   Number         0  f2d.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  fadd.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
-    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixi.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
@@ -628,6 +633,7 @@ Image Symbol Table
     Service\MechanicalArm_Clr.c              0x00000000   Number         0  mechanicalarm_clr.o ABSOLUTE
     Service\position_service.c               0x00000000   Number         0  position_service.o ABSOLUTE
     System\system_core.c                     0x00000000   Number         0  system_core.o ABSOLUTE
+    app\debug_app.c                          0x00000000   Number         0  debug_app.o ABSOLUTE
     app\main_app.c                           0x00000000   Number         0  main_app.o ABSOLUTE
     cfcmple.s                                0x00000000   Number         0  cfcmple.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
@@ -660,8 +666,8 @@ Image Symbol Table
     .text                                    0x080005c8   Section        0  uldiv.o(.text)
     .text                                    0x0800062a   Section        0  llshl.o(.text)
     .text                                    0x08000648   Section        0  llsshr.o(.text)
-    .text                                    0x0800066c   Section        0  fepilogue.o(.text)
     .text                                    0x0800066c   Section        0  iusefp.o(.text)
+    .text                                    0x0800066c   Section        0  fepilogue.o(.text)
     .text                                    0x080006da   Section        0  depilogue.o(.text)
     .text                                    0x08000794   Section       36  init.o(.text)
     .text                                    0x080007b8   Section        0  llushr.o(.text)
@@ -779,29 +785,29 @@ Image Symbol Table
     i.TIM_SetCompare4                        0x08002956   Section        0  stm32f10x_tim.o(i.TIM_SetCompare4)
     i.TIM_TimeBaseInit                       0x0800295c   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
     i.TaskList_Config                        0x08002a00   Section        0  system_core.o(i.TaskList_Config)
-    i.USART1_IRQHandler                      0x08002a24   Section        0  usart.o(i.USART1_IRQHandler)
-    i.USART2_IRQHandler                      0x08002a64   Section        0  usart.o(i.USART2_IRQHandler)
-    i.USART3_IRQHandler                      0x08002aac   Section        0  usart.o(i.USART3_IRQHandler)
-    i.USART_ClearITPendingBit                0x08002b0c   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    i.USART_Cmd                              0x08002b2a   Section        0  stm32f10x_usart.o(i.USART_Cmd)
-    i.USART_DMACmd                           0x08002b42   Section        0  stm32f10x_usart.o(i.USART_DMACmd)
-    i.USART_GetITStatus                      0x08002b54   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
-    i.USART_ITConfig                         0x08002ba8   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x08002bf4   Section        0  stm32f10x_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08002ccc   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
-    i.UsageFault_Handler                     0x08002cd6   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.Usart3_Send                            0x08002cdc   Section        0  usart.o(i.Usart3_Send)
-    i.Usart_Config                           0x08002d28   Section        0  usart.o(i.Usart_Config)
-    i.Usart_DMA_Config                       0x08002e68   Section        0  usart.o(i.Usart_DMA_Config)
-    i.Usart_Sbuffer_Clear                    0x08002fa8   Section        0  usart.o(i.Usart_Sbuffer_Clear)
-    i.Usart_TxFlag_Clear                     0x08002fbc   Section        0  usart.o(i.Usart_TxFlag_Clear)
-    i.Wait_Gyroscope                         0x08002fcc   Section        0  gyroscope.o(i.Wait_Gyroscope)
-    i.YawSpeed_Config                        0x08003044   Section        0  position_service.o(i.YawSpeed_Config)
-    i.__scatterload_copy                     0x080030a8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080030b6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x080030b8   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x080030c6   Section        0  main.o(i.main)
-    .constdata                               0x080030ce   Section     2002  oled.o(.constdata)
+    i.USART1_IRQHandler                      0x08002a44   Section        0  usart.o(i.USART1_IRQHandler)
+    i.USART2_IRQHandler                      0x08002a84   Section        0  usart.o(i.USART2_IRQHandler)
+    i.USART3_IRQHandler                      0x08002acc   Section        0  usart.o(i.USART3_IRQHandler)
+    i.USART_ClearITPendingBit                0x08002b2c   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    i.USART_Cmd                              0x08002b4a   Section        0  stm32f10x_usart.o(i.USART_Cmd)
+    i.USART_DMACmd                           0x08002b62   Section        0  stm32f10x_usart.o(i.USART_DMACmd)
+    i.USART_GetITStatus                      0x08002b74   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
+    i.USART_ITConfig                         0x08002bc8   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08002c14   Section        0  stm32f10x_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x08002cec   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
+    i.UsageFault_Handler                     0x08002cf6   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.Usart3_Send                            0x08002cfc   Section        0  usart.o(i.Usart3_Send)
+    i.Usart_Config                           0x08002d48   Section        0  usart.o(i.Usart_Config)
+    i.Usart_DMA_Config                       0x08002e88   Section        0  usart.o(i.Usart_DMA_Config)
+    i.Usart_Sbuffer_Clear                    0x08002fc8   Section        0  usart.o(i.Usart_Sbuffer_Clear)
+    i.Usart_TxFlag_Clear                     0x08002fdc   Section        0  usart.o(i.Usart_TxFlag_Clear)
+    i.Wait_Gyroscope                         0x08002fec   Section        0  gyroscope.o(i.Wait_Gyroscope)
+    i.YawSpeed_Config                        0x08003064   Section        0  position_service.o(i.YawSpeed_Config)
+    i.__scatterload_copy                     0x080030c8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x080030d6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x080030d8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x080030e6   Section        0  main.o(i.main)
+    .constdata                               0x080030ee   Section     2002  oled.o(.constdata)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
@@ -829,9 +835,10 @@ Image Symbol Table
     SysTime                                  0x200000a8   Data           4  gyroscope.o(.data)
     SysSubTime                               0x200000ac   Data           4  gyroscope.o(.data)
     SystemState                              0x200000b0   Data           1  gyroscope.o(.data)
-    Init_Code                                0x200000b1   Data           4  gyroscope.o(.data)
-    Visit_Code                               0x200000b5   Data           4  gyroscope.o(.data)
-    Reset_Code                               0x200000b9   Data           4  gyroscope.o(.data)
+    TaskNum                                  0x200000b1   Data           1  gyroscope.o(.data)
+    Init_Code                                0x200000b2   Data           4  gyroscope.o(.data)
+    Visit_Code                               0x200000b6   Data           4  gyroscope.o(.data)
+    Reset_Code                               0x200000ba   Data           4  gyroscope.o(.data)
     Yaw                                      0x200000c0   Data           4  gyroscope.o(.data)
     Yaw_Err                                  0x200000c4   Data           4  gyroscope.o(.data)
     num                                      0x200000c8   Data           1  gyroscope.o(.data)
@@ -859,6 +866,7 @@ Image Symbol Table
     SysTime                                  0x2000014c   Data           4  motor_driver.o(.data)
     SysSubTime                               0x20000150   Data           4  motor_driver.o(.data)
     SystemState                              0x20000154   Data           1  motor_driver.o(.data)
+    TaskNum                                  0x20000155   Data           1  motor_driver.o(.data)
     over_time                                0x20000156   Data           2  motor_driver.o(.data)
     last_time                                0x20000158   Data           8  motor_driver.o(.data)
     that_time                                0x20000160   Data           8  motor_driver.o(.data)
@@ -866,7 +874,7 @@ Image Symbol Table
     that_over_time                           0x20000170   Data           8  motor_driver.o(.data)
     last_dir                                 0x20000178   Data           4  motor_driver.o(.data)
     that_dir                                 0x2000017c   Data           8  motor_driver.o(.data)
-    .data                                    0x20000184   Section      176  usart.o(.data)
+    .data                                    0x20000184   Section      177  usart.o(.data)
     over_time                                0x20000184   Data           2  usart.o(.data)
     last_time                                0x20000186   Data           8  usart.o(.data)
     that_time                                0x2000018e   Data           8  usart.o(.data)
@@ -894,145 +902,159 @@ Image Symbol Table
     SysTime                                  0x20000228   Data           4  usart.o(.data)
     SysSubTime                               0x2000022c   Data           4  usart.o(.data)
     SystemState                              0x20000230   Data           1  usart.o(.data)
-    Usart_Tx_Flag                            0x20000231   Data           3  usart.o(.data)
-    .data                                    0x20000234   Section      178  system_core.o(.data)
-    Usart_Tx_Flag                            0x20000234   Data           3  system_core.o(.data)
-    over_time                                0x20000238   Data           2  system_core.o(.data)
-    last_time                                0x2000023a   Data           8  system_core.o(.data)
-    that_time                                0x20000242   Data           8  system_core.o(.data)
-    last_over_time                           0x2000024a   Data           8  system_core.o(.data)
-    that_over_time                           0x20000252   Data           8  system_core.o(.data)
-    last_dir                                 0x2000025a   Data           4  system_core.o(.data)
-    that_dir                                 0x2000025e   Data           8  system_core.o(.data)
-    street_width                             0x20000268   Data          24  system_core.o(.data)
-    ArmLen                                   0x20000280   Data           3  system_core.o(.data)
-    ArmLen2                                  0x20000284   Data           6  system_core.o(.data)
-    Reset_Value                              0x2000028a   Data          10  system_core.o(.data)
-    Width_Target                             0x20000294   Data          10  system_core.o(.data)
-    WidthInc                                 0x2000029e   Data          10  system_core.o(.data)
-    position                                 0x200002a8   Data           8  system_core.o(.data)
-    Err_Yaw                                  0x200002b0   Data           4  system_core.o(.data)
-    Target_Position                          0x200002b4   Data           8  system_core.o(.data)
-    Err_Position                             0x200002bc   Data           8  system_core.o(.data)
-    Position_State                           0x200002c4   Data           1  system_core.o(.data)
-    Position_Mode                            0x200002c5   Data           1  system_core.o(.data)
-    Init_Code                                0x200002c6   Data           4  system_core.o(.data)
-    Visit_Code                               0x200002ca   Data           4  system_core.o(.data)
-    Reset_Code                               0x200002ce   Data           4  system_core.o(.data)
-    Yaw                                      0x200002d4   Data           4  system_core.o(.data)
-    Yaw_Err                                  0x200002d8   Data           4  system_core.o(.data)
-    SysTime                                  0x200002dc   Data           4  system_core.o(.data)
-    SysSubTime                               0x200002e0   Data           4  system_core.o(.data)
-    SystemState                              0x200002e4   Data           1  system_core.o(.data)
-    ShowStrFlag                              0x200002e5   Data           1  system_core.o(.data)
-    .data                                    0x200002e8   Section      180  mechanicalarm_clr.o(.data)
-    Usart_Tx_Flag                            0x200002e8   Data           3  mechanicalarm_clr.o(.data)
-    over_time                                0x200002ec   Data           2  mechanicalarm_clr.o(.data)
-    last_time                                0x200002ee   Data           8  mechanicalarm_clr.o(.data)
-    that_time                                0x200002f6   Data           8  mechanicalarm_clr.o(.data)
-    last_over_time                           0x200002fe   Data           8  mechanicalarm_clr.o(.data)
-    that_over_time                           0x20000306   Data           8  mechanicalarm_clr.o(.data)
-    last_dir                                 0x2000030e   Data           4  mechanicalarm_clr.o(.data)
-    that_dir                                 0x20000312   Data           8  mechanicalarm_clr.o(.data)
-    position                                 0x2000031c   Data           8  mechanicalarm_clr.o(.data)
-    Err_Yaw                                  0x20000324   Data           4  mechanicalarm_clr.o(.data)
-    Target_Position                          0x20000328   Data           8  mechanicalarm_clr.o(.data)
-    Err_Position                             0x20000330   Data           8  mechanicalarm_clr.o(.data)
-    Position_State                           0x20000338   Data           1  mechanicalarm_clr.o(.data)
-    Position_Mode                            0x20000339   Data           1  mechanicalarm_clr.o(.data)
-    Init_Code                                0x2000033a   Data           4  mechanicalarm_clr.o(.data)
-    Visit_Code                               0x2000033e   Data           4  mechanicalarm_clr.o(.data)
-    Reset_Code                               0x20000342   Data           4  mechanicalarm_clr.o(.data)
-    Yaw                                      0x20000348   Data           4  mechanicalarm_clr.o(.data)
-    Yaw_Err                                  0x2000034c   Data           4  mechanicalarm_clr.o(.data)
-    SysTime                                  0x20000350   Data           4  mechanicalarm_clr.o(.data)
-    SysSubTime                               0x20000354   Data           4  mechanicalarm_clr.o(.data)
-    SystemState                              0x20000358   Data           1  mechanicalarm_clr.o(.data)
-    street_width                             0x2000035c   Data          24  mechanicalarm_clr.o(.data)
-    ArmLen                                   0x20000374   Data           3  mechanicalarm_clr.o(.data)
-    ArmLen2                                  0x20000378   Data           6  mechanicalarm_clr.o(.data)
-    Reset_Value                              0x2000037e   Data          10  mechanicalarm_clr.o(.data)
-    Width_Target                             0x20000388   Data          10  mechanicalarm_clr.o(.data)
-    WidthInc                                 0x20000392   Data          10  mechanicalarm_clr.o(.data)
-    .data                                    0x2000039c   Section      178  position_service.o(.data)
-    Usart_Tx_Flag                            0x2000039c   Data           3  position_service.o(.data)
-    over_time                                0x200003a0   Data           2  position_service.o(.data)
-    last_time                                0x200003a2   Data           8  position_service.o(.data)
-    that_time                                0x200003aa   Data           8  position_service.o(.data)
-    last_over_time                           0x200003b2   Data           8  position_service.o(.data)
-    that_over_time                           0x200003ba   Data           8  position_service.o(.data)
-    last_dir                                 0x200003c2   Data           4  position_service.o(.data)
-    that_dir                                 0x200003c6   Data           8  position_service.o(.data)
-    street_width                             0x200003d0   Data          24  position_service.o(.data)
-    ArmLen                                   0x200003e8   Data           3  position_service.o(.data)
-    ArmLen2                                  0x200003ec   Data           6  position_service.o(.data)
-    Reset_Value                              0x200003f2   Data          10  position_service.o(.data)
-    Width_Target                             0x200003fc   Data          10  position_service.o(.data)
-    WidthInc                                 0x20000406   Data          10  position_service.o(.data)
-    Init_Code                                0x20000410   Data           4  position_service.o(.data)
-    Visit_Code                               0x20000414   Data           4  position_service.o(.data)
-    Reset_Code                               0x20000418   Data           4  position_service.o(.data)
-    Yaw                                      0x2000041c   Data           4  position_service.o(.data)
-    Yaw_Err                                  0x20000420   Data           4  position_service.o(.data)
-    SysTime                                  0x20000424   Data           4  position_service.o(.data)
-    SysSubTime                               0x20000428   Data           4  position_service.o(.data)
-    SystemState                              0x2000042c   Data           1  position_service.o(.data)
-    position                                 0x20000430   Data           8  position_service.o(.data)
-    Err_Yaw                                  0x20000438   Data           4  position_service.o(.data)
-    Target_Position                          0x2000043c   Data           8  position_service.o(.data)
-    Err_Position                             0x20000444   Data           8  position_service.o(.data)
-    Position_State                           0x2000044c   Data           1  position_service.o(.data)
-    Position_Mode                            0x2000044d   Data           1  position_service.o(.data)
-    .bss                                     0x20000450   Section      608  motor_driver.o(.bss)
-    Usart_Sbuffer                            0x20000450   Data         192  motor_driver.o(.bss)
-    PID_Struct                               0x20000510   Data          64  motor_driver.o(.bss)
-    PWM                                      0x20000550   Data          16  motor_driver.o(.bss)
-    Target_Speed                             0x20000560   Data          16  motor_driver.o(.bss)
-    Position_Speed                           0x20000570   Data          16  motor_driver.o(.bss)
-    Yaw_Speed                                0x20000580   Data          16  motor_driver.o(.bss)
-    TaskList                                 0x20000590   Data         256  motor_driver.o(.bss)
-    distance                                 0x20000690   Data          16  motor_driver.o(.bss)
-    speed                                    0x200006a0   Data          16  motor_driver.o(.bss)
-    .bss                                     0x200006b0   Section      736  usart.o(.bss)
-    distance                                 0x200006b0   Data          16  usart.o(.bss)
-    PID_Struct                               0x200006c0   Data          64  usart.o(.bss)
-    PWM                                      0x20000700   Data          16  usart.o(.bss)
-    Target_Speed                             0x20000710   Data          16  usart.o(.bss)
-    Position_Speed                           0x20000720   Data          16  usart.o(.bss)
-    Yaw_Speed                                0x20000730   Data          16  usart.o(.bss)
-    TaskList                                 0x20000740   Data         256  usart.o(.bss)
-    Usart_Sbuffer                            0x20000840   Data         192  usart.o(.bss)
-    Usart1_Tx_Sbuffer                        0x20000900   Data          48  usart.o(.bss)
-    Usart2_Tx_Sbuffer                        0x20000930   Data          48  usart.o(.bss)
-    Usart3_Tx_Sbuffer                        0x20000960   Data          48  usart.o(.bss)
-    .bss                                     0x20000990   Section      592  system_core.o(.bss)
-    Usart_Sbuffer                            0x20000990   Data         192  system_core.o(.bss)
-    distance                                 0x20000a50   Data          16  system_core.o(.bss)
-    PID_Struct                               0x20000a60   Data          64  system_core.o(.bss)
-    PWM                                      0x20000aa0   Data          16  system_core.o(.bss)
-    Target_Speed                             0x20000ab0   Data          16  system_core.o(.bss)
-    Position_Speed                           0x20000ac0   Data          16  system_core.o(.bss)
-    Yaw_Speed                                0x20000ad0   Data          16  system_core.o(.bss)
-    TaskList                                 0x20000ae0   Data         256  system_core.o(.bss)
-    .bss                                     0x20000be0   Section      634  datascope_dp.o(.bss)
-    Usart_Sbuffer                            0x20000be0   Data         192  datascope_dp.o(.bss)
-    distance                                 0x20000ca0   Data          16  datascope_dp.o(.bss)
-    PID_Struct                               0x20000cb0   Data          64  datascope_dp.o(.bss)
-    PWM                                      0x20000cf0   Data          16  datascope_dp.o(.bss)
-    Target_Speed                             0x20000d00   Data          16  datascope_dp.o(.bss)
-    Position_Speed                           0x20000d10   Data          16  datascope_dp.o(.bss)
-    Yaw_Speed                                0x20000d20   Data          16  datascope_dp.o(.bss)
-    TaskList                                 0x20000d30   Data         256  datascope_dp.o(.bss)
-    .bss                                     0x20000e5c   Section      592  position_service.o(.bss)
-    Usart_Sbuffer                            0x20000e5c   Data         192  position_service.o(.bss)
-    distance                                 0x20000f1c   Data          16  position_service.o(.bss)
-    TaskList                                 0x20000f2c   Data         256  position_service.o(.bss)
-    PID_Struct                               0x2000102c   Data          64  position_service.o(.bss)
-    PWM                                      0x2000106c   Data          16  position_service.o(.bss)
-    Target_Speed                             0x2000107c   Data          16  position_service.o(.bss)
-    Position_Speed                           0x2000108c   Data          16  position_service.o(.bss)
-    Yaw_Speed                                0x2000109c   Data          16  position_service.o(.bss)
-    STACK                                    0x200010b0   Section     1024  startup_stm32f10x_hd.o(STACK)
+    TaskNum                                  0x20000231   Data           1  usart.o(.data)
+    Usart_Tx_Flag                            0x20000232   Data           3  usart.o(.data)
+    .data                                    0x20000238   Section      179  system_core.o(.data)
+    Usart_Tx_Flag                            0x20000238   Data           3  system_core.o(.data)
+    over_time                                0x2000023c   Data           2  system_core.o(.data)
+    last_time                                0x2000023e   Data           8  system_core.o(.data)
+    that_time                                0x20000246   Data           8  system_core.o(.data)
+    last_over_time                           0x2000024e   Data           8  system_core.o(.data)
+    that_over_time                           0x20000256   Data           8  system_core.o(.data)
+    last_dir                                 0x2000025e   Data           4  system_core.o(.data)
+    that_dir                                 0x20000262   Data           8  system_core.o(.data)
+    street_width                             0x2000026c   Data          24  system_core.o(.data)
+    ArmLen                                   0x20000284   Data           3  system_core.o(.data)
+    ArmLen2                                  0x20000288   Data           6  system_core.o(.data)
+    Reset_Value                              0x2000028e   Data          10  system_core.o(.data)
+    Width_Target                             0x20000298   Data          10  system_core.o(.data)
+    WidthInc                                 0x200002a2   Data          10  system_core.o(.data)
+    position                                 0x200002ac   Data           8  system_core.o(.data)
+    Err_Yaw                                  0x200002b4   Data           4  system_core.o(.data)
+    Target_Position                          0x200002b8   Data           8  system_core.o(.data)
+    Err_Position                             0x200002c0   Data           8  system_core.o(.data)
+    Position_State                           0x200002c8   Data           1  system_core.o(.data)
+    Position_Mode                            0x200002c9   Data           1  system_core.o(.data)
+    Init_Code                                0x200002ca   Data           4  system_core.o(.data)
+    Visit_Code                               0x200002ce   Data           4  system_core.o(.data)
+    Reset_Code                               0x200002d2   Data           4  system_core.o(.data)
+    Yaw                                      0x200002d8   Data           4  system_core.o(.data)
+    Yaw_Err                                  0x200002dc   Data           4  system_core.o(.data)
+    SysTime                                  0x200002e0   Data           4  system_core.o(.data)
+    SysSubTime                               0x200002e4   Data           4  system_core.o(.data)
+    SystemState                              0x200002e8   Data           1  system_core.o(.data)
+    TaskNum                                  0x200002e9   Data           1  system_core.o(.data)
+    ShowStrFlag                              0x200002ea   Data           1  system_core.o(.data)
+    .data                                    0x200002ec   Section      180  mechanicalarm_clr.o(.data)
+    Usart_Tx_Flag                            0x200002ec   Data           3  mechanicalarm_clr.o(.data)
+    over_time                                0x200002f0   Data           2  mechanicalarm_clr.o(.data)
+    last_time                                0x200002f2   Data           8  mechanicalarm_clr.o(.data)
+    that_time                                0x200002fa   Data           8  mechanicalarm_clr.o(.data)
+    last_over_time                           0x20000302   Data           8  mechanicalarm_clr.o(.data)
+    that_over_time                           0x2000030a   Data           8  mechanicalarm_clr.o(.data)
+    last_dir                                 0x20000312   Data           4  mechanicalarm_clr.o(.data)
+    that_dir                                 0x20000316   Data           8  mechanicalarm_clr.o(.data)
+    position                                 0x20000320   Data           8  mechanicalarm_clr.o(.data)
+    Err_Yaw                                  0x20000328   Data           4  mechanicalarm_clr.o(.data)
+    Target_Position                          0x2000032c   Data           8  mechanicalarm_clr.o(.data)
+    Err_Position                             0x20000334   Data           8  mechanicalarm_clr.o(.data)
+    Position_State                           0x2000033c   Data           1  mechanicalarm_clr.o(.data)
+    Position_Mode                            0x2000033d   Data           1  mechanicalarm_clr.o(.data)
+    Init_Code                                0x2000033e   Data           4  mechanicalarm_clr.o(.data)
+    Visit_Code                               0x20000342   Data           4  mechanicalarm_clr.o(.data)
+    Reset_Code                               0x20000346   Data           4  mechanicalarm_clr.o(.data)
+    Yaw                                      0x2000034c   Data           4  mechanicalarm_clr.o(.data)
+    Yaw_Err                                  0x20000350   Data           4  mechanicalarm_clr.o(.data)
+    SysTime                                  0x20000354   Data           4  mechanicalarm_clr.o(.data)
+    SysSubTime                               0x20000358   Data           4  mechanicalarm_clr.o(.data)
+    SystemState                              0x2000035c   Data           1  mechanicalarm_clr.o(.data)
+    TaskNum                                  0x2000035d   Data           1  mechanicalarm_clr.o(.data)
+    street_width                             0x20000360   Data          24  mechanicalarm_clr.o(.data)
+    ArmLen                                   0x20000378   Data           3  mechanicalarm_clr.o(.data)
+    ArmLen2                                  0x2000037c   Data           6  mechanicalarm_clr.o(.data)
+    Reset_Value                              0x20000382   Data          10  mechanicalarm_clr.o(.data)
+    Width_Target                             0x2000038c   Data          10  mechanicalarm_clr.o(.data)
+    WidthInc                                 0x20000396   Data          10  mechanicalarm_clr.o(.data)
+    .data                                    0x200003a0   Section      178  position_service.o(.data)
+    Usart_Tx_Flag                            0x200003a0   Data           3  position_service.o(.data)
+    over_time                                0x200003a4   Data           2  position_service.o(.data)
+    last_time                                0x200003a6   Data           8  position_service.o(.data)
+    that_time                                0x200003ae   Data           8  position_service.o(.data)
+    last_over_time                           0x200003b6   Data           8  position_service.o(.data)
+    that_over_time                           0x200003be   Data           8  position_service.o(.data)
+    last_dir                                 0x200003c6   Data           4  position_service.o(.data)
+    that_dir                                 0x200003ca   Data           8  position_service.o(.data)
+    street_width                             0x200003d4   Data          24  position_service.o(.data)
+    ArmLen                                   0x200003ec   Data           3  position_service.o(.data)
+    ArmLen2                                  0x200003f0   Data           6  position_service.o(.data)
+    Reset_Value                              0x200003f6   Data          10  position_service.o(.data)
+    Width_Target                             0x20000400   Data          10  position_service.o(.data)
+    WidthInc                                 0x2000040a   Data          10  position_service.o(.data)
+    Init_Code                                0x20000414   Data           4  position_service.o(.data)
+    Visit_Code                               0x20000418   Data           4  position_service.o(.data)
+    Reset_Code                               0x2000041c   Data           4  position_service.o(.data)
+    Yaw                                      0x20000420   Data           4  position_service.o(.data)
+    Yaw_Err                                  0x20000424   Data           4  position_service.o(.data)
+    SysTime                                  0x20000428   Data           4  position_service.o(.data)
+    SysSubTime                               0x2000042c   Data           4  position_service.o(.data)
+    SystemState                              0x20000430   Data           1  position_service.o(.data)
+    TaskNum                                  0x20000431   Data           1  position_service.o(.data)
+    position                                 0x20000434   Data           8  position_service.o(.data)
+    Err_Yaw                                  0x2000043c   Data           4  position_service.o(.data)
+    Target_Position                          0x20000440   Data           8  position_service.o(.data)
+    Err_Position                             0x20000448   Data           8  position_service.o(.data)
+    Position_State                           0x20000450   Data           1  position_service.o(.data)
+    Position_Mode                            0x20000451   Data           1  position_service.o(.data)
+    .bss                                     0x20000454   Section      736  motor_driver.o(.bss)
+    Usart_Sbuffer                            0x20000454   Data         192  motor_driver.o(.bss)
+    PID_Struct                               0x20000514   Data          64  motor_driver.o(.bss)
+    PWM                                      0x20000554   Data          16  motor_driver.o(.bss)
+    Target_Speed                             0x20000564   Data          16  motor_driver.o(.bss)
+    Position_Speed                           0x20000574   Data          16  motor_driver.o(.bss)
+    Yaw_Speed                                0x20000584   Data          16  motor_driver.o(.bss)
+    TaskList                                 0x20000594   Data         256  motor_driver.o(.bss)
+    SysBeatTask                              0x20000694   Data          64  motor_driver.o(.bss)
+    ContinueTask                             0x200006d4   Data          64  motor_driver.o(.bss)
+    distance                                 0x20000714   Data          16  motor_driver.o(.bss)
+    speed                                    0x20000724   Data          16  motor_driver.o(.bss)
+    .bss                                     0x20000734   Section      864  usart.o(.bss)
+    distance                                 0x20000734   Data          16  usart.o(.bss)
+    PID_Struct                               0x20000744   Data          64  usart.o(.bss)
+    PWM                                      0x20000784   Data          16  usart.o(.bss)
+    Target_Speed                             0x20000794   Data          16  usart.o(.bss)
+    Position_Speed                           0x200007a4   Data          16  usart.o(.bss)
+    Yaw_Speed                                0x200007b4   Data          16  usart.o(.bss)
+    TaskList                                 0x200007c4   Data         256  usart.o(.bss)
+    SysBeatTask                              0x200008c4   Data          64  usart.o(.bss)
+    ContinueTask                             0x20000904   Data          64  usart.o(.bss)
+    Usart_Sbuffer                            0x20000944   Data         192  usart.o(.bss)
+    Usart1_Tx_Sbuffer                        0x20000a04   Data          48  usart.o(.bss)
+    Usart2_Tx_Sbuffer                        0x20000a34   Data          48  usart.o(.bss)
+    Usart3_Tx_Sbuffer                        0x20000a64   Data          48  usart.o(.bss)
+    .bss                                     0x20000a94   Section      720  system_core.o(.bss)
+    Usart_Sbuffer                            0x20000a94   Data         192  system_core.o(.bss)
+    distance                                 0x20000b54   Data          16  system_core.o(.bss)
+    PID_Struct                               0x20000b64   Data          64  system_core.o(.bss)
+    PWM                                      0x20000ba4   Data          16  system_core.o(.bss)
+    Target_Speed                             0x20000bb4   Data          16  system_core.o(.bss)
+    Position_Speed                           0x20000bc4   Data          16  system_core.o(.bss)
+    Yaw_Speed                                0x20000bd4   Data          16  system_core.o(.bss)
+    TaskList                                 0x20000be4   Data         256  system_core.o(.bss)
+    SysBeatTask                              0x20000ce4   Data          64  system_core.o(.bss)
+    ContinueTask                             0x20000d24   Data          64  system_core.o(.bss)
+    .bss                                     0x20000d64   Section      762  datascope_dp.o(.bss)
+    Usart_Sbuffer                            0x20000d64   Data         192  datascope_dp.o(.bss)
+    distance                                 0x20000e24   Data          16  datascope_dp.o(.bss)
+    PID_Struct                               0x20000e34   Data          64  datascope_dp.o(.bss)
+    PWM                                      0x20000e74   Data          16  datascope_dp.o(.bss)
+    Target_Speed                             0x20000e84   Data          16  datascope_dp.o(.bss)
+    Position_Speed                           0x20000e94   Data          16  datascope_dp.o(.bss)
+    Yaw_Speed                                0x20000ea4   Data          16  datascope_dp.o(.bss)
+    TaskList                                 0x20000eb4   Data         256  datascope_dp.o(.bss)
+    SysBeatTask                              0x20000fb4   Data          64  datascope_dp.o(.bss)
+    ContinueTask                             0x20000ff4   Data          64  datascope_dp.o(.bss)
+    .bss                                     0x20001060   Section      720  position_service.o(.bss)
+    Usart_Sbuffer                            0x20001060   Data         192  position_service.o(.bss)
+    distance                                 0x20001120   Data          16  position_service.o(.bss)
+    TaskList                                 0x20001130   Data         256  position_service.o(.bss)
+    SysBeatTask                              0x20001230   Data          64  position_service.o(.bss)
+    ContinueTask                             0x20001270   Data          64  position_service.o(.bss)
+    PID_Struct                               0x200012b0   Data          64  position_service.o(.bss)
+    PWM                                      0x200012f0   Data          16  position_service.o(.bss)
+    Target_Speed                             0x20001300   Data          16  position_service.o(.bss)
+    Position_Speed                           0x20001310   Data          16  position_service.o(.bss)
+    Yaw_Speed                                0x20001320   Data          16  position_service.o(.bss)
+    STACK                                    0x20001330   Section     1024  startup_stm32f10x_hd.o(STACK)
 
     Global Symbols
 
@@ -1244,35 +1266,35 @@ Image Symbol Table
     TIM_SetCompare3                          0x08002953   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare3)
     TIM_SetCompare4                          0x08002957   Thumb Code     6  stm32f10x_tim.o(i.TIM_SetCompare4)
     TIM_TimeBaseInit                         0x0800295d   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    TaskList_Config                          0x08002a01   Thumb Code    32  system_core.o(i.TaskList_Config)
-    USART1_IRQHandler                        0x08002a25   Thumb Code    56  usart.o(i.USART1_IRQHandler)
-    USART2_IRQHandler                        0x08002a65   Thumb Code    64  usart.o(i.USART2_IRQHandler)
-    USART3_IRQHandler                        0x08002aad   Thumb Code    86  usart.o(i.USART3_IRQHandler)
-    USART_ClearITPendingBit                  0x08002b0d   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    USART_Cmd                                0x08002b2b   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
-    USART_DMACmd                             0x08002b43   Thumb Code    18  stm32f10x_usart.o(i.USART_DMACmd)
-    USART_GetITStatus                        0x08002b55   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
-    USART_ITConfig                           0x08002ba9   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
-    USART_Init                               0x08002bf5   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08002ccd   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
-    UsageFault_Handler                       0x08002cd7   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    Usart3_Send                              0x08002cdd   Thumb Code    62  usart.o(i.Usart3_Send)
-    Usart_Config                             0x08002d29   Thumb Code   300  usart.o(i.Usart_Config)
-    Usart_DMA_Config                         0x08002e69   Thumb Code   290  usart.o(i.Usart_DMA_Config)
-    Usart_Sbuffer_Clear                      0x08002fa9   Thumb Code    14  usart.o(i.Usart_Sbuffer_Clear)
-    Usart_TxFlag_Clear                       0x08002fbd   Thumb Code    10  usart.o(i.Usart_TxFlag_Clear)
-    Wait_Gyroscope                           0x08002fcd   Thumb Code    98  gyroscope.o(i.Wait_Gyroscope)
-    YawSpeed_Config                          0x08003045   Thumb Code    88  position_service.o(i.YawSpeed_Config)
-    __scatterload_copy                       0x080030a9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080030b7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x080030b9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x080030c7   Thumb Code     8  main.o(i.main)
-    asc2_0806                                0x080030ce   Data         546  oled.o(.constdata)
-    asc2_1608                                0x080032f0   Data        1456  oled.o(.constdata)
-    Region$$Table$$Base                      0x080038a0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080038c0   Number         0  anon$$obj.o(Region$$Table)
-    DataScope_OutPut_Buffer                  0x20000e30   Data          42  datascope_dp.o(.bss)
-    __initial_sp                             0x200014b0   Data           0  startup_stm32f10x_hd.o(STACK)
+    TaskList_Config                          0x08002a01   Thumb Code    58  system_core.o(i.TaskList_Config)
+    USART1_IRQHandler                        0x08002a45   Thumb Code    56  usart.o(i.USART1_IRQHandler)
+    USART2_IRQHandler                        0x08002a85   Thumb Code    64  usart.o(i.USART2_IRQHandler)
+    USART3_IRQHandler                        0x08002acd   Thumb Code    86  usart.o(i.USART3_IRQHandler)
+    USART_ClearITPendingBit                  0x08002b2d   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    USART_Cmd                                0x08002b4b   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
+    USART_DMACmd                             0x08002b63   Thumb Code    18  stm32f10x_usart.o(i.USART_DMACmd)
+    USART_GetITStatus                        0x08002b75   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
+    USART_ITConfig                           0x08002bc9   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08002c15   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x08002ced   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
+    UsageFault_Handler                       0x08002cf7   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
+    Usart3_Send                              0x08002cfd   Thumb Code    62  usart.o(i.Usart3_Send)
+    Usart_Config                             0x08002d49   Thumb Code   300  usart.o(i.Usart_Config)
+    Usart_DMA_Config                         0x08002e89   Thumb Code   290  usart.o(i.Usart_DMA_Config)
+    Usart_Sbuffer_Clear                      0x08002fc9   Thumb Code    14  usart.o(i.Usart_Sbuffer_Clear)
+    Usart_TxFlag_Clear                       0x08002fdd   Thumb Code    10  usart.o(i.Usart_TxFlag_Clear)
+    Wait_Gyroscope                           0x08002fed   Thumb Code    98  gyroscope.o(i.Wait_Gyroscope)
+    YawSpeed_Config                          0x08003065   Thumb Code    88  position_service.o(i.YawSpeed_Config)
+    __scatterload_copy                       0x080030c9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x080030d7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x080030d9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x080030e7   Thumb Code     8  main.o(i.main)
+    asc2_0806                                0x080030ee   Data         546  oled.o(.constdata)
+    asc2_1608                                0x08003310   Data        1456  oled.o(.constdata)
+    Region$$Table$$Base                      0x080038c0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080038e0   Number         0  anon$$obj.o(Region$$Table)
+    DataScope_OutPut_Buffer                  0x20001034   Data          42  datascope_dp.o(.bss)
+    __initial_sp                             0x20001730   Data           0  startup_stm32f10x_hd.o(STACK)
 
 
 
@@ -1282,216 +1304,216 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003d10, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00003934])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003d34, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00003954])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000038c0, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000038e0, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x00000130   Data   RO         1456    RESET               startup_stm32f10x_hd.o
-    0x08000130   0x00000000   Code   RO         2170  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x00000004   Code   RO         2193    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x00000004   Code   RO         2196    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x00000000   Code   RO         2198    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x00000000   Code   RO         2200    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x00000008   Code   RO         2201    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x00000000   Code   RO         2203    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x00000000   Code   RO         2205    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x00000004   Code   RO         2194    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000144   0x00000024   Code   RO         1457    .text               startup_stm32f10x_hd.o
-    0x08000168   0x00000062   Code   RO         2173    .text               mc_w.l(ldiv.o)
-    0x080001ca   0x000000b0   Code   RO         2175    .text               mf_w.l(fadd.o)
-    0x0800027a   0x00000064   Code   RO         2177    .text               mf_w.l(fmul.o)
-    0x080002de   0x0000014e   Code   RO         2179    .text               mf_w.l(dadd.o)
-    0x0800042c   0x000000e4   Code   RO         2181    .text               mf_w.l(dmul.o)
-    0x08000510   0x00000012   Code   RO         2183    .text               mf_w.l(fflti.o)
-    0x08000522   0x00000032   Code   RO         2185    .text               mf_w.l(ffixi.o)
-    0x08000554   0x00000026   Code   RO         2187    .text               mf_w.l(f2d.o)
-    0x0800057a   0x00000038   Code   RO         2189    .text               mf_w.l(d2f.o)
+    0x08000000   0x00000130   Data   RO         1459    RESET               startup_stm32f10x_hd.o
+    0x08000130   0x00000000   Code   RO         2197  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x00000004   Code   RO         2220    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x00000004   Code   RO         2223    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x00000000   Code   RO         2225    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x00000000   Code   RO         2227    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x00000008   Code   RO         2228    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x00000000   Code   RO         2230    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x00000000   Code   RO         2232    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x00000004   Code   RO         2221    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000144   0x00000024   Code   RO         1460    .text               startup_stm32f10x_hd.o
+    0x08000168   0x00000062   Code   RO         2200    .text               mc_w.l(ldiv.o)
+    0x080001ca   0x000000b0   Code   RO         2202    .text               mf_w.l(fadd.o)
+    0x0800027a   0x00000064   Code   RO         2204    .text               mf_w.l(fmul.o)
+    0x080002de   0x0000014e   Code   RO         2206    .text               mf_w.l(dadd.o)
+    0x0800042c   0x000000e4   Code   RO         2208    .text               mf_w.l(dmul.o)
+    0x08000510   0x00000012   Code   RO         2210    .text               mf_w.l(fflti.o)
+    0x08000522   0x00000032   Code   RO         2212    .text               mf_w.l(ffixi.o)
+    0x08000554   0x00000026   Code   RO         2214    .text               mf_w.l(f2d.o)
+    0x0800057a   0x00000038   Code   RO         2216    .text               mf_w.l(d2f.o)
     0x080005b2   0x00000002   PAD
-    0x080005b4   0x00000014   Code   RO         2191    .text               mf_w.l(cfcmple.o)
-    0x080005c8   0x00000062   Code   RO         2207    .text               mc_w.l(uldiv.o)
-    0x0800062a   0x0000001e   Code   RO         2209    .text               mc_w.l(llshl.o)
-    0x08000648   0x00000024   Code   RO         2211    .text               mc_w.l(llsshr.o)
-    0x0800066c   0x00000000   Code   RO         2213    .text               mc_w.l(iusefp.o)
-    0x0800066c   0x0000006e   Code   RO         2214    .text               mf_w.l(fepilogue.o)
-    0x080006da   0x000000ba   Code   RO         2216    .text               mf_w.l(depilogue.o)
-    0x08000794   0x00000024   Code   RO         2218    .text               mc_w.l(init.o)
-    0x080007b8   0x00000020   Code   RO         2220    .text               mc_w.l(llushr.o)
-    0x080007d8   0x00000056   Code   RO         2230    .text               mc_w.l(__dczerorl2.o)
+    0x080005b4   0x00000014   Code   RO         2218    .text               mf_w.l(cfcmple.o)
+    0x080005c8   0x00000062   Code   RO         2234    .text               mc_w.l(uldiv.o)
+    0x0800062a   0x0000001e   Code   RO         2236    .text               mc_w.l(llshl.o)
+    0x08000648   0x00000024   Code   RO         2238    .text               mc_w.l(llsshr.o)
+    0x0800066c   0x00000000   Code   RO         2240    .text               mc_w.l(iusefp.o)
+    0x0800066c   0x0000006e   Code   RO         2241    .text               mf_w.l(fepilogue.o)
+    0x080006da   0x000000ba   Code   RO         2243    .text               mf_w.l(depilogue.o)
+    0x08000794   0x00000024   Code   RO         2245    .text               mc_w.l(init.o)
+    0x080007b8   0x00000020   Code   RO         2247    .text               mc_w.l(llushr.o)
+    0x080007d8   0x00000056   Code   RO         2257    .text               mc_w.l(__dczerorl2.o)
     0x0800082e   0x00000004   Code   RO            1    i.BusFault_Handler  stm32f10x_it.o
     0x08000832   0x00000002   PAD
-    0x08000834   0x00000024   Code   RO         1629    i.DMA1_Channel2_IRQHandler  usart.o
-    0x08000858   0x00000028   Code   RO         1630    i.DMA1_Channel4_IRQHandler  usart.o
-    0x08000880   0x00000028   Code   RO         1631    i.DMA1_Channel7_IRQHandler  usart.o
-    0x080008a8   0x0000001c   Code   RO          286    i.DMA_ClearFlag     stm32f10x_dma.o
-    0x080008c4   0x00000018   Code   RO          288    i.DMA_Cmd           stm32f10x_dma.o
-    0x080008dc   0x0000014c   Code   RO          289    i.DMA_DeInit        stm32f10x_dma.o
-    0x08000a28   0x0000002c   Code   RO          292    i.DMA_GetITStatus   stm32f10x_dma.o
-    0x08000a54   0x00000012   Code   RO          293    i.DMA_ITConfig      stm32f10x_dma.o
-    0x08000a66   0x0000003c   Code   RO          294    i.DMA_Init          stm32f10x_dma.o
-    0x08000aa2   0x00000004   Code   RO          295    i.DMA_SetCurrDataCounter  stm32f10x_dma.o
+    0x08000834   0x00000024   Code   RO         1632    i.DMA1_Channel2_IRQHandler  usart.o
+    0x08000858   0x00000028   Code   RO         1633    i.DMA1_Channel4_IRQHandler  usart.o
+    0x08000880   0x00000028   Code   RO         1634    i.DMA1_Channel7_IRQHandler  usart.o
+    0x080008a8   0x0000001c   Code   RO          289    i.DMA_ClearFlag     stm32f10x_dma.o
+    0x080008c4   0x00000018   Code   RO          291    i.DMA_Cmd           stm32f10x_dma.o
+    0x080008dc   0x0000014c   Code   RO          292    i.DMA_DeInit        stm32f10x_dma.o
+    0x08000a28   0x0000002c   Code   RO          295    i.DMA_GetITStatus   stm32f10x_dma.o
+    0x08000a54   0x00000012   Code   RO          296    i.DMA_ITConfig      stm32f10x_dma.o
+    0x08000a66   0x0000003c   Code   RO          297    i.DMA_Init          stm32f10x_dma.o
+    0x08000aa2   0x00000004   Code   RO          298    i.DMA_SetCurrDataCounter  stm32f10x_dma.o
     0x08000aa6   0x00000002   PAD
-    0x08000aa8   0x000000a4   Code   RO         2011    i.DataScope_Get_Channel_Data  datascope_dp.o
+    0x08000aa8   0x000000a4   Code   RO         2020    i.DataScope_Get_Channel_Data  datascope_dp.o
     0x08000b4c   0x00000002   Code   RO            2    i.DebugMon_Handler  stm32f10x_it.o
     0x08000b4e   0x00000002   PAD
-    0x08000b50   0x0000001c   Code   RO         1509    i.Disitance_clear   motor_driver.o
-    0x08000b6c   0x00000094   Code   RO         1510    i.EXTI0_IRQHandler  motor_driver.o
-    0x08000c00   0x00000094   Code   RO         1511    i.EXTI2_IRQHandler  motor_driver.o
-    0x08000c94   0x00000094   Code   RO         1512    i.EXTI4_IRQHandler  motor_driver.o
-    0x08000d28   0x00000094   Code   RO         1513    i.EXTI9_5_IRQHandler  motor_driver.o
-    0x08000dbc   0x0000000c   Code   RO          358    i.EXTI_ClearFlag    stm32f10x_exti.o
-    0x08000dc8   0x0000000c   Code   RO          359    i.EXTI_ClearITPendingBit  stm32f10x_exti.o
-    0x08000dd4   0x00000028   Code   RO          363    i.EXTI_GetITStatus  stm32f10x_exti.o
-    0x08000dfc   0x00000094   Code   RO          364    i.EXTI_Init         stm32f10x_exti.o
-    0x08000e90   0x00000074   Code   RO         1880    i.FeedBack_Task     system_core.o
-    0x08000f04   0x0000001c   Code   RO         2012    i.Float2Byte        datascope_dp.o
-    0x08000f20   0x00000040   Code   RO          415    i.GPIO_EXTILineConfig  stm32f10x_gpio.o
-    0x08000f60   0x00000116   Code   RO          418    i.GPIO_Init         stm32f10x_gpio.o
-    0x08001076   0x00000012   Code   RO          422    i.GPIO_ReadInputDataBit  stm32f10x_gpio.o
-    0x08001088   0x00000004   Code   RO          425    i.GPIO_ResetBits    stm32f10x_gpio.o
-    0x0800108c   0x00000004   Code   RO          426    i.GPIO_SetBits      stm32f10x_gpio.o
-    0x08001090   0x00000040   Code   RO         1461    i.Gyroscope_Init    gyroscope.o
-    0x080010d0   0x00000010   Code   RO         1462    i.Gyroscope_ReadYaw  gyroscope.o
-    0x080010e0   0x00000018   Code   RO         1463    i.Gyroscope_RequestUpdata  gyroscope.o
-    0x080010f8   0x00000030   Code   RO         1465    i.Gyroscope_YawUpdata  gyroscope.o
-    0x08001128   0x000000a0   Code   RO         1575    i.Hall_EXTI_Config  motor_init.o
-    0x080011c8   0x00000024   Code   RO         1576    i.Hall_GPIO_Config  motor_init.o
-    0x080011ec   0x00000068   Code   RO         1577    i.Hall_TIM_Config   motor_init.o
+    0x08000b50   0x0000001c   Code   RO         1512    i.Disitance_clear   motor_driver.o
+    0x08000b6c   0x00000094   Code   RO         1513    i.EXTI0_IRQHandler  motor_driver.o
+    0x08000c00   0x00000094   Code   RO         1514    i.EXTI2_IRQHandler  motor_driver.o
+    0x08000c94   0x00000094   Code   RO         1515    i.EXTI4_IRQHandler  motor_driver.o
+    0x08000d28   0x00000094   Code   RO         1516    i.EXTI9_5_IRQHandler  motor_driver.o
+    0x08000dbc   0x0000000c   Code   RO          361    i.EXTI_ClearFlag    stm32f10x_exti.o
+    0x08000dc8   0x0000000c   Code   RO          362    i.EXTI_ClearITPendingBit  stm32f10x_exti.o
+    0x08000dd4   0x00000028   Code   RO          366    i.EXTI_GetITStatus  stm32f10x_exti.o
+    0x08000dfc   0x00000094   Code   RO          367    i.EXTI_Init         stm32f10x_exti.o
+    0x08000e90   0x00000074   Code   RO         1883    i.FeedBack_Task     system_core.o
+    0x08000f04   0x0000001c   Code   RO         2021    i.Float2Byte        datascope_dp.o
+    0x08000f20   0x00000040   Code   RO          418    i.GPIO_EXTILineConfig  stm32f10x_gpio.o
+    0x08000f60   0x00000116   Code   RO          421    i.GPIO_Init         stm32f10x_gpio.o
+    0x08001076   0x00000012   Code   RO          425    i.GPIO_ReadInputDataBit  stm32f10x_gpio.o
+    0x08001088   0x00000004   Code   RO          428    i.GPIO_ResetBits    stm32f10x_gpio.o
+    0x0800108c   0x00000004   Code   RO          429    i.GPIO_SetBits      stm32f10x_gpio.o
+    0x08001090   0x00000040   Code   RO         1464    i.Gyroscope_Init    gyroscope.o
+    0x080010d0   0x00000010   Code   RO         1465    i.Gyroscope_ReadYaw  gyroscope.o
+    0x080010e0   0x00000018   Code   RO         1466    i.Gyroscope_RequestUpdata  gyroscope.o
+    0x080010f8   0x00000030   Code   RO         1468    i.Gyroscope_YawUpdata  gyroscope.o
+    0x08001128   0x000000a0   Code   RO         1578    i.Hall_EXTI_Config  motor_init.o
+    0x080011c8   0x00000024   Code   RO         1579    i.Hall_GPIO_Config  motor_init.o
+    0x080011ec   0x00000068   Code   RO         1580    i.Hall_TIM_Config   motor_init.o
     0x08001254   0x00000004   Code   RO            3    i.HardFault_Handler  stm32f10x_it.o
-    0x08001258   0x00000040   Code   RO         1767    i.IIC_Init          iic.o
-    0x08001298   0x0000004c   Code   RO         1768    i.IIC_SendByte      iic.o
-    0x080012e4   0x00000030   Code   RO         1769    i.IIC_Start         iic.o
-    0x08001314   0x00000028   Code   RO         1770    i.IIC_Stop          iic.o
-    0x0800133c   0x0000001c   Code   RO         1771    i.IIC_WaitACK       iic.o
-    0x08001358   0x000000b4   Code   RO         2044    i.Inc_PID           position_service.o
-    0x0800140c   0x000000b0   Code   RO         2045    i.Inc_PID_Realiz    position_service.o
-    0x080014bc   0x00000054   Code   RO         1963    i.MechanicalArm_Reset  mechanicalarm_clr.o
-    0x08001510   0x000000b4   Code   RO         1964    i.MechanicalArm_Service  mechanicalarm_clr.o
+    0x08001258   0x00000040   Code   RO         1770    i.IIC_Init          iic.o
+    0x08001298   0x0000004c   Code   RO         1771    i.IIC_SendByte      iic.o
+    0x080012e4   0x00000030   Code   RO         1772    i.IIC_Start         iic.o
+    0x08001314   0x00000028   Code   RO         1773    i.IIC_Stop          iic.o
+    0x0800133c   0x0000001c   Code   RO         1774    i.IIC_WaitACK       iic.o
+    0x08001358   0x000000b4   Code   RO         2053    i.Inc_PID           position_service.o
+    0x0800140c   0x000000b0   Code   RO         2054    i.Inc_PID_Realiz    position_service.o
+    0x080014bc   0x00000054   Code   RO         1972    i.MechanicalArm_Reset  mechanicalarm_clr.o
+    0x08001510   0x000000b4   Code   RO         1973    i.MechanicalArm_Service  mechanicalarm_clr.o
     0x080015c4   0x00000004   Code   RO            4    i.MemManage_Handler  stm32f10x_it.o
-    0x080015c8   0x0000002c   Code   RO         1578    i.Motor_GPIO_Config  motor_init.o
-    0x080015f4   0x0000001c   Code   RO         1579    i.Motor_Init        motor_init.o
-    0x08001610   0x00000098   Code   RO         1580    i.Motor_TIM_Config  motor_init.o
-    0x080016a8   0x00000038   Code   RO         2046    i.Move_Set          position_service.o
+    0x080015c8   0x0000002c   Code   RO         1581    i.Motor_GPIO_Config  motor_init.o
+    0x080015f4   0x0000001c   Code   RO         1582    i.Motor_Init        motor_init.o
+    0x08001610   0x00000098   Code   RO         1583    i.Motor_TIM_Config  motor_init.o
+    0x080016a8   0x00000038   Code   RO         2055    i.Move_Set          position_service.o
     0x080016e0   0x00000002   Code   RO            5    i.NMI_Handler       stm32f10x_it.o
     0x080016e2   0x00000002   PAD
-    0x080016e4   0x00000070   Code   RO          250    i.NVIC_Init         misc.o
-    0x08001754   0x00000014   Code   RO          251    i.NVIC_PriorityGroupConfig  misc.o
-    0x08001768   0x0000002c   Code   RO         1809    i.OLED_Clear        oled.o
-    0x08001794   0x000000e8   Code   RO         1812    i.OLED_Init         oled.o
-    0x0800187c   0x00000036   Code   RO         1813    i.OLED_PosSet       oled.o
-    0x080018b2   0x00000038   Code   RO         1814    i.OLED_SendByte     oled.o
+    0x080016e4   0x00000070   Code   RO          253    i.NVIC_Init         misc.o
+    0x08001754   0x00000014   Code   RO          254    i.NVIC_PriorityGroupConfig  misc.o
+    0x08001768   0x0000002c   Code   RO         1812    i.OLED_Clear        oled.o
+    0x08001794   0x000000e8   Code   RO         1815    i.OLED_Init         oled.o
+    0x0800187c   0x00000036   Code   RO         1816    i.OLED_PosSet       oled.o
+    0x080018b2   0x00000038   Code   RO         1817    i.OLED_SendByte     oled.o
     0x080018ea   0x00000002   PAD
-    0x080018ec   0x000000ac   Code   RO         1815    i.OLED_ShowChar     oled.o
-    0x08001998   0x00000090   Code   RO         1816    i.OLED_ShowNum      oled.o
-    0x08001a28   0x0000004c   Code   RO         1817    i.OLED_ShowString   oled.o
-    0x08001a74   0x0000010c   Code   RO         1881    i.PCB_System_Init   system_core.o
-    0x08001b80   0x00000194   Code   RO         1514    i.PWM_Out           motor_driver.o
+    0x080018ec   0x000000ac   Code   RO         1818    i.OLED_ShowChar     oled.o
+    0x08001998   0x00000090   Code   RO         1819    i.OLED_ShowNum      oled.o
+    0x08001a28   0x0000004c   Code   RO         1820    i.OLED_ShowString   oled.o
+    0x08001a74   0x0000010c   Code   RO         1884    i.PCB_System_Init   system_core.o
+    0x08001b80   0x00000194   Code   RO         1517    i.PWM_Out           motor_driver.o
     0x08001d14   0x00000002   Code   RO            6    i.PendSV_Handler    stm32f10x_it.o
     0x08001d16   0x00000002   PAD
-    0x08001d18   0x00000054   Code   RO         2047    i.PositionClr_Service  position_service.o
-    0x08001d6c   0x00000074   Code   RO         2049    i.PositionSpeed_Config  position_service.o
-    0x08001de0   0x00000018   Code   RO         2050    i.PositionState_Inc  position_service.o
-    0x08001df8   0x00000080   Code   RO         2051    i.PositionState_Updata  position_service.o
-    0x08001e78   0x00000030   Code   RO         2052    i.Position_Stop     position_service.o
-    0x08001ea8   0x00000084   Code   RO         2053    i.Position_Update   position_service.o
-    0x08001f2c   0x00000020   Code   RO          527    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
-    0x08001f4c   0x00000020   Code   RO          528    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x08001f6c   0x00000020   Code   RO          530    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08001f8c   0x000000d4   Code   RO          538    i.RCC_GetClocksFreq  stm32f10x_rcc.o
-    0x08002060   0x00000008   Code   RO         1515    i.Read_Distance     motor_driver.o
-    0x08002068   0x00000154   Code   RO         1516    i.Read_Speed        motor_driver.o
-    0x080021bc   0x0000000c   Code   RO         1882    i.Read_SysSubTime   system_core.o
+    0x08001d18   0x00000054   Code   RO         2056    i.PositionClr_Service  position_service.o
+    0x08001d6c   0x00000074   Code   RO         2058    i.PositionSpeed_Config  position_service.o
+    0x08001de0   0x00000018   Code   RO         2059    i.PositionState_Inc  position_service.o
+    0x08001df8   0x00000080   Code   RO         2060    i.PositionState_Updata  position_service.o
+    0x08001e78   0x00000030   Code   RO         2061    i.Position_Stop     position_service.o
+    0x08001ea8   0x00000084   Code   RO         2062    i.Position_Update   position_service.o
+    0x08001f2c   0x00000020   Code   RO          530    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
+    0x08001f4c   0x00000020   Code   RO          531    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x08001f6c   0x00000020   Code   RO          533    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08001f8c   0x000000d4   Code   RO          541    i.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x08002060   0x00000008   Code   RO         1518    i.Read_Distance     motor_driver.o
+    0x08002068   0x00000154   Code   RO         1519    i.Read_Speed        motor_driver.o
+    0x080021bc   0x0000000c   Code   RO         1885    i.Read_SysSubTime   system_core.o
     0x080021c8   0x00000002   Code   RO            7    i.SVC_Handler       stm32f10x_it.o
-    0x080021ca   0x00000008   Code   RO          216    i.SetSysClock       system_stm32f10x.o
+    0x080021ca   0x00000008   Code   RO          219    i.SetSysClock       system_stm32f10x.o
     0x080021d2   0x00000002   PAD
-    0x080021d4   0x000000e0   Code   RO          217    i.SetSysClockTo72   system_stm32f10x.o
-    0x080022b4   0x00000028   Code   RO         2056    i.Speed_Set         position_service.o
-    0x080022dc   0x00000084   Code   RO         2057    i.Speed_Syn         position_service.o
-    0x08002360   0x00000044   Code   RO         1737    i.StreetMotor_GPIO_Config  street_motor.o
-    0x080023a4   0x00000012   Code   RO         1738    i.StreetMotor_Init  street_motor.o
+    0x080021d4   0x000000e0   Code   RO          220    i.SetSysClockTo72   system_stm32f10x.o
+    0x080022b4   0x00000028   Code   RO         2065    i.Speed_Set         position_service.o
+    0x080022dc   0x00000084   Code   RO         2066    i.Speed_Syn         position_service.o
+    0x08002360   0x00000044   Code   RO         1740    i.StreetMotor_GPIO_Config  street_motor.o
+    0x080023a4   0x00000012   Code   RO         1741    i.StreetMotor_Init  street_motor.o
     0x080023b6   0x00000002   PAD
-    0x080023b8   0x000000d8   Code   RO         1739    i.StreetMotor_TIM_Config  street_motor.o
-    0x08002490   0x00000060   Code   RO         1885    i.SysSecBeat_Config  system_core.o
-    0x080024f0   0x00000048   Code   RO         1886    i.SysTick_Handler   system_core.o
-    0x08002538   0x00000060   Code   RO          219    i.SystemInit        system_stm32f10x.o
-    0x08002598   0x00000014   Code   RO         1887    i.SystemState_Set   system_core.o
-    0x080025ac   0x00000002   Code   RO         1888    i.System_Task       system_core.o
+    0x080023b8   0x000000d8   Code   RO         1742    i.StreetMotor_TIM_Config  street_motor.o
+    0x08002490   0x00000060   Code   RO         1888    i.SysSecBeat_Config  system_core.o
+    0x080024f0   0x00000048   Code   RO         1889    i.SysTick_Handler   system_core.o
+    0x08002538   0x00000060   Code   RO          222    i.SystemInit        system_stm32f10x.o
+    0x08002598   0x00000014   Code   RO         1890    i.SystemState_Set   system_core.o
+    0x080025ac   0x00000002   Code   RO         1891    i.System_Task       system_core.o
     0x080025ae   0x00000002   PAD
-    0x080025b0   0x00000038   Code   RO         1581    i.TB6612_Init       motor_init.o
-    0x080025e8   0x0000002c   Code   RO         1517    i.TIM6_IRQHandler   motor_driver.o
-    0x08002614   0x0000002c   Code   RO         1889    i.TIM7_IRQHandler   system_core.o
-    0x08002640   0x00000006   Code   RO          737    i.TIM_ClearITPendingBit  stm32f10x_tim.o
-    0x08002646   0x00000018   Code   RO          742    i.TIM_Cmd           stm32f10x_tim.o
-    0x0800265e   0x00000022   Code   RO          763    i.TIM_GetITStatus   stm32f10x_tim.o
-    0x08002680   0x00000012   Code   RO          767    i.TIM_ITConfig      stm32f10x_tim.o
+    0x080025b0   0x00000038   Code   RO         1584    i.TB6612_Init       motor_init.o
+    0x080025e8   0x0000002c   Code   RO         1520    i.TIM6_IRQHandler   motor_driver.o
+    0x08002614   0x0000002c   Code   RO         1892    i.TIM7_IRQHandler   system_core.o
+    0x08002640   0x00000006   Code   RO          740    i.TIM_ClearITPendingBit  stm32f10x_tim.o
+    0x08002646   0x00000018   Code   RO          745    i.TIM_Cmd           stm32f10x_tim.o
+    0x0800265e   0x00000022   Code   RO          766    i.TIM_GetITStatus   stm32f10x_tim.o
+    0x08002680   0x00000012   Code   RO          770    i.TIM_ITConfig      stm32f10x_tim.o
     0x08002692   0x00000002   PAD
-    0x08002694   0x00000098   Code   RO          771    i.TIM_OC1Init       stm32f10x_tim.o
-    0x0800272c   0x00000012   Code   RO          774    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
+    0x08002694   0x00000098   Code   RO          774    i.TIM_OC1Init       stm32f10x_tim.o
+    0x0800272c   0x00000012   Code   RO          777    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
     0x0800273e   0x00000002   PAD
-    0x08002740   0x000000a4   Code   RO          776    i.TIM_OC2Init       stm32f10x_tim.o
-    0x080027e4   0x0000001a   Code   RO          779    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
+    0x08002740   0x000000a4   Code   RO          779    i.TIM_OC2Init       stm32f10x_tim.o
+    0x080027e4   0x0000001a   Code   RO          782    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
     0x080027fe   0x00000002   PAD
-    0x08002800   0x000000a0   Code   RO          781    i.TIM_OC3Init       stm32f10x_tim.o
-    0x080028a0   0x00000012   Code   RO          784    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
+    0x08002800   0x000000a0   Code   RO          784    i.TIM_OC3Init       stm32f10x_tim.o
+    0x080028a0   0x00000012   Code   RO          787    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
     0x080028b2   0x00000002   PAD
-    0x080028b4   0x0000007c   Code   RO          786    i.TIM_OC4Init       stm32f10x_tim.o
-    0x08002930   0x0000001a   Code   RO          788    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
-    0x0800294a   0x00000004   Code   RO          803    i.TIM_SetCompare1   stm32f10x_tim.o
-    0x0800294e   0x00000004   Code   RO          804    i.TIM_SetCompare2   stm32f10x_tim.o
-    0x08002952   0x00000004   Code   RO          805    i.TIM_SetCompare3   stm32f10x_tim.o
-    0x08002956   0x00000006   Code   RO          806    i.TIM_SetCompare4   stm32f10x_tim.o
-    0x0800295c   0x000000a4   Code   RO          813    i.TIM_TimeBaseInit  stm32f10x_tim.o
-    0x08002a00   0x00000024   Code   RO         1890    i.TaskList_Config   system_core.o
-    0x08002a24   0x00000040   Code   RO         1633    i.USART1_IRQHandler  usart.o
-    0x08002a64   0x00000048   Code   RO         1634    i.USART2_IRQHandler  usart.o
-    0x08002aac   0x00000060   Code   RO         1635    i.USART3_IRQHandler  usart.o
-    0x08002b0c   0x0000001e   Code   RO         1275    i.USART_ClearITPendingBit  stm32f10x_usart.o
-    0x08002b2a   0x00000018   Code   RO         1278    i.USART_Cmd         stm32f10x_usart.o
-    0x08002b42   0x00000012   Code   RO         1279    i.USART_DMACmd      stm32f10x_usart.o
-    0x08002b54   0x00000054   Code   RO         1282    i.USART_GetITStatus  stm32f10x_usart.o
-    0x08002ba8   0x0000004a   Code   RO         1284    i.USART_ITConfig    stm32f10x_usart.o
-    0x08002bf2   0x00000002   PAD
-    0x08002bf4   0x000000d8   Code   RO         1285    i.USART_Init        stm32f10x_usart.o
-    0x08002ccc   0x0000000a   Code   RO         1292    i.USART_ReceiveData  stm32f10x_usart.o
-    0x08002cd6   0x00000004   Code   RO            8    i.UsageFault_Handler  stm32f10x_it.o
-    0x08002cda   0x00000002   PAD
-    0x08002cdc   0x0000004c   Code   RO         1638    i.Usart3_Send       usart.o
-    0x08002d28   0x00000140   Code   RO         1639    i.Usart_Config      usart.o
-    0x08002e68   0x00000140   Code   RO         1640    i.Usart_DMA_Config  usart.o
-    0x08002fa8   0x00000014   Code   RO         1641    i.Usart_Sbuffer_Clear  usart.o
-    0x08002fbc   0x00000010   Code   RO         1643    i.Usart_TxFlag_Clear  usart.o
-    0x08002fcc   0x00000078   Code   RO         1466    i.Wait_Gyroscope    gyroscope.o
-    0x08003044   0x00000064   Code   RO         2059    i.YawSpeed_Config   position_service.o
-    0x080030a8   0x0000000e   Code   RO         2224    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080030b6   0x00000002   Code   RO         2225    i.__scatterload_null  mc_w.l(handlers.o)
-    0x080030b8   0x0000000e   Code   RO         2226    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x080030c6   0x00000008   Code   RO          190    i.main              main.o
-    0x080030ce   0x000007d2   Data   RO         1819    .constdata          oled.o
-    0x080038a0   0x00000020   Data   RO         2222    Region$$Table       anon$$obj.o
+    0x080028b4   0x0000007c   Code   RO          789    i.TIM_OC4Init       stm32f10x_tim.o
+    0x08002930   0x0000001a   Code   RO          791    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
+    0x0800294a   0x00000004   Code   RO          806    i.TIM_SetCompare1   stm32f10x_tim.o
+    0x0800294e   0x00000004   Code   RO          807    i.TIM_SetCompare2   stm32f10x_tim.o
+    0x08002952   0x00000004   Code   RO          808    i.TIM_SetCompare3   stm32f10x_tim.o
+    0x08002956   0x00000006   Code   RO          809    i.TIM_SetCompare4   stm32f10x_tim.o
+    0x0800295c   0x000000a4   Code   RO          816    i.TIM_TimeBaseInit  stm32f10x_tim.o
+    0x08002a00   0x00000044   Code   RO         1893    i.TaskList_Config   system_core.o
+    0x08002a44   0x00000040   Code   RO         1636    i.USART1_IRQHandler  usart.o
+    0x08002a84   0x00000048   Code   RO         1637    i.USART2_IRQHandler  usart.o
+    0x08002acc   0x00000060   Code   RO         1638    i.USART3_IRQHandler  usart.o
+    0x08002b2c   0x0000001e   Code   RO         1278    i.USART_ClearITPendingBit  stm32f10x_usart.o
+    0x08002b4a   0x00000018   Code   RO         1281    i.USART_Cmd         stm32f10x_usart.o
+    0x08002b62   0x00000012   Code   RO         1282    i.USART_DMACmd      stm32f10x_usart.o
+    0x08002b74   0x00000054   Code   RO         1285    i.USART_GetITStatus  stm32f10x_usart.o
+    0x08002bc8   0x0000004a   Code   RO         1287    i.USART_ITConfig    stm32f10x_usart.o
+    0x08002c12   0x00000002   PAD
+    0x08002c14   0x000000d8   Code   RO         1288    i.USART_Init        stm32f10x_usart.o
+    0x08002cec   0x0000000a   Code   RO         1295    i.USART_ReceiveData  stm32f10x_usart.o
+    0x08002cf6   0x00000004   Code   RO            8    i.UsageFault_Handler  stm32f10x_it.o
+    0x08002cfa   0x00000002   PAD
+    0x08002cfc   0x0000004c   Code   RO         1641    i.Usart3_Send       usart.o
+    0x08002d48   0x00000140   Code   RO         1642    i.Usart_Config      usart.o
+    0x08002e88   0x00000140   Code   RO         1643    i.Usart_DMA_Config  usart.o
+    0x08002fc8   0x00000014   Code   RO         1644    i.Usart_Sbuffer_Clear  usart.o
+    0x08002fdc   0x00000010   Code   RO         1646    i.Usart_TxFlag_Clear  usart.o
+    0x08002fec   0x00000078   Code   RO         1469    i.Wait_Gyroscope    gyroscope.o
+    0x08003064   0x00000064   Code   RO         2068    i.YawSpeed_Config   position_service.o
+    0x080030c8   0x0000000e   Code   RO         2251    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x080030d6   0x00000002   Code   RO         2252    i.__scatterload_null  mc_w.l(handlers.o)
+    0x080030d8   0x0000000e   Code   RO         2253    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080030e6   0x00000008   Code   RO          193    i.main              main.o
+    0x080030ee   0x000007d2   Data   RO         1822    .constdata          oled.o
+    0x080038c0   0x00000020   Data   RO         2249    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000014b0, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000074])
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001730, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000074])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000014   Data   RW          558    .data               stm32f10x_rcc.o
-    0x20000014   0x000000c0   Data   RW         1468    .data               gyroscope.o
-    0x200000d4   0x000000b0   Data   RW         1519    .data               motor_driver.o
-    0x20000184   0x000000b0   Data   RW         1646    .data               usart.o
-    0x20000234   0x000000b2   Data   RW         1892    .data               system_core.o
-    0x200002e6   0x00000002   PAD
-    0x200002e8   0x000000b4   Data   RW         1969    .data               mechanicalarm_clr.o
-    0x2000039c   0x000000b2   Data   RW         2061    .data               position_service.o
-    0x2000044e   0x00000002   PAD
-    0x20000450   0x00000260   Zero   RW         1518    .bss                motor_driver.o
-    0x200006b0   0x000002e0   Zero   RW         1645    .bss                usart.o
-    0x20000990   0x00000250   Zero   RW         1891    .bss                system_core.o
-    0x20000be0   0x0000027a   Zero   RW         2013    .bss                datascope_dp.o
-    0x20000e5a   0x00000002   PAD
-    0x20000e5c   0x00000250   Zero   RW         2060    .bss                position_service.o
-    0x200010ac   0x00000004   PAD
-    0x200010b0   0x00000400   Zero   RW         1454    STACK               startup_stm32f10x_hd.o
+    0x20000000   0x00000014   Data   RW          561    .data               stm32f10x_rcc.o
+    0x20000014   0x000000c0   Data   RW         1471    .data               gyroscope.o
+    0x200000d4   0x000000b0   Data   RW         1522    .data               motor_driver.o
+    0x20000184   0x000000b1   Data   RW         1649    .data               usart.o
+    0x20000235   0x00000003   PAD
+    0x20000238   0x000000b3   Data   RW         1896    .data               system_core.o
+    0x200002eb   0x00000001   PAD
+    0x200002ec   0x000000b4   Data   RW         1978    .data               mechanicalarm_clr.o
+    0x200003a0   0x000000b2   Data   RW         2070    .data               position_service.o
+    0x20000452   0x00000002   PAD
+    0x20000454   0x000002e0   Zero   RW         1521    .bss                motor_driver.o
+    0x20000734   0x00000360   Zero   RW         1648    .bss                usart.o
+    0x20000a94   0x000002d0   Zero   RW         1895    .bss                system_core.o
+    0x20000d64   0x000002fa   Zero   RW         2022    .bss                datascope_dp.o
+    0x2000105e   0x00000002   PAD
+    0x20001060   0x000002d0   Zero   RW         2069    .bss                position_service.o
+    0x20001330   0x00000400   Zero   RW         1457    STACK               startup_stm32f10x_hd.o
 
 
 ==============================================================================
@@ -1502,33 +1524,33 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0         32   core_cm3.o
-       192         18          0          0        634       2524   datascope_dp.o
-       272         56          0        192          0       3810   gyroscope.o
+       192         18          0          0        762       2592   datascope_dp.o
+       272         56          0        192          0       3878   gyroscope.o
        256         24          0          0          0       2091   iic.o
          8          0          0          0          0        363   main.o
-       264         28          0        180          0       2342   mechanicalarm_clr.o
+       264         28          0        180          0       2410   mechanicalarm_clr.o
        132         22          0          0          0       1335   misc.o
-      1416        238          0        176        608       6093   motor_driver.o
+      1416        238          0        176        736       6161   motor_driver.o
        580         24          0          0          0       3374   motor_init.o
-       778         10       2002          0          0       5702   oled.o
-      1216        166          0        178        592       7934   position_service.o
+       778         10       2002          0          0       5774   oled.o
+      1216        166          0        178        720       8002   position_service.o
         36          8        304          0       1024        756   startup_stm32f10x_hd.o
        510         26          0          0          0       5168   stm32f10x_dma.o
        212         24          0          0          0       2285   stm32f10x_exti.o
        368          4          0          0          0       3878   stm32f10x_gpio.o
-        24          0          0          0          0     270244   stm32f10x_it.o
+        24          0          0          0          0     270296   stm32f10x_it.o
        308         38          0         20          0       4630   stm32f10x_rcc.o
        952         92          0          0          0       9766   stm32f10x_tim.o
        456          6          0          0          0       5699   stm32f10x_usart.o
        302         12          0          0          0       1502   street_motor.o
-       666        110          0        178        592      21133   system_core.o
+       698        116          0        179        720      21269   system_core.o
        328         28          0          0          0       1709   system_stm32f10x.o
-      1100        114          0        176        736       7080   usart.o
+      1100        114          0        177        864       7148   usart.o
 
     ----------------------------------------------------------------------
-     10406       1048       2338       1104       4192     369450   Object Totals
+     10438       1054       2338       1108       4828     370118   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        30          0          0          4          6          0   (incl. Padding)
+        30          0          0          6          2          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1584,15 +1606,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12190       1064       2338       1104       4192     364014   Grand Totals
-     12190       1064       2338        116       4192     364014   ELF Image Totals (compressed)
-     12190       1064       2338        116          0          0   ROM Totals
+     12222       1070       2338       1108       4828     364682   Grand Totals
+     12222       1070       2338        116       4828     364682   ELF Image Totals (compressed)
+     12222       1070       2338        116          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                14528 (  14.19kB)
-    Total RW  Size (RW Data + ZI Data)              5296 (   5.17kB)
-    Total ROM Size (Code + RO Data + RW Data)      14644 (  14.30kB)
+    Total RO  Size (Code + RO Data)                14560 (  14.22kB)
+    Total RW  Size (RW Data + ZI Data)              5936 (   5.80kB)
+    Total ROM Size (Code + RO Data + RW Data)      14676 (  14.33kB)
 
 ==============================================================================
 

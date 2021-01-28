@@ -42,5 +42,5 @@
 ..\output\position_service.o: .\Driver\gyroscope.h
 ..\output\position_service.o: .\Driver\oled.h
 ..\output\position_service.o: .\Service\DataScope_DP.h
-..\output\position_service.o: .\System\debug_port.h
 ..\output\position_service.o: .\app\main_app.h
+..\output\position_service.o: .\app\debug_app.h

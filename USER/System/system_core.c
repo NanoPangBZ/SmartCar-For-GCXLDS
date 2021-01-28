@@ -14,10 +14,10 @@ void PCB_System_Init(void)
 	IIC_Init();
 	OLED_Init();
 	//将任务函数的指针载入任务列表
-	TaskList_Config(0,1,1,PositionClr_Service);
+	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
-	TaskList_Config(2,1,0,FeedBack_Task);
-	TaskList_Config(3,1,0,System_Task);
+	TaskList_Config(1,0,1,FeedBack_Task);
+	TaskList_Config(1,0,1,System_Task);
 	//系统进入待机
 	SystemState_Set(1);
 	Move_Set(Y,-300);
@@ -31,6 +31,20 @@ void PCB_System_Init(void)
 				TaskList[temp].Task_Addr();
 		}
 	}
+}
+
+void TaskList_Config(uint8_t Enable,uint8_t RunType,uint8_t TaskType,void (*Task)(void))
+{
+	TaskList[TaskNum].Enable = Enable;
+	TaskList[TaskNum].RunType = RunType;
+	TaskList[TaskNum].TaskType = TaskType;
+	TaskList[TaskNum].Task_Addr = Task;
+	TaskNum++;
+}
+
+void TaskList_Load(void)
+{
+	
 }
 
 void SysSecBeat_Config(uint16_t A,uint16_t Pre)
@@ -58,15 +72,6 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	TIM_Cmd(TIM7,ENABLE);
 }
 
-void TaskList_Config(uint8_t num,uint8_t Enable,uint8_t RunType,void (*Task)(void))
-{
-	if(num>31)
-		return;
-	TaskList[num].Enable = Enable;
-	TaskList[num].RunType = RunType;
-	TaskList[num].Task_Addr = Task;
-}
-
 void FeedBack_Task(void)
 {
 	static uint8_t ShowStrFlag = 0;
@@ -81,11 +86,7 @@ void FeedBack_Task(void)
 }
 
 void System_Task(void)
-{
-//	uint8_t*Cmd;
-//	Cmd=Read_Usart_Sbuffer(1);
-//	if(*Cmd!=0)
-//		SystemState = 3;
+{	
 }
 
 /************系统对外接口*****************/

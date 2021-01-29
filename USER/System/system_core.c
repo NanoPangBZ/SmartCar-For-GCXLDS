@@ -14,36 +14,44 @@ void PCB_System_Init(void)
 	IIC_Init();
 	OLED_Init();
 	//将任务函数的指针载入任务列表
-	TaskList_Config(1,1,1,PositionClr_Service);
-	TaskList_Config(1,1,1,MechanicalArm_Service);
-	TaskList_Config(1,0,1,FeedBack_Task);
-	TaskList_Config(1,0,1,System_Task);
+	TaskList_Config(1,1,3,SystemBeat_Task);
+	TaskList_Config(1,1,2,PositionClr_Service);
+	TaskList_Config(1,1,2,MechanicalArm_Service);
+	TaskList_Config(1,0,3,SystemConti_Task);
+	TaskList_Config(1,0,3,OLED_FB_Task);
 	//系统进入待机
 	SystemState_Set(1);
-	Move_Set(Y,-300);
+	Move_Set(Y,-150);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	{
 		uint8_t temp;
-		for(temp = 0;TaskList[temp].Task_Addr!=NULL;temp++)
+		for(temp=0;ContinueTaskList[temp].Task_Addr!=NULL;temp++)
 		{
-			if(TaskList[temp].Enable!=0 && TaskList[temp].RunType ==0)
-				TaskList[temp].Task_Addr();
+			if(ContinueTaskList[temp].Enable)
+				ContinueTaskList[temp].Task_Addr();
 		}
 	}
 }
 
 void TaskList_Config(uint8_t Enable,uint8_t RunType,uint8_t TaskType,void (*Task)(void))
 {
-	TaskList[TaskNum].Enable = Enable;
-	TaskList[TaskNum].RunType = RunType;
-	TaskList[TaskNum].TaskType = TaskType;
-	TaskList[TaskNum].Task_Addr = Task;
-	TaskNum++;
-}
-
-void TaskList_Load(void)
-{
+	TCB temp;
+	temp.Enable = Enable;
+	temp.RunType = RunType;
+	temp.TaskType = TaskType;
+	temp.Task_Addr = Task;
+	//根据RunType分配致相应任务列表
+	if(RunType)
+	{
+		temp.TaskNumID = BeatTaskNum;
+		BeatTaskList[BeatTaskNum++] = temp;
+	}
+	else
+	{
+		temp.TaskNumID = ContinueTaskNum;
+		ContinueTaskList[ContinueTaskNum++] = temp;
+	}
 	
 }
 
@@ -72,7 +80,7 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	TIM_Cmd(TIM7,ENABLE);
 }
 
-void FeedBack_Task(void)
+void OLED_FB_Task(void)
 {
 	static uint8_t ShowStrFlag = 0;
 	if(ShowStrFlag!=1)
@@ -85,7 +93,11 @@ void FeedBack_Task(void)
 	OLED_ShowNum((uint16_t)(SysTime/200),1,57,1);
 }
 
-void System_Task(void)
+void SystemBeat_Task(void)
+{
+}
+
+void SystemConti_Task(void)
 {	
 }
 
@@ -95,6 +107,31 @@ uint8_t SystemState_Set(uint8_t state)
 	if(state<5)
 		SystemState = state;
 	return SystemState;
+}
+
+void Task_Cmd(void(*Task)(void),uint8_t Enable)
+{
+	TCB*temp;
+	temp = TCB_AddrGet(Task);
+	if(temp!=NULL)
+		temp->Enable = Enable;
+}
+
+TCB*TCB_AddrGet(void(*Task)(void))
+{
+	uint8_t temp;
+	uint8_t flag;
+	for(temp=0;temp<BeatTaskNum+1;temp++)
+	{
+		if(Task == BeatTaskList[temp].Task_Addr)
+			return &BeatTaskList[temp];
+	}
+	for(temp=0;temp<ContinueTaskNum+1;temp++)
+	{
+		if(Task == ContinueTaskList[temp].Task_Addr)
+			return &ContinueTaskList[temp];
+	}
+	return NULL;
 }
 
 uint8_t Read_SystemState(void)
@@ -117,10 +154,10 @@ void SysTick_Handler(void)
 {
 	uint8_t temp;
 	SysTime++;
-	for(temp=0;TaskList[temp].Task_Addr!=NULL;temp++)
+	for(temp=0;BeatTaskList[temp].Task_Addr!=NULL;temp++)
 	{
-		if(TaskList[temp].Enable!=0 && TaskList[temp].RunType ==1)
-			TaskList[temp].Task_Addr();
+		if(BeatTaskList[temp].Enable)
+			BeatTaskList[temp].Task_Addr();
 	}
 }
 

@@ -42,7 +42,7 @@ void Put(void)
 	Width_Target[4] = 700;
 }
 
-void Target_WidthSet(uint16_t*Width)
+void MechanicalArm_WidthSet(uint16_t*Width)
 {
 	uint8_t temp;
 	for(temp=0;temp<4;temp++)

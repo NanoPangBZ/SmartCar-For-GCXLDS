@@ -14,12 +14,10 @@ void main_app_Task(void)
 //寻找二维码
 void Find_Ecode(void)
 {
-	long int*temp;
-	long int Nposition[2];
-	temp = Read_Position();
-	Nposition[0] = *temp;
-	Nposition[1] = *(temp+1);
-	TargetPosition[0] = PositionList[Ecode][0];
+	if(Read_PositionState()==5)
+	{
+		TargetMove_Set(PositionList[Ecode][0],PositionList[Ecode][1],0);
+	}
 }
 
 //等待发车命令

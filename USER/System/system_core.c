@@ -15,13 +15,14 @@ void PCB_System_Init(void)
 	OLED_Init();
 	//将任务函数的指针载入任务列表
 	TaskList_Config(1,1,3,SystemBeat_Task);
-	TaskList_Config(1,1,2,PositionClr_Service);
-	TaskList_Config(1,1,2,MechanicalArm_Service);
+	TaskList_Config(1,1,2,debug_app_Task);
+	TaskList_Config(1,1,2,main_app_Task);
+	TaskList_Config(1,1,1,PositionClr_Service);
+	TaskList_Config(1,1,1,MechanicalArm_Service);
 	TaskList_Config(1,0,3,SystemConti_Task);
 	TaskList_Config(1,0,3,OLED_FB_Task);
 	//系统进入待机
 	SystemState_Set(1);
-	Move_Set(Y,-150);
 	SysTick_Config(5*72000);			//系统主心跳
 	while(1)
 	{
@@ -120,7 +121,6 @@ void Task_Cmd(void(*Task)(void),uint8_t Enable)
 TCB*TCB_AddrGet(void(*Task)(void))
 {
 	uint8_t temp;
-	uint8_t flag;
 	for(temp=0;temp<BeatTaskNum+1;temp++)
 	{
 		if(Task == BeatTaskList[temp].Task_Addr)

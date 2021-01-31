@@ -3,12 +3,19 @@
 
 void main_app_Task(void)
 {
-	if(RunState==0)
+	static uint8_t flag = 0;
+	if(Read_PositionState() == 5)
 	{
-		WaitStart();
-		return;
+		if(flag)
+		{
+			flag = 0;
+			TargetMove_Set(0,0,0);
+		}else
+		{
+			flag = 1;
+			TargetMove_Set(0,-500,0);
+		}
 	}
-	
 }
 
 //寻找二维码

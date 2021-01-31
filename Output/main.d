@@ -38,8 +38,8 @@
 ..\output\main.o: .\Driver\street_motor.h
 ..\output\main.o: .\Service\MechanicalArm_Clr.h
 ..\output\main.o: .\Service\position_service.h
+..\output\main.o: .\Driver\vofa_p.h
 ..\output\main.o: .\Driver\gyroscope.h
 ..\output\main.o: .\Driver\oled.h
-..\output\main.o: .\Service\DataScope_DP.h
 ..\output\main.o: .\app\main_app.h
 ..\output\main.o: .\app\debug_app.h

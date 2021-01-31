@@ -494,6 +494,11 @@
               <FileType>1</FileType>
               <FilePath>.\Driver\oled.c</FilePath>
             </File>
+            <File>
+              <FileName>vofa_p.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Driver\vofa_p.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -513,11 +518,6 @@
               <FileName>MechanicalArm_Clr.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Service\MechanicalArm_Clr.c</FilePath>
-            </File>
-            <File>
-              <FileName>DataScope_DP.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Service\DataScope_DP.C</FilePath>
             </File>
             <File>
               <FileName>position_service.c</FileName>

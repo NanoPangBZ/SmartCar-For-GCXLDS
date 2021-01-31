@@ -10,9 +10,9 @@
 #include "street_motor.h"
 #include "MechanicalArm_Clr.h"
 #include "position_service.h"
+#include "vofa_p.h"
 #include "gyroscope.h"
 #include "oled.h"
-#include "DataScope_DP.h"
 #include "main_app.h"
 #include "debug_app.h"
 

@@ -39,9 +39,9 @@
 ..\output\oled.o: .\Driver\street_motor.h
 ..\output\oled.o: .\Service\MechanicalArm_Clr.h
 ..\output\oled.o: .\Service\position_service.h
+..\output\oled.o: .\Driver\vofa_p.h
 ..\output\oled.o: .\Driver\gyroscope.h
 ..\output\oled.o: .\Driver\oled.h
-..\output\oled.o: .\Service\DataScope_DP.h
 ..\output\oled.o: .\app\main_app.h
 ..\output\oled.o: .\app\debug_app.h
 ..\output\oled.o: Driver\oled_font.h

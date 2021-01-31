@@ -39,8 +39,8 @@
 ..\output\mechanicalarm_clr.o: .\Driver\street_motor.h
 ..\output\mechanicalarm_clr.o: .\Service\MechanicalArm_Clr.h
 ..\output\mechanicalarm_clr.o: .\Service\position_service.h
+..\output\mechanicalarm_clr.o: .\Driver\vofa_p.h
 ..\output\mechanicalarm_clr.o: .\Driver\gyroscope.h
 ..\output\mechanicalarm_clr.o: .\Driver\oled.h
-..\output\mechanicalarm_clr.o: .\Service\DataScope_DP.h
 ..\output\mechanicalarm_clr.o: .\app\main_app.h
 ..\output\mechanicalarm_clr.o: .\app\debug_app.h

@@ -207,7 +207,6 @@ void Inc_PID_Realiz(void)
 		{
 			if(PID_Struct[n].pointSet != 0)
 			{
-				DataScope_Get_Channel_Data((float)*(Speed+n),n+1);
 				PWM[n] += (int)Inc_PID((float)*(Speed+n),&PID_Struct[n]);
 				if(PWM[n] >7000)
 					PWM[n] = 7000;

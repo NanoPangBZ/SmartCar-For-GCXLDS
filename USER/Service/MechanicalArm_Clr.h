@@ -5,6 +5,7 @@
 
 #define	Pi	acos(-1)					//圆周率
 
+//机械臂的CCR寄存器地址
 static uint16_t* street_width[6] = {(uint16_t*)&TIM3->CCR1 , (uint16_t*)&TIM3->CCR2,
 							(uint16_t*)&TIM3->CCR3 , (uint16_t*)&TIM3->CCR4,
 							(uint16_t*)&TIM2->CCR1 , (uint16_t*)&TIM2->CCR2 };

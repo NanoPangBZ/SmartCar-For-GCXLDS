@@ -39,8 +39,8 @@
 ..\output\stm32f10x_it.o: .\Driver\street_motor.h
 ..\output\stm32f10x_it.o: .\Service\MechanicalArm_Clr.h
 ..\output\stm32f10x_it.o: .\Service\position_service.h
+..\output\stm32f10x_it.o: .\Driver\vofa_p.h
 ..\output\stm32f10x_it.o: .\Driver\gyroscope.h
 ..\output\stm32f10x_it.o: .\Driver\oled.h
-..\output\stm32f10x_it.o: .\Service\DataScope_DP.h
 ..\output\stm32f10x_it.o: .\app\main_app.h
 ..\output\stm32f10x_it.o: .\app\debug_app.h

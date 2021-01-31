@@ -39,8 +39,8 @@
 ..\output\position_service.o: .\Driver\street_motor.h
 ..\output\position_service.o: .\Service\MechanicalArm_Clr.h
 ..\output\position_service.o: .\Service\position_service.h
+..\output\position_service.o: .\Driver\vofa_p.h
 ..\output\position_service.o: .\Driver\gyroscope.h
 ..\output\position_service.o: .\Driver\oled.h
-..\output\position_service.o: .\Service\DataScope_DP.h
 ..\output\position_service.o: .\app\main_app.h
 ..\output\position_service.o: .\app\debug_app.h

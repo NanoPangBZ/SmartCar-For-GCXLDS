@@ -7,6 +7,7 @@ void debug_app_Task(void)
 	{
 		ReturnSpeed();
 		ReturnPosition();
+		ReturnYaw();
 		Vofa_Send();
 	}
 }
@@ -19,6 +20,13 @@ void Usart_Print(uint8_t*dat)
 void Usart_Help(void)
 {
 	
+}
+
+void ReturnYaw(void)
+{
+	int Yaw;
+	Yaw = Gyroscope_ReadYaw();
+	Vofa_Input((float)Yaw/10,6);
 }
 
 void ReturnPosition(void)

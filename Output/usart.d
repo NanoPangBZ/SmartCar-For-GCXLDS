@@ -37,7 +37,7 @@
 ..\output\usart.o: .\Driver\motor_init.h
 ..\output\usart.o: .\Driver\motor_driver.h
 ..\output\usart.o: .\Driver\street_motor.h
-..\output\usart.o: .\Service\MechanicalArm_Clr.h
+..\output\usart.o: .\Service\MechanicalArm_Service.h
 ..\output\usart.o: .\Service\position_service.h
 ..\output\usart.o: .\Driver\vofa_p.h
 ..\output\usart.o: .\Driver\gyroscope.h

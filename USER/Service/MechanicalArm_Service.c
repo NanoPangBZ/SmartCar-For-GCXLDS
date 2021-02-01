@@ -1,8 +1,19 @@
-#include "MechanicalArm_Clr.h"
+#include "MechanicalArm_Service.h"
 
-void MechanicalArm_Service(void)
+void MechanicalArm_Inc(void)
 {
 	uint8_t temp;
+	uint8_t flag  =1;
+	for(temp=0;temp<5;temp++)
+	{
+		if(*street_width[temp] != Width_Target[temp])
+		{
+			flag = 0;
+			break;
+		}
+	}
+	if(flag)
+		MechanicalArm_State = 0;
 	for(temp=0;temp<5;temp++)
 	{
 		if(*street_width[temp] < Width_Target[temp])
@@ -21,15 +32,21 @@ void MechanicalArm_Service(void)
 	}
 }
 
-uint8_t Street_Check(void)
+void MechanicalArm_Service(void)
 {
-	uint8_t temp;
-	for(temp=0;temp<5;temp++)
+	switch(MechanicalArm_State)
 	{
-		if(*street_width[temp] != Width_Target[temp])
-			return 1;
+		case 1:
+			break;
+		case 2:
+			break;
+		default:break;
 	}
-	return 0;
+}
+
+uint8_t Read_MechanicalArmState(void)
+{
+	return MechanicalArm_State;
 }
 
 void Cash(void)
@@ -42,11 +59,17 @@ void Put(void)
 	Width_Target[4] = 700;
 }
 
-void MechanicalArm_WidthSet(uint16_t*Width)
+void MechanicalArm_WidthSet(uint16_t*Width,uint8_t*Inc)
 {
 	uint8_t temp;
 	for(temp=0;temp<4;temp++)
 		Width_Target[temp] = *(Width+temp);
+	if(Inc!=NULL)
+	{
+		for(temp = 0;temp < 4;temp++)
+			Width_Target[temp] = *(Inc+temp);
+	}
+	MechanicalArm_State = 1;
 }
 
 void MechanicalArm_Reset(uint8_t mode)

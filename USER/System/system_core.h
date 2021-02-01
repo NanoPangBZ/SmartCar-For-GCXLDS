@@ -8,7 +8,7 @@
 #include "motor_init.h"
 #include "motor_driver.h"
 #include "street_motor.h"
-#include "MechanicalArm_Clr.h"
+#include "MechanicalArm_Service.h"
 #include "position_service.h"
 #include "vofa_p.h"
 #include "gyroscope.h"

@@ -1,28 +1,35 @@
-import sensor,image#引入感光元件的模块
+# Untitled - By: 马猴烧酒哒 - 周一 2月 1 2021
 
-# 设置摄像头
-sensor.reset()#初始化感光元件
-sensor.set_pixformat(sensor.RGB565)#设置为彩色，用到其它参数时再上官方文档里找，下同
-sensor.set_framesize(sensor.QVGA)#设置图像的大小
-sensor.skip_frames(20)#跳过n张照片，在更改设置后，跳过一些帧，等待感光元件变稳定。
+import sensor, image, time
+
+sensor.reset()
+sensor.set_pixformat(sensor.RGB565)
+sensor.set_framesize(sensor.QVGA)
+sensor.skip_frames(100)
 
 Red_threshold = (0, 70, 30, 85, -27, 68)
-Green_threshold = (0, 70, 30, 85, -27, 68)
+Green_threshold = (0, 100, -128, -17, 94, 5)
+Blue_threshold = (14, 68, 10, 127, -128, -17)
 
-def RedFind():
-    RedBlobs = img.find_blobs([Red_threshold],merge=True,area_threshold = 1000)
-    MaxW = 0
-    TargetBlob = None
-    if RedBlobs:
-        for RedBlob in RedBlobs:
-            if RedBlob.area() > MaxW:
-                MaxW = RedBlob.area()
-                TargetBlob = RedBlob
-        img.draw_rectangle(TargetBlob.rect())
-        img.draw_string(TargetBlob[0],TargetBlob[1]-10,'Red',mono_space = False)
-    return TargetBlob
+Red_Blobs = None
+Green_Blobs = None
+Blue_Blobs = None
+Target_threshold = [Red_threshold,Green_threshold,Blue_threshold]
+Target_Blobs = [Red_Blobs,Green_Blobs,Blue_Blobs]
 
-# 一直拍照
+clock = time.clock()
+
+def TargetBlobs_Get():
+    temp = 0
+    while temp < 3:
+        Target_Blobs[temp] = img.find_blobs([Target_threshold[temp]],merge = True,area_threshold = 600)
+        if Target_Blobs[temp] != None:
+            for Blob in Target_Blobs[temp]:
+                img.draw_rectangle(Blob.rect())
+        temp += 1
+
 while(True):
-    img = sensor.snapshot()#拍摄一张照片，img为一个image对象
-    x = RedFind()
+    clock.tick()
+    img = sensor.snapshot()
+    TargetBlobs_Get()
+    print(clock.fps())

@@ -472,8 +472,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Service\MechanicalArm_Clr.c</PathWithFileName>
-      <FilenameWithoutPath>MechanicalArm_Clr.c</FilenameWithoutPath>
+      <PathWithFileName>.\Service\position_service.c</PathWithFileName>
+      <FilenameWithoutPath>position_service.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -484,8 +484,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Service\position_service.c</PathWithFileName>
-      <FilenameWithoutPath>position_service.c</FilenameWithoutPath>
+      <PathWithFileName>.\Service\MechanicalArm_Service.c</PathWithFileName>
+      <FilenameWithoutPath>MechanicalArm_Service.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

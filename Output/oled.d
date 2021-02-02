@@ -39,6 +39,8 @@
 ..\output\oled.o: .\Driver\street_motor.h
 ..\output\oled.o: .\Service\MechanicalArm_Service.h
 ..\output\oled.o: .\Service\position_service.h
+..\output\oled.o: .\Service\openmv_service.h
+..\output\oled.o: .\Service\wifi_service.h
 ..\output\oled.o: .\Driver\vofa_p.h
 ..\output\oled.o: .\Driver\gyroscope.h
 ..\output\oled.o: .\Driver\oled.h

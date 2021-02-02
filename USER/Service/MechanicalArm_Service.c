@@ -37,6 +37,7 @@ void MechanicalArm_Service(void)
 	switch(MechanicalArm_State)
 	{
 		case 1:
+			MechanicalArm_Inc();
 			break;
 		case 2:
 			break;
@@ -81,6 +82,7 @@ void MechanicalArm_Reset(uint8_t mode)
 		{
 			*street_width[temp] = Reset_Value[temp];
 			Width_Target[temp] = Reset_Value[temp];
+			MechanicalArm_State = 1;
 		}
 	}else
 	{

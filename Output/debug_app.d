@@ -39,6 +39,8 @@
 ..\output\debug_app.o: .\Driver\street_motor.h
 ..\output\debug_app.o: .\Service\MechanicalArm_Service.h
 ..\output\debug_app.o: .\Service\position_service.h
+..\output\debug_app.o: .\Service\openmv_service.h
+..\output\debug_app.o: .\Service\wifi_service.h
 ..\output\debug_app.o: .\Driver\vofa_p.h
 ..\output\debug_app.o: .\Driver\gyroscope.h
 ..\output\debug_app.o: .\Driver\oled.h

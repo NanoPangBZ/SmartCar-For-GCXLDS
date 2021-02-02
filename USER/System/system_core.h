@@ -10,6 +10,8 @@
 #include "street_motor.h"
 #include "MechanicalArm_Service.h"
 #include "position_service.h"
+#include "openmv_service.h"
+#include "wifi_service.h"
 #include "vofa_p.h"
 #include "gyroscope.h"
 #include "oled.h"

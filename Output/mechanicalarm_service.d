@@ -39,6 +39,8 @@
 ..\output\mechanicalarm_service.o: .\Driver\street_motor.h
 ..\output\mechanicalarm_service.o: .\Service\MechanicalArm_Service.h
 ..\output\mechanicalarm_service.o: .\Service\position_service.h
+..\output\mechanicalarm_service.o: .\Service\openmv_service.h
+..\output\mechanicalarm_service.o: .\Service\wifi_service.h
 ..\output\mechanicalarm_service.o: .\Driver\vofa_p.h
 ..\output\mechanicalarm_service.o: .\Driver\gyroscope.h
 ..\output\mechanicalarm_service.o: .\Driver\oled.h

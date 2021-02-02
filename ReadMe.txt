@@ -1,9 +1,3 @@
-stm32f103ret6为主控芯片
-stm32f103c8t6为辅助芯片
-对部分固件库函数有改动
-主控与辅助芯片采用串口通讯
-OpenMV与主控芯片通过串口连接
-			2021/1/??
 1.OLED通讯
 2.OLED初始化
 3.OLED缓存式更新屏幕方法(占用时序过多,可能会改)
@@ -45,3 +39,7 @@ OpenMV与主控芯片通过串口连接
 3.Task_Load()本身作为初始化函数,Task_Reload()作为系统心跳任务的首个任务
 4.SmartCar _V0.11 硬件平台测试通过
 			2021/1/28		版本号: SmartCar _V0.12    Task_Reload
+1.OpenMV色块筛选(长宽比例,颜色阈值)
+2.Vofa+上位机驱动
+3.wifi_service空文件
+			2021/2/3		版本号: SmartCar _V0.17   OpenMV,Vofa+

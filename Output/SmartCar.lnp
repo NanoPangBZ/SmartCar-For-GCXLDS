@@ -22,6 +22,8 @@
 "..\output\system_core.o"
 "..\output\position_service.o"
 "..\output\mechanicalarm_service.o"
+"..\output\openmv_service.o"
+"..\output\wifi_service.o"
 "..\output\main_app.o"
 "..\output\debug_app.o"
 --library_type=microlib --strict --scatter "..\Output\SmartCar.sct"

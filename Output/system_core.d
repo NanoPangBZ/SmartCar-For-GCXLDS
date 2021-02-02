@@ -38,6 +38,8 @@
 ..\output\system_core.o: .\Driver\street_motor.h
 ..\output\system_core.o: .\Service\MechanicalArm_Service.h
 ..\output\system_core.o: .\Service\position_service.h
+..\output\system_core.o: .\Service\openmv_service.h
+..\output\system_core.o: .\Service\wifi_service.h
 ..\output\system_core.o: .\Driver\vofa_p.h
 ..\output\system_core.o: .\Driver\gyroscope.h
 ..\output\system_core.o: .\Driver\oled.h

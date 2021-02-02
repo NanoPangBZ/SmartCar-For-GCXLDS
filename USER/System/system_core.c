@@ -14,6 +14,7 @@ void PCB_System_Init(void)
 	IIC_Init();
 	OLED_Init();
 	//将任务函数的指针载入任务列表
+	TaskList_Config(1,1,1,openmv_service);
 	TaskList_Config(1,1,3,SystemBeat_Task);
 	TaskList_Config(1,1,2,debug_app_Task);
 	TaskList_Config(1,1,2,main_app_Task);

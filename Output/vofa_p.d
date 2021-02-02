@@ -39,6 +39,8 @@
 ..\output\vofa_p.o: .\Driver\street_motor.h
 ..\output\vofa_p.o: .\Service\MechanicalArm_Service.h
 ..\output\vofa_p.o: .\Service\position_service.h
+..\output\vofa_p.o: .\Service\openmv_service.h
+..\output\vofa_p.o: .\Service\wifi_service.h
 ..\output\vofa_p.o: .\Driver\vofa_p.h
 ..\output\vofa_p.o: .\Driver\gyroscope.h
 ..\output\vofa_p.o: .\Driver\oled.h

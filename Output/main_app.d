@@ -46,4 +46,5 @@
 ..\output\main_app.o: .\Driver\oled.h
 ..\output\main_app.o: .\app\main_app.h
 ..\output\main_app.o: .\app\debug_app.h
+..\output\main_app.o: .\app\test_app.h
 ..\output\main_app.o: app\position.h

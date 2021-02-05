@@ -46,3 +46,4 @@
 ..\output\motor_init.o: .\Driver\oled.h
 ..\output\motor_init.o: .\app\main_app.h
 ..\output\motor_init.o: .\app\debug_app.h
+..\output\motor_init.o: .\app\test_app.h

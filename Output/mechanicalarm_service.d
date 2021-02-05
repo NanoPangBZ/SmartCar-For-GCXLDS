@@ -46,3 +46,4 @@
 ..\output\mechanicalarm_service.o: .\Driver\oled.h
 ..\output\mechanicalarm_service.o: .\app\main_app.h
 ..\output\mechanicalarm_service.o: .\app\debug_app.h
+..\output\mechanicalarm_service.o: .\app\test_app.h

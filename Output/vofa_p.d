@@ -46,3 +46,4 @@
 ..\output\vofa_p.o: .\Driver\oled.h
 ..\output\vofa_p.o: .\app\main_app.h
 ..\output\vofa_p.o: .\app\debug_app.h
+..\output\vofa_p.o: .\app\test_app.h

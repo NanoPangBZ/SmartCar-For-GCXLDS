@@ -46,3 +46,4 @@
 ..\output\iic.o: .\Driver\oled.h
 ..\output\iic.o: .\app\main_app.h
 ..\output\iic.o: .\app\debug_app.h
+..\output\iic.o: .\app\test_app.h

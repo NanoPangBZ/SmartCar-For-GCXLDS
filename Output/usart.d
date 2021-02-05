@@ -46,3 +46,4 @@
 ..\output\usart.o: .\Driver\oled.h
 ..\output\usart.o: .\app\main_app.h
 ..\output\usart.o: .\app\debug_app.h
+..\output\usart.o: .\app\test_app.h

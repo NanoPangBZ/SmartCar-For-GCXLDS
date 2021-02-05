@@ -6,7 +6,7 @@
 //宏定义通道数量
 #define DataNum	10	
 
-typedef struct 
+typedef struct
 {
 	float Date[DataNum];
 	unsigned char FramEnd[4];

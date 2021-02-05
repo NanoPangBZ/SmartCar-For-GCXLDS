@@ -43,3 +43,8 @@
 2.Vofa+上位机驱动
 3.wifi_service空文件
 			2021/2/3		版本号: SmartCar _V0.17   OpenMV,Vofa+
+1.增加矢量控制函数(未完成)
+2.航向角基准修改函数
+3.模块测试app
+4.OpenMV二维码识别
+			2021/2/5		版本号  SmartCar _V0.18   VectorMove_Set

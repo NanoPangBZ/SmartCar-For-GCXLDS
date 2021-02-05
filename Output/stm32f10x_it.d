@@ -46,3 +46,4 @@
 ..\output\stm32f10x_it.o: .\Driver\oled.h
 ..\output\stm32f10x_it.o: .\app\main_app.h
 ..\output\stm32f10x_it.o: .\app\debug_app.h
+..\output\stm32f10x_it.o: .\app\test_app.h

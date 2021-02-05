@@ -45,3 +45,4 @@
 ..\output\main.o: .\Driver\oled.h
 ..\output\main.o: .\app\main_app.h
 ..\output\main.o: .\app\debug_app.h
+..\output\main.o: .\app\test_app.h

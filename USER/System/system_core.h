@@ -17,6 +17,7 @@
 #include "oled.h"
 #include "main_app.h"
 #include "debug_app.h"
+#include "test_app.h"
 
 //任务控制块
 typedef struct

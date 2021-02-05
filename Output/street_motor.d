@@ -46,3 +46,4 @@
 ..\output\street_motor.o: .\Driver\oled.h
 ..\output\street_motor.o: .\app\main_app.h
 ..\output\street_motor.o: .\app\debug_app.h
+..\output\street_motor.o: .\app\test_app.h

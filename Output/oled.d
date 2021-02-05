@@ -46,4 +46,5 @@
 ..\output\oled.o: .\Driver\oled.h
 ..\output\oled.o: .\app\main_app.h
 ..\output\oled.o: .\app\debug_app.h
+..\output\oled.o: .\app\test_app.h
 ..\output\oled.o: Driver\oled_font.h

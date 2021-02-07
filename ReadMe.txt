@@ -48,3 +48,8 @@
 3.模块测试app
 4.OpenMV二维码识别
 			2021/2/5		版本号  SmartCar _V0.18   VectorMove_Set
+1.矢量控制模块实机测试通过
+2.航向角修正实机测试通过
+3.矢量控制下取消最小速度限制
+4.航向角修正速度 与 位置控制速度 可能会出Bug
+			2021/2/7		版本号:  SmartCar _V0.19  VectorMove_Set-InHardware

@@ -12,8 +12,44 @@ void PositionClr_Service(void)
 	YawSpeed_Config();			//旋转速度配置
 	Speed_Syn();					//合成位移和旋转的速度
 	Speed_Set(Target_Speed);		//将合成的速度载入PID结构体
-	Inc_PID_Realiz();				//PID实现;
+	Inc_PID_Realiz();				//PID实现
 	Gyroscope_RequestUpdata();		//向陀螺仪发送航向角刷新请求
+}
+
+int Read_ErrYaw(void)
+{
+	return Err_Yaw/10;
+}
+
+void YawTarget_Set(int ReYaw)
+{
+	Target_Yaw = ReYaw*10;
+}
+
+void VectorMove_Set(int XSpeed,int YSpeed)
+{
+	uint8_t temp;
+	int AbsSpeed;
+	int Abs_Max = 0;
+	Position_Mode = 2;
+	Position_Speed[0]  = Position_Speed[3] = (XSpeed + YSpeed);
+	Position_Speed[1] = Position_Speed[2] = (XSpeed - YSpeed);
+	//取绝对值极值
+	for(temp = 0;temp<4;temp++)
+	{
+		AbsSpeed = Position_Speed[temp];
+		if(AbsSpeed<0)
+			AbsSpeed = -AbsSpeed;
+		if(AbsSpeed>Abs_Max)
+			Abs_Max = AbsSpeed;
+	}
+	if(Abs_Max > Speed_Base)
+	{
+		float k;
+		k = Speed_Base / Abs_Max;
+		for(temp = 0;temp<4;temp++)
+			Position_Speed[temp] = (int)(Position_Speed[temp]*k);
+	}
 }
 
 void PositionSpeed_Config(uint8_t Dir)
@@ -63,7 +99,7 @@ void Speed_Syn(void)
 			else
 				Target_Speed[temp] = -Speed_Max;
 		}
-		if(AbsTemp < Speed_Min && AbsTemp!=0)
+		if(AbsTemp < Speed_Min && AbsTemp!=0 && Position_Mode != 2)
 		{
 			if(Target_Speed[temp]>0)
 				Target_Speed[temp] = Speed_Min;
@@ -76,7 +112,7 @@ void Speed_Syn(void)
 void YawSpeed_Config(void)
 {
 	int temp = Err_Yaw;
-	if(Position_State == 1 || Position_State == 3 || Position_State ==6)
+	if(Position_State == 1 || Position_State == 3 || Position_State ==6 || Position_Mode == 2)
 	{
 		Yaw_Speed[0] = temp;
 		Yaw_Speed[1] = -temp;
@@ -230,7 +266,7 @@ void Speed_Set(int*PointSet)
 void Position_Update(void)
 {
 	long int*distance;
-	Err_Yaw = Gyroscope_ReadYaw();
+	Err_Yaw = Gyroscope_ReadYaw() - Target_Yaw;
 	distance = Read_Distance();
 	position[0] += (*distance + *(distance + 1)  + *(distance +2 ) + *(distance + 3)) /4;
 	position[1] += (*distance - *(distance + 1 ) - *(distance + 2) + *(distance + 3))/4;

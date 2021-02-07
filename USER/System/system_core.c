@@ -17,7 +17,8 @@ void PCB_System_Init(void)
 	TaskList_Config(1,1,1,openmv_service);
 	TaskList_Config(1,1,3,SystemBeat_Task);
 	TaskList_Config(1,1,2,debug_app_Task);
-	TaskList_Config(1,1,2,main_app_Task);
+	TaskList_Config(1,1,2,test_app_task);
+//	TaskList_Config(1,1,2,main_app_Task);
 	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
 	TaskList_Config(1,0,3,SystemConti_Task);
@@ -25,6 +26,7 @@ void PCB_System_Init(void)
 	//系统进入待机
 	SystemState_Set(1);
 	SysTick_Config(5*72000);			//系统主心跳
+	VectorMove_Set(50,-100);
 	while(1)
 	{
 		uint8_t temp;

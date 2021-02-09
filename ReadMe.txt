@@ -53,3 +53,7 @@
 3.矢量控制下取消最小速度限制
 4.航向角修正速度 与 位置控制速度 可能会出Bug
 			2021/2/7		版本号:  SmartCar _V0.19  VectorMove_Set-InHardware
+1.OpenMV二维码识别(有的时候无法识别出二维码,find_qrcodes没有返回对象列表)
+2.OpenMV图像矫正
+3.MechanicalArm_Service重构
+			2021/2/10		版本号:  SmartCar _V0.20  OpenMV_QrCode_Find

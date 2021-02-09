@@ -1,24 +1,26 @@
 #include "test_app.h"
+#include <math.h>
+
+#define val	3.14/180
 
 void test_app_task(void)
 {
-//	static uint8_t flag = 0;
-//	if(Read_ErrYaw() == 0)
-//	{
-//		if(flag)
-//		{
-//			flag = 0;
-//			YawTarget_Set(90);
-//		}else
-//		{
-//			flag = 1;
-//			YawTarget_Set(0);
-//		}
-//	}
-//	if(flag == 0)
-//	{
-//		flag = 1;
-//		VectorMove_Set(100,-100);
-//	}
+	TestPart1();
 }
 
+void TestPart1(void)
+{
+	//圆周运动
+	static int Angle = 0;
+	static uint16_t IncTime = 0;
+	int Xspeed,Yspeed;
+	if(IncTime==10)
+	{
+		Angle++;
+		Xspeed = (int)(sin((double)(Angle*val))*50);
+		Yspeed = (int)(cos((double)(Angle*val))*50);
+		VectorMove_Set(Xspeed,Yspeed);
+		IncTime =0;
+	}
+	IncTime++;
+}

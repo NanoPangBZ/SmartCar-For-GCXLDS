@@ -47,3 +47,4 @@
 ..\output\test_app.o: .\app\main_app.h
 ..\output\test_app.o: .\app\debug_app.h
 ..\output\test_app.o: .\app\test_app.h
+..\output\test_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

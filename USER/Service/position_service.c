@@ -112,6 +112,7 @@ void Speed_Syn(void)
 void YawSpeed_Config(void)
 {
 	int temp = Err_Yaw;
+	//动态修正
 	if(Position_State == 1 || Position_State == 3 || Position_State ==6 || Position_Mode == 2)
 	{
 		Yaw_Speed[0] = temp;
@@ -120,6 +121,7 @@ void YawSpeed_Config(void)
 		Yaw_Speed[3] = -temp;
 	}else
 	{
+		//静态修正
 		if(Err_Yaw/10!=0)
 		{
 			Yaw_Speed[0] = temp;

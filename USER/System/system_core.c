@@ -25,8 +25,7 @@ void PCB_System_Init(void)
 	TaskList_Config(1,0,3,OLED_FB_Task);
 	//系统进入待机
 	SystemState_Set(1);
-	SysTick_Config(5*72000);			//系统主心跳
-	VectorMove_Set(50,-100);
+	SysTick_Config(3*72000);			//系统主心跳
 	while(1)
 	{
 		uint8_t temp;

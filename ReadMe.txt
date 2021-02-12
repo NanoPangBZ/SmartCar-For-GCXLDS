@@ -57,3 +57,6 @@
 2.OpenMV图像矫正
 3.MechanicalArm_Service重构
 			2021/2/10		版本号:  SmartCar _V0.20  OpenMV_QrCode_Find
+1.RGB565转二进制位图,阈值处理,加快二维码识别
+2.OpenMV串口发送
+			2021/2/12		版本号:  SmartCar _V0.20  OpenMV RGB565-> binary

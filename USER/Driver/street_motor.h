@@ -10,6 +10,12 @@
 #define	SM_Period		20000 - 1
 #define	SM_Prescaler	72 - 1
 
+
+//机械臂的CCR寄存器地址
+static uint16_t* street_width[6] = {(uint16_t*)&TIM3->CCR1 , (uint16_t*)&TIM3->CCR2,
+							(uint16_t*)&TIM3->CCR3 , (uint16_t*)&TIM3->CCR4,
+							(uint16_t*)&TIM2->CCR1 , (uint16_t*)&TIM2->CCR2 };
+
 void StreetMotor_Init(void);
 void StreetMotor_GPIO_Config(void);			
 void StreetMotor_TIM_Config(void);

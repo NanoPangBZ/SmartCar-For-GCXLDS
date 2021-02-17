@@ -1,32 +1,53 @@
 #include "debug_app.h"
-#include "cmd_list.h"
+#include "street_motor.h"
 
 void debug_app_Task(void)
 {
-	if(ReturnState)
+//	if(ReturnState)
+//	{
+//		ReturnSpeed();
+//		ReturnPosition();
+//		ReturnYaw();
+//		Vofa_Send();
+//	}
+	MechanicalArm_Debug();
+}
+
+void MechanicalArm_Debug(void)
+{
+	static uint8_t StreetNum = 0;
+	static uint8_t Inc_Dir = 0;	//0:无增长  1:增长  2:递减
+	uint8_t *cmd;
+	cmd = Read_Usart_Sbuffer(1);
+	if(*cmd!=0)
 	{
-		ReturnSpeed();
-		ReturnPosition();
-		ReturnYaw();
-		Vofa_Send();
+		if(*(cmd+1) != 0xff)
+		{
+			StreetNum = *(cmd+1) / 3;
+			Inc_Dir = *(cmd+1)%3;
+		}else
+		{
+			uint8_t temp;
+			printf("==============\r\n");
+			for(temp=0;temp<5;temp++)
+				printf("%d\r\n",*street_width[temp]);
+		}
+		Usart_Sbuffer_Push(1,1);
 	}
-}
-
-void Usart_Print(uint8_t*dat)
-{
-	
-}
-
-void Usart_Help(void)
-{
-	
+	if(Inc_Dir == 1)
+	{
+		*street_width[StreetNum] += 1;
+	}else if(Inc_Dir == 2)
+	{
+		*street_width[StreetNum] -= 1;
+	}
 }
 
 void ReturnYaw(void)
 {
 	int Yaw;
 	Yaw = Gyroscope_ReadYaw();
-	Vofa_Input((float)Yaw/10,6);
+	Vofa_Input((float)Yaw,6);
 }
 
 void ReturnPosition(void)

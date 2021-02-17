@@ -5,7 +5,7 @@
 
 void test_app_task(void)
 {
-	TestPart1();
+	//TestPart1();
 }
 
 void TestPart1(void)
@@ -17,8 +17,8 @@ void TestPart1(void)
 	if(IncTime==10)
 	{
 		Angle++;
-		Xspeed = (int)(sin((double)(Angle*val))*50);
-		Yspeed = (int)(cos((double)(Angle*val))*50);
+		Xspeed = (int)(sin((double)(Angle*val))*150);
+		Yspeed = (int)(cos((double)(Angle*val))*150);
 		VectorMove_Set(Xspeed,Yspeed);
 		IncTime =0;
 	}

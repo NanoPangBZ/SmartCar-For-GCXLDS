@@ -3,6 +3,7 @@
 
 void main_app_Task(void)
 {
+	
 }
 
 //寻找二维码

@@ -60,3 +60,6 @@
 1.RGB565转二进制位图,阈值处理,加快二维码识别
 2.OpenMV串口发送
 			2021/2/12		版本号:  SmartCar _V0.20  OpenMV RGB565-> binary
+1.MechanicalArm_Service完成Inc控制模式
+2.机械臂基准脉宽测定‘
+			2021/2/17		版本号:   SmartCar _V0.21  MechanicalArm_IncClr

@@ -19,7 +19,7 @@ void Wait_Gyroscope(void)
 	uint32_t SysSubTime = Read_SysSubTime();
 	Gyroscope_RequestUpdata();
 	//等待陀螺仪稳定
-	while(num != 100)
+	while(num != 250)
 	{
 		//5ms读取间隔
 		if(Read_SysSubTime() - last_time > 500)

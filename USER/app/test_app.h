@@ -6,5 +6,7 @@
 void test_app_task(void);
 
 void TestPart1(void);
+void TestPart2(void);
+void TestPart2_1(void);
 
 #endif

@@ -27,7 +27,7 @@ typedef struct
 	uint8_t TaskType;		//0:Driver   1.Service   2.App   3.System
 	uint8_t TaskNumID;	//由系统分配(执行顺序)
 	//uint32_t RunTime;	//测试任务时序
-	void (*Task_Addr)(void);
+	void (*Task_Addr)(void);	//任务函数指针
 }TCB;
 
 /***************系统时间***************/

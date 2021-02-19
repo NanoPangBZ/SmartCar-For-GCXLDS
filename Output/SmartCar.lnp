@@ -27,7 +27,7 @@
 "..\output\main_app.o"
 "..\output\debug_app.o"
 "..\output\test_app.o"
---library_type=microlib --strict --scatter "..\Output\SmartCar.sct"
+--library_type=microlib --nodebug --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\SmartCar.map" -o ..\Output\SmartCar.axf

@@ -10,7 +10,14 @@ void debug_app_Task(void)
 //		ReturnYaw();
 //		Vofa_Send();
 //	}
-	MechanicalArm_Debug();
+//	MechanicalArm_Debug();
+	uint8_t temp;
+	if(ReturnState)
+	{
+		for(temp=0;temp<5;temp++)
+			Vofa_Input((float)*(street_width[temp]),temp);
+		Vofa_Send();
+	}
 }
 
 void MechanicalArm_Debug(void)

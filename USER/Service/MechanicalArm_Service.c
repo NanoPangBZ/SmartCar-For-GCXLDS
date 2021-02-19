@@ -8,10 +8,37 @@ void MechanicalArm_Service(void)
 	if(MechanicalArm_State)
 	{
 		if(MechanicalArm_Mode)
-			printf("A");
+			MechanicalArm_LineClr();
 		else
 			MechanicalArm_WidthInc();
 		MechanicalArm_WidthSet(Target_Width);
+	}
+}
+
+void MechanicalArm_LineClr(void)
+{
+	
+}
+
+void MechanicalArm_IncAngleSet(int*angle,uint8_t*Inc)
+{
+	uint8_t temp;
+	MechanicalArm_Mode = 0;
+	for(temp=0;temp<5;temp++)
+	{
+		StateEnd_Width[temp] = AngleToWidth((double)*(angle+temp));
+		Width_Inc[temp] = *(Inc+temp);
+	}
+}
+
+void MechanicalArm_IncSet(uint16_t*Width,uint8_t*Inc)
+{
+	uint8_t temp;
+	MechanicalArm_Mode = 0;
+	for(temp=0;temp<5;temp++)
+	{
+		StateEnd_Width[temp] = *(Width+temp);
+		Width_Inc[temp] = *(Inc+temp);
 	}
 }
 
@@ -55,9 +82,7 @@ uint16_t AngleToWidth(double Angle)
 {
 	double temp;
 	temp = Angle*Width_Unit;
-	if(temp>0)
-		return (uint16_t)temp+Width_Benchmark;
-	return 0xffff;
+	return (uint16_t)(Width_Benchmark + temp);
 }
 
 void MechanicalArm_WidthSet(uint16_t*Width)
@@ -75,14 +100,12 @@ uint8_t Read_MechanicalArmState(void)
 
 void MechanicalArm_Reset(uint8_t mode)
 {
-	uint8_t temp;
 	if(mode)
 	{
 		MechanicalArm_WidthSet(Reset_Width);
 	}else
 	{
 		
-		for(temp=0;temp<4;temp++)
-			Target_Width[temp] = Reset_Width[temp];
+		MechanicalArm_WidthSet(Reset_Width);
 	}
 }

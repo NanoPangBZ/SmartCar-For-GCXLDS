@@ -1,6 +1,0 @@
---c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\FWLIB\src -I ..\USER -I .\Driver -I .\System -I .\app -I .\Service
--ID:\0_GCXLDS\Code\USER\RTE
--IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include
--IC:\Keil_v5\ARM\CMSIS\Include
--D__UVISION_VERSION="521" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD
--o ..\output\mechanicalarm_service.o --omf_browse ..\output\mechanicalarm_service.crf --depend ..\output\mechanicalarm_service.d "Service\MechanicalArm_Service.c"

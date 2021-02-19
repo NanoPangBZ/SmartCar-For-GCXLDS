@@ -63,3 +63,8 @@
 1.MechanicalArm_Service完成Inc控制模式
 2.机械臂基准脉宽测定‘
 			2021/2/17		版本号:   SmartCar _V0.21  MechanicalArm_IncClr
+1.修复了ResetWidth与初始Width不一致导致的机械臂失控
+2.修复了Angle转Width返回0xffff的bug
+3.增加了基于Angle的Inc机械臂控制模式
+4.完成Inc控制模式的硬件平台测试
+			2021/2/19		版本号:   SmartCar _V0.22  MechanicalArm_Inc Test

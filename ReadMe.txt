@@ -68,3 +68,7 @@
 3.增加了基于Angle的Inc机械臂控制模式
 4.完成Inc控制模式的硬件平台测试
 			2021/2/19		版本号:   SmartCar _V0.22  MechanicalArm_Inc Test
+1.角度转脉宽验证举报正确
+2.余弦定理控制有未知bug
+3.MechanicalArm_Service基本框架确定
+			2021/2/24		版本号:   SmartCar _V0.23 AngleToWidth Debug

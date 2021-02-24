@@ -11,6 +11,7 @@ void ReturnPosition(void);
 void ReturnSpeed(void);
 void ReturnYaw(void);
 
+void MechanicalArm_AngleDebug(void);
 void MechanicalArm_Debug(void);
 
 #endif

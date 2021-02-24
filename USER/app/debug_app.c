@@ -11,13 +11,22 @@ void debug_app_Task(void)
 //		Vofa_Send();
 //	}
 //	MechanicalArm_Debug();
-	uint8_t temp;
-	if(ReturnState)
-	{
-		for(temp=0;temp<5;temp++)
-			Vofa_Input((float)*(street_width[temp]),temp);
-		Vofa_Send();
-	}
+//	uint8_t temp;
+//	if(ReturnState)
+//	{
+//		for(temp=0;temp<5;temp++)
+//			Vofa_Input((float)*(street_width[temp]),temp);
+//		Vofa_Send();
+//	}
+	MechanicalArm_AngleDebug();
+}
+
+void MechanicalArm_AngleDebug(void)
+{
+//	*street_width[0] = AngleToWidth(90.0);
+//	*street_width[1] = AngleToWidth(45.0);
+//	*street_width[2] = AngleToWidth(45.0);
+//	*street_width[3] = AngleToWidth(45.0);
 }
 
 void MechanicalArm_Debug(void)

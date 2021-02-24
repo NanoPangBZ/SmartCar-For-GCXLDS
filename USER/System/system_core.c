@@ -11,19 +11,23 @@ void PCB_System_Init(void)
 	StreetMotor_Init();
 	Motor_Init();
 	Gyroscope_Init();
-	IIC_Init();
-	OLED_Init();
+//	IIC_Init();
+//	OLED_Init();
 	//将任务函数的指针载入任务列表
-	TaskList_Config(1,1,1,openmv_service);
-	TaskList_Config(1,1,3,SystemBeat_Task);
+//	TaskList_Config(1,1,1,openmv_service);
+//	TaskList_Config(1,1,3,SystemBeat_Task);
 	TaskList_Config(1,1,2,debug_app_Task);
 	TaskList_Config(1,1,2,test_app_task);
-//	TaskList_Config(1,1,2,main_app_Task);
+	TaskList_Config(1,1,2,main_app_Task);
 	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
-	TaskList_Config(1,0,3,SystemConti_Task);
-	TaskList_Config(1,0,3,OLED_FB_Task);
+//	TaskList_Config(1,0,3,SystemConti_Task);
+//	TaskList_Config(1,0,3,OLED_FB_Task);
 	//系统进入待机
+	
+	uint8_t Inc[5] = {1,1,1,1,1};
+	MechanicalArm_PositionIncSet(100,100,Inc);
+	
 	SystemState_Set(1);
 	SysTick_Config(3*72000);			//系统主心跳
 	while(1)

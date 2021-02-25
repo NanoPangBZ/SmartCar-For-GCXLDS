@@ -77,9 +77,9 @@ double*CosinAngle_Config(int len,int hight)
 	a2 = (ArmLen2[0]-ArmLen2[1]+lc2) * 1.0 / (2*ArmLen[0]*lc);
 	a2 = acos(a2)*HZJ;
 	angle[0] = 90 - a1 - a2;
-	angle[2] = a1;
+	angle[2] = 90 -angle[1] - angle[0];
 	angle[1] = -angle[1];
-	angle[2] = -angle[2];
+	angle[2] = 0;
 	return angle;
 }
 

@@ -72,3 +72,5 @@
 2.余弦定理控制有未知bug
 3.MechanicalArm_Service基本框架确定
 			2021/2/24		版本号:   SmartCar _V0.23 AngleToWidth Debug
+1.余弦定理控制验证正确,但是有办法未知是死角,死角区域暂时没有确定
+			2021/2/25		版本号:   SmartCar  _V0.24 CosinAngle_Config Debug

@@ -4,11 +4,36 @@
 
 void MechanicalArm_Service(void)
 {
+	MechanicalArm_StateUpdata();
 	if(MechanicalArm_State)
 	{
-		MechanicalArm_WidthInc();
+		if(MechanicalArm_Mode)
+			MechanicalArm_PositionInc();
+		else
+			MechanicalArm_WidthInc();
 	}
-	MechanicalArm_WidthSet(Target_Width);
+}
+
+void MechanicalArm_StateUpdata(void)
+{
+	if(MechanicalArm_State != 0)
+	{
+		uint8_t temp;
+		if(MechanicalArm_Mode)
+		{
+			if(MechanicalArm_Position[0] == MechanicalArm_EndPosition[0] && MechanicalArm_Position[1] == MechanicalArm_EndPosition[1])
+				MechanicalArm_State = 0;
+		}else
+		{
+			for(temp=0;temp<5;temp++)
+			{
+				if(Target_Width[temp] != StateEnd_Width[temp])
+					break;
+			}
+			if(temp == 4)
+				MechanicalArm_State = 0;
+		}
+	}
 }
 
 void MechanicalArm_WidthInc(void)
@@ -28,11 +53,37 @@ void MechanicalArm_WidthInc(void)
 				Target_Width[temp] = StateEnd_Width[temp];
 		}
 	}
+	MechanicalArm_WidthSet(Target_Width);
 }
 
-void MechanicalArm_PositionLineSet(int len,int hight,uint8_t speed)
+void MechanicalArm_PositionInc(void)
 {
-	
+	uint8_t temp;
+	for(temp=0;temp<2;temp++)
+	{
+		if(MechanicalArm_Position[temp] < MechanicalArm_EndPosition[temp])
+		{
+			MechanicalArm_Position[temp] += MechanicalArm_Speed;
+			if(MechanicalArm_Position[temp] > MechanicalArm_EndPosition[temp])
+				MechanicalArm_Position[temp] = MechanicalArm_EndPosition[temp];
+		}else
+		{
+			MechanicalArm_Position[temp] -= MechanicalArm_EndPosition[temp];
+			if(MechanicalArm_Position[temp] < MechanicalArm_EndPosition[temp])
+				MechanicalArm_Position[temp] = MechanicalArm_EndPosition[temp];
+		}
+	}
+	MechanicalArm_PositionSet(MechanicalArm_Position[0],MechanicalArm_Position[1]);
+}
+
+void MechanicalArm_PositionLineSet(int slen,int shight,int elen,int ehight,uint8_t speed)
+{
+	MechanicalArm_State = 1;
+	MechanicalArm_Mode = 1;
+	MechanicalArm_PositionSet(slen,shight);
+	MechanicalArm_EndPosition[0] = elen;
+	MechanicalArm_EndPosition[1] = ehight;
+	MechanicalArm_Speed = speed;
 }
 
 void MechanicalArm_PositionIncSet(int len,int hight,uint8_t*Inc)
@@ -41,6 +92,8 @@ void MechanicalArm_PositionIncSet(int len,int hight,uint8_t*Inc)
 	uint8_t temp;
 	MechanicalArm_Mode = 0;
 	MechanicalArm_State = 1;
+	MechanicalArm_Position[0] = len;
+	MechanicalArm_Position[1] = hight;
 	angle = CosinAngle_Config(len,hight);
 	for(temp=0;temp<3;temp++)
 	{
@@ -55,7 +108,7 @@ void MechanicalArm_PositionSet(int len,int hight)
 	double*angle;
 	angle = CosinAngle_Config(len,hight);
 	for(temp=0;temp<3;temp++)
-		*street_width[temp+1] = AngleToWidth(*(angle+temp));
+		*street_width[temp+1] = StateEnd_Width[temp+1] = Target_Width[temp+1] = AngleToWidth(*(angle+temp));
 }
 
 double*CosinAngle_Config(int len,int hight)
@@ -93,6 +146,8 @@ void MechanicalArm_BaceAngleIncSet(double angle,uint8_t Inc)
 
 void ClawClr(uint8_t state,uint8_t Inc)
 {
+	MechanicalArm_Mode = 0;
+	MechanicalArm_State = 1;
 	StateEnd_Width[4] = Claw_Width[state];
 	MechanicalArm_Inc[4] = Inc;
 }

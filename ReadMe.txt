@@ -74,3 +74,6 @@
 			2021/2/24		版本号:   SmartCar _V0.23 AngleToWidth Debug
 1.余弦定理控制验证正确,但是有办法未知是死角,死角区域暂时没有确定
 			2021/2/25		版本号:   SmartCar  _V0.24 CosinAngle_Config Debug
+1.机械臂线性控制等待硬件平台测试
+2.除OpenMV通信,WIFI,顶层控制,其余驱动和服务部分全部完成
+			2021/3/1		版本号:    SmartCar _V0.25  Driver&Service  _BaceTest

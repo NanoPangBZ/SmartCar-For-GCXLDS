@@ -3,20 +3,20 @@
 
 #include "system_core.h"
 
-#define RED 	0
-#define GREEN	1
-#define BLUE	2
-#define ALL		3
+#define Read_Usart()  Read_Usart_Sbuffer(1)
+#define Read_End()	Usart_Sbuffer_Clear(1)
 
-static uint8_t openmv_state = 0;
-static uint8_t openmv_fps = 0;
-static unsigned char OpenMV_Sbuffer[128];	//OpenMV信息接收缓存区
+typedef struct
+{
+	uint8_t OpenMV_State;
+	uint8_t OpenMV_fps;
+}OpenMV_Data;
+
+static unsigned char OpenMV_Sbuffer[128];	//OpenMV信息接收缓存区 [0]为接收到的字节数
 
 void openmv_service(void);
-uint8_t Read_FindData(void);
-int Read_BlobPosition(uint8_t TargetBlobs);
-char* Read_RQcode(void);
 
-void openmv_decode(void);
+void openmv_Decode(void);
+void openmv_Updata(void);
 
 #endif

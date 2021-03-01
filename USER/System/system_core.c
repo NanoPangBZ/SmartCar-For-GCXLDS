@@ -25,8 +25,9 @@ void PCB_System_Init(void)
 //	TaskList_Config(1,0,3,OLED_FB_Task);
 	//系统进入待机
 	
-	uint8_t Inc[5] = {1,1,1,1,1};
-	MechanicalArm_PositionIncSet(220,70,Inc);
+//	uint8_t Inc[5] = {1,1,1,1,1};
+//	MechanicalArm_PositionIncSet(220,70,Inc);
+	MechanicalArm_PositionSet(220,70);
 	
 	SystemState_Set(1);
 	SysTick_Config(3*72000);			//系统主心跳

@@ -3,11 +3,6 @@
 
 #include "system_core.h"
 
-/*********************************
-
-*********************************/
-
-
 static uint8_t RunState = 0;		//0:等待
 static long int TargetPosition[2];
 

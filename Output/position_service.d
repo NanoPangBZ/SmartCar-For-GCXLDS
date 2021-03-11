@@ -40,10 +40,13 @@
 ..\output\position_service.o: .\Service\MechanicalArm_Service.h
 ..\output\position_service.o: .\Service\position_service.h
 ..\output\position_service.o: .\Service\openmv_service.h
+..\output\position_service.o: .\Service\feedback_service.h
 ..\output\position_service.o: .\Service\wifi_service.h
 ..\output\position_service.o: .\Driver\vofa_p.h
 ..\output\position_service.o: .\Driver\gyroscope.h
 ..\output\position_service.o: .\Driver\oled.h
 ..\output\position_service.o: .\app\main_app.h
+..\output\position_service.o: .\app\goods_app.h
+..\output\position_service.o: .\app\position_app.h
 ..\output\position_service.o: .\app\debug_app.h
 ..\output\position_service.o: .\app\test_app.h

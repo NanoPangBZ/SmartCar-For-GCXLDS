@@ -40,10 +40,13 @@
 ..\output\motor_driver.o: .\Service\MechanicalArm_Service.h
 ..\output\motor_driver.o: .\Service\position_service.h
 ..\output\motor_driver.o: .\Service\openmv_service.h
+..\output\motor_driver.o: .\Service\feedback_service.h
 ..\output\motor_driver.o: .\Service\wifi_service.h
 ..\output\motor_driver.o: .\Driver\vofa_p.h
 ..\output\motor_driver.o: .\Driver\gyroscope.h
 ..\output\motor_driver.o: .\Driver\oled.h
 ..\output\motor_driver.o: .\app\main_app.h
+..\output\motor_driver.o: .\app\goods_app.h
+..\output\motor_driver.o: .\app\position_app.h
 ..\output\motor_driver.o: .\app\debug_app.h
 ..\output\motor_driver.o: .\app\test_app.h

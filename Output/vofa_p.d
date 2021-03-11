@@ -40,10 +40,13 @@
 ..\output\vofa_p.o: .\Service\MechanicalArm_Service.h
 ..\output\vofa_p.o: .\Service\position_service.h
 ..\output\vofa_p.o: .\Service\openmv_service.h
+..\output\vofa_p.o: .\Service\feedback_service.h
 ..\output\vofa_p.o: .\Service\wifi_service.h
 ..\output\vofa_p.o: .\Driver\vofa_p.h
 ..\output\vofa_p.o: .\Driver\gyroscope.h
 ..\output\vofa_p.o: .\Driver\oled.h
 ..\output\vofa_p.o: .\app\main_app.h
+..\output\vofa_p.o: .\app\goods_app.h
+..\output\vofa_p.o: .\app\position_app.h
 ..\output\vofa_p.o: .\app\debug_app.h
 ..\output\vofa_p.o: .\app\test_app.h

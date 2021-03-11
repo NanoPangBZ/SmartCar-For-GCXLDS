@@ -40,11 +40,14 @@
 ..\output\test_app.o: .\Service\MechanicalArm_Service.h
 ..\output\test_app.o: .\Service\position_service.h
 ..\output\test_app.o: .\Service\openmv_service.h
+..\output\test_app.o: .\Service\feedback_service.h
 ..\output\test_app.o: .\Service\wifi_service.h
 ..\output\test_app.o: .\Driver\vofa_p.h
 ..\output\test_app.o: .\Driver\gyroscope.h
 ..\output\test_app.o: .\Driver\oled.h
 ..\output\test_app.o: .\app\main_app.h
+..\output\test_app.o: .\app\goods_app.h
+..\output\test_app.o: .\app\position_app.h
 ..\output\test_app.o: .\app\debug_app.h
 ..\output\test_app.o: .\app\test_app.h
 ..\output\test_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

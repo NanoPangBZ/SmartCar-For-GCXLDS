@@ -3,20 +3,18 @@
 
 #include "system_core.h"
 
-#define Read_Usart()  Read_Usart_Sbuffer(1)
-#define Read_End()	Usart_Sbuffer_Clear(1)
-
-typedef struct
-{
-	uint8_t OpenMV_State;
-	uint8_t OpenMV_fps;
-}OpenMV_Data;
-
-static unsigned char OpenMV_Sbuffer[128];	//OpenMV信息接收缓存区 [0]为接收到的字节数
-
+static uint8_t OpenMV_State = 0;
+static uint8_t OpenMV_Tstate = 1;
+static uint8_t QrCode[3] = {0,0,0};
+static uint8_t RecordingNum = 0;		//截取到的物块个数
+static uint8_t Recording[3] = {0,0,0};	//原料区物块摆放顺序
+	
 void openmv_service(void);
 
-void openmv_Decode(void);
-void openmv_Updata(void);
+void OpenMV_Set(uint8_t State);
+uint8_t*Read_QrCode(void);
+void OpenMV_Init(void);
+void OpenMV_Updata(void);
+uint8_t*Read_Recording(void);
 
 #endif

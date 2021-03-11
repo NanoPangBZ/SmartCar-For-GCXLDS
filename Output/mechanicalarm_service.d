@@ -40,11 +40,14 @@
 ..\output\mechanicalarm_service.o: .\Service\MechanicalArm_Service.h
 ..\output\mechanicalarm_service.o: .\Service\position_service.h
 ..\output\mechanicalarm_service.o: .\Service\openmv_service.h
+..\output\mechanicalarm_service.o: .\Service\feedback_service.h
 ..\output\mechanicalarm_service.o: .\Service\wifi_service.h
 ..\output\mechanicalarm_service.o: .\Driver\vofa_p.h
 ..\output\mechanicalarm_service.o: .\Driver\gyroscope.h
 ..\output\mechanicalarm_service.o: .\Driver\oled.h
 ..\output\mechanicalarm_service.o: .\app\main_app.h
+..\output\mechanicalarm_service.o: .\app\goods_app.h
+..\output\mechanicalarm_service.o: .\app\position_app.h
 ..\output\mechanicalarm_service.o: .\app\debug_app.h
 ..\output\mechanicalarm_service.o: .\app\test_app.h
 ..\output\mechanicalarm_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

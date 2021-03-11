@@ -11,11 +11,14 @@
 #include "MechanicalArm_Service.h"
 #include "position_service.h"
 #include "openmv_service.h"
+#include "feedback_service.h"
 #include "wifi_service.h"
 #include "vofa_p.h"
 #include "gyroscope.h"
 #include "oled.h"
 #include "main_app.h"
+#include "goods_app.h"
+#include "position_app.h"
 #include "debug_app.h"
 #include "test_app.h"
 
@@ -43,10 +46,6 @@ static TCB ContinueTaskList[32];			//连续任务总表
 /*********系统初始化*****************/
 void PCB_System_Init(void);
 void SysSecBeat_Config(uint16_t A,uint16_t Pre);
-/***********系统相关任务**********/
-void SystemBeat_Task(void);	//系统周期任务
-void SystemConti_Task(void);	//系统状态切换任务
-void OLED_FB_Task(void);	//通过OLED反馈系统信息
 //任务列表配置
 void TaskList_Config(uint8_t Enable,uint8_t RunType,uint8_t TaskType,void (*Task)(void));
 /************系统对外接口*****************/
@@ -59,6 +58,9 @@ void Task_Cmd(void(*Task)(void),uint8_t Enable);		//任务使能控制
 /****************中断*****************/
 void SysTick_Handler(void);
 void TIM7_IRQHandler(void);
+
+
+void Test(void);
 
 #endif
 

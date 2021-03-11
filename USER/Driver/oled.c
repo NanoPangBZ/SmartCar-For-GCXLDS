@@ -100,6 +100,37 @@ void OLED_ShowNum(uint16_t num,uint8_t page,uint8_t col,uint8_t size)
 	}
 }
 
+void OLED_ClearBlok(uint8_t page1,uint8_t page2,uint8_t col1,uint8_t col2)
+{
+	uint8_t Tpage;
+	uint8_t Tcol;
+	for(Tpage=page1;Tpage<page2+1;Tpage++)
+	{
+		OLED_PosSet(Tpage,col1);
+		for(Tcol=col1;Tcol<col2+1;Tcol++)
+			OLED_SendByte(0x00,OLED_DATA);
+	}
+}
+
+void OLED_ShowNumChar(uint8_t*str,uint8_t page,uint8_t col,uint8_t size,uint8_t num)
+{
+	uint8_t len;
+	uint8_t Ncol;
+	switch(size)
+	{
+		case 1:len=7;break;
+		case 2:len=9;break;
+		default:break;
+	}
+	for(Ncol=col;Ncol<127;Ncol+=len)
+	{
+		OLED_ShowChar(*str,page,Ncol,size);
+		num--;
+		if(num == 0)
+			break;
+	}
+}
+
 void OLED_ShowChar(uint8_t chr,uint8_t page,uint8_t col,uint8_t size)
 {
 	uint8_t temp;

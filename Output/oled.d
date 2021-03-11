@@ -40,11 +40,14 @@
 ..\output\oled.o: .\Service\MechanicalArm_Service.h
 ..\output\oled.o: .\Service\position_service.h
 ..\output\oled.o: .\Service\openmv_service.h
+..\output\oled.o: .\Service\feedback_service.h
 ..\output\oled.o: .\Service\wifi_service.h
 ..\output\oled.o: .\Driver\vofa_p.h
 ..\output\oled.o: .\Driver\gyroscope.h
 ..\output\oled.o: .\Driver\oled.h
 ..\output\oled.o: .\app\main_app.h
+..\output\oled.o: .\app\goods_app.h
+..\output\oled.o: .\app\position_app.h
 ..\output\oled.o: .\app\debug_app.h
 ..\output\oled.o: .\app\test_app.h
 ..\output\oled.o: Driver\oled_font.h

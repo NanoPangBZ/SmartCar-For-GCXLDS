@@ -39,10 +39,13 @@
 ..\output\main.o: .\Service\MechanicalArm_Service.h
 ..\output\main.o: .\Service\position_service.h
 ..\output\main.o: .\Service\openmv_service.h
+..\output\main.o: .\Service\feedback_service.h
 ..\output\main.o: .\Service\wifi_service.h
 ..\output\main.o: .\Driver\vofa_p.h
 ..\output\main.o: .\Driver\gyroscope.h
 ..\output\main.o: .\Driver\oled.h
 ..\output\main.o: .\app\main_app.h
+..\output\main.o: .\app\goods_app.h
+..\output\main.o: .\app\position_app.h
 ..\output\main.o: .\app\debug_app.h
 ..\output\main.o: .\app\test_app.h

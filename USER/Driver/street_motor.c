@@ -4,7 +4,6 @@ void StreetMotor_Init(void)
 {
 	StreetMotor_GPIO_Config();
 	StreetMotor_TIM_Config();
-	MechanicalArm_Reset(1);
 }
 
 void StreetMotor_GPIO_Config(void)

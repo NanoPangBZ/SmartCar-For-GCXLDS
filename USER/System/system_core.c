@@ -6,31 +6,36 @@ void PCB_System_Init(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	//驱动初始化
 	SysSecBeat_Config(10,72);		//系统初始化辅助心跳
+	StreetMotor_Init();
+	MechanicalArm_Reset();
+	IIC_Init();
+	OLED_Init();
+	
+	OLED_ShowString("SystemInit",0,0,2);
+	
 	Usart_Config();
 	Usart_DMA_Config();
-	StreetMotor_Init();
 	Motor_Init();
+	OpenMV_Init();
+	OLED_ShowString("OpenMV ready",2,0,2);
+	
 	Gyroscope_Init();
-//	IIC_Init();
-//	OLED_Init();
+	OLED_Clear();
+	
 	//将任务函数的指针载入任务列表
-//	TaskList_Config(1,1,1,openmv_service);
-//	TaskList_Config(1,1,3,SystemBeat_Task);
-	TaskList_Config(1,1,2,debug_app_Task);
-	TaskList_Config(1,1,2,test_app_task);
-	TaskList_Config(1,1,2,main_app_Task);
 	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
-//	TaskList_Config(1,0,3,SystemConti_Task);
-//	TaskList_Config(1,0,3,OLED_FB_Task);
-	//系统进入待机
-	
-//	uint8_t Inc[5] = {1,1,1,1,1};
-//	MechanicalArm_PositionIncSet(220,70,Inc);
-	MechanicalArm_PositionSet(220,70);
+	TaskList_Config(1,1,1,feedback_service);
+	TaskList_Config(1,1,1,openmv_service);
+//	TaskList_Config(1,1,2,debug_app_Task);
+//	TaskList_Config(1,1,2,test_app_task);
+	TaskList_Config(1,1,2,goods_app_Task);
+	TaskList_Config(1,1,2,position_app_Task);
+	TaskList_Config(1,1,2,main_app_Task);
 	
 	SystemState_Set(1);
-	SysTick_Config(3*72000);			//系统主心跳
+	SysTick_Config(6*72000);			//系统主心跳
+	
 	while(1)
 	{
 		uint8_t temp;
@@ -86,19 +91,6 @@ void SysSecBeat_Config(uint16_t A,uint16_t Pre)
 	
 	NVIC_Init(&NVIC_InitStruct);
 	TIM_Cmd(TIM7,ENABLE);
-}
-
-void OLED_FB_Task(void)
-{
-	static uint8_t ShowStrFlag = 0;
-	if(ShowStrFlag!=1)
-	{
-		OLED_ShowString("SysState:",0,0,1);
-		OLED_ShowString("SysTime:",1,0,1);
-		ShowStrFlag = 1;
-	}
-	OLED_ShowNum(SystemState,0,64,1);
-	OLED_ShowNum((uint16_t)(SysTime/200),1,57,1);
 }
 
 void SystemBeat_Task(void)

@@ -3,13 +3,13 @@
 
 void debug_app_Task(void)
 {
-//	if(ReturnState)
-//	{
-//		ReturnSpeed();
-//		ReturnPosition();
-//		ReturnYaw();
-//		Vofa_Send();
-//	}
+	if(ReturnState)
+	{
+		ReturnSpeed();
+		ReturnPosition();
+		ReturnYaw();
+		Vofa_Send();
+	}
 //	MechanicalArm_Debug();
 //	uint8_t temp;
 //	if(ReturnState)
@@ -23,10 +23,6 @@ void debug_app_Task(void)
 
 void MechanicalArm_AngleDebug(void)
 {
-	*street_width[0] = AngleToWidth(90.0);
-	*street_width[1] = AngleToWidth(45.0);
-	*street_width[2] = AngleToWidth(-45.0);
-	*street_width[3] = AngleToWidth(45.0);
 }
 
 void MechanicalArm_Debug(void)

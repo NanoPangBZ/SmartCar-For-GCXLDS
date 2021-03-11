@@ -4,7 +4,7 @@
 
 void MechanicalArm_Service(void)
 {
-	MechanicalArm_StateUpdata();
+	MechanicalArm_StateCheck();
 	if(MechanicalArm_State)
 	{
 		if(MechanicalArm_Mode)
@@ -14,166 +14,163 @@ void MechanicalArm_Service(void)
 	}
 }
 
-void MechanicalArm_StateUpdata(void)
+void MechanicalArm_StateCheck(void)
 {
-	if(MechanicalArm_State != 0)
+	uint8_t temp;
+	uint8_t flag = 0;
+	if(MechanicalArm_State)
 	{
-		uint8_t temp;
 		if(MechanicalArm_Mode)
 		{
-			if(MechanicalArm_Position[0] == MechanicalArm_EndPosition[0] && MechanicalArm_Position[1] == MechanicalArm_EndPosition[1])
-				MechanicalArm_State = 0;
+			for(temp=0;temp<2;temp++)
+			{
+				if(MechanicalArm_Position[temp] != MechanicalArm_TargetPosition[temp])
+					flag = 1;
+			}
 		}else
 		{
 			for(temp=0;temp<5;temp++)
 			{
-				if(Target_Width[temp] != StateEnd_Width[temp])
-					break;
+				if(Target_Width[temp] != *street_width[temp])
+					flag =1;
 			}
-			if(temp == 4)
-				MechanicalArm_State = 0;
 		}
+		if(flag!=1)
+			MechanicalArm_State = 0;
 	}
 }
 
 void MechanicalArm_WidthInc(void)
 {
 	uint8_t temp;
-	for(temp=0;temp<5;temp++)
+	for(temp = 0;temp<5;temp++)
 	{
-		if(Target_Width[temp]<StateEnd_Width[temp])
+		if(*street_width[temp]<Target_Width[temp])
 		{
-			Target_Width[temp]+= MechanicalArm_Inc[temp];
-			if(Target_Width[temp]>StateEnd_Width[temp])
-				Target_Width[temp] = StateEnd_Width[temp];
+			*street_width[temp] += MechanicalArm_Inc[temp];
+			if(*street_width[temp] > Target_Width[temp])
+				*street_width[temp] = Target_Width[temp];
 		}else
 		{
-			Target_Width[temp]-= MechanicalArm_Inc[temp];
-			if(Target_Width[temp]<StateEnd_Width[temp])
-				Target_Width[temp] = StateEnd_Width[temp];
+			*street_width[temp] -= MechanicalArm_Inc[temp];
+			if(*street_width[temp] < Target_Width[temp])
+				*street_width[temp] = Target_Width[temp];
 		}
 	}
-	MechanicalArm_WidthSet(Target_Width);
+}
+
+uint8_t Read_MechanicalArmState(void)
+{
+	return MechanicalArm_State;
 }
 
 void MechanicalArm_PositionInc(void)
 {
+	static uint8_t cycle = 0;
 	uint8_t temp;
-	for(temp=0;temp<2;temp++)
+	cycle++;
+	if(cycle > 5)
 	{
-		if(MechanicalArm_Position[temp] < MechanicalArm_EndPosition[temp])
+		for(temp = 0;temp<2;temp++)
 		{
-			MechanicalArm_Position[temp] += MechanicalArm_Speed;
-			if(MechanicalArm_Position[temp] > MechanicalArm_EndPosition[temp])
-				MechanicalArm_Position[temp] = MechanicalArm_EndPosition[temp];
-		}else
-		{
-			MechanicalArm_Position[temp] -= MechanicalArm_EndPosition[temp];
-			if(MechanicalArm_Position[temp] < MechanicalArm_EndPosition[temp])
-				MechanicalArm_Position[temp] = MechanicalArm_EndPosition[temp];
+			if(MechanicalArm_Position[temp] < MechanicalArm_TargetPosition[temp])
+				MechanicalArm_Position[temp] ++;
+			else if(MechanicalArm_Position[temp] != MechanicalArm_TargetPosition[temp])
+				MechanicalArm_Position[temp]--;
 		}
+		MechanicalArm_PositionSet(MechanicalArm_Position[0],MechanicalArm_Position[1]);
+		cycle = 0;
 	}
-	MechanicalArm_PositionSet(MechanicalArm_Position[0],MechanicalArm_Position[1]);
 }
 
-void MechanicalArm_PositionLineSet(int slen,int shight,int elen,int ehight,uint8_t speed)
+uint16_t AngleToWidth(double angle)
+{
+	uint16_t temp;
+	temp = (uint16_t)(Width_Benchmark+(int)(angle*Width_Unit));
+	return temp;
+}
+
+void MechanicalArm_PostionLineSet(int slen,int shight,int elen,int ehight)
 {
 	MechanicalArm_State = 1;
 	MechanicalArm_Mode = 1;
+	MechanicalArm_TargetPosition[0] = elen;
+	MechanicalArm_TargetPosition[1] = ehight;
 	MechanicalArm_PositionSet(slen,shight);
-	MechanicalArm_EndPosition[0] = elen;
-	MechanicalArm_EndPosition[1] = ehight;
-	MechanicalArm_Speed = speed;
-}
-
-void MechanicalArm_PositionIncSet(int len,int hight,uint8_t*Inc)
-{
-	double*angle;
-	uint8_t temp;
-	MechanicalArm_Mode = 0;
-	MechanicalArm_State = 1;
-	MechanicalArm_Position[0] = len;
-	MechanicalArm_Position[1] = hight;
-	angle = CosinAngle_Config(len,hight);
-	for(temp=0;temp<3;temp++)
-	{
-		StateEnd_Width[temp+1] = AngleToWidth(*(angle+temp));
-		MechanicalArm_Inc[temp+1] = *(Inc+temp+1);
-	}
 }
 
 void MechanicalArm_PositionSet(int len,int hight)
-{	
+{
 	uint8_t temp;
 	double*angle;
-	angle = CosinAngle_Config(len,hight);
+	angle = Cosin_AngleConfig(len,hight);
+	MechanicalArm_Position[0] = len;
+	MechanicalArm_Position[1] = hight;
 	for(temp=0;temp<3;temp++)
-		*street_width[temp+1] = StateEnd_Width[temp+1] = Target_Width[temp+1] = AngleToWidth(*(angle+temp));
-}
-
-double*CosinAngle_Config(int len,int hight)
-{
-	uint32_t lc,lc2;
-	static double angle[3];
-	double a1,a2;
-	len -= ArmLen[2];
-	if(len!=0)		//防止出现tan90°
 	{
-		a1 = hight*1.0 / len;
-		a1 = atan(a1)*HZJ;
+		*street_width[temp+1] = AngleToWidth(*(angle+temp));
 	}
-	lc2 = hight*hight + len*len;
-	lc = (int)sqrt(lc2);
-	angle[1] = (ArmLen2[0]+ArmLen2[1]-lc2) * 1.0 / (2*ArmLen[0]*ArmLen[1]);
-	angle[1]  = acos(angle[1] )*HZJ;
-	angle[1] = 180 - angle[1];
-	a2 = (ArmLen2[0]-ArmLen2[1]+lc2) * 1.0 / (2*ArmLen[0]*lc);
-	a2 = acos(a2)*HZJ;
-	angle[0] = 90 - a1 - a2;
-	angle[2] = 90 -angle[1] - angle[0];
-	angle[1] = -angle[1];
-	angle[2] = 0;
-	return angle;
 }
 
-void MechanicalArm_BaceAngleIncSet(double angle,uint8_t Inc)
+double*Cosin_AngleConfig(int len,int hight)
+{
+	static double Angle[3] = {0,0,0};
+	double a1,a2;
+	uint32_t l2,l;
+	len -= ArmLen[2];
+	hight -= 20;
+	l2 = (hight*hight) + (len*len);
+	l = sqrt((double)l2);
+	if(len!=0)
+	{
+		a1 = (hight*1.0)/(len*1.0);		//计算tan值
+		a1 = atan(a1)*HZJ;				//求a1角度
+	}else
+	{
+		a1 = 90.0;
+	}
+	a2 = ((l2+ArmLen2[0]-ArmLen2[1])*1.0) / ( (2*l*ArmLen[0])*1.0);	//计算a2 cos值
+	a2 = acos(a2)*HZJ;		//求a2角度
+	Angle[0] = 90 -a1 -a1;		//计算舵机1的前倾角
+	AngleCheck(&Angle[0]);
+	Angle[1] = ((ArmLen2[1]+ArmLen2[0]-l2)*1.0) / ((2*ArmLen[1]*ArmLen[0])*1.0);
+	Angle[1] = acos(Angle[1])*HZJ;
+	Angle[1] = 180 - Angle[1];
+	AngleCheck(&Angle[1]);
+	Angle[2] = 90 - Angle[0] - Angle[1];
+	AngleCheck(&Angle[2]);
+	Angle[1] = -Angle[1];
+	Angle[2] = -Angle[2];
+	return Angle;
+}
+
+void AngleCheck(double*angle)
+{
+	if(*angle>90.0)
+		*angle = 90.0;
+	if(*angle<-90.0)
+		*angle = -90.0;
+}
+
+void TargetWidth_Set(uint16_t width,uint8_t inc,uint8_t num)
 {
 	MechanicalArm_Mode = 0;
-	MechanicalArm_State  = 1;
-	StateEnd_Width[0] = AngleToWidth(angle);
-	MechanicalArm_Inc[0] = Inc;
+	MechanicalArm_State = 1;
+	Target_Width[num] = width;
+	MechanicalArm_Inc[num] = inc;
 }
 
 void ClawClr(uint8_t state,uint8_t Inc)
 {
 	MechanicalArm_Mode = 0;
 	MechanicalArm_State = 1;
-	StateEnd_Width[4] = Claw_Width[state];
+	Target_Width[4] = Claw_Width[state];
 	MechanicalArm_Inc[4] = Inc;
 }
 
-uint16_t AngleToWidth(double Angle)
-{
-	double temp;
-	temp = Angle*Width_Unit;
-	return (uint16_t)(Width_Benchmark + temp);
-}
-
-void MechanicalArm_WidthSet(uint16_t*Width)
+void MechanicalArm_Reset(void)
 {
 	uint8_t temp;
-	for(temp = 0;temp<5;temp++)
-		*street_width[temp] = *(Width+temp);
-}
-
-void MechanicalArm_Reset(uint8_t mode)
-{
-	if(mode)
-	{
-		MechanicalArm_WidthSet(Reset_Width);
-	}else
-	{
-		
-		MechanicalArm_WidthSet(Reset_Width);
-	}
+	for(temp=0;temp<5;temp++)
+		*street_width[temp] = Reset_Width[temp];
 }

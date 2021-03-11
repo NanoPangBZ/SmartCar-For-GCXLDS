@@ -24,9 +24,12 @@
 "..\output\mechanicalarm_service.o"
 "..\output\openmv_service.o"
 "..\output\wifi_service.o"
+"..\output\feedback_service.o"
+"..\output\goods_app.o"
 "..\output\main_app.o"
 "..\output\debug_app.o"
 "..\output\test_app.o"
+"..\output\position_app.o"
 --library_type=microlib --nodebug --strict --scatter "..\Output\SmartCar.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

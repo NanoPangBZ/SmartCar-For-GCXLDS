@@ -534,11 +534,21 @@
               <FileType>1</FileType>
               <FilePath>.\Service\wifi_service.c</FilePath>
             </File>
+            <File>
+              <FileName>feedback_service.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Service\feedback_service.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>app</GroupName>
           <Files>
+            <File>
+              <FileName>goods_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\goods_app.c</FilePath>
+            </File>
             <File>
               <FileName>main_app.c</FileName>
               <FileType>1</FileType>
@@ -553,6 +563,11 @@
               <FileName>test_app.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\test_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>position_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\position_app.c</FilePath>
             </File>
           </Files>
         </Group>

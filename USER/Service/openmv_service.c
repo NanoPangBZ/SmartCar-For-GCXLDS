@@ -29,6 +29,8 @@ void OpenMV_Updata(void)
 	uint8_t temp;
 	uint8_t flag = 0;
 	uint8_t Blob;
+	uint8_t cx;
+	uint8_t w;
 	Cmd = Read_Usart_Sbuffer(2);
 	if(*Cmd!=0)
 	{
@@ -43,31 +45,58 @@ void OpenMV_Updata(void)
 			switch(OpenMV_State)
 			{
 				case 1:
+					OLED_ShowString("TC:",6,0,2);
 					for(temp=3;*(Cmd+temp)!=0xde;temp++)
 					{
-						QrCode[temp - 3] = *(Cmd+temp);
-						OLED_ShowChar(QrCode[temp - 3],7,temp*8,1);
+						QrCode[temp - 3] = *(Cmd+temp) ;
+						OLED_ShowChar(QrCode[temp - 3],6,(temp-3)*8+27,2);
+					}
+					//数字ASSCI转16进制
+					for(temp=0;temp<7;temp++)
+					{
+						if(temp!=3)
+							QrCode[temp] -= 0x30;
 					}
 					break;
 				case 2:
 					Blob = *(Cmd+3) + 1;
-					if(RecordingNum==0)
+					cx = *(Cmd+4);
+					if(cx>12 && cx<18)
 					{
-						Recording[0] = Blob;
-						RecordingNum++;
-					}else
-					{
-						for(temp=0;temp<RecordingNum;temp++)
+						if(RecordingNum==0)
 						{
-							if(Recording[temp]==Blob)
-								flag = 1;
+							Recording[0] = Blob;
+							RecordingNum++;
+						}else
+						{
+							for(temp=0;temp<3;temp++)
+							{
+								if(Recording[temp]==Blob)
+									flag = 1;
+							}
+							if(flag==0)
+							{
+								Recording[RecordingNum] = Blob;
+								RecordingNum++;
+							}
 						}
-						if(flag==0)
-							Recording[RecordingNum] = Blob;
+						if(RecordingNum == 2)
+						{
+							PositionService_Stop();
+							Recording[2] = 6 - Recording[0] - Recording[1];
+						}
 					}
-					OLED_ShowNum(Blob,0,0,1);
-					if(RecordingNum == 3)
-						PositionService_Stop();
+					break;
+				case 3:
+					Blob = *(Cmd+3) + 1;
+					cx = *(Cmd+4);
+					w = *(Cmd+5);
+					if(cx>10 && cx<20)
+					{
+						LookData[0] = Blob;
+						LookData[1] = cx;
+						LookData[2] = w;
+					}
 					break;
 			}
 			Usart_Sbuffer_Clear(2);
@@ -75,14 +104,14 @@ void OpenMV_Updata(void)
 	}
 }
 
+uint8_t*Read_LookData(void)
+{
+	return LookData;
+}
+
 uint8_t*Read_Recording(void)
 {
-	static uint8_t temp;
-	temp = 0xff;
-	if(RecordingNum<3)
-		return &temp;
-	else
-		return Recording;
+	return Recording;
 }
 
 uint8_t*Read_QrCode(void)

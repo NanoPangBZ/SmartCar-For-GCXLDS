@@ -7,12 +7,42 @@ void main_app_Task(void)
 		main_state++;
 		stateCmd_flag = 0;
 		main_flag = 1;
+		OLED_ShowString("state:",0,0,1);
 	}
 	if(main_state == 1)
 		GetQrCode();
 	else if(main_state == 2)
 		Blobs_Recording();
-	OLED_ShowNum(main_state,6,0,1);
+	else if(main_state == 3)
+		Get_UpBlobs();
+	OLED_ShowNum(main_state,0,42,1);
+}
+
+void Get_UpBlobs(void)
+{
+	static uint8_t temp;
+	OpenMV_Set(3);
+	if(stateCmd_flag == 0)
+	{
+		Attitude_Set(2);
+		stateCmd_flag = 1;
+		PositionTask_StateSet(3);
+	}else if(stateCmd_flag==1)
+	{
+		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0)
+			stateCmd_flag++;
+	}else if(stateCmd_flag == 2)
+	{
+		if(Read_AttitudeFlag()==0)
+		{
+			GetBlob_Floor(0,temp);
+			stateCmd_flag++;
+		}
+	}else if(stateCmd_flag == 3)
+	{
+		if(Read_AttitudeFlag()==0)
+			main_flag = 0;
+	}
 }
 
 void Blobs_Recording(void)
@@ -28,12 +58,14 @@ void Blobs_Recording(void)
 		PositionTask_StateSet(2);
 	}else
 	{
-		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0 && *addr != 0xff)
+		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0 && *(addr+2) != 0)
 		{
 			main_flag = 0;
+			OLED_ShowString("Ord:",1,0,1);
 			for(temp=0;temp<3;temp++)
 			{
-				OLED_ShowNum(*(addr+temp),1,temp*7,1);
+				OLED_ShowNum(*(addr+temp),1,temp*7+28,1);
+				BlobsList[temp] = *(addr+temp);
 			}
 		}
 	}
@@ -52,5 +84,6 @@ void GetQrCode(void)
 		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0 && *(Read_QrCode()) != 0)
 			main_flag = 0;
 	}
+	
 }
 

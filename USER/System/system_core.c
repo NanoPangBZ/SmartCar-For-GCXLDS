@@ -25,7 +25,7 @@ void PCB_System_Init(void)
 	//将任务函数的指针载入任务列表
 	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
-	TaskList_Config(1,1,1,feedback_service);
+//	TaskList_Config(1,1,1,feedback_service);
 	TaskList_Config(1,1,1,openmv_service);
 //	TaskList_Config(1,1,2,debug_app_Task);
 //	TaskList_Config(1,1,2,test_app_task);

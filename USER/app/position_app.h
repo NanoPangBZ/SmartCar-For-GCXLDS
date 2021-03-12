@@ -10,6 +10,7 @@ static uint8_t PositionTask_State = 0;
 void position_app_Task(void);
 void FindQrcode_Move(void);
 void FindBlobs_Move(void);
+void GetBlob_Move(void);
 
 uint8_t Read_PositionTaskEn(void);
 void PositionTask_StateSet(uint8_t state);

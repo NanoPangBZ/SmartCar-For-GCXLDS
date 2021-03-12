@@ -14,21 +14,24 @@ sensor.set_pixformat(sensor.RGB565)  #sensor.GRAYSCALE -> 灰度图(加快二维
 sensor.set_framesize(sensor.QVGA)
 sensor.skip_frames(50)
 #sensor.set_contrast(2)              #对比度  -3~3
-sensor.set_auto_gain(False)
-sensor.set_auto_whitebal(False)
+sensor.set_brightness(1)            #亮度
+sensor.set_auto_gain(False)         #自动增益
+#sensor.set_auto_whitebal(False,(-5.243186, -6.02073, -2.498888))     #自动白平衡 实验室光照增益
+sensor.set_auto_whitebal(False,(-6.02073, -5.243186, -1.972561))
+sensor.set_auto_exposure(False)     #自动曝光
 
 
 #色块阈值
 Light_threshold = (0, 52, -128, 127, -128, 127)  #二维码扫描位图转化阈值
 #Red_threshold = (23, 77, 18, 101, -16, 96)
-Red_threshold = (7, 52, 19, 92, -13, 127)
-Green_threshold = (28, 56, -55, -19, -80, 61)
-Blue_threshold = (16, 40, 0, 41, -81, -17)
+Red_threshold = (6, 68, 36, 127, -3, 47)
+Green_threshold = (29, 67, -91, -27, -3, 49)
+Blue_threshold = (0, 64, -72, 49, -94, -22)
 Target_threshold = [Red_threshold,Green_threshold,Blue_threshold]
 Target_List = [None,None,None,None] #过滤后的目标对象 前3元素为色块对象列表 第4元素为二维码对象(不是列表)
 Target_proportion = (1.1,2.5)        #色块长宽比例过滤系数  H/W
 
-OpenMVState = [0,0]
+OpenMVState = [2,0]
 
 def Usart_Read():
     if usart.any() != 0:
@@ -46,6 +49,7 @@ def QrCode_Find():
             RGB_Li()
     else:
         data = Target_List[3].payload()
+        print(data)
         Usart_Send(data)
 
 def TargetBlobs_Find():
@@ -59,10 +63,10 @@ def TargetBlobs_Find():
                 if proportion < Target_proportion[0] or proportion > Target_proportion[1]:
                     Target_List[temp].remove(Blob)
                 else:
-                    img.draw_rectangle(Blob.rect())
+                    img.draw_rectangle(Blob.rect(),thickness = 5,color = (175,0,175))
                     data = bytearray([temp,int(Blob.cx()/10),Blob.w()])
                     #print(data)
-                    #print(Blob.cx())
+                    print(Blob.w())
                     Usart_Send(data)
         temp += 1
 
@@ -77,11 +81,10 @@ def RGB_Li():
     RedLed.off()
     GreenLed.off()
     BlueLed.off()
-    time.sleep(100)
+    time.sleep(50)
     RedLed.on()
     GreenLed.on()
     BlueLed.on()
-    time.sleep(50)
 
 #RGB补光
 RedLed.on()
@@ -95,9 +98,10 @@ while(True):
         usart.write('A')
     elif OpenMVState[0] == 1:
         QrCode_Find()
-    elif OpenMVState[0] ==2:
+    elif OpenMVState[0] ==2 or OpenMVState[0] ==3:
         TargetBlobs_Find()
     Usart_Read()
+    #print(sensor.get_rgb_gain_db())
 
     #绘图调试
     '''

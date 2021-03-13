@@ -52,6 +52,34 @@ void VectorMove_Set(int XSpeed,int YSpeed)
 	}
 }
 
+void VectorMove_Inc(int XSpeed,int YSpeed)
+{
+	uint8_t temp;
+	int AbsSpeed;
+	int Abs_Max = 0;
+	Position_Mode = 2;
+	Position_Speed[0]  += (XSpeed+YSpeed);
+	Position_Speed[3] += (XSpeed+YSpeed);
+	Position_Speed[1] += (XSpeed-YSpeed);
+	Position_Speed[2] += (XSpeed-YSpeed);
+	//取绝对值极值
+	for(temp = 0;temp<4;temp++)
+	{
+		AbsSpeed = Position_Speed[temp];
+		if(AbsSpeed<0)
+			AbsSpeed = -AbsSpeed;
+		if(AbsSpeed>Abs_Max)
+			Abs_Max = AbsSpeed;
+	}
+	if(Abs_Max > Speed_Base)
+	{
+		float k;
+		k = Speed_Base / Abs_Max;
+		for(temp = 0;temp<4;temp++)
+			Position_Speed[temp] = (int)(Position_Speed[temp]*k);
+	}
+}
+
 void PositionSpeed_Config(uint8_t Dir)
 {
 	int Abs_Speed = Position_Speed[0];

@@ -58,21 +58,25 @@ void GetBlob_Move(void)
 			{
 				case 0:
 					VectorMove_Set(-150,0);
-					flag = 2;
 					break;
 				case 1:
-					PositionService_Stop();
-					flag = 3;
+					if(*(TempAddr1+1)<14)
+						VectorMove_Set(120,0);
+					else if(*(TempAddr1+1)>18)
+						VectorMove_Set(-120,0);
+					else
+						flag++;
 					break;
 				case 2:
 					VectorMove_Set(150,0);
-					flag = 2;
 					break;
 			}
+			flag++;
 		}else if(flag == 2)
 		{
 			//等待到达目标物块前方
-			if(*Read_LookData() == Blob)
+			TempAddr1 = Read_LookData();
+			if(*TempAddr1== Blob && *(TempAddr1+1)>14 && *(TempAddr1+1)<18)
 			{
 				PositionService_Stop();
 				flag = 3;
@@ -95,7 +99,7 @@ void GetBlob_Move(void)
 			}
 		}else if(flag == 4)
 		{
-			//等待远近调整完成
+			//等待远近调整完成 附带对齐修正
 			TempAddr1 = Read_LookData()+2;
 			if(*TempAddr1<70 && *TempAddr1>58)
 			{

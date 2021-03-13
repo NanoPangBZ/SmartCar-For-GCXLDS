@@ -30,6 +30,7 @@ uint8_t PutBlob_Floor(uint8_t Pos);
 uint8_t PutBlob_Warehouse(void);
 uint8_t Read_AttitudeFlag(void);
 
+void PutBlob_FloorRun(void);
 void Attitude_SetRun(void);
 void GetBlob_FloorRun(void);
 

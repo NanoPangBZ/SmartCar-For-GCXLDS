@@ -16,6 +16,7 @@ void goods_app_Task(void)
 				case 1:
 					break;
 				case 2:
+					PutBlob_FloorRun();
 					break;
 				case 3:
 					break;
@@ -34,7 +35,39 @@ uint8_t Read_AttitudeFlag(void)
 
 void PutBlob_FloorRun(void)
 {
-	
+	uint8_t temp;
+	switch(Attitude_State)
+	{
+		case 1:
+			for(temp=0;temp<4;temp++)
+				TargetWidth_Set(AngleToWidth(*(PutBlob_Ready[Target_Pos]+temp)),*(PutBlob_Readytnc[Target_Pos]+temp),temp);
+			break;
+		case 2:
+			for(temp=0;temp<4;temp++)
+				TargetWidth_Set(AngleToWidth(*(PutBlob_Adjust[Target_Pos]+temp)),*(PutBlob_Adjustnc[Target_Pos]+temp),temp);
+			break;
+		case 3:
+			ClawClr(0,2);
+			break;
+		case 4:
+			for(temp=0;temp<4;temp++)
+				TargetWidth_Set(AngleToWidth(*(PutBlob_Ready[Target_Pos]+temp)),*(PutBlob_Readytnc[Target_Pos]+temp),temp);
+			break;
+		case 5:
+			Attitude_Flag = 0;
+			break;
+	}
+}
+
+uint8_t PutBlob_Floor(uint8_t Pos)
+{
+	if(Attitude_Flag)
+		return 1;
+	Attitude_Line = 2;
+	Attitude_Flag = 1;
+	Attitude_State=0;
+	Target_Pos = Pos;
+	return 0;
 }
 
 void GetBlob_FloorRun(void)
@@ -100,17 +133,6 @@ uint8_t GetBlob_Warehouse(uint8_t Blob)
 	Attitude_State=0;
 	for(temp=0;Warehouse[temp]!=Blob;temp++);
 	Target_Warehouse = temp;
-	return 0;
-}
-
-uint8_t PutBlob_Floor(uint8_t Pos)
-{
-	if(Attitude_Flag)
-		return 1;
-	Attitude_Line = 2;
-	Attitude_Flag = 1;
-	Attitude_State=0;
-	Target_Pos = Pos;
 	return 0;
 }
 

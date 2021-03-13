@@ -48,6 +48,7 @@ void PositionClr_Service(void);									//实现接口
 void TargetMove_Set(long int x,long int y,uint8_t PosMode);			//自动目标模式设定
 void Move_Set(uint8_t Dir,int Speed);							//位移模式
 void VectorMove_Set(int XSpeed,int YSpeed);					//矢量位移
+void VectorMove_Inc(int XSpeed,int YSPeed);					//矢量叠加
 void YawTarget_Set(int ReYaw);								//基准方位重置
 void PositionService_Stop(void);				//结束当前任务
 /***********************内部函数*****************************/

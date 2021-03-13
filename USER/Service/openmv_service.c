@@ -69,9 +69,6 @@ void OpenMV_Updata(void)
 						LookData[0] = Blob;
 						LookData[1] = cx;
 						LookData[2] = w;
-					}
-					if(cx>14 && cx<18)
-					{
 						if(RecordingNum==0)
 						{
 							Recording[0] = Blob;
@@ -100,7 +97,7 @@ void OpenMV_Updata(void)
 					Blob = *(Cmd+3) + 1;
 					cx = *(Cmd+4);
 					w = *(Cmd+5);
-					if(cx>14 && cx<18)
+					if(cx>10 && cx<22)
 					{
 						LookData[0] = Blob;
 						LookData[1] = cx;

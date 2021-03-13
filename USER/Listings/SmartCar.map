@@ -336,6 +336,11 @@ Section Cross References
     position_service.o(i.Speed_Syn) refers to position_service.o(.bss) for Position_Speed
     position_service.o(i.Speed_Syn) refers to position_service.o(.data) for Position_Mode
     position_service.o(i.TargetMove_Set) refers to position_service.o(.data) for Target_Position
+    position_service.o(i.VectorMove_Inc) refers to fflti.o(.text) for __aeabi_i2f
+    position_service.o(i.VectorMove_Inc) refers to fmul.o(.text) for __aeabi_fmul
+    position_service.o(i.VectorMove_Inc) refers to ffixi.o(.text) for __aeabi_f2iz
+    position_service.o(i.VectorMove_Inc) refers to position_service.o(.data) for Position_Mode
+    position_service.o(i.VectorMove_Inc) refers to position_service.o(.bss) for Position_Speed
     position_service.o(i.VectorMove_Set) refers to fflti.o(.text) for __aeabi_i2f
     position_service.o(i.VectorMove_Set) refers to fmul.o(.text) for __aeabi_fmul
     position_service.o(i.VectorMove_Set) refers to ffixi.o(.text) for __aeabi_f2iz
@@ -411,10 +416,15 @@ Section Cross References
     goods_app.o(i.GetBlob_FloorRun) refers to goods_app.o(.data) for Attitude_State
     goods_app.o(i.GetBlob_Warehouse) refers to goods_app.o(.data) for Attitude_Flag
     goods_app.o(i.PutBlob_Floor) refers to goods_app.o(.data) for Attitude_Flag
+    goods_app.o(i.PutBlob_FloorRun) refers to mechanicalarm_service.o(i.AngleToWidth) for AngleToWidth
+    goods_app.o(i.PutBlob_FloorRun) refers to mechanicalarm_service.o(i.TargetWidth_Set) for TargetWidth_Set
+    goods_app.o(i.PutBlob_FloorRun) refers to mechanicalarm_service.o(i.ClawClr) for ClawClr
+    goods_app.o(i.PutBlob_FloorRun) refers to goods_app.o(.data) for Attitude_State
     goods_app.o(i.PutBlob_Warehouse) refers to goods_app.o(.data) for Attitude_Flag
     goods_app.o(i.Read_AttitudeFlag) refers to goods_app.o(.data) for Attitude_Flag
     goods_app.o(i.goods_app_Task) refers to mechanicalarm_service.o(i.Read_MechanicalArmState) for Read_MechanicalArmState
     goods_app.o(i.goods_app_Task) refers to goods_app.o(i.GetBlob_FloorRun) for GetBlob_FloorRun
+    goods_app.o(i.goods_app_Task) refers to goods_app.o(i.PutBlob_FloorRun) for PutBlob_FloorRun
     goods_app.o(i.goods_app_Task) refers to goods_app.o(i.Attitude_SetRun) for Attitude_SetRun
     goods_app.o(i.goods_app_Task) refers to goods_app.o(.data) for Attitude_Flag
     main_app.o(i.Blobs_Recording) refers to openmv_service.o(i.Read_Recording) for Read_Recording
@@ -433,11 +443,11 @@ Section Cross References
     main_app.o(i.GetQrCode) refers to goods_app.o(i.Read_AttitudeFlag) for Read_AttitudeFlag
     main_app.o(i.GetQrCode) refers to openmv_service.o(i.Read_QrCode) for Read_QrCode
     main_app.o(i.GetQrCode) refers to main_app.o(.data) for stateCmd_flag
-    main_app.o(i.Get_UpBlobs) refers to openmv_service.o(i.OpenMV_Set) for OpenMV_Set
     main_app.o(i.Get_UpBlobs) refers to goods_app.o(i.Attitude_Set) for Attitude_Set
     main_app.o(i.Get_UpBlobs) refers to position_app.o(i.PositionTask_StateSet) for PositionTask_StateSet
     main_app.o(i.Get_UpBlobs) refers to position_app.o(i.Read_PositionTaskEn) for Read_PositionTaskEn
     main_app.o(i.Get_UpBlobs) refers to goods_app.o(i.Read_AttitudeFlag) for Read_AttitudeFlag
+    main_app.o(i.Get_UpBlobs) refers to openmv_service.o(i.OpenMV_Set) for OpenMV_Set
     main_app.o(i.Get_UpBlobs) refers to goods_app.o(i.GetBlob_Floor) for GetBlob_Floor
     main_app.o(i.Get_UpBlobs) refers to main_app.o(.data) for stateCmd_flag
     main_app.o(i.main_app_Task) refers to oled.o(i.OLED_ShowString) for OLED_ShowString
@@ -1126,6 +1136,7 @@ Removing Unused input sections from the image.
     Removing position_service.o(i.Move_Set), (56 bytes).
     Removing position_service.o(i.Read_ErrYaw), (16 bytes).
     Removing position_service.o(i.Read_Position), (8 bytes).
+    Removing position_service.o(i.VectorMove_Inc), (176 bytes).
     Removing position_service.o(i.YawTarget_Set), (16 bytes).
     Removing mechanicalarm_service.o(i.MechanicalArm_PostionLineSet), (52 bytes).
     Removing openmv_service.o(.bss), (848 bytes).
@@ -1138,7 +1149,6 @@ Removing Unused input sections from the image.
     Removing feedback_service.o(.data), (292 bytes).
     Removing goods_app.o(i.GetBlob_Warehouse), (72 bytes).
     Removing goods_app.o(i.PutBlob_Floor), (56 bytes).
-    Removing goods_app.o(i.PutBlob_FloorRun), (2 bytes).
     Removing goods_app.o(i.PutBlob_Warehouse), (72 bytes).
     Removing goods_app.o(.bss), (848 bytes).
     Removing main_app.o(.bss), (848 bytes).
@@ -1158,7 +1168,7 @@ Removing Unused input sections from the image.
     Removing position_app.o(.bss), (848 bytes).
     Removing dfixul.o(.text), (48 bytes).
 
-216 unused section(s) (total 24171 bytes) removed from the image.
+216 unused section(s) (total 24345 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1173,52 +1183,52 @@ Image Symbol Table
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/errno.c                 0x00000000   Number         0  errno.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/f2d.c                  0x00000000   Number         0  f2d.o ABSOLUTE
-    ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  fadd.o ABSOLUTE
+    ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
-    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixi.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixi.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
-    ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
     ../fplib/microlib/fpscalb.c              0x00000000   Number         0  dscalb.o ABSOLUTE
     ../fplib/microlib/fpsqrt.c               0x00000000   Number         0  dsqrt.o ABSOLUTE
     ../mathlib/acos.c                        0x00000000   Number         0  acos.o ABSOLUTE
@@ -1309,8 +1319,8 @@ Image Symbol Table
     .text                                    0x08000812   Section        0  llshl.o(.text)
     .text                                    0x08000830   Section        0  llushr.o(.text)
     .text                                    0x08000850   Section        0  llsshr.o(.text)
-    .text                                    0x08000874   Section        0  iusefp.o(.text)
     .text                                    0x08000874   Section        0  fepilogue.o(.text)
+    .text                                    0x08000874   Section        0  iusefp.o(.text)
     .text                                    0x080008e2   Section        0  depilogue.o(.text)
     .text                                    0x0800099c   Section        0  dscalb.o(.text)
     .text                                    0x080009ca   Section        0  dsqrt.o(.text)
@@ -1354,156 +1364,157 @@ Image Symbol Table
     i.GetBlob_Floor                          0x0800168c   Section        0  goods_app.o(i.GetBlob_Floor)
     i.GetBlob_FloorRun                       0x080016cc   Section        0  goods_app.o(i.GetBlob_FloorRun)
     i.GetBlob_Move                           0x080017c8   Section        0  position_app.o(i.GetBlob_Move)
-    i.GetQrCode                              0x08001924   Section        0  main_app.o(i.GetQrCode)
-    i.Get_UpBlobs                            0x08001968   Section        0  main_app.o(i.Get_UpBlobs)
-    i.Gyroscope_Init                         0x080019f0   Section        0  gyroscope.o(i.Gyroscope_Init)
-    i.Gyroscope_ReadYaw                      0x08001a30   Section        0  gyroscope.o(i.Gyroscope_ReadYaw)
-    i.Gyroscope_RequestUpdata                0x08001a40   Section        0  gyroscope.o(i.Gyroscope_RequestUpdata)
-    i.Gyroscope_YawUpdata                    0x08001a58   Section        0  gyroscope.o(i.Gyroscope_YawUpdata)
-    i.Hall_EXTI_Config                       0x08001a88   Section        0  motor_init.o(i.Hall_EXTI_Config)
-    i.Hall_GPIO_Config                       0x08001b28   Section        0  motor_init.o(i.Hall_GPIO_Config)
-    i.Hall_TIM_Config                        0x08001b4c   Section        0  motor_init.o(i.Hall_TIM_Config)
-    i.HardFault_Handler                      0x08001bb4   Section        0  stm32f10x_it.o(i.HardFault_Handler)
-    i.IIC_Init                               0x08001bb8   Section        0  iic.o(i.IIC_Init)
-    i.IIC_SendByte                           0x08001bf8   Section        0  iic.o(i.IIC_SendByte)
-    i.IIC_Start                              0x08001c44   Section        0  iic.o(i.IIC_Start)
-    i.IIC_Stop                               0x08001c74   Section        0  iic.o(i.IIC_Stop)
-    i.IIC_WaitACK                            0x08001c9c   Section        0  iic.o(i.IIC_WaitACK)
-    i.Inc_PID                                0x08001cb8   Section        0  position_service.o(i.Inc_PID)
-    i.Inc_PID_Realiz                         0x08001d6c   Section        0  position_service.o(i.Inc_PID_Realiz)
-    i.MechanicalArm_PositionInc              0x08001e08   Section        0  mechanicalarm_service.o(i.MechanicalArm_PositionInc)
-    i.MechanicalArm_PositionSet              0x08001e84   Section        0  mechanicalarm_service.o(i.MechanicalArm_PositionSet)
-    i.MechanicalArm_Reset                    0x08001ecc   Section        0  mechanicalarm_service.o(i.MechanicalArm_Reset)
-    i.MechanicalArm_Service                  0x08001ef0   Section        0  mechanicalarm_service.o(i.MechanicalArm_Service)
-    i.MechanicalArm_StateCheck               0x08001f18   Section        0  mechanicalarm_service.o(i.MechanicalArm_StateCheck)
-    i.MechanicalArm_WidthInc                 0x08001f8c   Section        0  mechanicalarm_service.o(i.MechanicalArm_WidthInc)
-    i.MemManage_Handler                      0x08002028   Section        0  stm32f10x_it.o(i.MemManage_Handler)
-    i.Motor_GPIO_Config                      0x0800202c   Section        0  motor_init.o(i.Motor_GPIO_Config)
-    i.Motor_Init                             0x08002058   Section        0  motor_init.o(i.Motor_Init)
-    i.Motor_TIM_Config                       0x08002074   Section        0  motor_init.o(i.Motor_TIM_Config)
-    i.NMI_Handler                            0x0800210c   Section        0  stm32f10x_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x08002110   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x08002180   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.OLED_Clear                             0x08002194   Section        0  oled.o(i.OLED_Clear)
-    i.OLED_ClearBlok                         0x080021c0   Section        0  oled.o(i.OLED_ClearBlok)
-    i.OLED_Init                              0x08002202   Section        0  oled.o(i.OLED_Init)
-    i.OLED_PosSet                            0x080022ea   Section        0  oled.o(i.OLED_PosSet)
-    i.OLED_SendByte                          0x08002320   Section        0  oled.o(i.OLED_SendByte)
-    i.OLED_ShowChar                          0x08002358   Section        0  oled.o(i.OLED_ShowChar)
-    i.OLED_ShowNum                           0x08002404   Section        0  oled.o(i.OLED_ShowNum)
-    i.OLED_ShowString                        0x08002494   Section        0  oled.o(i.OLED_ShowString)
-    i.OpenMV_Init                            0x080024e0   Section        0  openmv_service.o(i.OpenMV_Init)
-    i.OpenMV_Set                             0x08002520   Section        0  openmv_service.o(i.OpenMV_Set)
-    i.OpenMV_Updata                          0x0800252c   Section        0  openmv_service.o(i.OpenMV_Updata)
-    i.PCB_System_Init                        0x080026f0   Section        0  system_core.o(i.PCB_System_Init)
-    i.PWM_Out                                0x08002844   Section        0  motor_driver.o(i.PWM_Out)
-    i.PendSV_Handler                         0x080029d8   Section        0  stm32f10x_it.o(i.PendSV_Handler)
-    i.PositionClr_Service                    0x080029dc   Section        0  position_service.o(i.PositionClr_Service)
-    i.PositionService_Stop                   0x08002a30   Section        0  position_service.o(i.PositionService_Stop)
-    i.PositionSpeed_Config                   0x08002a4c   Section        0  position_service.o(i.PositionSpeed_Config)
-    i.PositionState_Inc                      0x08002ac0   Section        0  position_service.o(i.PositionState_Inc)
-    i.PositionState_Updata                   0x08002ad8   Section        0  position_service.o(i.PositionState_Updata)
-    i.PositionTask_StateSet                  0x08002b58   Section        0  position_app.o(i.PositionTask_StateSet)
-    i.Position_Stop                          0x08002b6c   Section        0  position_service.o(i.Position_Stop)
-    i.Position_Update                        0x08002b9c   Section        0  position_service.o(i.Position_Update)
-    i.RCC_AHBPeriphClockCmd                  0x08002c28   Section        0  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
-    i.RCC_APB1PeriphClockCmd                 0x08002c48   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08002c68   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RCC_GetClocksFreq                      0x08002c88   Section        0  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
-    i.Read_AttitudeFlag                      0x08002d5c   Section        0  goods_app.o(i.Read_AttitudeFlag)
-    i.Read_Distance                          0x08002d68   Section        0  motor_driver.o(i.Read_Distance)
-    i.Read_LookData                          0x08002d70   Section        0  openmv_service.o(i.Read_LookData)
-    i.Read_MechanicalArmState                0x08002d78   Section        0  mechanicalarm_service.o(i.Read_MechanicalArmState)
-    i.Read_PositionState                     0x08002d84   Section        0  position_service.o(i.Read_PositionState)
-    i.Read_PositionTaskEn                    0x08002d90   Section        0  position_app.o(i.Read_PositionTaskEn)
-    i.Read_QrCode                            0x08002d9c   Section        0  openmv_service.o(i.Read_QrCode)
-    i.Read_Recording                         0x08002da4   Section        0  openmv_service.o(i.Read_Recording)
-    i.Read_Speed                             0x08002dac   Section        0  motor_driver.o(i.Read_Speed)
-    i.Read_SysSubTime                        0x08002f00   Section        0  system_core.o(i.Read_SysSubTime)
-    i.Read_Usart_Sbuffer                     0x08002f0c   Section        0  usart.o(i.Read_Usart_Sbuffer)
-    i.SVC_Handler                            0x08002f1c   Section        0  stm32f10x_it.o(i.SVC_Handler)
-    i.SetSysClock                            0x08002f1e   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x08002f1f   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08002f28   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08002f29   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.Speed_Set                              0x08003008   Section        0  position_service.o(i.Speed_Set)
-    i.Speed_Syn                              0x08003030   Section        0  position_service.o(i.Speed_Syn)
-    i.StreetMotor_GPIO_Config                0x080030c0   Section        0  street_motor.o(i.StreetMotor_GPIO_Config)
-    i.StreetMotor_Init                       0x08003104   Section        0  street_motor.o(i.StreetMotor_Init)
-    i.StreetMotor_TIM_Config                 0x08003110   Section        0  street_motor.o(i.StreetMotor_TIM_Config)
-    i.SysSecBeat_Config                      0x080031e8   Section        0  system_core.o(i.SysSecBeat_Config)
-    i.SysTick_Handler                        0x08003248   Section        0  system_core.o(i.SysTick_Handler)
-    i.SystemInit                             0x08003284   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.SystemState_Set                        0x080032e4   Section        0  system_core.o(i.SystemState_Set)
-    i.TB6612_Init                            0x080032f8   Section        0  motor_init.o(i.TB6612_Init)
-    i.TIM6_IRQHandler                        0x08003330   Section        0  motor_driver.o(i.TIM6_IRQHandler)
-    i.TIM7_IRQHandler                        0x0800335c   Section        0  system_core.o(i.TIM7_IRQHandler)
-    i.TIM_ClearITPendingBit                  0x08003388   Section        0  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
-    i.TIM_Cmd                                0x0800338e   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
-    i.TIM_GetITStatus                        0x080033a6   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
-    i.TIM_ITConfig                           0x080033c8   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
-    i.TIM_OC1Init                            0x080033dc   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
-    i.TIM_OC1PreloadConfig                   0x08003474   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    i.TIM_OC2Init                            0x08003488   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
-    i.TIM_OC2PreloadConfig                   0x0800352c   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    i.TIM_OC3Init                            0x08003548   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
-    i.TIM_OC3PreloadConfig                   0x080035e8   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    i.TIM_OC4Init                            0x080035fc   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
-    i.TIM_OC4PreloadConfig                   0x08003678   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    i.TIM_SetCompare1                        0x08003692   Section        0  stm32f10x_tim.o(i.TIM_SetCompare1)
-    i.TIM_SetCompare2                        0x08003696   Section        0  stm32f10x_tim.o(i.TIM_SetCompare2)
-    i.TIM_SetCompare3                        0x0800369a   Section        0  stm32f10x_tim.o(i.TIM_SetCompare3)
-    i.TIM_SetCompare4                        0x0800369e   Section        0  stm32f10x_tim.o(i.TIM_SetCompare4)
-    i.TIM_TimeBaseInit                       0x080036a4   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    i.TargetMove_Set                         0x08003748   Section        0  position_service.o(i.TargetMove_Set)
-    i.TargetWidth_Set                        0x0800378c   Section        0  mechanicalarm_service.o(i.TargetWidth_Set)
-    i.TaskList_Config                        0x080037b8   Section        0  system_core.o(i.TaskList_Config)
-    i.USART1_IRQHandler                      0x08003820   Section        0  usart.o(i.USART1_IRQHandler)
-    i.USART2_IRQHandler                      0x08003860   Section        0  usart.o(i.USART2_IRQHandler)
-    i.USART3_IRQHandler                      0x080038a8   Section        0  usart.o(i.USART3_IRQHandler)
-    i.USART_ClearITPendingBit                0x08003908   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    i.USART_Cmd                              0x08003926   Section        0  stm32f10x_usart.o(i.USART_Cmd)
-    i.USART_DMACmd                           0x0800393e   Section        0  stm32f10x_usart.o(i.USART_DMACmd)
-    i.USART_GetITStatus                      0x08003950   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
-    i.USART_ITConfig                         0x080039a4   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x080039f0   Section        0  stm32f10x_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08003ac8   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
-    i.UsageFault_Handler                     0x08003ad2   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.Usart2_Send                            0x08003ad8   Section        0  usart.o(i.Usart2_Send)
-    i.Usart3_Send                            0x08003b24   Section        0  usart.o(i.Usart3_Send)
-    i.Usart_Config                           0x08003b70   Section        0  usart.o(i.Usart_Config)
-    i.Usart_DMA_Config                       0x08003cb0   Section        0  usart.o(i.Usart_DMA_Config)
-    i.Usart_Sbuffer_Clear                    0x08003df0   Section        0  usart.o(i.Usart_Sbuffer_Clear)
-    i.Usart_TxFlag_Clear                     0x08003e04   Section        0  usart.o(i.Usart_TxFlag_Clear)
-    i.VectorMove_Set                         0x08003e14   Section        0  position_service.o(i.VectorMove_Set)
-    i.Wait_Gyroscope                         0x08003ea0   Section        0  gyroscope.o(i.Wait_Gyroscope)
-    i.YawSpeed_Config                        0x08003f64   Section        0  position_service.o(i.YawSpeed_Config)
-    i.__ARM_fpclassify                       0x08003fd4   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__kernel_poly                          0x08003ffc   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_infnan                   0x080040a6   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_invalid                  0x080040ac   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_underflow                0x080040b8   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.__scatterload_copy                     0x080040c8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080040d6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x080040d8   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.__set_errno                            0x080040e8   Section        0  errno.o(i.__set_errno)
-    i.acos                                   0x080040f4   Section        0  acos.o(i.acos)
-    i.atan                                   0x08004370   Section        0  atan.o(i.atan)
-    i.goods_app_Task                         0x08004590   Section        0  goods_app.o(i.goods_app_Task)
-    i.main                                   0x080045e0   Section        0  main.o(i.main)
-    i.main_app_Task                          0x080045e8   Section        0  main_app.o(i.main_app_Task)
-    i.openmv_service                         0x08004660   Section        0  openmv_service.o(i.openmv_service)
-    i.position_app_Task                      0x08004668   Section        0  position_app.o(i.position_app_Task)
-    i.sqrt                                   0x080046a0   Section        0  sqrt.o(i.sqrt)
-    .constdata                               0x080046ec   Section     2002  oled.o(.constdata)
-    .constdata                               0x08004ec0   Section       80  acos.o(.constdata)
-    pS                                       0x08004ec0   Data          48  acos.o(.constdata)
-    qS                                       0x08004ef0   Data          32  acos.o(.constdata)
-    .constdata                               0x08004f10   Section      152  atan.o(.constdata)
-    atanhi                                   0x08004f10   Data          32  atan.o(.constdata)
-    atanlo                                   0x08004f30   Data          32  atan.o(.constdata)
-    aTodd                                    0x08004f50   Data          40  atan.o(.constdata)
-    aTeven                                   0x08004f78   Data          48  atan.o(.constdata)
+    i.GetQrCode                              0x08001954   Section        0  main_app.o(i.GetQrCode)
+    i.Get_UpBlobs                            0x08001998   Section        0  main_app.o(i.Get_UpBlobs)
+    i.Gyroscope_Init                         0x08001a20   Section        0  gyroscope.o(i.Gyroscope_Init)
+    i.Gyroscope_ReadYaw                      0x08001a60   Section        0  gyroscope.o(i.Gyroscope_ReadYaw)
+    i.Gyroscope_RequestUpdata                0x08001a70   Section        0  gyroscope.o(i.Gyroscope_RequestUpdata)
+    i.Gyroscope_YawUpdata                    0x08001a88   Section        0  gyroscope.o(i.Gyroscope_YawUpdata)
+    i.Hall_EXTI_Config                       0x08001ab8   Section        0  motor_init.o(i.Hall_EXTI_Config)
+    i.Hall_GPIO_Config                       0x08001b58   Section        0  motor_init.o(i.Hall_GPIO_Config)
+    i.Hall_TIM_Config                        0x08001b7c   Section        0  motor_init.o(i.Hall_TIM_Config)
+    i.HardFault_Handler                      0x08001be4   Section        0  stm32f10x_it.o(i.HardFault_Handler)
+    i.IIC_Init                               0x08001be8   Section        0  iic.o(i.IIC_Init)
+    i.IIC_SendByte                           0x08001c28   Section        0  iic.o(i.IIC_SendByte)
+    i.IIC_Start                              0x08001c74   Section        0  iic.o(i.IIC_Start)
+    i.IIC_Stop                               0x08001ca4   Section        0  iic.o(i.IIC_Stop)
+    i.IIC_WaitACK                            0x08001ccc   Section        0  iic.o(i.IIC_WaitACK)
+    i.Inc_PID                                0x08001ce8   Section        0  position_service.o(i.Inc_PID)
+    i.Inc_PID_Realiz                         0x08001d9c   Section        0  position_service.o(i.Inc_PID_Realiz)
+    i.MechanicalArm_PositionInc              0x08001e38   Section        0  mechanicalarm_service.o(i.MechanicalArm_PositionInc)
+    i.MechanicalArm_PositionSet              0x08001eb4   Section        0  mechanicalarm_service.o(i.MechanicalArm_PositionSet)
+    i.MechanicalArm_Reset                    0x08001efc   Section        0  mechanicalarm_service.o(i.MechanicalArm_Reset)
+    i.MechanicalArm_Service                  0x08001f20   Section        0  mechanicalarm_service.o(i.MechanicalArm_Service)
+    i.MechanicalArm_StateCheck               0x08001f48   Section        0  mechanicalarm_service.o(i.MechanicalArm_StateCheck)
+    i.MechanicalArm_WidthInc                 0x08001fbc   Section        0  mechanicalarm_service.o(i.MechanicalArm_WidthInc)
+    i.MemManage_Handler                      0x08002058   Section        0  stm32f10x_it.o(i.MemManage_Handler)
+    i.Motor_GPIO_Config                      0x0800205c   Section        0  motor_init.o(i.Motor_GPIO_Config)
+    i.Motor_Init                             0x08002088   Section        0  motor_init.o(i.Motor_Init)
+    i.Motor_TIM_Config                       0x080020a4   Section        0  motor_init.o(i.Motor_TIM_Config)
+    i.NMI_Handler                            0x0800213c   Section        0  stm32f10x_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x08002140   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x080021b0   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.OLED_Clear                             0x080021c4   Section        0  oled.o(i.OLED_Clear)
+    i.OLED_ClearBlok                         0x080021f0   Section        0  oled.o(i.OLED_ClearBlok)
+    i.OLED_Init                              0x08002232   Section        0  oled.o(i.OLED_Init)
+    i.OLED_PosSet                            0x0800231a   Section        0  oled.o(i.OLED_PosSet)
+    i.OLED_SendByte                          0x08002350   Section        0  oled.o(i.OLED_SendByte)
+    i.OLED_ShowChar                          0x08002388   Section        0  oled.o(i.OLED_ShowChar)
+    i.OLED_ShowNum                           0x08002434   Section        0  oled.o(i.OLED_ShowNum)
+    i.OLED_ShowString                        0x080024c4   Section        0  oled.o(i.OLED_ShowString)
+    i.OpenMV_Init                            0x08002510   Section        0  openmv_service.o(i.OpenMV_Init)
+    i.OpenMV_Set                             0x08002550   Section        0  openmv_service.o(i.OpenMV_Set)
+    i.OpenMV_Updata                          0x0800255c   Section        0  openmv_service.o(i.OpenMV_Updata)
+    i.PCB_System_Init                        0x08002718   Section        0  system_core.o(i.PCB_System_Init)
+    i.PWM_Out                                0x0800286c   Section        0  motor_driver.o(i.PWM_Out)
+    i.PendSV_Handler                         0x08002a00   Section        0  stm32f10x_it.o(i.PendSV_Handler)
+    i.PositionClr_Service                    0x08002a04   Section        0  position_service.o(i.PositionClr_Service)
+    i.PositionService_Stop                   0x08002a58   Section        0  position_service.o(i.PositionService_Stop)
+    i.PositionSpeed_Config                   0x08002a74   Section        0  position_service.o(i.PositionSpeed_Config)
+    i.PositionState_Inc                      0x08002ae8   Section        0  position_service.o(i.PositionState_Inc)
+    i.PositionState_Updata                   0x08002b00   Section        0  position_service.o(i.PositionState_Updata)
+    i.PositionTask_StateSet                  0x08002b80   Section        0  position_app.o(i.PositionTask_StateSet)
+    i.Position_Stop                          0x08002b94   Section        0  position_service.o(i.Position_Stop)
+    i.Position_Update                        0x08002bc4   Section        0  position_service.o(i.Position_Update)
+    i.PutBlob_FloorRun                       0x08002c50   Section        0  goods_app.o(i.PutBlob_FloorRun)
+    i.RCC_AHBPeriphClockCmd                  0x08002d4c   Section        0  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
+    i.RCC_APB1PeriphClockCmd                 0x08002d6c   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    i.RCC_APB2PeriphClockCmd                 0x08002d8c   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RCC_GetClocksFreq                      0x08002dac   Section        0  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
+    i.Read_AttitudeFlag                      0x08002e80   Section        0  goods_app.o(i.Read_AttitudeFlag)
+    i.Read_Distance                          0x08002e8c   Section        0  motor_driver.o(i.Read_Distance)
+    i.Read_LookData                          0x08002e94   Section        0  openmv_service.o(i.Read_LookData)
+    i.Read_MechanicalArmState                0x08002e9c   Section        0  mechanicalarm_service.o(i.Read_MechanicalArmState)
+    i.Read_PositionState                     0x08002ea8   Section        0  position_service.o(i.Read_PositionState)
+    i.Read_PositionTaskEn                    0x08002eb4   Section        0  position_app.o(i.Read_PositionTaskEn)
+    i.Read_QrCode                            0x08002ec0   Section        0  openmv_service.o(i.Read_QrCode)
+    i.Read_Recording                         0x08002ec8   Section        0  openmv_service.o(i.Read_Recording)
+    i.Read_Speed                             0x08002ed0   Section        0  motor_driver.o(i.Read_Speed)
+    i.Read_SysSubTime                        0x08003024   Section        0  system_core.o(i.Read_SysSubTime)
+    i.Read_Usart_Sbuffer                     0x08003030   Section        0  usart.o(i.Read_Usart_Sbuffer)
+    i.SVC_Handler                            0x08003040   Section        0  stm32f10x_it.o(i.SVC_Handler)
+    i.SetSysClock                            0x08003042   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x08003043   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x0800304c   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x0800304d   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.Speed_Set                              0x0800312c   Section        0  position_service.o(i.Speed_Set)
+    i.Speed_Syn                              0x08003154   Section        0  position_service.o(i.Speed_Syn)
+    i.StreetMotor_GPIO_Config                0x080031e4   Section        0  street_motor.o(i.StreetMotor_GPIO_Config)
+    i.StreetMotor_Init                       0x08003228   Section        0  street_motor.o(i.StreetMotor_Init)
+    i.StreetMotor_TIM_Config                 0x08003234   Section        0  street_motor.o(i.StreetMotor_TIM_Config)
+    i.SysSecBeat_Config                      0x0800330c   Section        0  system_core.o(i.SysSecBeat_Config)
+    i.SysTick_Handler                        0x0800336c   Section        0  system_core.o(i.SysTick_Handler)
+    i.SystemInit                             0x080033a8   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.SystemState_Set                        0x08003408   Section        0  system_core.o(i.SystemState_Set)
+    i.TB6612_Init                            0x0800341c   Section        0  motor_init.o(i.TB6612_Init)
+    i.TIM6_IRQHandler                        0x08003454   Section        0  motor_driver.o(i.TIM6_IRQHandler)
+    i.TIM7_IRQHandler                        0x08003480   Section        0  system_core.o(i.TIM7_IRQHandler)
+    i.TIM_ClearITPendingBit                  0x080034ac   Section        0  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
+    i.TIM_Cmd                                0x080034b2   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
+    i.TIM_GetITStatus                        0x080034ca   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
+    i.TIM_ITConfig                           0x080034ec   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
+    i.TIM_OC1Init                            0x08003500   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
+    i.TIM_OC1PreloadConfig                   0x08003598   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    i.TIM_OC2Init                            0x080035ac   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
+    i.TIM_OC2PreloadConfig                   0x08003650   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    i.TIM_OC3Init                            0x0800366c   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
+    i.TIM_OC3PreloadConfig                   0x0800370c   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    i.TIM_OC4Init                            0x08003720   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
+    i.TIM_OC4PreloadConfig                   0x0800379c   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    i.TIM_SetCompare1                        0x080037b6   Section        0  stm32f10x_tim.o(i.TIM_SetCompare1)
+    i.TIM_SetCompare2                        0x080037ba   Section        0  stm32f10x_tim.o(i.TIM_SetCompare2)
+    i.TIM_SetCompare3                        0x080037be   Section        0  stm32f10x_tim.o(i.TIM_SetCompare3)
+    i.TIM_SetCompare4                        0x080037c2   Section        0  stm32f10x_tim.o(i.TIM_SetCompare4)
+    i.TIM_TimeBaseInit                       0x080037c8   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    i.TargetMove_Set                         0x0800386c   Section        0  position_service.o(i.TargetMove_Set)
+    i.TargetWidth_Set                        0x080038b0   Section        0  mechanicalarm_service.o(i.TargetWidth_Set)
+    i.TaskList_Config                        0x080038dc   Section        0  system_core.o(i.TaskList_Config)
+    i.USART1_IRQHandler                      0x08003944   Section        0  usart.o(i.USART1_IRQHandler)
+    i.USART2_IRQHandler                      0x08003984   Section        0  usart.o(i.USART2_IRQHandler)
+    i.USART3_IRQHandler                      0x080039cc   Section        0  usart.o(i.USART3_IRQHandler)
+    i.USART_ClearITPendingBit                0x08003a2c   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    i.USART_Cmd                              0x08003a4a   Section        0  stm32f10x_usart.o(i.USART_Cmd)
+    i.USART_DMACmd                           0x08003a62   Section        0  stm32f10x_usart.o(i.USART_DMACmd)
+    i.USART_GetITStatus                      0x08003a74   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
+    i.USART_ITConfig                         0x08003ac8   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08003b14   Section        0  stm32f10x_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x08003bec   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
+    i.UsageFault_Handler                     0x08003bf6   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.Usart2_Send                            0x08003bfc   Section        0  usart.o(i.Usart2_Send)
+    i.Usart3_Send                            0x08003c48   Section        0  usart.o(i.Usart3_Send)
+    i.Usart_Config                           0x08003c94   Section        0  usart.o(i.Usart_Config)
+    i.Usart_DMA_Config                       0x08003dd4   Section        0  usart.o(i.Usart_DMA_Config)
+    i.Usart_Sbuffer_Clear                    0x08003f14   Section        0  usart.o(i.Usart_Sbuffer_Clear)
+    i.Usart_TxFlag_Clear                     0x08003f28   Section        0  usart.o(i.Usart_TxFlag_Clear)
+    i.VectorMove_Set                         0x08003f38   Section        0  position_service.o(i.VectorMove_Set)
+    i.Wait_Gyroscope                         0x08003fc4   Section        0  gyroscope.o(i.Wait_Gyroscope)
+    i.YawSpeed_Config                        0x08004088   Section        0  position_service.o(i.YawSpeed_Config)
+    i.__ARM_fpclassify                       0x080040f8   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__kernel_poly                          0x08004120   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_infnan                   0x080041ca   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_invalid                  0x080041d0   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_underflow                0x080041dc   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.__scatterload_copy                     0x080041ec   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x080041fa   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x080041fc   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.__set_errno                            0x0800420c   Section        0  errno.o(i.__set_errno)
+    i.acos                                   0x08004218   Section        0  acos.o(i.acos)
+    i.atan                                   0x08004494   Section        0  atan.o(i.atan)
+    i.goods_app_Task                         0x080046b4   Section        0  goods_app.o(i.goods_app_Task)
+    i.main                                   0x08004708   Section        0  main.o(i.main)
+    i.main_app_Task                          0x08004710   Section        0  main_app.o(i.main_app_Task)
+    i.openmv_service                         0x08004788   Section        0  openmv_service.o(i.openmv_service)
+    i.position_app_Task                      0x08004790   Section        0  position_app.o(i.position_app_Task)
+    i.sqrt                                   0x080047c8   Section        0  sqrt.o(i.sqrt)
+    .constdata                               0x08004814   Section     2002  oled.o(.constdata)
+    .constdata                               0x08004fe8   Section       80  acos.o(.constdata)
+    pS                                       0x08004fe8   Data          48  acos.o(.constdata)
+    qS                                       0x08005018   Data          32  acos.o(.constdata)
+    .constdata                               0x08005038   Section      152  atan.o(.constdata)
+    atanhi                                   0x08005038   Data          32  atan.o(.constdata)
+    atanlo                                   0x08005058   Data          32  atan.o(.constdata)
+    aTodd                                    0x08005078   Data          40  atan.o(.constdata)
+    aTeven                                   0x080050a0   Data          48  atan.o(.constdata)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
@@ -1945,7 +1956,7 @@ Image Symbol Table
     LookData                                 0x20000810   Data           3  openmv_service.o(.data)
     RecordingNum                             0x20000813   Data           1  openmv_service.o(.data)
     Recording                                0x20000814   Data           3  openmv_service.o(.data)
-    .data                                    0x20000818   Section      624  goods_app.o(.data)
+    .data                                    0x20000818   Section      844  goods_app.o(.data)
     Usart_Tx_Flag                            0x20000818   Data           3  goods_app.o(.data)
     over_time                                0x2000081c   Data           2  goods_app.o(.data)
     last_time                                0x2000081e   Data           8  goods_app.o(.data)
@@ -2007,194 +2018,194 @@ Image Symbol Table
     Attitude_Line                            0x20000935   Data           1  goods_app.o(.data)
     Attitude_State                           0x20000936   Data           1  goods_app.o(.data)
     Warehouse                                0x20000937   Data           3  goods_app.o(.data)
-    .data                                    0x20000a88   Section      291  main_app.o(.data)
-    Usart_Tx_Flag                            0x20000a88   Data           3  main_app.o(.data)
-    over_time                                0x20000a8c   Data           2  main_app.o(.data)
-    last_time                                0x20000a8e   Data           8  main_app.o(.data)
-    that_time                                0x20000a96   Data           8  main_app.o(.data)
-    last_over_time                           0x20000a9e   Data           8  main_app.o(.data)
-    that_over_time                           0x20000aa6   Data           8  main_app.o(.data)
-    last_dir                                 0x20000aae   Data           4  main_app.o(.data)
-    that_dir                                 0x20000ab2   Data           8  main_app.o(.data)
-    street_width                             0x20000abc   Data          24  main_app.o(.data)
-    MechanicalArm_Mode                       0x20000ad4   Data           1  main_app.o(.data)
-    MechanicalArm_State                      0x20000ad5   Data           1  main_app.o(.data)
-    ArmLen                                   0x20000ad6   Data           3  main_app.o(.data)
-    ArmLen2                                  0x20000ada   Data           6  main_app.o(.data)
-    Reset_Width                              0x20000ae0   Data          10  main_app.o(.data)
-    Target_Width                             0x20000aea   Data          10  main_app.o(.data)
-    MechanicalArm_Inc                        0x20000af4   Data           5  main_app.o(.data)
-    MechanicalArm_TargetPosition             0x20000afc   Data           8  main_app.o(.data)
-    MechanicalArm_Position                   0x20000b04   Data           8  main_app.o(.data)
-    Claw_Width                               0x20000b0c   Data           6  main_app.o(.data)
-    position                                 0x20000b14   Data           8  main_app.o(.data)
-    Err_Yaw                                  0x20000b1c   Data           4  main_app.o(.data)
-    Target_Yaw                               0x20000b20   Data           4  main_app.o(.data)
-    Target_Position                          0x20000b24   Data           8  main_app.o(.data)
-    Err_Position                             0x20000b2c   Data           8  main_app.o(.data)
-    Position_State                           0x20000b34   Data           1  main_app.o(.data)
-    Position_Mode                            0x20000b35   Data           1  main_app.o(.data)
-    OpenMV_State                             0x20000b36   Data           1  main_app.o(.data)
-    OpenMV_Tstate                            0x20000b37   Data           1  main_app.o(.data)
-    QrCode                                   0x20000b38   Data           7  main_app.o(.data)
-    LookData                                 0x20000b3f   Data           3  main_app.o(.data)
-    RecordingNum                             0x20000b42   Data           1  main_app.o(.data)
-    Recording                                0x20000b43   Data           3  main_app.o(.data)
-    wifi_state                               0x20000b46   Data           1  main_app.o(.data)
-    Vofa_Sbuffer                             0x20000b48   Data          44  main_app.o(.data)
-    Init_Code                                0x20000b74   Data           4  main_app.o(.data)
-    Visit_Code                               0x20000b78   Data           4  main_app.o(.data)
-    Reset_Code                               0x20000b7c   Data           4  main_app.o(.data)
-    Yaw                                      0x20000b80   Data           4  main_app.o(.data)
-    Yaw_Err                                  0x20000b84   Data           4  main_app.o(.data)
-    Attitude_Flag                            0x20000b88   Data           1  main_app.o(.data)
-    Attitude                                 0x20000b89   Data           1  main_app.o(.data)
-    Target_Blob                              0x20000b8a   Data           1  main_app.o(.data)
-    Target_Pos                               0x20000b8b   Data           1  main_app.o(.data)
-    Target_Warehouse                         0x20000b8c   Data           1  main_app.o(.data)
-    Target_Attitude                          0x20000b8d   Data           1  main_app.o(.data)
-    Attitude_Line                            0x20000b8e   Data           1  main_app.o(.data)
-    Attitude_State                           0x20000b8f   Data           1  main_app.o(.data)
-    Warehouse                                0x20000b90   Data           3  main_app.o(.data)
-    PositionTask_En                          0x20000b93   Data           1  main_app.o(.data)
-    PositionTask_State                       0x20000b94   Data           1  main_app.o(.data)
-    ReturnState                              0x20000b95   Data           1  main_app.o(.data)
-    SysTime                                  0x20000b98   Data           4  main_app.o(.data)
-    SysSubTime                               0x20000b9c   Data           4  main_app.o(.data)
-    SystemState                              0x20000ba0   Data           1  main_app.o(.data)
-    BeatTaskNum                              0x20000ba1   Data           1  main_app.o(.data)
-    ContinueTaskNum                          0x20000ba2   Data           1  main_app.o(.data)
-    main_flag                                0x20000ba3   Data           1  main_app.o(.data)
-    stateCmd_flag                            0x20000ba4   Data           1  main_app.o(.data)
-    main_state                               0x20000ba5   Data           1  main_app.o(.data)
-    Ctr_Blob                                 0x20000ba6   Data           1  main_app.o(.data)
-    BlobsList                                0x20000ba7   Data           3  main_app.o(.data)
-    temp                                     0x20000baa   Data           1  main_app.o(.data)
-    .data                                    0x20000bac   Section      294  position_app.o(.data)
-    Usart_Tx_Flag                            0x20000bac   Data           3  position_app.o(.data)
-    over_time                                0x20000bb0   Data           2  position_app.o(.data)
-    last_time                                0x20000bb2   Data           8  position_app.o(.data)
-    that_time                                0x20000bba   Data           8  position_app.o(.data)
-    last_over_time                           0x20000bc2   Data           8  position_app.o(.data)
-    that_over_time                           0x20000bca   Data           8  position_app.o(.data)
-    last_dir                                 0x20000bd2   Data           4  position_app.o(.data)
-    that_dir                                 0x20000bd6   Data           8  position_app.o(.data)
-    street_width                             0x20000be0   Data          24  position_app.o(.data)
-    MechanicalArm_Mode                       0x20000bf8   Data           1  position_app.o(.data)
-    MechanicalArm_State                      0x20000bf9   Data           1  position_app.o(.data)
-    ArmLen                                   0x20000bfa   Data           3  position_app.o(.data)
-    ArmLen2                                  0x20000bfe   Data           6  position_app.o(.data)
-    Reset_Width                              0x20000c04   Data          10  position_app.o(.data)
-    Target_Width                             0x20000c0e   Data          10  position_app.o(.data)
-    MechanicalArm_Inc                        0x20000c18   Data           5  position_app.o(.data)
-    MechanicalArm_TargetPosition             0x20000c20   Data           8  position_app.o(.data)
-    MechanicalArm_Position                   0x20000c28   Data           8  position_app.o(.data)
-    Claw_Width                               0x20000c30   Data           6  position_app.o(.data)
-    position                                 0x20000c38   Data           8  position_app.o(.data)
-    Err_Yaw                                  0x20000c40   Data           4  position_app.o(.data)
-    Target_Yaw                               0x20000c44   Data           4  position_app.o(.data)
-    Target_Position                          0x20000c48   Data           8  position_app.o(.data)
-    Err_Position                             0x20000c50   Data           8  position_app.o(.data)
-    Position_State                           0x20000c58   Data           1  position_app.o(.data)
-    Position_Mode                            0x20000c59   Data           1  position_app.o(.data)
-    OpenMV_State                             0x20000c5a   Data           1  position_app.o(.data)
-    OpenMV_Tstate                            0x20000c5b   Data           1  position_app.o(.data)
-    QrCode                                   0x20000c5c   Data           7  position_app.o(.data)
-    LookData                                 0x20000c63   Data           3  position_app.o(.data)
-    RecordingNum                             0x20000c66   Data           1  position_app.o(.data)
-    Recording                                0x20000c67   Data           3  position_app.o(.data)
-    wifi_state                               0x20000c6a   Data           1  position_app.o(.data)
-    Vofa_Sbuffer                             0x20000c6c   Data          44  position_app.o(.data)
-    Init_Code                                0x20000c98   Data           4  position_app.o(.data)
-    Visit_Code                               0x20000c9c   Data           4  position_app.o(.data)
-    Reset_Code                               0x20000ca0   Data           4  position_app.o(.data)
-    Yaw                                      0x20000ca4   Data           4  position_app.o(.data)
-    Yaw_Err                                  0x20000ca8   Data           4  position_app.o(.data)
-    main_flag                                0x20000cac   Data           1  position_app.o(.data)
-    stateCmd_flag                            0x20000cad   Data           1  position_app.o(.data)
-    main_state                               0x20000cae   Data           1  position_app.o(.data)
-    Ctr_Blob                                 0x20000caf   Data           1  position_app.o(.data)
-    BlobsList                                0x20000cb0   Data           3  position_app.o(.data)
-    Attitude_Flag                            0x20000cb3   Data           1  position_app.o(.data)
-    Attitude                                 0x20000cb4   Data           1  position_app.o(.data)
-    Target_Blob                              0x20000cb5   Data           1  position_app.o(.data)
-    Target_Pos                               0x20000cb6   Data           1  position_app.o(.data)
-    Target_Warehouse                         0x20000cb7   Data           1  position_app.o(.data)
-    Target_Attitude                          0x20000cb8   Data           1  position_app.o(.data)
-    Attitude_Line                            0x20000cb9   Data           1  position_app.o(.data)
-    Attitude_State                           0x20000cba   Data           1  position_app.o(.data)
-    Warehouse                                0x20000cbb   Data           3  position_app.o(.data)
-    ReturnState                              0x20000cbe   Data           1  position_app.o(.data)
-    SysTime                                  0x20000cc0   Data           4  position_app.o(.data)
-    SysSubTime                               0x20000cc4   Data           4  position_app.o(.data)
-    SystemState                              0x20000cc8   Data           1  position_app.o(.data)
-    BeatTaskNum                              0x20000cc9   Data           1  position_app.o(.data)
-    ContinueTaskNum                          0x20000cca   Data           1  position_app.o(.data)
-    PositionTask_En                          0x20000ccb   Data           1  position_app.o(.data)
-    PositionTask_State                       0x20000ccc   Data           1  position_app.o(.data)
-    flag                                     0x20000ccd   Data           1  position_app.o(.data)
-    Blob                                     0x20000cce   Data           1  position_app.o(.data)
-    Pos                                      0x20000ccf   Data           1  position_app.o(.data)
-    flag                                     0x20000cd0   Data           1  position_app.o(.data)
-    flag                                     0x20000cd1   Data           1  position_app.o(.data)
-    .data                                    0x20000cd4   Section        4  errno.o(.data)
-    _errno                                   0x20000cd4   Data           4  errno.o(.data)
-    .bss                                     0x20000cd8   Section      864  motor_driver.o(.bss)
-    Usart_Sbuffer                            0x20000cd8   Data         192  motor_driver.o(.bss)
-    PID_Struct                               0x20000d98   Data          64  motor_driver.o(.bss)
-    PWM                                      0x20000dd8   Data          16  motor_driver.o(.bss)
-    Target_Speed                             0x20000de8   Data          16  motor_driver.o(.bss)
-    Position_Speed                           0x20000df8   Data          16  motor_driver.o(.bss)
-    Yaw_Speed                                0x20000e08   Data          16  motor_driver.o(.bss)
-    BeatTaskList                             0x20000e18   Data         256  motor_driver.o(.bss)
-    ContinueTaskList                         0x20000f18   Data         256  motor_driver.o(.bss)
-    distance                                 0x20001018   Data          16  motor_driver.o(.bss)
-    speed                                    0x20001028   Data          16  motor_driver.o(.bss)
-    .bss                                     0x20001038   Section      992  usart.o(.bss)
-    distance                                 0x20001038   Data          16  usart.o(.bss)
-    PID_Struct                               0x20001048   Data          64  usart.o(.bss)
-    PWM                                      0x20001088   Data          16  usart.o(.bss)
-    Target_Speed                             0x20001098   Data          16  usart.o(.bss)
-    Position_Speed                           0x200010a8   Data          16  usart.o(.bss)
-    Yaw_Speed                                0x200010b8   Data          16  usart.o(.bss)
-    BeatTaskList                             0x200010c8   Data         256  usart.o(.bss)
-    ContinueTaskList                         0x200011c8   Data         256  usart.o(.bss)
-    Usart_Sbuffer                            0x200012c8   Data         192  usart.o(.bss)
-    Usart1_Tx_Sbuffer                        0x20001388   Data          48  usart.o(.bss)
-    Usart2_Tx_Sbuffer                        0x200013b8   Data          48  usart.o(.bss)
-    Usart3_Tx_Sbuffer                        0x200013e8   Data          48  usart.o(.bss)
-    .bss                                     0x20001418   Section      848  system_core.o(.bss)
-    Usart_Sbuffer                            0x20001418   Data         192  system_core.o(.bss)
-    distance                                 0x200014d8   Data          16  system_core.o(.bss)
-    PID_Struct                               0x200014e8   Data          64  system_core.o(.bss)
-    PWM                                      0x20001528   Data          16  system_core.o(.bss)
-    Target_Speed                             0x20001538   Data          16  system_core.o(.bss)
-    Position_Speed                           0x20001548   Data          16  system_core.o(.bss)
-    Yaw_Speed                                0x20001558   Data          16  system_core.o(.bss)
-    BeatTaskList                             0x20001568   Data         256  system_core.o(.bss)
-    ContinueTaskList                         0x20001668   Data         256  system_core.o(.bss)
-    .bss                                     0x20001768   Section      848  position_service.o(.bss)
-    Usart_Sbuffer                            0x20001768   Data         192  position_service.o(.bss)
-    distance                                 0x20001828   Data          16  position_service.o(.bss)
-    BeatTaskList                             0x20001838   Data         256  position_service.o(.bss)
-    ContinueTaskList                         0x20001938   Data         256  position_service.o(.bss)
-    PID_Struct                               0x20001a38   Data          64  position_service.o(.bss)
-    PWM                                      0x20001a78   Data          16  position_service.o(.bss)
-    Target_Speed                             0x20001a88   Data          16  position_service.o(.bss)
-    Position_Speed                           0x20001a98   Data          16  position_service.o(.bss)
-    Yaw_Speed                                0x20001aa8   Data          16  position_service.o(.bss)
-    .bss                                     0x20001ab8   Section      872  mechanicalarm_service.o(.bss)
-    Usart_Sbuffer                            0x20001ab8   Data         192  mechanicalarm_service.o(.bss)
-    distance                                 0x20001b78   Data          16  mechanicalarm_service.o(.bss)
-    PID_Struct                               0x20001b88   Data          64  mechanicalarm_service.o(.bss)
-    PWM                                      0x20001bc8   Data          16  mechanicalarm_service.o(.bss)
-    Target_Speed                             0x20001bd8   Data          16  mechanicalarm_service.o(.bss)
-    Position_Speed                           0x20001be8   Data          16  mechanicalarm_service.o(.bss)
-    Yaw_Speed                                0x20001bf8   Data          16  mechanicalarm_service.o(.bss)
-    BeatTaskList                             0x20001c08   Data         256  mechanicalarm_service.o(.bss)
-    ContinueTaskList                         0x20001d08   Data         256  mechanicalarm_service.o(.bss)
-    Angle                                    0x20001e08   Data          24  mechanicalarm_service.o(.bss)
-    STACK                                    0x20001e20   Section     1024  startup_stm32f10x_hd.o(STACK)
+    .data                                    0x20000b64   Section      291  main_app.o(.data)
+    Usart_Tx_Flag                            0x20000b64   Data           3  main_app.o(.data)
+    over_time                                0x20000b68   Data           2  main_app.o(.data)
+    last_time                                0x20000b6a   Data           8  main_app.o(.data)
+    that_time                                0x20000b72   Data           8  main_app.o(.data)
+    last_over_time                           0x20000b7a   Data           8  main_app.o(.data)
+    that_over_time                           0x20000b82   Data           8  main_app.o(.data)
+    last_dir                                 0x20000b8a   Data           4  main_app.o(.data)
+    that_dir                                 0x20000b8e   Data           8  main_app.o(.data)
+    street_width                             0x20000b98   Data          24  main_app.o(.data)
+    MechanicalArm_Mode                       0x20000bb0   Data           1  main_app.o(.data)
+    MechanicalArm_State                      0x20000bb1   Data           1  main_app.o(.data)
+    ArmLen                                   0x20000bb2   Data           3  main_app.o(.data)
+    ArmLen2                                  0x20000bb6   Data           6  main_app.o(.data)
+    Reset_Width                              0x20000bbc   Data          10  main_app.o(.data)
+    Target_Width                             0x20000bc6   Data          10  main_app.o(.data)
+    MechanicalArm_Inc                        0x20000bd0   Data           5  main_app.o(.data)
+    MechanicalArm_TargetPosition             0x20000bd8   Data           8  main_app.o(.data)
+    MechanicalArm_Position                   0x20000be0   Data           8  main_app.o(.data)
+    Claw_Width                               0x20000be8   Data           6  main_app.o(.data)
+    position                                 0x20000bf0   Data           8  main_app.o(.data)
+    Err_Yaw                                  0x20000bf8   Data           4  main_app.o(.data)
+    Target_Yaw                               0x20000bfc   Data           4  main_app.o(.data)
+    Target_Position                          0x20000c00   Data           8  main_app.o(.data)
+    Err_Position                             0x20000c08   Data           8  main_app.o(.data)
+    Position_State                           0x20000c10   Data           1  main_app.o(.data)
+    Position_Mode                            0x20000c11   Data           1  main_app.o(.data)
+    OpenMV_State                             0x20000c12   Data           1  main_app.o(.data)
+    OpenMV_Tstate                            0x20000c13   Data           1  main_app.o(.data)
+    QrCode                                   0x20000c14   Data           7  main_app.o(.data)
+    LookData                                 0x20000c1b   Data           3  main_app.o(.data)
+    RecordingNum                             0x20000c1e   Data           1  main_app.o(.data)
+    Recording                                0x20000c1f   Data           3  main_app.o(.data)
+    wifi_state                               0x20000c22   Data           1  main_app.o(.data)
+    Vofa_Sbuffer                             0x20000c24   Data          44  main_app.o(.data)
+    Init_Code                                0x20000c50   Data           4  main_app.o(.data)
+    Visit_Code                               0x20000c54   Data           4  main_app.o(.data)
+    Reset_Code                               0x20000c58   Data           4  main_app.o(.data)
+    Yaw                                      0x20000c5c   Data           4  main_app.o(.data)
+    Yaw_Err                                  0x20000c60   Data           4  main_app.o(.data)
+    Attitude_Flag                            0x20000c64   Data           1  main_app.o(.data)
+    Attitude                                 0x20000c65   Data           1  main_app.o(.data)
+    Target_Blob                              0x20000c66   Data           1  main_app.o(.data)
+    Target_Pos                               0x20000c67   Data           1  main_app.o(.data)
+    Target_Warehouse                         0x20000c68   Data           1  main_app.o(.data)
+    Target_Attitude                          0x20000c69   Data           1  main_app.o(.data)
+    Attitude_Line                            0x20000c6a   Data           1  main_app.o(.data)
+    Attitude_State                           0x20000c6b   Data           1  main_app.o(.data)
+    Warehouse                                0x20000c6c   Data           3  main_app.o(.data)
+    PositionTask_En                          0x20000c6f   Data           1  main_app.o(.data)
+    PositionTask_State                       0x20000c70   Data           1  main_app.o(.data)
+    ReturnState                              0x20000c71   Data           1  main_app.o(.data)
+    SysTime                                  0x20000c74   Data           4  main_app.o(.data)
+    SysSubTime                               0x20000c78   Data           4  main_app.o(.data)
+    SystemState                              0x20000c7c   Data           1  main_app.o(.data)
+    BeatTaskNum                              0x20000c7d   Data           1  main_app.o(.data)
+    ContinueTaskNum                          0x20000c7e   Data           1  main_app.o(.data)
+    main_flag                                0x20000c7f   Data           1  main_app.o(.data)
+    stateCmd_flag                            0x20000c80   Data           1  main_app.o(.data)
+    main_state                               0x20000c81   Data           1  main_app.o(.data)
+    Ctr_Blob                                 0x20000c82   Data           1  main_app.o(.data)
+    BlobsList                                0x20000c83   Data           3  main_app.o(.data)
+    temp                                     0x20000c86   Data           1  main_app.o(.data)
+    .data                                    0x20000c88   Section      294  position_app.o(.data)
+    Usart_Tx_Flag                            0x20000c88   Data           3  position_app.o(.data)
+    over_time                                0x20000c8c   Data           2  position_app.o(.data)
+    last_time                                0x20000c8e   Data           8  position_app.o(.data)
+    that_time                                0x20000c96   Data           8  position_app.o(.data)
+    last_over_time                           0x20000c9e   Data           8  position_app.o(.data)
+    that_over_time                           0x20000ca6   Data           8  position_app.o(.data)
+    last_dir                                 0x20000cae   Data           4  position_app.o(.data)
+    that_dir                                 0x20000cb2   Data           8  position_app.o(.data)
+    street_width                             0x20000cbc   Data          24  position_app.o(.data)
+    MechanicalArm_Mode                       0x20000cd4   Data           1  position_app.o(.data)
+    MechanicalArm_State                      0x20000cd5   Data           1  position_app.o(.data)
+    ArmLen                                   0x20000cd6   Data           3  position_app.o(.data)
+    ArmLen2                                  0x20000cda   Data           6  position_app.o(.data)
+    Reset_Width                              0x20000ce0   Data          10  position_app.o(.data)
+    Target_Width                             0x20000cea   Data          10  position_app.o(.data)
+    MechanicalArm_Inc                        0x20000cf4   Data           5  position_app.o(.data)
+    MechanicalArm_TargetPosition             0x20000cfc   Data           8  position_app.o(.data)
+    MechanicalArm_Position                   0x20000d04   Data           8  position_app.o(.data)
+    Claw_Width                               0x20000d0c   Data           6  position_app.o(.data)
+    position                                 0x20000d14   Data           8  position_app.o(.data)
+    Err_Yaw                                  0x20000d1c   Data           4  position_app.o(.data)
+    Target_Yaw                               0x20000d20   Data           4  position_app.o(.data)
+    Target_Position                          0x20000d24   Data           8  position_app.o(.data)
+    Err_Position                             0x20000d2c   Data           8  position_app.o(.data)
+    Position_State                           0x20000d34   Data           1  position_app.o(.data)
+    Position_Mode                            0x20000d35   Data           1  position_app.o(.data)
+    OpenMV_State                             0x20000d36   Data           1  position_app.o(.data)
+    OpenMV_Tstate                            0x20000d37   Data           1  position_app.o(.data)
+    QrCode                                   0x20000d38   Data           7  position_app.o(.data)
+    LookData                                 0x20000d3f   Data           3  position_app.o(.data)
+    RecordingNum                             0x20000d42   Data           1  position_app.o(.data)
+    Recording                                0x20000d43   Data           3  position_app.o(.data)
+    wifi_state                               0x20000d46   Data           1  position_app.o(.data)
+    Vofa_Sbuffer                             0x20000d48   Data          44  position_app.o(.data)
+    Init_Code                                0x20000d74   Data           4  position_app.o(.data)
+    Visit_Code                               0x20000d78   Data           4  position_app.o(.data)
+    Reset_Code                               0x20000d7c   Data           4  position_app.o(.data)
+    Yaw                                      0x20000d80   Data           4  position_app.o(.data)
+    Yaw_Err                                  0x20000d84   Data           4  position_app.o(.data)
+    main_flag                                0x20000d88   Data           1  position_app.o(.data)
+    stateCmd_flag                            0x20000d89   Data           1  position_app.o(.data)
+    main_state                               0x20000d8a   Data           1  position_app.o(.data)
+    Ctr_Blob                                 0x20000d8b   Data           1  position_app.o(.data)
+    BlobsList                                0x20000d8c   Data           3  position_app.o(.data)
+    Attitude_Flag                            0x20000d8f   Data           1  position_app.o(.data)
+    Attitude                                 0x20000d90   Data           1  position_app.o(.data)
+    Target_Blob                              0x20000d91   Data           1  position_app.o(.data)
+    Target_Pos                               0x20000d92   Data           1  position_app.o(.data)
+    Target_Warehouse                         0x20000d93   Data           1  position_app.o(.data)
+    Target_Attitude                          0x20000d94   Data           1  position_app.o(.data)
+    Attitude_Line                            0x20000d95   Data           1  position_app.o(.data)
+    Attitude_State                           0x20000d96   Data           1  position_app.o(.data)
+    Warehouse                                0x20000d97   Data           3  position_app.o(.data)
+    ReturnState                              0x20000d9a   Data           1  position_app.o(.data)
+    SysTime                                  0x20000d9c   Data           4  position_app.o(.data)
+    SysSubTime                               0x20000da0   Data           4  position_app.o(.data)
+    SystemState                              0x20000da4   Data           1  position_app.o(.data)
+    BeatTaskNum                              0x20000da5   Data           1  position_app.o(.data)
+    ContinueTaskNum                          0x20000da6   Data           1  position_app.o(.data)
+    PositionTask_En                          0x20000da7   Data           1  position_app.o(.data)
+    PositionTask_State                       0x20000da8   Data           1  position_app.o(.data)
+    flag                                     0x20000da9   Data           1  position_app.o(.data)
+    Blob                                     0x20000daa   Data           1  position_app.o(.data)
+    Pos                                      0x20000dab   Data           1  position_app.o(.data)
+    flag                                     0x20000dac   Data           1  position_app.o(.data)
+    flag                                     0x20000dad   Data           1  position_app.o(.data)
+    .data                                    0x20000db0   Section        4  errno.o(.data)
+    _errno                                   0x20000db0   Data           4  errno.o(.data)
+    .bss                                     0x20000db4   Section      864  motor_driver.o(.bss)
+    Usart_Sbuffer                            0x20000db4   Data         192  motor_driver.o(.bss)
+    PID_Struct                               0x20000e74   Data          64  motor_driver.o(.bss)
+    PWM                                      0x20000eb4   Data          16  motor_driver.o(.bss)
+    Target_Speed                             0x20000ec4   Data          16  motor_driver.o(.bss)
+    Position_Speed                           0x20000ed4   Data          16  motor_driver.o(.bss)
+    Yaw_Speed                                0x20000ee4   Data          16  motor_driver.o(.bss)
+    BeatTaskList                             0x20000ef4   Data         256  motor_driver.o(.bss)
+    ContinueTaskList                         0x20000ff4   Data         256  motor_driver.o(.bss)
+    distance                                 0x200010f4   Data          16  motor_driver.o(.bss)
+    speed                                    0x20001104   Data          16  motor_driver.o(.bss)
+    .bss                                     0x20001114   Section      992  usart.o(.bss)
+    distance                                 0x20001114   Data          16  usart.o(.bss)
+    PID_Struct                               0x20001124   Data          64  usart.o(.bss)
+    PWM                                      0x20001164   Data          16  usart.o(.bss)
+    Target_Speed                             0x20001174   Data          16  usart.o(.bss)
+    Position_Speed                           0x20001184   Data          16  usart.o(.bss)
+    Yaw_Speed                                0x20001194   Data          16  usart.o(.bss)
+    BeatTaskList                             0x200011a4   Data         256  usart.o(.bss)
+    ContinueTaskList                         0x200012a4   Data         256  usart.o(.bss)
+    Usart_Sbuffer                            0x200013a4   Data         192  usart.o(.bss)
+    Usart1_Tx_Sbuffer                        0x20001464   Data          48  usart.o(.bss)
+    Usart2_Tx_Sbuffer                        0x20001494   Data          48  usart.o(.bss)
+    Usart3_Tx_Sbuffer                        0x200014c4   Data          48  usart.o(.bss)
+    .bss                                     0x200014f4   Section      848  system_core.o(.bss)
+    Usart_Sbuffer                            0x200014f4   Data         192  system_core.o(.bss)
+    distance                                 0x200015b4   Data          16  system_core.o(.bss)
+    PID_Struct                               0x200015c4   Data          64  system_core.o(.bss)
+    PWM                                      0x20001604   Data          16  system_core.o(.bss)
+    Target_Speed                             0x20001614   Data          16  system_core.o(.bss)
+    Position_Speed                           0x20001624   Data          16  system_core.o(.bss)
+    Yaw_Speed                                0x20001634   Data          16  system_core.o(.bss)
+    BeatTaskList                             0x20001644   Data         256  system_core.o(.bss)
+    ContinueTaskList                         0x20001744   Data         256  system_core.o(.bss)
+    .bss                                     0x20001844   Section      848  position_service.o(.bss)
+    Usart_Sbuffer                            0x20001844   Data         192  position_service.o(.bss)
+    distance                                 0x20001904   Data          16  position_service.o(.bss)
+    BeatTaskList                             0x20001914   Data         256  position_service.o(.bss)
+    ContinueTaskList                         0x20001a14   Data         256  position_service.o(.bss)
+    PID_Struct                               0x20001b14   Data          64  position_service.o(.bss)
+    PWM                                      0x20001b54   Data          16  position_service.o(.bss)
+    Target_Speed                             0x20001b64   Data          16  position_service.o(.bss)
+    Position_Speed                           0x20001b74   Data          16  position_service.o(.bss)
+    Yaw_Speed                                0x20001b84   Data          16  position_service.o(.bss)
+    .bss                                     0x20001b98   Section      872  mechanicalarm_service.o(.bss)
+    Usart_Sbuffer                            0x20001b98   Data         192  mechanicalarm_service.o(.bss)
+    distance                                 0x20001c58   Data          16  mechanicalarm_service.o(.bss)
+    PID_Struct                               0x20001c68   Data          64  mechanicalarm_service.o(.bss)
+    PWM                                      0x20001ca8   Data          16  mechanicalarm_service.o(.bss)
+    Target_Speed                             0x20001cb8   Data          16  mechanicalarm_service.o(.bss)
+    Position_Speed                           0x20001cc8   Data          16  mechanicalarm_service.o(.bss)
+    Yaw_Speed                                0x20001cd8   Data          16  mechanicalarm_service.o(.bss)
+    BeatTaskList                             0x20001ce8   Data         256  mechanicalarm_service.o(.bss)
+    ContinueTaskList                         0x20001de8   Data         256  mechanicalarm_service.o(.bss)
+    Angle                                    0x20001ee8   Data          24  mechanicalarm_service.o(.bss)
+    STACK                                    0x20001f00   Section     1024  startup_stm32f10x_hd.o(STACK)
 
     Global Symbols
 
@@ -2387,155 +2398,160 @@ Image Symbol Table
     GPIO_SetBits                             0x08001689   Thumb Code     4  stm32f10x_gpio.o(i.GPIO_SetBits)
     GetBlob_Floor                            0x0800168d   Thumb Code    42  goods_app.o(i.GetBlob_Floor)
     GetBlob_FloorRun                         0x080016cd   Thumb Code   222  goods_app.o(i.GetBlob_FloorRun)
-    GetBlob_Move                             0x080017c9   Thumb Code   330  position_app.o(i.GetBlob_Move)
-    GetQrCode                                0x08001925   Thumb Code    60  main_app.o(i.GetQrCode)
-    Get_UpBlobs                              0x08001969   Thumb Code   124  main_app.o(i.Get_UpBlobs)
-    Gyroscope_Init                           0x080019f1   Thumb Code    50  gyroscope.o(i.Gyroscope_Init)
-    Gyroscope_ReadYaw                        0x08001a31   Thumb Code    12  gyroscope.o(i.Gyroscope_ReadYaw)
-    Gyroscope_RequestUpdata                  0x08001a41   Thumb Code    18  gyroscope.o(i.Gyroscope_RequestUpdata)
-    Gyroscope_YawUpdata                      0x08001a59   Thumb Code    38  gyroscope.o(i.Gyroscope_YawUpdata)
-    Hall_EXTI_Config                         0x08001a89   Thumb Code   160  motor_init.o(i.Hall_EXTI_Config)
-    Hall_GPIO_Config                         0x08001b29   Thumb Code    32  motor_init.o(i.Hall_GPIO_Config)
-    Hall_TIM_Config                          0x08001b4d   Thumb Code    98  motor_init.o(i.Hall_TIM_Config)
-    HardFault_Handler                        0x08001bb5   Thumb Code     4  stm32f10x_it.o(i.HardFault_Handler)
-    IIC_Init                                 0x08001bb9   Thumb Code    60  iic.o(i.IIC_Init)
-    IIC_SendByte                             0x08001bf9   Thumb Code    70  iic.o(i.IIC_SendByte)
-    IIC_Start                                0x08001c45   Thumb Code    44  iic.o(i.IIC_Start)
-    IIC_Stop                                 0x08001c75   Thumb Code    34  iic.o(i.IIC_Stop)
-    IIC_WaitACK                              0x08001c9d   Thumb Code    24  iic.o(i.IIC_WaitACK)
-    Inc_PID                                  0x08001cb9   Thumb Code   160  position_service.o(i.Inc_PID)
-    Inc_PID_Realiz                           0x08001d6d   Thumb Code   142  position_service.o(i.Inc_PID_Realiz)
-    MechanicalArm_PositionInc                0x08001e09   Thumb Code   112  mechanicalarm_service.o(i.MechanicalArm_PositionInc)
-    MechanicalArm_PositionSet                0x08001e85   Thumb Code    64  mechanicalarm_service.o(i.MechanicalArm_PositionSet)
-    MechanicalArm_Reset                      0x08001ecd   Thumb Code    28  mechanicalarm_service.o(i.MechanicalArm_Reset)
-    MechanicalArm_Service                    0x08001ef1   Thumb Code    30  mechanicalarm_service.o(i.MechanicalArm_Service)
-    MechanicalArm_StateCheck                 0x08001f19   Thumb Code    90  mechanicalarm_service.o(i.MechanicalArm_StateCheck)
-    MechanicalArm_WidthInc                   0x08001f8d   Thumb Code   142  mechanicalarm_service.o(i.MechanicalArm_WidthInc)
-    MemManage_Handler                        0x08002029   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
-    Motor_GPIO_Config                        0x0800202d   Thumb Code    40  motor_init.o(i.Motor_GPIO_Config)
-    Motor_Init                               0x08002059   Thumb Code    28  motor_init.o(i.Motor_Init)
-    Motor_TIM_Config                         0x08002075   Thumb Code   148  motor_init.o(i.Motor_TIM_Config)
-    NMI_Handler                              0x0800210d   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
-    NVIC_Init                                0x08002111   Thumb Code   100  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x08002181   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
-    OLED_Clear                               0x08002195   Thumb Code    44  oled.o(i.OLED_Clear)
-    OLED_ClearBlok                           0x080021c1   Thumb Code    66  oled.o(i.OLED_ClearBlok)
-    OLED_Init                                0x08002203   Thumb Code   232  oled.o(i.OLED_Init)
-    OLED_PosSet                              0x080022eb   Thumb Code    54  oled.o(i.OLED_PosSet)
-    OLED_SendByte                            0x08002321   Thumb Code    56  oled.o(i.OLED_SendByte)
-    OLED_ShowChar                            0x08002359   Thumb Code   162  oled.o(i.OLED_ShowChar)
-    OLED_ShowNum                             0x08002405   Thumb Code   144  oled.o(i.OLED_ShowNum)
-    OLED_ShowString                          0x08002495   Thumb Code    76  oled.o(i.OLED_ShowString)
-    OpenMV_Init                              0x080024e1   Thumb Code    58  openmv_service.o(i.OpenMV_Init)
-    OpenMV_Set                               0x08002521   Thumb Code     6  openmv_service.o(i.OpenMV_Set)
-    OpenMV_Updata                            0x0800252d   Thumb Code   424  openmv_service.o(i.OpenMV_Updata)
-    PCB_System_Init                          0x080026f1   Thumb Code   272  system_core.o(i.PCB_System_Init)
-    PWM_Out                                  0x08002845   Thumb Code   396  motor_driver.o(i.PWM_Out)
-    PendSV_Handler                           0x080029d9   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
-    PositionClr_Service                      0x080029dd   Thumb Code    70  position_service.o(i.PositionClr_Service)
-    PositionService_Stop                     0x08002a31   Thumb Code    20  position_service.o(i.PositionService_Stop)
-    PositionSpeed_Config                     0x08002a4d   Thumb Code   106  position_service.o(i.PositionSpeed_Config)
-    PositionState_Inc                        0x08002ac1   Thumb Code    18  position_service.o(i.PositionState_Inc)
-    PositionState_Updata                     0x08002ad9   Thumb Code   114  position_service.o(i.PositionState_Updata)
-    PositionTask_StateSet                    0x08002b59   Thumb Code    12  position_app.o(i.PositionTask_StateSet)
-    Position_Stop                            0x08002b6d   Thumb Code    34  position_service.o(i.Position_Stop)
-    Position_Update                          0x08002b9d   Thumb Code   120  position_service.o(i.Position_Update)
-    RCC_AHBPeriphClockCmd                    0x08002c29   Thumb Code    26  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x08002c49   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08002c69   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    RCC_GetClocksFreq                        0x08002c89   Thumb Code   192  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
-    Read_AttitudeFlag                        0x08002d5d   Thumb Code     6  goods_app.o(i.Read_AttitudeFlag)
-    Read_Distance                            0x08002d69   Thumb Code     4  motor_driver.o(i.Read_Distance)
-    Read_LookData                            0x08002d71   Thumb Code     4  openmv_service.o(i.Read_LookData)
-    Read_MechanicalArmState                  0x08002d79   Thumb Code     6  mechanicalarm_service.o(i.Read_MechanicalArmState)
-    Read_PositionState                       0x08002d85   Thumb Code     6  position_service.o(i.Read_PositionState)
-    Read_PositionTaskEn                      0x08002d91   Thumb Code     6  position_app.o(i.Read_PositionTaskEn)
-    Read_QrCode                              0x08002d9d   Thumb Code     4  openmv_service.o(i.Read_QrCode)
-    Read_Recording                           0x08002da5   Thumb Code     4  openmv_service.o(i.Read_Recording)
-    Read_Speed                               0x08002dad   Thumb Code   298  motor_driver.o(i.Read_Speed)
-    Read_SysSubTime                          0x08002f01   Thumb Code     6  system_core.o(i.Read_SysSubTime)
-    Read_Usart_Sbuffer                       0x08002f0d   Thumb Code    12  usart.o(i.Read_Usart_Sbuffer)
-    SVC_Handler                              0x08002f1d   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
-    Speed_Set                                0x08003009   Thumb Code    34  position_service.o(i.Speed_Set)
-    Speed_Syn                                0x08003031   Thumb Code   122  position_service.o(i.Speed_Syn)
-    StreetMotor_GPIO_Config                  0x080030c1   Thumb Code    60  street_motor.o(i.StreetMotor_GPIO_Config)
-    StreetMotor_Init                         0x08003105   Thumb Code    12  street_motor.o(i.StreetMotor_Init)
-    StreetMotor_TIM_Config                   0x08003111   Thumb Code   212  street_motor.o(i.StreetMotor_TIM_Config)
-    SysSecBeat_Config                        0x080031e9   Thumb Code    92  system_core.o(i.SysSecBeat_Config)
-    SysTick_Handler                          0x08003249   Thumb Code    52  system_core.o(i.SysTick_Handler)
-    SystemInit                               0x08003285   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    SystemState_Set                          0x080032e5   Thumb Code    16  system_core.o(i.SystemState_Set)
-    TB6612_Init                              0x080032f9   Thumb Code    50  motor_init.o(i.TB6612_Init)
-    TIM6_IRQHandler                          0x08003331   Thumb Code    34  motor_driver.o(i.TIM6_IRQHandler)
-    TIM7_IRQHandler                          0x0800335d   Thumb Code    34  system_core.o(i.TIM7_IRQHandler)
-    TIM_ClearITPendingBit                    0x08003389   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
-    TIM_Cmd                                  0x0800338f   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
-    TIM_GetITStatus                          0x080033a7   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
-    TIM_ITConfig                             0x080033c9   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
-    TIM_OC1Init                              0x080033dd   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
-    TIM_OC1PreloadConfig                     0x08003475   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    TIM_OC2Init                              0x08003489   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
-    TIM_OC2PreloadConfig                     0x0800352d   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    TIM_OC3Init                              0x08003549   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
-    TIM_OC3PreloadConfig                     0x080035e9   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    TIM_OC4Init                              0x080035fd   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
-    TIM_OC4PreloadConfig                     0x08003679   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    TIM_SetCompare1                          0x08003693   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare1)
-    TIM_SetCompare2                          0x08003697   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare2)
-    TIM_SetCompare3                          0x0800369b   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare3)
-    TIM_SetCompare4                          0x0800369f   Thumb Code     6  stm32f10x_tim.o(i.TIM_SetCompare4)
-    TIM_TimeBaseInit                         0x080036a5   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    TargetMove_Set                           0x08003749   Thumb Code    50  position_service.o(i.TargetMove_Set)
-    TargetWidth_Set                          0x0800378d   Thumb Code    26  mechanicalarm_service.o(i.TargetWidth_Set)
-    TaskList_Config                          0x080037b9   Thumb Code    86  system_core.o(i.TaskList_Config)
-    USART1_IRQHandler                        0x08003821   Thumb Code    56  usart.o(i.USART1_IRQHandler)
-    USART2_IRQHandler                        0x08003861   Thumb Code    64  usart.o(i.USART2_IRQHandler)
-    USART3_IRQHandler                        0x080038a9   Thumb Code    86  usart.o(i.USART3_IRQHandler)
-    USART_ClearITPendingBit                  0x08003909   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    USART_Cmd                                0x08003927   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
-    USART_DMACmd                             0x0800393f   Thumb Code    18  stm32f10x_usart.o(i.USART_DMACmd)
-    USART_GetITStatus                        0x08003951   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
-    USART_ITConfig                           0x080039a5   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
-    USART_Init                               0x080039f1   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08003ac9   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
-    UsageFault_Handler                       0x08003ad3   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    Usart2_Send                              0x08003ad9   Thumb Code    62  usart.o(i.Usart2_Send)
-    Usart3_Send                              0x08003b25   Thumb Code    62  usart.o(i.Usart3_Send)
-    Usart_Config                             0x08003b71   Thumb Code   300  usart.o(i.Usart_Config)
-    Usart_DMA_Config                         0x08003cb1   Thumb Code   290  usart.o(i.Usart_DMA_Config)
-    Usart_Sbuffer_Clear                      0x08003df1   Thumb Code    14  usart.o(i.Usart_Sbuffer_Clear)
-    Usart_TxFlag_Clear                       0x08003e05   Thumb Code    10  usart.o(i.Usart_TxFlag_Clear)
-    VectorMove_Set                           0x08003e15   Thumb Code   132  position_service.o(i.VectorMove_Set)
-    Wait_Gyroscope                           0x08003ea1   Thumb Code   176  gyroscope.o(i.Wait_Gyroscope)
-    YawSpeed_Config                          0x08003f65   Thumb Code    96  position_service.o(i.YawSpeed_Config)
-    __ARM_fpclassify                         0x08003fd5   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    __kernel_poly                            0x08003ffd   Thumb Code   170  poly.o(i.__kernel_poly)
-    __mathlib_dbl_infnan                     0x080040a7   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_invalid                    0x080040ad   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_underflow                  0x080040b9   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
-    __scatterload_copy                       0x080040c9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080040d7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x080040d9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    __set_errno                              0x080040e9   Thumb Code     6  errno.o(i.__set_errno)
-    acos                                     0x080040f5   Thumb Code   574  acos.o(i.acos)
-    atan                                     0x08004371   Thumb Code   474  atan.o(i.atan)
-    goods_app_Task                           0x08004591   Thumb Code    68  goods_app.o(i.goods_app_Task)
-    main                                     0x080045e1   Thumb Code     8  main.o(i.main)
-    main_app_Task                            0x080045e9   Thumb Code    98  main_app.o(i.main_app_Task)
-    openmv_service                           0x08004661   Thumb Code     8  openmv_service.o(i.openmv_service)
-    position_app_Task                        0x08004669   Thumb Code    48  position_app.o(i.position_app_Task)
-    sqrt                                     0x080046a1   Thumb Code    76  sqrt.o(i.sqrt)
-    asc2_0806                                0x080046ec   Data         546  oled.o(.constdata)
-    asc2_1608                                0x0800490e   Data        1456  oled.o(.constdata)
-    Region$$Table$$Base                      0x08004fa8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004fc8   Number         0  anon$$obj.o(Region$$Table)
+    GetBlob_Move                             0x080017c9   Thumb Code   378  position_app.o(i.GetBlob_Move)
+    GetQrCode                                0x08001955   Thumb Code    60  main_app.o(i.GetQrCode)
+    Get_UpBlobs                              0x08001999   Thumb Code   124  main_app.o(i.Get_UpBlobs)
+    Gyroscope_Init                           0x08001a21   Thumb Code    50  gyroscope.o(i.Gyroscope_Init)
+    Gyroscope_ReadYaw                        0x08001a61   Thumb Code    12  gyroscope.o(i.Gyroscope_ReadYaw)
+    Gyroscope_RequestUpdata                  0x08001a71   Thumb Code    18  gyroscope.o(i.Gyroscope_RequestUpdata)
+    Gyroscope_YawUpdata                      0x08001a89   Thumb Code    38  gyroscope.o(i.Gyroscope_YawUpdata)
+    Hall_EXTI_Config                         0x08001ab9   Thumb Code   160  motor_init.o(i.Hall_EXTI_Config)
+    Hall_GPIO_Config                         0x08001b59   Thumb Code    32  motor_init.o(i.Hall_GPIO_Config)
+    Hall_TIM_Config                          0x08001b7d   Thumb Code    98  motor_init.o(i.Hall_TIM_Config)
+    HardFault_Handler                        0x08001be5   Thumb Code     4  stm32f10x_it.o(i.HardFault_Handler)
+    IIC_Init                                 0x08001be9   Thumb Code    60  iic.o(i.IIC_Init)
+    IIC_SendByte                             0x08001c29   Thumb Code    70  iic.o(i.IIC_SendByte)
+    IIC_Start                                0x08001c75   Thumb Code    44  iic.o(i.IIC_Start)
+    IIC_Stop                                 0x08001ca5   Thumb Code    34  iic.o(i.IIC_Stop)
+    IIC_WaitACK                              0x08001ccd   Thumb Code    24  iic.o(i.IIC_WaitACK)
+    Inc_PID                                  0x08001ce9   Thumb Code   160  position_service.o(i.Inc_PID)
+    Inc_PID_Realiz                           0x08001d9d   Thumb Code   142  position_service.o(i.Inc_PID_Realiz)
+    MechanicalArm_PositionInc                0x08001e39   Thumb Code   112  mechanicalarm_service.o(i.MechanicalArm_PositionInc)
+    MechanicalArm_PositionSet                0x08001eb5   Thumb Code    64  mechanicalarm_service.o(i.MechanicalArm_PositionSet)
+    MechanicalArm_Reset                      0x08001efd   Thumb Code    28  mechanicalarm_service.o(i.MechanicalArm_Reset)
+    MechanicalArm_Service                    0x08001f21   Thumb Code    30  mechanicalarm_service.o(i.MechanicalArm_Service)
+    MechanicalArm_StateCheck                 0x08001f49   Thumb Code    90  mechanicalarm_service.o(i.MechanicalArm_StateCheck)
+    MechanicalArm_WidthInc                   0x08001fbd   Thumb Code   142  mechanicalarm_service.o(i.MechanicalArm_WidthInc)
+    MemManage_Handler                        0x08002059   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
+    Motor_GPIO_Config                        0x0800205d   Thumb Code    40  motor_init.o(i.Motor_GPIO_Config)
+    Motor_Init                               0x08002089   Thumb Code    28  motor_init.o(i.Motor_Init)
+    Motor_TIM_Config                         0x080020a5   Thumb Code   148  motor_init.o(i.Motor_TIM_Config)
+    NMI_Handler                              0x0800213d   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
+    NVIC_Init                                0x08002141   Thumb Code   100  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x080021b1   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
+    OLED_Clear                               0x080021c5   Thumb Code    44  oled.o(i.OLED_Clear)
+    OLED_ClearBlok                           0x080021f1   Thumb Code    66  oled.o(i.OLED_ClearBlok)
+    OLED_Init                                0x08002233   Thumb Code   232  oled.o(i.OLED_Init)
+    OLED_PosSet                              0x0800231b   Thumb Code    54  oled.o(i.OLED_PosSet)
+    OLED_SendByte                            0x08002351   Thumb Code    56  oled.o(i.OLED_SendByte)
+    OLED_ShowChar                            0x08002389   Thumb Code   162  oled.o(i.OLED_ShowChar)
+    OLED_ShowNum                             0x08002435   Thumb Code   144  oled.o(i.OLED_ShowNum)
+    OLED_ShowString                          0x080024c5   Thumb Code    76  oled.o(i.OLED_ShowString)
+    OpenMV_Init                              0x08002511   Thumb Code    58  openmv_service.o(i.OpenMV_Init)
+    OpenMV_Set                               0x08002551   Thumb Code     6  openmv_service.o(i.OpenMV_Set)
+    OpenMV_Updata                            0x0800255d   Thumb Code   416  openmv_service.o(i.OpenMV_Updata)
+    PCB_System_Init                          0x08002719   Thumb Code   272  system_core.o(i.PCB_System_Init)
+    PWM_Out                                  0x0800286d   Thumb Code   396  motor_driver.o(i.PWM_Out)
+    PendSV_Handler                           0x08002a01   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
+    PositionClr_Service                      0x08002a05   Thumb Code    70  position_service.o(i.PositionClr_Service)
+    PositionService_Stop                     0x08002a59   Thumb Code    20  position_service.o(i.PositionService_Stop)
+    PositionSpeed_Config                     0x08002a75   Thumb Code   106  position_service.o(i.PositionSpeed_Config)
+    PositionState_Inc                        0x08002ae9   Thumb Code    18  position_service.o(i.PositionState_Inc)
+    PositionState_Updata                     0x08002b01   Thumb Code   114  position_service.o(i.PositionState_Updata)
+    PositionTask_StateSet                    0x08002b81   Thumb Code    12  position_app.o(i.PositionTask_StateSet)
+    Position_Stop                            0x08002b95   Thumb Code    34  position_service.o(i.Position_Stop)
+    Position_Update                          0x08002bc5   Thumb Code   120  position_service.o(i.Position_Update)
+    PutBlob_FloorRun                         0x08002c51   Thumb Code   222  goods_app.o(i.PutBlob_FloorRun)
+    RCC_AHBPeriphClockCmd                    0x08002d4d   Thumb Code    26  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x08002d6d   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x08002d8d   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    RCC_GetClocksFreq                        0x08002dad   Thumb Code   192  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
+    Read_AttitudeFlag                        0x08002e81   Thumb Code     6  goods_app.o(i.Read_AttitudeFlag)
+    Read_Distance                            0x08002e8d   Thumb Code     4  motor_driver.o(i.Read_Distance)
+    Read_LookData                            0x08002e95   Thumb Code     4  openmv_service.o(i.Read_LookData)
+    Read_MechanicalArmState                  0x08002e9d   Thumb Code     6  mechanicalarm_service.o(i.Read_MechanicalArmState)
+    Read_PositionState                       0x08002ea9   Thumb Code     6  position_service.o(i.Read_PositionState)
+    Read_PositionTaskEn                      0x08002eb5   Thumb Code     6  position_app.o(i.Read_PositionTaskEn)
+    Read_QrCode                              0x08002ec1   Thumb Code     4  openmv_service.o(i.Read_QrCode)
+    Read_Recording                           0x08002ec9   Thumb Code     4  openmv_service.o(i.Read_Recording)
+    Read_Speed                               0x08002ed1   Thumb Code   298  motor_driver.o(i.Read_Speed)
+    Read_SysSubTime                          0x08003025   Thumb Code     6  system_core.o(i.Read_SysSubTime)
+    Read_Usart_Sbuffer                       0x08003031   Thumb Code    12  usart.o(i.Read_Usart_Sbuffer)
+    SVC_Handler                              0x08003041   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
+    Speed_Set                                0x0800312d   Thumb Code    34  position_service.o(i.Speed_Set)
+    Speed_Syn                                0x08003155   Thumb Code   122  position_service.o(i.Speed_Syn)
+    StreetMotor_GPIO_Config                  0x080031e5   Thumb Code    60  street_motor.o(i.StreetMotor_GPIO_Config)
+    StreetMotor_Init                         0x08003229   Thumb Code    12  street_motor.o(i.StreetMotor_Init)
+    StreetMotor_TIM_Config                   0x08003235   Thumb Code   212  street_motor.o(i.StreetMotor_TIM_Config)
+    SysSecBeat_Config                        0x0800330d   Thumb Code    92  system_core.o(i.SysSecBeat_Config)
+    SysTick_Handler                          0x0800336d   Thumb Code    52  system_core.o(i.SysTick_Handler)
+    SystemInit                               0x080033a9   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    SystemState_Set                          0x08003409   Thumb Code    16  system_core.o(i.SystemState_Set)
+    TB6612_Init                              0x0800341d   Thumb Code    50  motor_init.o(i.TB6612_Init)
+    TIM6_IRQHandler                          0x08003455   Thumb Code    34  motor_driver.o(i.TIM6_IRQHandler)
+    TIM7_IRQHandler                          0x08003481   Thumb Code    34  system_core.o(i.TIM7_IRQHandler)
+    TIM_ClearITPendingBit                    0x080034ad   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
+    TIM_Cmd                                  0x080034b3   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
+    TIM_GetITStatus                          0x080034cb   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
+    TIM_ITConfig                             0x080034ed   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
+    TIM_OC1Init                              0x08003501   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
+    TIM_OC1PreloadConfig                     0x08003599   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    TIM_OC2Init                              0x080035ad   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
+    TIM_OC2PreloadConfig                     0x08003651   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    TIM_OC3Init                              0x0800366d   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
+    TIM_OC3PreloadConfig                     0x0800370d   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    TIM_OC4Init                              0x08003721   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
+    TIM_OC4PreloadConfig                     0x0800379d   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    TIM_SetCompare1                          0x080037b7   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare1)
+    TIM_SetCompare2                          0x080037bb   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare2)
+    TIM_SetCompare3                          0x080037bf   Thumb Code     4  stm32f10x_tim.o(i.TIM_SetCompare3)
+    TIM_SetCompare4                          0x080037c3   Thumb Code     6  stm32f10x_tim.o(i.TIM_SetCompare4)
+    TIM_TimeBaseInit                         0x080037c9   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    TargetMove_Set                           0x0800386d   Thumb Code    50  position_service.o(i.TargetMove_Set)
+    TargetWidth_Set                          0x080038b1   Thumb Code    26  mechanicalarm_service.o(i.TargetWidth_Set)
+    TaskList_Config                          0x080038dd   Thumb Code    86  system_core.o(i.TaskList_Config)
+    USART1_IRQHandler                        0x08003945   Thumb Code    56  usart.o(i.USART1_IRQHandler)
+    USART2_IRQHandler                        0x08003985   Thumb Code    64  usart.o(i.USART2_IRQHandler)
+    USART3_IRQHandler                        0x080039cd   Thumb Code    86  usart.o(i.USART3_IRQHandler)
+    USART_ClearITPendingBit                  0x08003a2d   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    USART_Cmd                                0x08003a4b   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
+    USART_DMACmd                             0x08003a63   Thumb Code    18  stm32f10x_usart.o(i.USART_DMACmd)
+    USART_GetITStatus                        0x08003a75   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
+    USART_ITConfig                           0x08003ac9   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08003b15   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x08003bed   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
+    UsageFault_Handler                       0x08003bf7   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
+    Usart2_Send                              0x08003bfd   Thumb Code    62  usart.o(i.Usart2_Send)
+    Usart3_Send                              0x08003c49   Thumb Code    62  usart.o(i.Usart3_Send)
+    Usart_Config                             0x08003c95   Thumb Code   300  usart.o(i.Usart_Config)
+    Usart_DMA_Config                         0x08003dd5   Thumb Code   290  usart.o(i.Usart_DMA_Config)
+    Usart_Sbuffer_Clear                      0x08003f15   Thumb Code    14  usart.o(i.Usart_Sbuffer_Clear)
+    Usart_TxFlag_Clear                       0x08003f29   Thumb Code    10  usart.o(i.Usart_TxFlag_Clear)
+    VectorMove_Set                           0x08003f39   Thumb Code   132  position_service.o(i.VectorMove_Set)
+    Wait_Gyroscope                           0x08003fc5   Thumb Code   176  gyroscope.o(i.Wait_Gyroscope)
+    YawSpeed_Config                          0x08004089   Thumb Code    96  position_service.o(i.YawSpeed_Config)
+    __ARM_fpclassify                         0x080040f9   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    __kernel_poly                            0x08004121   Thumb Code   170  poly.o(i.__kernel_poly)
+    __mathlib_dbl_infnan                     0x080041cb   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_invalid                    0x080041d1   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_underflow                  0x080041dd   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
+    __scatterload_copy                       0x080041ed   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x080041fb   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x080041fd   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    __set_errno                              0x0800420d   Thumb Code     6  errno.o(i.__set_errno)
+    acos                                     0x08004219   Thumb Code   574  acos.o(i.acos)
+    atan                                     0x08004495   Thumb Code   474  atan.o(i.atan)
+    goods_app_Task                           0x080046b5   Thumb Code    72  goods_app.o(i.goods_app_Task)
+    main                                     0x08004709   Thumb Code     8  main.o(i.main)
+    main_app_Task                            0x08004711   Thumb Code    98  main_app.o(i.main_app_Task)
+    openmv_service                           0x08004789   Thumb Code     8  openmv_service.o(i.openmv_service)
+    position_app_Task                        0x08004791   Thumb Code    48  position_app.o(i.position_app_Task)
+    sqrt                                     0x080047c9   Thumb Code    76  sqrt.o(i.sqrt)
+    asc2_0806                                0x08004814   Data         546  oled.o(.constdata)
+    asc2_1608                                0x08004a36   Data        1456  oled.o(.constdata)
+    Region$$Table$$Base                      0x080050d0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080050f0   Number         0  anon$$obj.o(Region$$Table)
     Attitude_Angle                           0x20000940   Data         160  goods_app.o(.data)
     Attitude_Inc                             0x200009e0   Data          20  goods_app.o(.data)
     GetBlob_Ready                            0x200009f8   Data          64  goods_app.o(.data)
     GetBlob_ReadyInc                         0x20000a38   Data           8  goods_app.o(.data)
     GetBlob_Adjust                           0x20000a40   Data          64  goods_app.o(.data)
     GetBlob_AdjustInc                        0x20000a80   Data           8  goods_app.o(.data)
-    __initial_sp                             0x20002220   Data           0  startup_stm32f10x_hd.o(STACK)
+    PutBlob_Ready                            0x20000a88   Data          96  goods_app.o(.data)
+    PutBlob_Readytnc                         0x20000ae8   Data          12  goods_app.o(.data)
+    PutBlob_Adjust                           0x20000af8   Data          96  goods_app.o(.data)
+    PutBlob_Adjustnc                         0x20000b58   Data          12  goods_app.o(.data)
+    __initial_sp                             0x20002300   Data           0  startup_stm32f10x_hd.o(STACK)
 
 
 
@@ -2545,60 +2561,60 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00005ca0, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x000050e0])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00005ea4, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00005220])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00004fc8, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000050f0, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x00000130   Data   RO          217    RESET               startup_stm32f10x_hd.o
-    0x08000130   0x00000000   Code   RO          425  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x00000004   Code   RO          594    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x00000004   Code   RO          597    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x00000000   Code   RO          599    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x00000000   Code   RO          601    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x00000008   Code   RO          602    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x00000000   Code   RO          604    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x00000000   Code   RO          606    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x00000004   Code   RO          595    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000130   0x00000000   Code   RO          426  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x00000004   Code   RO          595    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x00000004   Code   RO          598    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x00000000   Code   RO          600    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x00000000   Code   RO          602    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x00000008   Code   RO          603    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x00000000   Code   RO          605    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x00000000   Code   RO          607    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x00000004   Code   RO          596    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x08000144   0x00000024   Code   RO          218    .text               startup_stm32f10x_hd.o
-    0x08000168   0x00000062   Code   RO          428    .text               mc_w.l(ldiv.o)
-    0x080001ca   0x000000b0   Code   RO          560    .text               mf_w.l(fadd.o)
-    0x0800027a   0x00000064   Code   RO          561    .text               mf_w.l(fmul.o)
-    0x080002de   0x0000014e   Code   RO          562    .text               mf_w.l(dadd.o)
-    0x0800042c   0x000000e4   Code   RO          563    .text               mf_w.l(dmul.o)
-    0x08000510   0x000000de   Code   RO          564    .text               mf_w.l(ddiv.o)
-    0x080005ee   0x00000012   Code   RO          565    .text               mf_w.l(fflti.o)
-    0x08000600   0x00000022   Code   RO          566    .text               mf_w.l(dflti.o)
-    0x08000622   0x0000001a   Code   RO          567    .text               mf_w.l(dfltui.o)
-    0x0800063c   0x00000032   Code   RO          568    .text               mf_w.l(ffixi.o)
-    0x0800066e   0x0000003e   Code   RO          569    .text               mf_w.l(dfixi.o)
-    0x080006ac   0x00000032   Code   RO          570    .text               mf_w.l(dfixui.o)
-    0x080006de   0x00000026   Code   RO          571    .text               mf_w.l(f2d.o)
-    0x08000704   0x00000030   Code   RO          572    .text               mf_w.l(cdcmple.o)
-    0x08000734   0x00000030   Code   RO          573    .text               mf_w.l(cdrcmple.o)
-    0x08000764   0x00000038   Code   RO          574    .text               mf_w.l(d2f.o)
-    0x0800079c   0x00000014   Code   RO          575    .text               mf_w.l(cfcmple.o)
-    0x080007b0   0x00000062   Code   RO          610    .text               mc_w.l(uldiv.o)
-    0x08000812   0x0000001e   Code   RO          611    .text               mc_w.l(llshl.o)
-    0x08000830   0x00000020   Code   RO          612    .text               mc_w.l(llushr.o)
-    0x08000850   0x00000024   Code   RO          613    .text               mc_w.l(llsshr.o)
-    0x08000874   0x00000000   Code   RO          618    .text               mc_w.l(iusefp.o)
-    0x08000874   0x0000006e   Code   RO          619    .text               mf_w.l(fepilogue.o)
-    0x080008e2   0x000000ba   Code   RO          620    .text               mf_w.l(depilogue.o)
-    0x0800099c   0x0000002e   Code   RO          621    .text               mf_w.l(dscalb.o)
-    0x080009ca   0x000000a2   Code   RO          622    .text               mf_w.l(dsqrt.o)
-    0x08000a6c   0x00000024   Code   RO          624    .text               mc_w.l(init.o)
-    0x08000a90   0x0000005e   Code   RO          630    .text               mc_w.l(__dclz77c.o)
+    0x08000168   0x00000062   Code   RO          429    .text               mc_w.l(ldiv.o)
+    0x080001ca   0x000000b0   Code   RO          561    .text               mf_w.l(fadd.o)
+    0x0800027a   0x00000064   Code   RO          562    .text               mf_w.l(fmul.o)
+    0x080002de   0x0000014e   Code   RO          563    .text               mf_w.l(dadd.o)
+    0x0800042c   0x000000e4   Code   RO          564    .text               mf_w.l(dmul.o)
+    0x08000510   0x000000de   Code   RO          565    .text               mf_w.l(ddiv.o)
+    0x080005ee   0x00000012   Code   RO          566    .text               mf_w.l(fflti.o)
+    0x08000600   0x00000022   Code   RO          567    .text               mf_w.l(dflti.o)
+    0x08000622   0x0000001a   Code   RO          568    .text               mf_w.l(dfltui.o)
+    0x0800063c   0x00000032   Code   RO          569    .text               mf_w.l(ffixi.o)
+    0x0800066e   0x0000003e   Code   RO          570    .text               mf_w.l(dfixi.o)
+    0x080006ac   0x00000032   Code   RO          571    .text               mf_w.l(dfixui.o)
+    0x080006de   0x00000026   Code   RO          572    .text               mf_w.l(f2d.o)
+    0x08000704   0x00000030   Code   RO          573    .text               mf_w.l(cdcmple.o)
+    0x08000734   0x00000030   Code   RO          574    .text               mf_w.l(cdrcmple.o)
+    0x08000764   0x00000038   Code   RO          575    .text               mf_w.l(d2f.o)
+    0x0800079c   0x00000014   Code   RO          576    .text               mf_w.l(cfcmple.o)
+    0x080007b0   0x00000062   Code   RO          611    .text               mc_w.l(uldiv.o)
+    0x08000812   0x0000001e   Code   RO          612    .text               mc_w.l(llshl.o)
+    0x08000830   0x00000020   Code   RO          613    .text               mc_w.l(llushr.o)
+    0x08000850   0x00000024   Code   RO          614    .text               mc_w.l(llsshr.o)
+    0x08000874   0x00000000   Code   RO          619    .text               mc_w.l(iusefp.o)
+    0x08000874   0x0000006e   Code   RO          620    .text               mf_w.l(fepilogue.o)
+    0x080008e2   0x000000ba   Code   RO          621    .text               mf_w.l(depilogue.o)
+    0x0800099c   0x0000002e   Code   RO          622    .text               mf_w.l(dscalb.o)
+    0x080009ca   0x000000a2   Code   RO          623    .text               mf_w.l(dsqrt.o)
+    0x08000a6c   0x00000024   Code   RO          625    .text               mc_w.l(init.o)
+    0x08000a90   0x0000005e   Code   RO          631    .text               mc_w.l(__dclz77c.o)
     0x08000aee   0x00000002   PAD
-    0x08000af0   0x00000040   Code   RO          331    i.AngleCheck        mechanicalarm_service.o
-    0x08000b30   0x00000030   Code   RO          332    i.AngleToWidth      mechanicalarm_service.o
-    0x08000b60   0x00000038   Code   RO          362    i.Attitude_Set      goods_app.o
-    0x08000b98   0x00000078   Code   RO          363    i.Attitude_SetRun   goods_app.o
-    0x08000c10   0x00000084   Code   RO          374    i.Blobs_Recording   main_app.o
+    0x08000af0   0x00000040   Code   RO          332    i.AngleCheck        mechanicalarm_service.o
+    0x08000b30   0x00000030   Code   RO          333    i.AngleToWidth      mechanicalarm_service.o
+    0x08000b60   0x00000038   Code   RO          363    i.Attitude_Set      goods_app.o
+    0x08000b98   0x00000078   Code   RO          364    i.Attitude_SetRun   goods_app.o
+    0x08000c10   0x00000084   Code   RO          375    i.Blobs_Recording   main_app.o
     0x08000c94   0x00000004   Code   RO            1    i.BusFault_Handler  stm32f10x_it.o
-    0x08000c98   0x00000030   Code   RO          333    i.ClawClr           mechanicalarm_service.o
-    0x08000cc8   0x000001f0   Code   RO          334    i.Cosin_AngleConfig  mechanicalarm_service.o
+    0x08000c98   0x00000030   Code   RO          334    i.ClawClr           mechanicalarm_service.o
+    0x08000cc8   0x000001f0   Code   RO          335    i.Cosin_AngleConfig  mechanicalarm_service.o
     0x08000eb8   0x00000024   Code   RO          247    i.DMA1_Channel2_IRQHandler  usart.o
     0x08000edc   0x00000028   Code   RO          248    i.DMA1_Channel4_IRQHandler  usart.o
     0x08000f04   0x00000028   Code   RO          249    i.DMA1_Channel7_IRQHandler  usart.o
@@ -2619,173 +2635,174 @@ Memory Map of the image
     0x080013a4   0x0000000c   Code   RO           37    i.EXTI_ClearITPendingBit  stm32f10x_exti.o
     0x080013b0   0x00000028   Code   RO           41    i.EXTI_GetITStatus  stm32f10x_exti.o
     0x080013d8   0x00000094   Code   RO           42    i.EXTI_Init         stm32f10x_exti.o
-    0x0800146c   0x00000054   Code   RO          393    i.FindBlobs_Move    position_app.o
-    0x080014c0   0x0000005c   Code   RO          394    i.FindQrcode_Move   position_app.o
+    0x0800146c   0x00000054   Code   RO          394    i.FindBlobs_Move    position_app.o
+    0x080014c0   0x0000005c   Code   RO          395    i.FindQrcode_Move   position_app.o
     0x0800151c   0x00000040   Code   RO           47    i.GPIO_EXTILineConfig  stm32f10x_gpio.o
     0x0800155c   0x00000116   Code   RO           50    i.GPIO_Init         stm32f10x_gpio.o
     0x08001672   0x00000012   Code   RO           54    i.GPIO_ReadInputDataBit  stm32f10x_gpio.o
     0x08001684   0x00000004   Code   RO           57    i.GPIO_ResetBits    stm32f10x_gpio.o
     0x08001688   0x00000004   Code   RO           58    i.GPIO_SetBits      stm32f10x_gpio.o
-    0x0800168c   0x00000040   Code   RO          364    i.GetBlob_Floor     goods_app.o
-    0x080016cc   0x000000fc   Code   RO          365    i.GetBlob_FloorRun  goods_app.o
-    0x080017c8   0x0000015c   Code   RO          395    i.GetBlob_Move      position_app.o
-    0x08001924   0x00000044   Code   RO          375    i.GetQrCode         main_app.o
-    0x08001968   0x00000088   Code   RO          376    i.Get_UpBlobs       main_app.o
-    0x080019f0   0x00000040   Code   RO          219    i.Gyroscope_Init    gyroscope.o
-    0x08001a30   0x00000010   Code   RO          220    i.Gyroscope_ReadYaw  gyroscope.o
-    0x08001a40   0x00000018   Code   RO          221    i.Gyroscope_RequestUpdata  gyroscope.o
-    0x08001a58   0x00000030   Code   RO          223    i.Gyroscope_YawUpdata  gyroscope.o
-    0x08001a88   0x000000a0   Code   RO          238    i.Hall_EXTI_Config  motor_init.o
-    0x08001b28   0x00000024   Code   RO          239    i.Hall_GPIO_Config  motor_init.o
-    0x08001b4c   0x00000068   Code   RO          240    i.Hall_TIM_Config   motor_init.o
-    0x08001bb4   0x00000004   Code   RO            3    i.HardFault_Handler  stm32f10x_it.o
-    0x08001bb8   0x00000040   Code   RO          270    i.IIC_Init          iic.o
-    0x08001bf8   0x0000004c   Code   RO          271    i.IIC_SendByte      iic.o
-    0x08001c44   0x00000030   Code   RO          272    i.IIC_Start         iic.o
-    0x08001c74   0x00000028   Code   RO          273    i.IIC_Stop          iic.o
-    0x08001c9c   0x0000001c   Code   RO          274    i.IIC_WaitACK       iic.o
-    0x08001cb8   0x000000b4   Code   RO          310    i.Inc_PID           position_service.o
-    0x08001d6c   0x0000009c   Code   RO          311    i.Inc_PID_Realiz    position_service.o
-    0x08001e08   0x0000007c   Code   RO          335    i.MechanicalArm_PositionInc  mechanicalarm_service.o
-    0x08001e84   0x00000048   Code   RO          336    i.MechanicalArm_PositionSet  mechanicalarm_service.o
-    0x08001ecc   0x00000024   Code   RO          338    i.MechanicalArm_Reset  mechanicalarm_service.o
-    0x08001ef0   0x00000028   Code   RO          339    i.MechanicalArm_Service  mechanicalarm_service.o
-    0x08001f18   0x00000074   Code   RO          340    i.MechanicalArm_StateCheck  mechanicalarm_service.o
-    0x08001f8c   0x0000009c   Code   RO          341    i.MechanicalArm_WidthInc  mechanicalarm_service.o
-    0x08002028   0x00000004   Code   RO            4    i.MemManage_Handler  stm32f10x_it.o
-    0x0800202c   0x0000002c   Code   RO          241    i.Motor_GPIO_Config  motor_init.o
-    0x08002058   0x0000001c   Code   RO          242    i.Motor_Init        motor_init.o
-    0x08002074   0x00000098   Code   RO          243    i.Motor_TIM_Config  motor_init.o
-    0x0800210c   0x00000002   Code   RO            5    i.NMI_Handler       stm32f10x_it.o
-    0x0800210e   0x00000002   PAD
-    0x08002110   0x00000070   Code   RO           20    i.NVIC_Init         misc.o
-    0x08002180   0x00000014   Code   RO           21    i.NVIC_PriorityGroupConfig  misc.o
-    0x08002194   0x0000002c   Code   RO          277    i.OLED_Clear        oled.o
-    0x080021c0   0x00000042   Code   RO          278    i.OLED_ClearBlok    oled.o
-    0x08002202   0x000000e8   Code   RO          281    i.OLED_Init         oled.o
-    0x080022ea   0x00000036   Code   RO          282    i.OLED_PosSet       oled.o
-    0x08002320   0x00000038   Code   RO          283    i.OLED_SendByte     oled.o
-    0x08002358   0x000000ac   Code   RO          284    i.OLED_ShowChar     oled.o
-    0x08002404   0x00000090   Code   RO          285    i.OLED_ShowNum      oled.o
-    0x08002494   0x0000004c   Code   RO          287    i.OLED_ShowString   oled.o
-    0x080024e0   0x00000040   Code   RO          346    i.OpenMV_Init       openmv_service.o
-    0x08002520   0x0000000c   Code   RO          347    i.OpenMV_Set        openmv_service.o
-    0x0800252c   0x000001c4   Code   RO          348    i.OpenMV_Updata     openmv_service.o
-    0x080026f0   0x00000154   Code   RO          295    i.PCB_System_Init   system_core.o
-    0x08002844   0x00000194   Code   RO          232    i.PWM_Out           motor_driver.o
-    0x080029d8   0x00000002   Code   RO            6    i.PendSV_Handler    stm32f10x_it.o
-    0x080029da   0x00000002   PAD
-    0x080029dc   0x00000054   Code   RO          313    i.PositionClr_Service  position_service.o
-    0x08002a30   0x0000001c   Code   RO          314    i.PositionService_Stop  position_service.o
-    0x08002a4c   0x00000074   Code   RO          315    i.PositionSpeed_Config  position_service.o
-    0x08002ac0   0x00000018   Code   RO          316    i.PositionState_Inc  position_service.o
-    0x08002ad8   0x00000080   Code   RO          317    i.PositionState_Updata  position_service.o
-    0x08002b58   0x00000014   Code   RO          396    i.PositionTask_StateSet  position_app.o
-    0x08002b6c   0x00000030   Code   RO          318    i.Position_Stop     position_service.o
-    0x08002b9c   0x0000008c   Code   RO          319    i.Position_Update   position_service.o
-    0x08002c28   0x00000020   Code   RO           63    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
-    0x08002c48   0x00000020   Code   RO           64    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x08002c68   0x00000020   Code   RO           66    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08002c88   0x000000d4   Code   RO           74    i.RCC_GetClocksFreq  stm32f10x_rcc.o
-    0x08002d5c   0x0000000c   Code   RO          370    i.Read_AttitudeFlag  goods_app.o
-    0x08002d68   0x00000008   Code   RO          233    i.Read_Distance     motor_driver.o
-    0x08002d70   0x00000008   Code   RO          349    i.Read_LookData     openmv_service.o
-    0x08002d78   0x0000000c   Code   RO          342    i.Read_MechanicalArmState  mechanicalarm_service.o
-    0x08002d84   0x0000000c   Code   RO          322    i.Read_PositionState  position_service.o
-    0x08002d90   0x0000000c   Code   RO          397    i.Read_PositionTaskEn  position_app.o
-    0x08002d9c   0x00000008   Code   RO          350    i.Read_QrCode       openmv_service.o
-    0x08002da4   0x00000008   Code   RO          351    i.Read_Recording    openmv_service.o
-    0x08002dac   0x00000154   Code   RO          234    i.Read_Speed        motor_driver.o
-    0x08002f00   0x0000000c   Code   RO          296    i.Read_SysSubTime   system_core.o
-    0x08002f0c   0x00000010   Code   RO          250    i.Read_Usart_Sbuffer  usart.o
-    0x08002f1c   0x00000002   Code   RO            7    i.SVC_Handler       stm32f10x_it.o
-    0x08002f1e   0x00000008   Code   RO           15    i.SetSysClock       system_stm32f10x.o
-    0x08002f26   0x00000002   PAD
-    0x08002f28   0x000000e0   Code   RO           16    i.SetSysClockTo72   system_stm32f10x.o
-    0x08003008   0x00000028   Code   RO          323    i.Speed_Set         position_service.o
-    0x08003030   0x00000090   Code   RO          324    i.Speed_Syn         position_service.o
-    0x080030c0   0x00000044   Code   RO          265    i.StreetMotor_GPIO_Config  street_motor.o
-    0x08003104   0x0000000c   Code   RO          266    i.StreetMotor_Init  street_motor.o
-    0x08003110   0x000000d8   Code   RO          267    i.StreetMotor_TIM_Config  street_motor.o
-    0x080031e8   0x00000060   Code   RO          299    i.SysSecBeat_Config  system_core.o
-    0x08003248   0x0000003c   Code   RO          300    i.SysTick_Handler   system_core.o
-    0x08003284   0x00000060   Code   RO           18    i.SystemInit        system_stm32f10x.o
-    0x080032e4   0x00000014   Code   RO          303    i.SystemState_Set   system_core.o
-    0x080032f8   0x00000038   Code   RO          244    i.TB6612_Init       motor_init.o
-    0x08003330   0x0000002c   Code   RO          235    i.TIM6_IRQHandler   motor_driver.o
-    0x0800335c   0x0000002c   Code   RO          305    i.TIM7_IRQHandler   system_core.o
-    0x08003388   0x00000006   Code   RO          106    i.TIM_ClearITPendingBit  stm32f10x_tim.o
-    0x0800338e   0x00000018   Code   RO          111    i.TIM_Cmd           stm32f10x_tim.o
-    0x080033a6   0x00000022   Code   RO          132    i.TIM_GetITStatus   stm32f10x_tim.o
-    0x080033c8   0x00000012   Code   RO          136    i.TIM_ITConfig      stm32f10x_tim.o
-    0x080033da   0x00000002   PAD
-    0x080033dc   0x00000098   Code   RO          140    i.TIM_OC1Init       stm32f10x_tim.o
-    0x08003474   0x00000012   Code   RO          143    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
-    0x08003486   0x00000002   PAD
-    0x08003488   0x000000a4   Code   RO          145    i.TIM_OC2Init       stm32f10x_tim.o
-    0x0800352c   0x0000001a   Code   RO          148    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
-    0x08003546   0x00000002   PAD
-    0x08003548   0x000000a0   Code   RO          150    i.TIM_OC3Init       stm32f10x_tim.o
-    0x080035e8   0x00000012   Code   RO          153    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
-    0x080035fa   0x00000002   PAD
-    0x080035fc   0x0000007c   Code   RO          155    i.TIM_OC4Init       stm32f10x_tim.o
-    0x08003678   0x0000001a   Code   RO          157    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
-    0x08003692   0x00000004   Code   RO          172    i.TIM_SetCompare1   stm32f10x_tim.o
-    0x08003696   0x00000004   Code   RO          173    i.TIM_SetCompare2   stm32f10x_tim.o
-    0x0800369a   0x00000004   Code   RO          174    i.TIM_SetCompare3   stm32f10x_tim.o
-    0x0800369e   0x00000006   Code   RO          175    i.TIM_SetCompare4   stm32f10x_tim.o
-    0x080036a4   0x000000a4   Code   RO          182    i.TIM_TimeBaseInit  stm32f10x_tim.o
-    0x08003748   0x00000044   Code   RO          325    i.TargetMove_Set    position_service.o
-    0x0800378c   0x0000002c   Code   RO          343    i.TargetWidth_Set   mechanicalarm_service.o
-    0x080037b8   0x00000068   Code   RO          306    i.TaskList_Config   system_core.o
-    0x08003820   0x00000040   Code   RO          251    i.USART1_IRQHandler  usart.o
-    0x08003860   0x00000048   Code   RO          252    i.USART2_IRQHandler  usart.o
-    0x080038a8   0x00000060   Code   RO          253    i.USART3_IRQHandler  usart.o
-    0x08003908   0x0000001e   Code   RO          187    i.USART_ClearITPendingBit  stm32f10x_usart.o
-    0x08003926   0x00000018   Code   RO          190    i.USART_Cmd         stm32f10x_usart.o
-    0x0800393e   0x00000012   Code   RO          191    i.USART_DMACmd      stm32f10x_usart.o
-    0x08003950   0x00000054   Code   RO          194    i.USART_GetITStatus  stm32f10x_usart.o
-    0x080039a4   0x0000004a   Code   RO          196    i.USART_ITConfig    stm32f10x_usart.o
-    0x080039ee   0x00000002   PAD
-    0x080039f0   0x000000d8   Code   RO          197    i.USART_Init        stm32f10x_usart.o
-    0x08003ac8   0x0000000a   Code   RO          204    i.USART_ReceiveData  stm32f10x_usart.o
-    0x08003ad2   0x00000004   Code   RO            8    i.UsageFault_Handler  stm32f10x_it.o
-    0x08003ad6   0x00000002   PAD
-    0x08003ad8   0x0000004c   Code   RO          255    i.Usart2_Send       usart.o
-    0x08003b24   0x0000004c   Code   RO          256    i.Usart3_Send       usart.o
-    0x08003b70   0x00000140   Code   RO          257    i.Usart_Config      usart.o
-    0x08003cb0   0x00000140   Code   RO          258    i.Usart_DMA_Config  usart.o
-    0x08003df0   0x00000014   Code   RO          259    i.Usart_Sbuffer_Clear  usart.o
-    0x08003e04   0x00000010   Code   RO          261    i.Usart_TxFlag_Clear  usart.o
-    0x08003e14   0x0000008c   Code   RO          326    i.VectorMove_Set    position_service.o
-    0x08003ea0   0x000000c4   Code   RO          224    i.Wait_Gyroscope    gyroscope.o
-    0x08003f64   0x00000070   Code   RO          327    i.YawSpeed_Config   position_service.o
-    0x08003fd4   0x00000028   Code   RO          585    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
-    0x08003ffc   0x000000aa   Code   RO          586    i.__kernel_poly     m_ws.l(poly.o)
-    0x080040a6   0x00000006   Code   RO          579    i.__mathlib_dbl_infnan  m_ws.l(dunder.o)
-    0x080040ac   0x0000000c   Code   RO          581    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
-    0x080040b8   0x00000010   Code   RO          584    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
-    0x080040c8   0x0000000e   Code   RO          627    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080040d6   0x00000002   Code   RO          628    i.__scatterload_null  mc_w.l(handlers.o)
-    0x080040d8   0x0000000e   Code   RO          629    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x080040e6   0x00000002   PAD
-    0x080040e8   0x0000000c   Code   RO          616    i.__set_errno       mc_w.l(errno.o)
-    0x080040f4   0x0000027c   Code   RO          402    i.acos              m_ws.l(acos.o)
-    0x08004370   0x00000220   Code   RO          408    i.atan              m_ws.l(atan.o)
-    0x08004590   0x00000050   Code   RO          371    i.goods_app_Task    goods_app.o
-    0x080045e0   0x00000008   Code   RO           11    i.main              main.o
-    0x080045e8   0x00000078   Code   RO          377    i.main_app_Task     main_app.o
-    0x08004660   0x00000008   Code   RO          352    i.openmv_service    openmv_service.o
-    0x08004668   0x00000038   Code   RO          398    i.position_app_Task  position_app.o
-    0x080046a0   0x0000004c   Code   RO          422    i.sqrt              m_ws.l(sqrt.o)
-    0x080046ec   0x000007d2   Data   RO          289    .constdata          oled.o
-    0x08004ebe   0x00000002   PAD
-    0x08004ec0   0x00000050   Data   RO          403    .constdata          m_ws.l(acos.o)
-    0x08004f10   0x00000098   Data   RO          409    .constdata          m_ws.l(atan.o)
-    0x08004fa8   0x00000020   Data   RO          625    Region$$Table       anon$$obj.o
+    0x0800168c   0x00000040   Code   RO          365    i.GetBlob_Floor     goods_app.o
+    0x080016cc   0x000000fc   Code   RO          366    i.GetBlob_FloorRun  goods_app.o
+    0x080017c8   0x0000018c   Code   RO          396    i.GetBlob_Move      position_app.o
+    0x08001954   0x00000044   Code   RO          376    i.GetQrCode         main_app.o
+    0x08001998   0x00000088   Code   RO          377    i.Get_UpBlobs       main_app.o
+    0x08001a20   0x00000040   Code   RO          219    i.Gyroscope_Init    gyroscope.o
+    0x08001a60   0x00000010   Code   RO          220    i.Gyroscope_ReadYaw  gyroscope.o
+    0x08001a70   0x00000018   Code   RO          221    i.Gyroscope_RequestUpdata  gyroscope.o
+    0x08001a88   0x00000030   Code   RO          223    i.Gyroscope_YawUpdata  gyroscope.o
+    0x08001ab8   0x000000a0   Code   RO          238    i.Hall_EXTI_Config  motor_init.o
+    0x08001b58   0x00000024   Code   RO          239    i.Hall_GPIO_Config  motor_init.o
+    0x08001b7c   0x00000068   Code   RO          240    i.Hall_TIM_Config   motor_init.o
+    0x08001be4   0x00000004   Code   RO            3    i.HardFault_Handler  stm32f10x_it.o
+    0x08001be8   0x00000040   Code   RO          270    i.IIC_Init          iic.o
+    0x08001c28   0x0000004c   Code   RO          271    i.IIC_SendByte      iic.o
+    0x08001c74   0x00000030   Code   RO          272    i.IIC_Start         iic.o
+    0x08001ca4   0x00000028   Code   RO          273    i.IIC_Stop          iic.o
+    0x08001ccc   0x0000001c   Code   RO          274    i.IIC_WaitACK       iic.o
+    0x08001ce8   0x000000b4   Code   RO          310    i.Inc_PID           position_service.o
+    0x08001d9c   0x0000009c   Code   RO          311    i.Inc_PID_Realiz    position_service.o
+    0x08001e38   0x0000007c   Code   RO          336    i.MechanicalArm_PositionInc  mechanicalarm_service.o
+    0x08001eb4   0x00000048   Code   RO          337    i.MechanicalArm_PositionSet  mechanicalarm_service.o
+    0x08001efc   0x00000024   Code   RO          339    i.MechanicalArm_Reset  mechanicalarm_service.o
+    0x08001f20   0x00000028   Code   RO          340    i.MechanicalArm_Service  mechanicalarm_service.o
+    0x08001f48   0x00000074   Code   RO          341    i.MechanicalArm_StateCheck  mechanicalarm_service.o
+    0x08001fbc   0x0000009c   Code   RO          342    i.MechanicalArm_WidthInc  mechanicalarm_service.o
+    0x08002058   0x00000004   Code   RO            4    i.MemManage_Handler  stm32f10x_it.o
+    0x0800205c   0x0000002c   Code   RO          241    i.Motor_GPIO_Config  motor_init.o
+    0x08002088   0x0000001c   Code   RO          242    i.Motor_Init        motor_init.o
+    0x080020a4   0x00000098   Code   RO          243    i.Motor_TIM_Config  motor_init.o
+    0x0800213c   0x00000002   Code   RO            5    i.NMI_Handler       stm32f10x_it.o
+    0x0800213e   0x00000002   PAD
+    0x08002140   0x00000070   Code   RO           20    i.NVIC_Init         misc.o
+    0x080021b0   0x00000014   Code   RO           21    i.NVIC_PriorityGroupConfig  misc.o
+    0x080021c4   0x0000002c   Code   RO          277    i.OLED_Clear        oled.o
+    0x080021f0   0x00000042   Code   RO          278    i.OLED_ClearBlok    oled.o
+    0x08002232   0x000000e8   Code   RO          281    i.OLED_Init         oled.o
+    0x0800231a   0x00000036   Code   RO          282    i.OLED_PosSet       oled.o
+    0x08002350   0x00000038   Code   RO          283    i.OLED_SendByte     oled.o
+    0x08002388   0x000000ac   Code   RO          284    i.OLED_ShowChar     oled.o
+    0x08002434   0x00000090   Code   RO          285    i.OLED_ShowNum      oled.o
+    0x080024c4   0x0000004c   Code   RO          287    i.OLED_ShowString   oled.o
+    0x08002510   0x00000040   Code   RO          347    i.OpenMV_Init       openmv_service.o
+    0x08002550   0x0000000c   Code   RO          348    i.OpenMV_Set        openmv_service.o
+    0x0800255c   0x000001bc   Code   RO          349    i.OpenMV_Updata     openmv_service.o
+    0x08002718   0x00000154   Code   RO          295    i.PCB_System_Init   system_core.o
+    0x0800286c   0x00000194   Code   RO          232    i.PWM_Out           motor_driver.o
+    0x08002a00   0x00000002   Code   RO            6    i.PendSV_Handler    stm32f10x_it.o
+    0x08002a02   0x00000002   PAD
+    0x08002a04   0x00000054   Code   RO          313    i.PositionClr_Service  position_service.o
+    0x08002a58   0x0000001c   Code   RO          314    i.PositionService_Stop  position_service.o
+    0x08002a74   0x00000074   Code   RO          315    i.PositionSpeed_Config  position_service.o
+    0x08002ae8   0x00000018   Code   RO          316    i.PositionState_Inc  position_service.o
+    0x08002b00   0x00000080   Code   RO          317    i.PositionState_Updata  position_service.o
+    0x08002b80   0x00000014   Code   RO          397    i.PositionTask_StateSet  position_app.o
+    0x08002b94   0x00000030   Code   RO          318    i.Position_Stop     position_service.o
+    0x08002bc4   0x0000008c   Code   RO          319    i.Position_Update   position_service.o
+    0x08002c50   0x000000fc   Code   RO          369    i.PutBlob_FloorRun  goods_app.o
+    0x08002d4c   0x00000020   Code   RO           63    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
+    0x08002d6c   0x00000020   Code   RO           64    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x08002d8c   0x00000020   Code   RO           66    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08002dac   0x000000d4   Code   RO           74    i.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x08002e80   0x0000000c   Code   RO          371    i.Read_AttitudeFlag  goods_app.o
+    0x08002e8c   0x00000008   Code   RO          233    i.Read_Distance     motor_driver.o
+    0x08002e94   0x00000008   Code   RO          350    i.Read_LookData     openmv_service.o
+    0x08002e9c   0x0000000c   Code   RO          343    i.Read_MechanicalArmState  mechanicalarm_service.o
+    0x08002ea8   0x0000000c   Code   RO          322    i.Read_PositionState  position_service.o
+    0x08002eb4   0x0000000c   Code   RO          398    i.Read_PositionTaskEn  position_app.o
+    0x08002ec0   0x00000008   Code   RO          351    i.Read_QrCode       openmv_service.o
+    0x08002ec8   0x00000008   Code   RO          352    i.Read_Recording    openmv_service.o
+    0x08002ed0   0x00000154   Code   RO          234    i.Read_Speed        motor_driver.o
+    0x08003024   0x0000000c   Code   RO          296    i.Read_SysSubTime   system_core.o
+    0x08003030   0x00000010   Code   RO          250    i.Read_Usart_Sbuffer  usart.o
+    0x08003040   0x00000002   Code   RO            7    i.SVC_Handler       stm32f10x_it.o
+    0x08003042   0x00000008   Code   RO           15    i.SetSysClock       system_stm32f10x.o
+    0x0800304a   0x00000002   PAD
+    0x0800304c   0x000000e0   Code   RO           16    i.SetSysClockTo72   system_stm32f10x.o
+    0x0800312c   0x00000028   Code   RO          323    i.Speed_Set         position_service.o
+    0x08003154   0x00000090   Code   RO          324    i.Speed_Syn         position_service.o
+    0x080031e4   0x00000044   Code   RO          265    i.StreetMotor_GPIO_Config  street_motor.o
+    0x08003228   0x0000000c   Code   RO          266    i.StreetMotor_Init  street_motor.o
+    0x08003234   0x000000d8   Code   RO          267    i.StreetMotor_TIM_Config  street_motor.o
+    0x0800330c   0x00000060   Code   RO          299    i.SysSecBeat_Config  system_core.o
+    0x0800336c   0x0000003c   Code   RO          300    i.SysTick_Handler   system_core.o
+    0x080033a8   0x00000060   Code   RO           18    i.SystemInit        system_stm32f10x.o
+    0x08003408   0x00000014   Code   RO          303    i.SystemState_Set   system_core.o
+    0x0800341c   0x00000038   Code   RO          244    i.TB6612_Init       motor_init.o
+    0x08003454   0x0000002c   Code   RO          235    i.TIM6_IRQHandler   motor_driver.o
+    0x08003480   0x0000002c   Code   RO          305    i.TIM7_IRQHandler   system_core.o
+    0x080034ac   0x00000006   Code   RO          106    i.TIM_ClearITPendingBit  stm32f10x_tim.o
+    0x080034b2   0x00000018   Code   RO          111    i.TIM_Cmd           stm32f10x_tim.o
+    0x080034ca   0x00000022   Code   RO          132    i.TIM_GetITStatus   stm32f10x_tim.o
+    0x080034ec   0x00000012   Code   RO          136    i.TIM_ITConfig      stm32f10x_tim.o
+    0x080034fe   0x00000002   PAD
+    0x08003500   0x00000098   Code   RO          140    i.TIM_OC1Init       stm32f10x_tim.o
+    0x08003598   0x00000012   Code   RO          143    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
+    0x080035aa   0x00000002   PAD
+    0x080035ac   0x000000a4   Code   RO          145    i.TIM_OC2Init       stm32f10x_tim.o
+    0x08003650   0x0000001a   Code   RO          148    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
+    0x0800366a   0x00000002   PAD
+    0x0800366c   0x000000a0   Code   RO          150    i.TIM_OC3Init       stm32f10x_tim.o
+    0x0800370c   0x00000012   Code   RO          153    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
+    0x0800371e   0x00000002   PAD
+    0x08003720   0x0000007c   Code   RO          155    i.TIM_OC4Init       stm32f10x_tim.o
+    0x0800379c   0x0000001a   Code   RO          157    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
+    0x080037b6   0x00000004   Code   RO          172    i.TIM_SetCompare1   stm32f10x_tim.o
+    0x080037ba   0x00000004   Code   RO          173    i.TIM_SetCompare2   stm32f10x_tim.o
+    0x080037be   0x00000004   Code   RO          174    i.TIM_SetCompare3   stm32f10x_tim.o
+    0x080037c2   0x00000006   Code   RO          175    i.TIM_SetCompare4   stm32f10x_tim.o
+    0x080037c8   0x000000a4   Code   RO          182    i.TIM_TimeBaseInit  stm32f10x_tim.o
+    0x0800386c   0x00000044   Code   RO          325    i.TargetMove_Set    position_service.o
+    0x080038b0   0x0000002c   Code   RO          344    i.TargetWidth_Set   mechanicalarm_service.o
+    0x080038dc   0x00000068   Code   RO          306    i.TaskList_Config   system_core.o
+    0x08003944   0x00000040   Code   RO          251    i.USART1_IRQHandler  usart.o
+    0x08003984   0x00000048   Code   RO          252    i.USART2_IRQHandler  usart.o
+    0x080039cc   0x00000060   Code   RO          253    i.USART3_IRQHandler  usart.o
+    0x08003a2c   0x0000001e   Code   RO          187    i.USART_ClearITPendingBit  stm32f10x_usart.o
+    0x08003a4a   0x00000018   Code   RO          190    i.USART_Cmd         stm32f10x_usart.o
+    0x08003a62   0x00000012   Code   RO          191    i.USART_DMACmd      stm32f10x_usart.o
+    0x08003a74   0x00000054   Code   RO          194    i.USART_GetITStatus  stm32f10x_usart.o
+    0x08003ac8   0x0000004a   Code   RO          196    i.USART_ITConfig    stm32f10x_usart.o
+    0x08003b12   0x00000002   PAD
+    0x08003b14   0x000000d8   Code   RO          197    i.USART_Init        stm32f10x_usart.o
+    0x08003bec   0x0000000a   Code   RO          204    i.USART_ReceiveData  stm32f10x_usart.o
+    0x08003bf6   0x00000004   Code   RO            8    i.UsageFault_Handler  stm32f10x_it.o
+    0x08003bfa   0x00000002   PAD
+    0x08003bfc   0x0000004c   Code   RO          255    i.Usart2_Send       usart.o
+    0x08003c48   0x0000004c   Code   RO          256    i.Usart3_Send       usart.o
+    0x08003c94   0x00000140   Code   RO          257    i.Usart_Config      usart.o
+    0x08003dd4   0x00000140   Code   RO          258    i.Usart_DMA_Config  usart.o
+    0x08003f14   0x00000014   Code   RO          259    i.Usart_Sbuffer_Clear  usart.o
+    0x08003f28   0x00000010   Code   RO          261    i.Usart_TxFlag_Clear  usart.o
+    0x08003f38   0x0000008c   Code   RO          327    i.VectorMove_Set    position_service.o
+    0x08003fc4   0x000000c4   Code   RO          224    i.Wait_Gyroscope    gyroscope.o
+    0x08004088   0x00000070   Code   RO          328    i.YawSpeed_Config   position_service.o
+    0x080040f8   0x00000028   Code   RO          586    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
+    0x08004120   0x000000aa   Code   RO          587    i.__kernel_poly     m_ws.l(poly.o)
+    0x080041ca   0x00000006   Code   RO          580    i.__mathlib_dbl_infnan  m_ws.l(dunder.o)
+    0x080041d0   0x0000000c   Code   RO          582    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
+    0x080041dc   0x00000010   Code   RO          585    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
+    0x080041ec   0x0000000e   Code   RO          628    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x080041fa   0x00000002   Code   RO          629    i.__scatterload_null  mc_w.l(handlers.o)
+    0x080041fc   0x0000000e   Code   RO          630    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800420a   0x00000002   PAD
+    0x0800420c   0x0000000c   Code   RO          617    i.__set_errno       mc_w.l(errno.o)
+    0x08004218   0x0000027c   Code   RO          403    i.acos              m_ws.l(acos.o)
+    0x08004494   0x00000220   Code   RO          409    i.atan              m_ws.l(atan.o)
+    0x080046b4   0x00000054   Code   RO          372    i.goods_app_Task    goods_app.o
+    0x08004708   0x00000008   Code   RO           11    i.main              main.o
+    0x08004710   0x00000078   Code   RO          378    i.main_app_Task     main_app.o
+    0x08004788   0x00000008   Code   RO          353    i.openmv_service    openmv_service.o
+    0x08004790   0x00000038   Code   RO          399    i.position_app_Task  position_app.o
+    0x080047c8   0x0000004c   Code   RO          423    i.sqrt              m_ws.l(sqrt.o)
+    0x08004814   0x000007d2   Data   RO          289    .constdata          oled.o
+    0x08004fe6   0x00000002   PAD
+    0x08004fe8   0x00000050   Data   RO          404    .constdata          m_ws.l(acos.o)
+    0x08005038   0x00000098   Data   RO          410    .constdata          m_ws.l(atan.o)
+    0x080050d0   0x00000020   Data   RO          626    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00002220, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000118])
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00002300, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000130])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2797,24 +2814,25 @@ Memory Map of the image
     0x2000038a   0x00000002   PAD
     0x2000038c   0x00000123   Data   RW          309    .data               system_core.o
     0x200004af   0x00000001   PAD
-    0x200004b0   0x00000122   Data   RW          330    .data               position_service.o
+    0x200004b0   0x00000122   Data   RW          331    .data               position_service.o
     0x200005d2   0x00000002   PAD
-    0x200005d4   0x0000011f   Data   RW          345    .data               mechanicalarm_service.o
+    0x200005d4   0x0000011f   Data   RW          346    .data               mechanicalarm_service.o
     0x200006f3   0x00000001   PAD
-    0x200006f4   0x00000123   Data   RW          354    .data               openmv_service.o
+    0x200006f4   0x00000123   Data   RW          355    .data               openmv_service.o
     0x20000817   0x00000001   PAD
-    0x20000818   0x00000270   Data   RW          373    .data               goods_app.o
-    0x20000a88   0x00000123   Data   RW          379    .data               main_app.o
-    0x20000bab   0x00000001   PAD
-    0x20000bac   0x00000126   Data   RW          400    .data               position_app.o
-    0x20000cd2   0x00000002   PAD
-    0x20000cd4   0x00000004   Data   RW          617    .data               mc_w.l(errno.o)
-    0x20000cd8   0x00000360   Zero   RW          236    .bss                motor_driver.o
-    0x20001038   0x000003e0   Zero   RW          263    .bss                usart.o
-    0x20001418   0x00000350   Zero   RW          308    .bss                system_core.o
-    0x20001768   0x00000350   Zero   RW          329    .bss                position_service.o
-    0x20001ab8   0x00000368   Zero   RW          344    .bss                mechanicalarm_service.o
-    0x20001e20   0x00000400   Zero   RW          215    STACK               startup_stm32f10x_hd.o
+    0x20000818   0x0000034c   Data   RW          374    .data               goods_app.o
+    0x20000b64   0x00000123   Data   RW          380    .data               main_app.o
+    0x20000c87   0x00000001   PAD
+    0x20000c88   0x00000126   Data   RW          401    .data               position_app.o
+    0x20000dae   0x00000002   PAD
+    0x20000db0   0x00000004   Data   RW          618    .data               mc_w.l(errno.o)
+    0x20000db4   0x00000360   Zero   RW          236    .bss                motor_driver.o
+    0x20001114   0x000003e0   Zero   RW          263    .bss                usart.o
+    0x200014f4   0x00000350   Zero   RW          308    .bss                system_core.o
+    0x20001844   0x00000350   Zero   RW          330    .bss                position_service.o
+    0x20001b94   0x00000004   PAD
+    0x20001b98   0x00000368   Zero   RW          345    .bss                mechanicalarm_service.o
+    0x20001f00   0x00000400   Zero   RW          215    STACK               startup_stm32f10x_hd.o
 
 
 ==============================================================================
@@ -2824,7 +2842,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       584        126          0        624          0          0   goods_app.o
+       840        162          0        844          0          0   goods_app.o
        348         54          0        304          0          0   gyroscope.o
        256         24          0          0          0          0   iic.o
          8          0          0          0          0          0   main.o
@@ -2834,8 +2852,8 @@ Image component sizes
       1416        238          0        290        864          0   motor_driver.o
        580         24          0          0          0          0   motor_init.o
        844         10       2002          0          0          0   oled.o
-       560         52          0        291          0          0   openmv_service.o
-       612         62          0        294          0          0   position_app.o
+       552         52          0        291          0          0   openmv_service.o
+       660         62          0        294          0          0   position_app.o
       1420        202          0        290        848          0   position_service.o
         36          8        304          0       1024          0   startup_stm32f10x_hd.o
        510         26          0          0          0          0   stm32f10x_dma.o
@@ -2851,9 +2869,9 @@ Image component sizes
       1192        132          0        290        992          0   usart.o
 
     ----------------------------------------------------------------------
-     13848       1538       2340       3284       5448          0   Object Totals
+     14144       1574       2340       3504       5452          0   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        18          0          2         12          0          0   (incl. Padding)
+        18          0          2         12          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2926,15 +2944,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17852       1698       2572       3288       5448          0   Grand Totals
-     17852       1698       2572        280       5448          0   ELF Image Totals (compressed)
-     17852       1698       2572        280          0          0   ROM Totals
+     18148       1734       2572       3508       5452          0   Grand Totals
+     18148       1734       2572        304       5452          0   ELF Image Totals (compressed)
+     18148       1734       2572        304          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                20424 (  19.95kB)
-    Total RW  Size (RW Data + ZI Data)              8736 (   8.53kB)
-    Total ROM Size (Code + RO Data + RW Data)      20704 (  20.22kB)
+    Total RO  Size (Code + RO Data)                20720 (  20.23kB)
+    Total RW  Size (RW Data + ZI Data)              8960 (   8.75kB)
+    Total ROM Size (Code + RO Data + RW Data)      21024 (  20.53kB)
 
 ==============================================================================
 

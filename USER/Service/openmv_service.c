@@ -35,33 +35,42 @@ void OpenMV_Updata(void)
 	if(*Cmd!=0)
 	{
 		if(*(Cmd+1) != 0xee)
+			//确认OpenMV数据头
 			Usart_Sbuffer_Clear(2);
-		else if(*(Cmd + *Cmd) == 0xde)
+		else if(*(Cmd + *Cmd) == 0xde)		//确认OpenMV数据是否结尾
 		{
 			OpenMV_State = *(Cmd + 2);
+			//OpenMV目标状态转ASSIC
 			temp = OpenMV_Tstate + 0x30;
+			//确认目标状态与实际状态
 			if(OpenMV_State!=OpenMV_Tstate)
 				Usart2_Send(&temp,1);
+			//数据处理
 			switch(OpenMV_State)
 			{
 				case 1:
+					//二维码读取和OLED展示
 					OLED_ShowString("TC:",6,0,2);
 					for(temp=3;*(Cmd+temp)!=0xde;temp++)
 					{
 						QrCode[temp - 3] = *(Cmd+temp) ;
 						OLED_ShowChar(QrCode[temp - 3],6,(temp-3)*8+27,2);
 					}
-					//数字ASSCI转16进制
+					//数字ASSCI转16进制(简化任务码)
 					for(temp=0;temp<7;temp++)
-					{
-						if(temp!=3)
-							QrCode[temp] -= 0x30;
-					}
+						QrCode[temp] -= 0x30;
 					break;
 				case 2:
 					Blob = *(Cmd+3) + 1;
 					cx = *(Cmd+4);
-					if(cx>12 && cx<18)
+					w = *(Cmd+5);
+					if(cx>14 && cx<18)
+					{
+						LookData[0] = Blob;
+						LookData[1] = cx;
+						LookData[2] = w;
+					}
+					if(cx>14 && cx<18)
 					{
 						if(RecordingNum==0)
 						{
@@ -80,7 +89,7 @@ void OpenMV_Updata(void)
 								RecordingNum++;
 							}
 						}
-						if(RecordingNum == 2)
+						if(RecordingNum == 2 && OpenMV_Tstate == 2)
 						{
 							PositionService_Stop();
 							Recording[2] = 6 - Recording[0] - Recording[1];
@@ -91,7 +100,7 @@ void OpenMV_Updata(void)
 					Blob = *(Cmd+3) + 1;
 					cx = *(Cmd+4);
 					w = *(Cmd+5);
-					if(cx>10 && cx<20)
+					if(cx>14 && cx<18)
 					{
 						LookData[0] = Blob;
 						LookData[1] = cx;

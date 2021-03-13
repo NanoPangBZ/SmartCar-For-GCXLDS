@@ -27,77 +27,88 @@ void PositionTask_StateSet(uint8_t state)
 
 void GetBlob_Move(void)
 {
-	static uint8_t flag = 0;
-	static uint8_t Blob = 0;
+	static uint8_t flag = 1;
+	static uint8_t Blob;
+	static uint8_t Pos;
+	uint8_t*TempAddr1,*TempAddr2;
 	uint8_t temp;
-	uint8_t*TaskAddr,*ListAddr;
-	if(flag==0)
-	{
-		TaskAddr = Read_Recording();
-		ListAddr = Read_QrCode();
-		//取任务码中未完成的物块
-		for(temp=0;temp<3;temp++)
-			if(*(TaskAddr+temp) != 0)
-			{
-				Blob = *(TaskAddr+temp);
-				*(TaskAddr+temp) = 0;
-				break;
-			}
-		OLED_ShowNum(Blob,2,0,1);
-		//确定物块再Recording[]中的位置
-		for(temp = 0;temp<3;temp++)
+		if(flag==1)
 		{
-			if(*(ListAddr+temp) == Blob)
+			//本环节addr1作为任务码地址 addr2物块排列地址
+			TempAddr1 = Read_QrCode();
+			TempAddr2 = Read_Recording();
+			//根据任务码确定目标物块,并在任务码数组中将他置位
+			for(temp=0;temp<7;temp++)
 			{
-				switch(temp)
+				if(*(TempAddr1+temp) != 0 &&  temp!=3)	//屏蔽了任务码中的'+'字符
 				{
-					case 0:
-						VectorMove_Set(-150,0);
-						flag = 1;
-						break;
-					case 1:
-						flag = 2;
-						break;
-					case 2:
-						VectorMove_Set(150,0);
-						flag = 1;
-						break;
+					Blob = *(TempAddr1+temp);
+					*(TempAddr1+temp) = 0;		//将取读到的任务码清0
 				}
-				break;
 			}
-		}
-	}else if(flag == 1)        //x对齐
-	{
-		TaskAddr = Read_LookData();
-		if(*TaskAddr == Blob)
+			//根据物块排列表确定位置
+			for(temp=0;temp<3;temp++)
+			{
+				if(Blob == *(TempAddr2+temp))
+					Pos = temp;
+			}
+			//向目标位置对齐 addr1重新指向LoodData
+			TempAddr1 = Read_LookData();
+			switch(Pos)
+			{
+				case 0:
+					VectorMove_Set(-150,0);
+					flag = 2;
+					break;
+				case 1:
+					PositionService_Stop();
+					flag = 3;
+					break;
+				case 2:
+					VectorMove_Set(150,0);
+					flag = 2;
+					break;
+			}
+		}else if(flag == 2)
 		{
-			PositionService_Stop();
-			OLED_ShowNum(*(TaskAddr+2),3,0,2);
-			if(*(TaskAddr+2) > 41)
+			//等待到达目标物块前方
+			if(*Read_LookData() == Blob)
 			{
-				VectorMove_Set(0,-100);
-				flag++;
-			}else if(*(TaskAddr+2) < 39)
+				PositionService_Stop();
+				flag = 3;
+			}
+		}else if(flag == 3)
+		{
+			//远进调整 addr1指向LookData.w
+			TempAddr1 = Read_LookData() + 2;
+			if(*TempAddr1 > 70 )
 			{
-				VectorMove_Set(0,100);
-				flag++;
+				VectorMove_Set(-3,-80);
+				flag = 4;
+			}else if(*TempAddr1 < 58)
+			{
+				VectorMove_Set(10,80);
+				flag =4;
 			}else
 			{
-				flag += 2;
+				flag = 5;
 			}
-		}
-	}else if(flag == 2)	//远近调整
-	{
-		TaskAddr = Read_LookData();
-		if(*(TaskAddr+2) < 46 && *(TaskAddr+2) > 34)
+		}else if(flag == 4)
 		{
-			PositionService_Stop();
-			flag++;
+			//等待远近调整完成
+			TempAddr1 = Read_LookData()+2;
+			if(*TempAddr1<70 && *TempAddr1>58)
+			{
+				PositionService_Stop();
+				OLED_ShowNum(*TempAddr1,2,0,1);
+				flag = 5;
+			}
+		}else if(flag == 5)
+		{
+			PositionTask_En = 0;
 		}
-	}else if(flag == 3)
-	{
-		PositionTask_En = 0;
-	}
+		OLED_ShowNum(flag,5,0,1);
+		
 }
 
 void FindBlobs_Move(void)

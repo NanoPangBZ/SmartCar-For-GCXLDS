@@ -66,7 +66,6 @@ def TargetBlobs_Find():
                     img.draw_rectangle(Blob.rect(),thickness = 5,color = (175,0,175))
                     data = bytearray([temp,int(Blob.cx()/10),Blob.w()])
                     #print(data)
-                    print(Blob.w())
                     Usart_Send(data)
         temp += 1
 
@@ -101,6 +100,7 @@ while(True):
     elif OpenMVState[0] ==2 or OpenMVState[0] ==3:
         TargetBlobs_Find()
     Usart_Read()
+    print(sensor.width())
     #print(sensor.get_rgb_gain_db())
 
     #绘图调试

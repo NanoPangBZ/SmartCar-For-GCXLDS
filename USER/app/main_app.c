@@ -21,7 +21,6 @@ void main_app_Task(void)
 void Get_UpBlobs(void)
 {
 	static uint8_t temp;
-	OpenMV_Set(3);
 	if(stateCmd_flag == 0)
 	{
 		Attitude_Set(2);
@@ -30,7 +29,10 @@ void Get_UpBlobs(void)
 	}else if(stateCmd_flag==1)
 	{
 		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0)
+		{
 			stateCmd_flag++;
+			OpenMV_Set(3);
+		}
 	}else if(stateCmd_flag == 2)
 	{
 		if(Read_AttitudeFlag()==0)

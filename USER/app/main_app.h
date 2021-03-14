@@ -17,6 +17,7 @@ void main_app_Task(void);
 void GetQrCode(void);
 void Blobs_Recording(void);		//获取原料排放顺序
 void Get_UpBlobs(void);
+void Put_NBlob(void);
 
 #endif
 

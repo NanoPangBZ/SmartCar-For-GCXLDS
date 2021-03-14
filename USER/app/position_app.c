@@ -15,6 +15,9 @@ void position_app_Task(void)
 			case 3:
 				GetBlob_Move();
 				break;
+			case 4:
+				PutNBlob_Move();
+				break;
 		}
 	}
 }
@@ -25,11 +28,52 @@ void PositionTask_StateSet(uint8_t state)
 		PositionTask_En = 1;
 }
 
+void PutNBlob_Move(void)
+{
+	static uint8_t flag = 0;
+	if(flag == 0)
+	{
+		switch(Blob)
+			{
+				case RED:
+					TargetMove_Set(0,-2800,1);
+					break;
+				case GREEN:
+					TargetMove_Set(0,-1500,1);
+					break;
+				case BLUE:
+					TargetMove_Set(0,-3800,1);
+					break;
+			}
+		flag = 1;
+	}else if(flag == 1)
+	{
+		if(Read_PositionState() == 5)
+		{
+			flag++;
+			switch(Pos)
+			{
+				case 0:
+					TargetMove_Set(2100,0,1);
+					break;
+				case 1:
+					TargetMove_Set(1600,0,1);
+					break;
+				case 2:
+					TargetMove_Set(1100,0,1);
+					break;
+			}
+		}
+	}else if(flag == 2)
+	{
+		if(Read_PositionState() == 5)
+			PositionTask_En = 0;
+	}
+}
+
 void GetBlob_Move(void)
 {
 	static uint8_t flag = 1;
-	static uint8_t Blob;
-	static uint8_t Pos;
 	uint8_t*TempAddr1,*TempAddr2;
 	uint8_t temp;
 		if(flag==1)
@@ -111,8 +155,6 @@ void GetBlob_Move(void)
 		{
 			PositionTask_En = 0;
 		}
-		OLED_ShowNum(flag,5,0,1);
-		
 }
 
 void FindBlobs_Move(void)

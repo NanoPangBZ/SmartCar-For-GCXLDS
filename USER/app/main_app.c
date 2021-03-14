@@ -15,23 +15,41 @@ void main_app_Task(void)
 		Blobs_Recording();
 	else if(main_state == 3)
 		Get_UpBlobs();
+	else if(main_state == 4)
+		Put_NBlob();
 	OLED_ShowNum(main_state,0,42,1);
+}
+
+void Put_NBlob(void)
+{
+	if(stateCmd_flag == 0)
+	{
+		stateCmd_flag = 1;
+		PositionTask_StateSet(4);
+	}else if(stateCmd_flag == 1)
+	{
+		if(Read_PositionTaskEn()==0)
+		{
+			stateCmd_flag++;
+			PutBlob_Floor(0);
+		}
+	}
 }
 
 void Get_UpBlobs(void)
 {
 	static uint8_t temp;
+	OpenMV_Set(3);
 	if(stateCmd_flag == 0)
 	{
 		Attitude_Set(2);
-		stateCmd_flag = 1;
 		PositionTask_StateSet(3);
+		stateCmd_flag = 1;
 	}else if(stateCmd_flag==1)
 	{
 		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag() == 0)
 		{
 			stateCmd_flag++;
-			OpenMV_Set(3);
 		}
 	}else if(stateCmd_flag == 2)
 	{

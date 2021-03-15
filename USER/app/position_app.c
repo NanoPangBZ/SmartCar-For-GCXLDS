@@ -18,6 +18,9 @@ void position_app_Task(void)
 			case 4:
 				PutNBlob_Move();
 				break;
+			case 5:
+				GoBackBCToYL();
+				break;
 		}
 	}
 }
@@ -31,43 +34,122 @@ void PositionTask_StateSet(uint8_t state)
 void PutNBlob_Move(void)
 {
 	static uint8_t flag = 0;
+	uint8_t temp;
+	uint8_t*TempAddr;
 	if(flag == 0)
 	{
 		switch(Blob)
 			{
 				case RED:
-					TargetMove_Set(0,-2800,1);
+					TargetMove_Set(0,-2650,1);
 					break;
 				case GREEN:
-					TargetMove_Set(0,-1500,1);
+					TargetMove_Set(0,-3200,1);
 					break;
 				case BLUE:
-					TargetMove_Set(0,-3800,1);
+					TargetMove_Set(0,-3750,1);
 					break;
 			}
+		OLED_ShowNum(Blob,5,0,1);
 		flag = 1;
 	}else if(flag == 1)
 	{
 		if(Read_PositionState() == 5)
 		{
 			flag++;
+			TempAddr = Read_Recording();
+			for(temp=0;temp<3;temp++)
+			{
+				if(*(TempAddr+temp) == Blob)
+				{
+					Pos = temp;
+					break;
+				}
+			}
 			switch(Pos)
 			{
 				case 0:
-					TargetMove_Set(2100,0,1);
+					TargetMove_Set(2200,0,1);
 					break;
 				case 1:
-					TargetMove_Set(1600,0,1);
+					TargetMove_Set(1700,0,1);
 					break;
 				case 2:
-					TargetMove_Set(1100,0,1);
+					TargetMove_Set(1200,0,1);
 					break;
 			}
 		}
 	}else if(flag == 2)
 	{
 		if(Read_PositionState() == 5)
+		{
 			PositionTask_En = 0;
+			flag = 0;
+		}
+	}
+	OLED_ShowNum(Pos,4,0,1);
+}
+
+void GoBackBCToYL(void)
+{
+	static uint8_t flag = 0;
+	uint8_t*TempAddr;
+	uint8_t temp;
+	if(flag == 0)
+	{
+		switch(Blob)
+		{
+			case RED:
+				TargetMove_Set(0,2500,1);
+				break;
+			case GREEN:
+				TargetMove_Set(0,3000,1);
+				break;
+			case BLUE:
+				TargetMove_Set(0,3500,1);
+				break;
+		}
+		flag++;
+	}else if(flag == 1)
+	{
+		if(Read_PositionState() == 5)
+		{
+			TempAddr = Read_QrCode();
+			for(temp=0;temp<3;temp++)
+			{
+				if(*(TempAddr+temp) < 20)
+				{
+					Blob = *(TempAddr+ temp);
+					*(TempAddr+temp) += 20;
+					break;
+				}
+			}
+			VectorMove_Set(-130,0);
+			flag++;
+		}
+	}else if(flag == 2)
+	{
+		TempAddr = Read_LookData();
+		if(*TempAddr== Blob && *(TempAddr+1)>14 && *(TempAddr+1)<18)
+		{
+			if(*(TempAddr+2)>70)
+				VectorMove_Set(0,-80);
+			else if(*(TempAddr+2)<58)
+				VectorMove_Set(0,80);
+			else
+				PositionService_Stop();
+			flag++;
+		}
+	}else if(flag==3)
+	{
+		//等待远近调整完成 附带对齐修正
+		TempAddr = Read_LookData()+2;
+		if(*TempAddr<70 && *TempAddr>58)
+		{
+			PositionService_Stop();
+			PositionTask_En = 0;
+			flag = 0;
+		}
 	}
 }
 
@@ -84,10 +166,11 @@ void GetBlob_Move(void)
 			//根据任务码确定目标物块,并在任务码数组中将他置位
 			for(temp=0;temp<7;temp++)
 			{
-				if(*(TempAddr1+temp) != 0 &&  temp!=3)	//屏蔽了任务码中的'+'字符
+				if(*(TempAddr1+temp) < 20 &&  temp!=3)	//屏蔽了任务码中的'+'字符
 				{
 					Blob = *(TempAddr1+temp);
-					*(TempAddr1+temp) = 0;		//将取读到的任务码清0
+					*(TempAddr1+temp) += 20;		//表示已经运送至原料区
+					break;
 				}
 			}
 			//根据物块排列表确定位置
@@ -120,7 +203,7 @@ void GetBlob_Move(void)
 		{
 			//等待到达目标物块前方
 			TempAddr1 = Read_LookData();
-			if(*TempAddr1== Blob && *(TempAddr1+1)>14 && *(TempAddr1+1)<18)
+			if(*TempAddr1== Blob && *(TempAddr1+1)>15 && *(TempAddr1+1)<17)
 			{
 				PositionService_Stop();
 				flag = 3;
@@ -133,7 +216,7 @@ void GetBlob_Move(void)
 			{
 				VectorMove_Set(-3,-80);
 				flag = 4;
-			}else if(*TempAddr1 < 58)
+			}else if(*TempAddr1 < 59)
 			{
 				VectorMove_Set(10,80);
 				flag =4;
@@ -145,10 +228,9 @@ void GetBlob_Move(void)
 		{
 			//等待远近调整完成 附带对齐修正
 			TempAddr1 = Read_LookData()+2;
-			if(*TempAddr1<70 && *TempAddr1>58)
+			if(*TempAddr1<70 && *TempAddr1>59)
 			{
 				PositionService_Stop();
-				OLED_ShowNum(*TempAddr1,2,0,1);
 				flag = 5;
 			}
 		}else if(flag == 5)

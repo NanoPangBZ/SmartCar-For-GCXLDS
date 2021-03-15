@@ -17,11 +17,23 @@ void main_app_Task(void)
 		Get_UpBlobs();
 	else if(main_state == 4)
 		Put_NBlob();
+	else if(main_state == 5)
+		
 	OLED_ShowNum(main_state,0,42,1);
+}
+
+void Get_DownBlob(void)
+{
+	if(stateCmd_flag==0)
+	{
+		
+	}
 }
 
 void Put_NBlob(void)
 {
+	uint8_t*TempAddr;
+	static uint8_t temp;
 	if(stateCmd_flag == 0)
 	{
 		stateCmd_flag = 1;
@@ -29,10 +41,52 @@ void Put_NBlob(void)
 	}else if(stateCmd_flag == 1)
 	{
 		if(Read_PositionTaskEn()==0)
-		{
 			stateCmd_flag++;
-			PutBlob_Floor(0);
+	}else if(stateCmd_flag==2)
+	{
+		PutBlob_Floor(0);
+		stateCmd_flag++;
+	}else if(stateCmd_flag==3)
+	{
+		if(Read_AttitudeFlag()==0)
+		{
+			Attitude_Set(2);
+			PositionTask_StateSet(5);
+			stateCmd_flag++;
 		}
+	}else if(stateCmd_flag==4)
+	{
+		if(Read_PositionTaskEn() == 0 && Read_AttitudeFlag()==0)
+		{
+			GetBlob_Floor(0,0);
+			stateCmd_flag++;
+		}
+	}else if(stateCmd_flag == 5)
+	{
+		if(Read_AttitudeFlag() == 0 && Read_PositionTaskEn() == 0)
+		{
+			PositionTask_StateSet(4);
+			stateCmd_flag++;
+		}
+	}else if(stateCmd_flag == 6)
+	{
+		if(Read_AttitudeFlag() == 0 && Read_PositionTaskEn() == 0)
+		{
+			PutBlob_Floor(0);
+			TempAddr = Read_QrCode();
+			for(temp=0;temp<3;temp++)
+			{
+				if(*(TempAddr+temp)<20)
+					break;
+			}
+			if(temp<3)
+				stateCmd_flag = 3;
+			else
+				stateCmd_flag++;
+		}
+	}else if(stateCmd_flag==7)
+	{
+		main_flag=0;
 	}
 }
 

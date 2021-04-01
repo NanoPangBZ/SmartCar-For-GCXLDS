@@ -48,7 +48,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>..\Output\</OutputDirectory>
-          <OutputName>SmartCar</OutputName>
+          <OutputName>EEEEE</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -545,29 +545,19 @@
           <GroupName>app</GroupName>
           <Files>
             <File>
-              <FileName>goods_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\goods_app.c</FilePath>
-            </File>
-            <File>
               <FileName>main_app.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\main_app.c</FilePath>
             </File>
             <File>
-              <FileName>debug_app.c</FileName>
+              <FileName>move_app.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\debug_app.c</FilePath>
+              <FilePath>.\app\move_app.c</FilePath>
             </File>
             <File>
-              <FileName>test_app.c</FileName>
+              <FileName>attitude_app.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\test_app.c</FilePath>
-            </File>
-            <File>
-              <FileName>position_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\position_app.c</FilePath>
+              <FilePath>.\app\attitude_app.c</FilePath>
             </File>
           </Files>
         </Group>

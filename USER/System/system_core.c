@@ -25,13 +25,13 @@ void PCB_System_Init(void)
 	//将任务函数的指针载入任务列表
 	TaskList_Config(1,1,1,PositionClr_Service);
 	TaskList_Config(1,1,1,MechanicalArm_Service);
-//	TaskList_Config(1,1,1,feedback_service);
 	TaskList_Config(1,1,1,openmv_service);
+//	TaskList_Config(1,1,1,feedback_service);
 //	TaskList_Config(1,1,2,debug_app_Task);
 //	TaskList_Config(1,1,2,test_app_task);
-	TaskList_Config(1,1,2,goods_app_Task);
-	TaskList_Config(1,1,2,position_app_Task);
 	TaskList_Config(1,1,2,main_app_Task);
+	TaskList_Config(1,1,2,move_app_Task);
+	TaskList_Config(1,1,2,attitude_app_Task);
 	
 	SystemState_Set(1);
 	SysTick_Config(6*72000);			//系统主心跳

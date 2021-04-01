@@ -41,12 +41,10 @@
 ..\output\motor_init.o: .\Service\position_service.h
 ..\output\motor_init.o: .\Service\openmv_service.h
 ..\output\motor_init.o: .\Service\feedback_service.h
-..\output\motor_init.o: .\Service\wifi_service.h
 ..\output\motor_init.o: .\Driver\vofa_p.h
 ..\output\motor_init.o: .\Driver\gyroscope.h
 ..\output\motor_init.o: .\Driver\oled.h
 ..\output\motor_init.o: .\app\main_app.h
-..\output\motor_init.o: .\app\goods_app.h
-..\output\motor_init.o: .\app\position_app.h
-..\output\motor_init.o: .\app\debug_app.h
-..\output\motor_init.o: .\app\test_app.h
+..\output\motor_init.o: .\app\move_app.h
+..\output\motor_init.o: .\app\attitude_app.h
+..\output\motor_init.o: .\System\vscode_test.h

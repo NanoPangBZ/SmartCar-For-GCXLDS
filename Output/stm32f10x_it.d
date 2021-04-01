@@ -41,12 +41,10 @@
 ..\output\stm32f10x_it.o: .\Service\position_service.h
 ..\output\stm32f10x_it.o: .\Service\openmv_service.h
 ..\output\stm32f10x_it.o: .\Service\feedback_service.h
-..\output\stm32f10x_it.o: .\Service\wifi_service.h
 ..\output\stm32f10x_it.o: .\Driver\vofa_p.h
 ..\output\stm32f10x_it.o: .\Driver\gyroscope.h
 ..\output\stm32f10x_it.o: .\Driver\oled.h
 ..\output\stm32f10x_it.o: .\app\main_app.h
-..\output\stm32f10x_it.o: .\app\goods_app.h
-..\output\stm32f10x_it.o: .\app\position_app.h
-..\output\stm32f10x_it.o: .\app\debug_app.h
-..\output\stm32f10x_it.o: .\app\test_app.h
+..\output\stm32f10x_it.o: .\app\move_app.h
+..\output\stm32f10x_it.o: .\app\attitude_app.h
+..\output\stm32f10x_it.o: .\System\vscode_test.h

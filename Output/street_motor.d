@@ -41,12 +41,10 @@
 ..\output\street_motor.o: .\Service\position_service.h
 ..\output\street_motor.o: .\Service\openmv_service.h
 ..\output\street_motor.o: .\Service\feedback_service.h
-..\output\street_motor.o: .\Service\wifi_service.h
 ..\output\street_motor.o: .\Driver\vofa_p.h
 ..\output\street_motor.o: .\Driver\gyroscope.h
 ..\output\street_motor.o: .\Driver\oled.h
 ..\output\street_motor.o: .\app\main_app.h
-..\output\street_motor.o: .\app\goods_app.h
-..\output\street_motor.o: .\app\position_app.h
-..\output\street_motor.o: .\app\debug_app.h
-..\output\street_motor.o: .\app\test_app.h
+..\output\street_motor.o: .\app\move_app.h
+..\output\street_motor.o: .\app\attitude_app.h
+..\output\street_motor.o: .\System\vscode_test.h

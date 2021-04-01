@@ -2,6 +2,7 @@
 #define _MechanicalArm_Service_H_
 
 #include "system_core.h"
+#include "street_motor.h"
 
 #define Width_Unit 	11.111	//角度转脉宽单位
 #define HZJ			57.32	//弧度转角度系数

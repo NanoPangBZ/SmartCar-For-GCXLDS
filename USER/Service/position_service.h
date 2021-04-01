@@ -4,7 +4,7 @@
 #include "system_core.h"
 
 #define	SpeedKp	1.15
-#define	SpeedTi 	0.82
+#define	SpeedTi 0.82
 #define	SpeedTd	0.015
 
 #define	K_output	48			//PID输出放大倍数

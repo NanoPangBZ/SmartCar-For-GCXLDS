@@ -12,15 +12,13 @@
 #include "position_service.h"
 #include "openmv_service.h"
 #include "feedback_service.h"
-#include "wifi_service.h"
 #include "vofa_p.h"
 #include "gyroscope.h"
 #include "oled.h"
 #include "main_app.h"
-#include "goods_app.h"
-#include "position_app.h"
-#include "debug_app.h"
-#include "test_app.h"
+#include "move_app.h"
+#include "attitude_app.h"
+#include "vscode_test.h"
 
 //任务控制块
 typedef struct

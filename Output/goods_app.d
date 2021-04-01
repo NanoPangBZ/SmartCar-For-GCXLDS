@@ -41,13 +41,10 @@
 ..\output\goods_app.o: .\Service\position_service.h
 ..\output\goods_app.o: .\Service\openmv_service.h
 ..\output\goods_app.o: .\Service\feedback_service.h
-..\output\goods_app.o: .\Service\wifi_service.h
 ..\output\goods_app.o: .\Driver\vofa_p.h
 ..\output\goods_app.o: .\Driver\gyroscope.h
 ..\output\goods_app.o: .\Driver\oled.h
 ..\output\goods_app.o: .\app\main_app.h
 ..\output\goods_app.o: .\app\goods_app.h
-..\output\goods_app.o: .\app\position_app.h
-..\output\goods_app.o: .\app\debug_app.h
-..\output\goods_app.o: .\app\test_app.h
+..\output\goods_app.o: .\app\move_app.h
 ..\output\goods_app.o: app\angle_list.h

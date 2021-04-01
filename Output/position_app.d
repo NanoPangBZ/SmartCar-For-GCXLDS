@@ -41,12 +41,9 @@
 ..\output\position_app.o: .\Service\position_service.h
 ..\output\position_app.o: .\Service\openmv_service.h
 ..\output\position_app.o: .\Service\feedback_service.h
-..\output\position_app.o: .\Service\wifi_service.h
 ..\output\position_app.o: .\Driver\vofa_p.h
 ..\output\position_app.o: .\Driver\gyroscope.h
 ..\output\position_app.o: .\Driver\oled.h
 ..\output\position_app.o: .\app\main_app.h
 ..\output\position_app.o: .\app\goods_app.h
 ..\output\position_app.o: .\app\position_app.h
-..\output\position_app.o: .\app\debug_app.h
-..\output\position_app.o: .\app\test_app.h

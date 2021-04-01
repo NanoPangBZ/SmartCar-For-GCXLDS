@@ -1,0 +1,179 @@
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+compiling core_cm3.c...
+compiling stm32f10x_exti.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_exti.c: 1 warning, 1 error
+compiling main.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+main.c: 1 warning, 1 error
+compiling system_stm32f10x.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\CMSIS\system_stm32f10x.c: 1 warning, 1 error
+compiling stm32f10x_dma.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_dma.c: 1 warning, 1 error
+compiling stm32f10x_it.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+stm32f10x_it.c: 1 warning, 1 error
+compiling misc.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\misc.c: 1 warning, 1 error
+assembling startup_stm32f10x_hd.s...
+compiling stm32f10x_gpio.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_gpio.c: 1 warning, 1 error
+compiling stm32f10x_rcc.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_rcc.c: 1 warning, 1 error
+compiling stm32f10x_usart.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_usart.c: 1 warning, 1 error
+compiling gyroscope.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\gyroscope.c: 1 warning, 1 error
+compiling stm32f10x_tim.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+..\FWLIB\src\stm32f10x_tim.c: 1 warning, 1 error
+compiling motor_driver.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\motor_driver.c: 1 warning, 1 error
+compiling motor_init.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\motor_init.c(76): error:  #20: identifier "TIM6_IRQn" is undefined
+  	NVIC_InitStruct.NVIC_IRQChannel = TIM6_IRQn;
+Driver\motor_init.c: 1 warning, 2 errors
+compiling usart.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\usart.c: 1 warning, 1 error
+compiling street_motor.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\street_motor.c: 1 warning, 1 error
+compiling iic.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\iic.c: 1 warning, 1 error
+compiling oled.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\oled.c: 1 warning, 1 error
+compiling vofa_p.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Driver\vofa_p.c: 1 warning, 1 error
+compiling system_core.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+System\system_core.c(89): error:  #20: identifier "TIM7_IRQn" is undefined
+  	NVIC_InitStruct.NVIC_IRQChannel = TIM7_IRQn;
+System\system_core.c: 1 warning, 2 errors
+compiling system_core.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+System\vscode_test.c: 1 warning, 1 error
+compiling position_service.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Service\position_service.c: 1 warning, 1 error
+compiling feedback_service.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Service\feedback_service.c: 1 warning, 1 error
+compiling openmv_service.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Service\openmv_service.c: 1 warning, 1 error
+compiling main_app.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+app\main_app.c: 1 warning, 1 error
+compiling wifi_service.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Service\wifi_service.c: 1 warning, 1 error
+compiling MechanicalArm_Service.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+Service\MechanicalArm_Service.c: 1 warning, 1 error
+compiling move_app.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+app\move_app.c: 1 warning, 1 error
+compiling attitude_app.c...
+..\CMSIS\stm32f10x.h(299): error:  #67: expected a "}"
+    ADC1_2_IRQn                 = 18,     /*!< ADC1 and ADC2 global Interrupt                       */
+..\CMSIS\stm32f10x.h(473): warning:  #12-D: parsing restarts here after previous syntax error
+  } IRQn_Type;
+app\attitude_app.c: 1 warning, 1 error
+"..\Output\EEEEE.axf" - 30 Error(s), 28 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:04

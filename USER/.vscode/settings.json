@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "system_core.h": "c"
+    },
+    "editor.mouseWheelZoom": true
+}

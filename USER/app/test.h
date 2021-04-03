@@ -3,6 +3,7 @@
 
 #include "system_core.h"
 
-
+void test_app_task(void);
+void TestPart1(void);
 
 #endif
